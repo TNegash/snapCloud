@@ -1,0 +1,660 @@
+
+# User Guide: Setting Up Raspberry Pi with Ubuntu 20.04 LTS and xubuntu-desktop
+
+## 1. Install Ubuntu 20.04 LTS (Focal)
+
+1. Ensure you have a Raspberry Pi board.
+2. Download the **Ubuntu 20.04 LTS** image from the official website.
+3. Flash the image onto an SD card using tools like **Raspberry Pi Imager**.
+4. Insert the SD card into your Raspberry Pi and power it on.
+
+## 2. Install the Server Components
+
+- Open a terminal on your Raspberry Pi.
+- Execute the following commands to install essential server components:
+    ```bash
+    sudo apt-get update
+    sudo apt-get install -y wget gnupg ca-certificates
+    ```
+
+## 3. Install xubuntu-desktop
+
+- Still in the terminal, run the following commands to install the **xubuntu-desktop** package:
+    ```bash
+    sudo apt-get install -y xubuntu-desktop
+    ```
+
+## 4. Cloning and Adjusting the snapCloud Repository
+
+1. Clone the **snapCloud** repository:
+    ```bash
+    git clone https://github.com/snapCloud/snapCloud.git
+    ```
+
+2. Navigate to the cloned directory:
+    ```bash
+    cd snapCloud
+    ```
+
+3. Edit the **prereqs.sh** file to include the necessary architecture (arm64):
+    ```bash
+    sudo nano prereqs.sh
+    ```
+
+    Add the following lines to the file:
+    ```bash
+    apt-get -y install --no-install-recommends wget gnupg ca-certificates
+    wget -O - https://openresty.org/package/pubkey.gpg | apt-key add -
+    echo "deb http://openresty.org/package/arm64/ubuntu $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/openresty.list
+    apt-get update
+    apt-get -y install openresty
+    ```
+
+## 5. Resolve Dependencies
+
+- If you encounter the error message related to **luarocks** and **luaossl**, execute the following command:
+    ```bash
+    sudo luarocks install lapis CRYPTO_LIBDIR=/usr/lib/aarch64-linux-gnu/ OPENSSL_LIBDIR=/usr/lib/aarch64-linux-gnu/
+    ```
+
+- For the **gcc** error, install the necessary package:
+    ```bash
+    sudo apt-get install g++
+    ```
+
+- To address the **luasec** dependency issue, run:
+    ```bash
+    sudo luarocks install luasec CRYPTO_LIBDIR=/usr/lib/aarch64-linux-gnu/ OPENSSL_LIBDIR=/usr/lib/aarch64-linux-gnu/
+    ```
+
+## 7. Troubleshooting GitHub Cloning Issues
+
+If you encounter the following error messages while cloning a repository:
+
+```
+Cloning into 'luabitop'...
+fatal: unable to connect to github.com:
+github.com[0: 140.82.121.3]: errno=Connection timed out
+```
+
+To solve this issue, execute the following command to configure Git to use HTTPS instead of the git protocol:
+
+```bash
+git config --global url."https://github".insteadOf git://github
+```
+
+## 8. Prevent Computer Freezing
+
+- **Switch Off Wi-Fi Power Save Mode**:
+    - If your computer freezes after being idle, consider disabling Wi-Fi power save mode:
+        ```bash
+        sudo iw wlan0 set power_save off
+        ```
+
+- **Adjust Wi-Fi Powersave Value**:
+    - Set the value of `wifi.powersave` from 3 to 2 in the NetworkManager configuration file:
+        ```bash
+        sudoedit /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf
+        ```
+
+    Change the value from:
+    ```
+    wifi.powersave=3
+    ```
+    to:
+    ```
+    wifi.powersave=2
+    ```
+
+## 9. Firmware User-Specific Configuration
+
+- Edit the `usercfg.txt` file for firmware-specific settings:
+    ```bash
+    sudoedit /boot/firmware/usercfg.txt
+    ```
+
+    Add the following lines to switch off the monitor when the lock screen enables:
+    ```
+    # Power down monitor when lockscreen enables
+    hdmi_blanking=1
+    ```
+
+    Additionally, enter FKMS (Fake Kernel Mode Setting) instead of the full KMS:
+    ```
+    dtoverlay=vc4-fkms-v3d
+    ```
+
+## 10. Increasing Swap Memory
+
+To increase swap memory, follow the steps outlined in this [Ask Ubuntu post](https://askubuntu.com/questions/178712/how-to-increase-swap-space).
+
+## 11. Setting Up the Database
+
+Follow these steps to set up the database:
+
+1. **Create User and Password (Alternative)**:
+   - Consider creating a user and password for the database. Alternatively, make the user "postgres" a superuser first.
+
+2. **Avoid "Peer Authentication Failed" Error**:
+   - Edit the `pg_hba.conf` file:
+     ```bash
+     sudoedit /etc/postgresql/12/main/pg_hba.conf
+     ```
+   - Modify the following line:
+     ```
+     local   all             postgres                                peer
+     ```
+     to:
+     ```
+     local all postgres trust
+     ```
+     If you want to connect with other users, also change:
+     ```
+     local all all peer
+     ```
+     to:
+     ```
+     local all all md5
+     ```
+   - Save the config file.
+
+3. **Restart the PostgreSQL Server**:
+   ```bash
+   sudo service postgresql restart
+   ```
+## 10. Building the Database Schema with All Tables
+
+1. Execute the following command to create all the tables in the **snapCloud** database:
+    ```bash
+    psql -U cloud -d snapcloud -a -f /home/ubuntu/snapCloud/cloud.sql
+    ```
+
+2. To verify that the tables are created properly, follow these steps:
+    a. Enter the **snapCloud** database:
+        ```bash
+        psql -U cloud -d snapcloud
+        ```
+    b. Enter the password for the database if prompted.
+    c. To list all database tables, execute the command:
+        ```sql
+        \dt
+        ```
+
+## 11. SSL Certificates
+
+When setting up SSL certificates, you might encounter the following prompt:
+
+```
+Saving debug log to /lets-encrypt/letsencrypt.log
+Plugins selected: Authenticator webroot, Installer None
+Enter email address (used for urgent renewal and security notices) (Enter 'c' to cancel): Invalid email address: .
+Enter email address (used for urgent renewal and security notices)
+
+If you really want to skip this, you can run the client with
+--register-unsafely-without-email but make sure you then backup your account key
+from /etc/letsencrypt/accounts
+```
+
+Make sure to provide a valid email address for urgent renewal and security notices during the SSL certificate setup process.
+
+## 12. Creating an Admin User
+
+1. Create a user by clicking on "Join."
+2. Afterward, use the following commands to assign the user the **admin** role:
+    - Log in to the PostgreSQL command line with the following command:
+        ```bash
+        psql -U cloud -d snapcloud
+        ```
+    - Display the newly created user using the following SQL statement in the PostgreSQL command line:
+        ```sql
+        SELECT * FROM users;
+        ```
+    - Execute the following SQL statement to add the **admin** role:
+        ```sql
+        UPDATE users SET role = 'admin' WHERE id = '1';
+        ```
+
+Once the admin role is assigned, the administration button will be available under the menu of the user.
+
+## 13. Creating a User with Teacher Role
+
+1. Create a user as described above.
+2. Log in as an admin.
+3. Go to **Administration** -> **User Administration**.
+4. Find the user who should have the **teacher** role and set the checkmark for **Teacher**.
+
+## 14. Configuring Private Network DNS Server
+
+Setting up a private DNS server for your network is essential for managing internal hostnames and private IP addresses. We'll use **BIND9** (the BIND name server software) to achieve this. Follow the steps below:
+
+1. **Install BIND9**:
+   - Install the BIND9 package on your Ubuntu 22.04 server:
+     ```bash
+     sudo apt-get update
+     sudo apt-get install -y bind9
+     ```
+
+2. **Configure BIND DNS Server**:
+   - The main configuration directory for BIND is `/etc/bind`.
+   - Edit the configuration files as needed to define your private DNS zones.
+
+3. **Validate Syntax of BIND Configuration and Zone Files**:
+   - Before restarting BIND, ensure that your configuration files have no syntax errors:
+     ```bash
+     sudo named-checkconf
+     sudo named-checkzone example.com /etc/bind/db.example.com
+     ```
+
+4. **Test DNS Server with `dig` and `nslookup`**:
+   - Use these tools to verify that your DNS server is resolving queries correctly:
+     ```bash
+     dig @localhost example.com
+     nslookup example.com localhost
+     ```
+
+## 15. Handling HTTPS Requests from Private Server
+
+To avoid issues related to HTTPS requests from the private server, make the following changes in both **snapCloud** and **snap**:
+
+1. Update the following files to replace references to `https://snap.berkeley.edu/` and/or `snap-cloud-domain`:
+   - `/home/cloud/snapCloud/snap/src/cloud.js`
+   - `/home/cloud/snapCloud/models.lua`
+   - `/home/cloud/snapCloud/cors.lua`
+   - `/home/cloud/snapCloud/nginx.conf.d/locations.conf`
+   - `/home/cloud/snapCloud/nginx.conf.d/extension.conf`
+   - `/home/cloud/snapCloud/views/layout.etlua`
+   - `/home/cloud/snapCloud/views/embedded.etlua`
+   - `/home/cloud/snapCloud/static/js/cloud.js`
+
+2. To determine which change resolves the issue, repeat the following steps:
+   - Stop the server:
+     ```bash
+     sudo service snapcloud_daemon stop
+     ```
+   - Start the server:
+     ```bash
+     sudo service snapcloud_daemon start
+     ```
+## 16. Creating a Self-Signed SSL Certificate with OpenSSL and Configuring Nginx
+
+To secure your web server with SSL, you can create a self-signed certificate using OpenSSL and configure it in Nginx. Follow these steps:
+
+1. **Create a Self-Signed SSL Certificate**:
+   - Generate a self-signed certificate with OpenSSL:
+     ```bash
+     sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/winna.key -out /etc/ssl/certs/winna.crt -config winna_openSSL.conf
+     ```
+   - This command will create a self-signed certificate valid for 365 days and store the private key and certificate in the specified locations.
+
+2. **Create a Strong Diffie-Hellman (DH) Group**:
+   - DH groups are used in negotiating Perfect Forward Secrecy with clients:
+     ```bash
+     sudo openssl dhparam -out /etc/nginx/dhparam.pem 1024
+     ```
+
+3. **Add the Self-Signed Certificate to the Trusted List in Ubuntu**:
+   - Copy the certificate to the trusted certificates directory:
+     ```bash
+     sudo cp /home/cloud/snapCloud/certs/winna.crt /usr/local/share/ca-certificates/
+     ```
+   - Update the trusted certificates list:
+     ```bash
+     sudo update-ca-certificates
+     ```
+
+4. **Configure Nginx to Use SSL**:
+   - Refer to the snapCloud fork in Tnegash for the changes that need to be done to the following files:
+       - `/home/cloud/snapCloud/nginx.conf.d/extensions.conf`
+       - `/home/cloud/snapCloud/nginx.conf.d/http-only.conf`
+       - `/home/cloud/snapCloud/nginx.conf.d/ssl-production.conf`
+
+5. **Create a Configuration Snippet with Strong Encryption Settings**:
+   - Check the snapCloud fork in Tnegash for the changes needed in the file `ssl-shared.conf`:
+     ```bash
+     sudoedit /home/cloud/snapCloud/nginx.conf.d/ssl-shared.conf
+     ```
+
+6. **Adjusting the Firewall**:
+   - Check available applications:
+     ```bash
+     sudo ufw app list
+     ```
+   - Check the current firewall settings:
+     ```bash
+     sudo ufw status
+     ```
+   - To allow HTTPS traffic:
+     ```bash
+     sudo ufw allow 'Nginx Full'
+     ```
+## 17. Configuring Nginx and Adding Self-Signed Certificates to Browsers
+
+### 1. Delete the Redundant "Nginx HTTP" Profile Allowance (if it exists)
+
+- Remove the redundant "Nginx HTTP" profile allowance:
+  ```bash
+  sudo ufw delete allow 'Nginx HTTP'
+  ```
+
+### 2. Restart the Server
+
+- Restart the server using one of the following commands:
+  ```bash
+  sudo service snapcloud_daemon restart
+  # OR
+  sudo service snapcloud_daemon stop
+  sudo service snapcloud_daemon start
+  ```
+
+### 3. Check Nginx Status
+
+- Verify that Nginx has started successfully:
+  ```bash
+  ps aux | grep nginx
+  ```
+
+### 4. Verify Nginx Ports
+
+- Confirm that Nginx is listening on ports 443 (HTTPS) and 80 (HTTP):
+  ```bash
+  netstat -tulpn | grep :443
+  netstat -tulpn | grep :80
+  ```
+
+### 5. Troubleshooting Nginx Issues
+
+- If you encounter issues or the websites are not accessible, check the error log in the folder `/home/cloud/snapCloud/logs/`.
+
+### 6. Adding Self-Signed Certificates to Browsers
+
+#### Chrome:
+
+1. Visit the site in Chrome.
+2. Open Developer Tools (F12).
+3. Navigate to the Security tab.
+4. Click "View certificate."
+5. Click Details > Copy to file.
+6. Choose a save location on your local machine.
+7. Open Chrome settings.
+8. Toggle "Show Advanced Settings" (bottom of the screen).
+9. Navigate to HTTPS/SSL > Manage certificates.
+10. Click "Trusted Root Certification Authorities."
+11. Click Import.
+12. Navigate to the certificate file you just stored.
+13. Quit Chrome (Ctrl+Shift+Q) and re-visit your site.
+
+#### Firefox:
+
+1. Go to Preferences -> Privacy & Security -> View Certificates.
+2. Choose the Servers tab and click "Add Exception."
+3. Fill in the HTTPS URL (e.g., `https://www.winna.home` and `https://winna.home`).
+4. Click "Get Certificate."
+5. Ensure that "Permanently store this exception" is checked.
+6. Click "Confirm Security Exception."
+
+#### Microsoft Edge:
+
+1. Open Microsoft Edge.
+2. Click on Settings > select Privacy, search, and services.
+3. Scroll down to Security and click "Manage certificates."
+4. Click Personal > click Import.
+5. The Certificate Import Wizard starts; click Next.
+6. Browse to the location on your computer where your certificate file is stored.
+7. Keep the second option "Place all certificates in the following store" ticked and click Next.
+8. Click Finish.
+
+
+# PostgreSQL Connection Issues Troubleshooting Guide
+
+If you're encountering problems with your PostgreSQL database connection, follow these steps to diagnose and resolve the issue.
+
+## 1. Add PostgreSQL User to the `ssl-cert` Group
+
+Sometimes, mistakenly removing the `postgres` user from the `ssl-cert` group can cause connection issues. To rectify this:
+
+```bash
+# Add the postgres user back to the ssl-cert group
+sudo gpasswd -a postgres ssl-cert
+```
+
+## 2. Fix Ownership and Permissions
+
+Ensure that the ownership and permissions of the SSL certificate key file are correct:
+
+```bash
+# Set ownership to root:ssl-cert
+sudo chown root:ssl-cert /etc/ssl/private/ssl-cert-snakeoil.key
+
+# Set permissions to 740
+sudo chmod 740 /etc/ssl/private/ssl-cert-snakeoil.key
+```
+
+## 3. Start PostgreSQL Service
+
+Restart the PostgreSQL service to apply the changes:
+
+```bash
+sudo /etc/init.d/postgresql start
+```
+
+## 4. Adjust PostgreSQL Configuration
+
+### a. Update `listen_addresses`
+
+Edit the `postgresql.conf` file (usually located at `/etc/postgresql/12/main/postgresql.conf`). Uncomment the line containing `listen_addresses` and set it to `*`:
+
+```conf
+listen_addresses = '*'
+```
+
+### b. Modify `pg_hba.conf`
+
+Edit the `pg_hba.conf` file (usually located at `/etc/postgresql/12/main/pg_hba.conf`). Change the following line:
+
+```conf
+# Before:
+host    all             all             172.0.0.1/32                md5
+
+# After:
+host    all             all             0.0.0.0/0                md5
+```
+
+## 5. Firewall Configuration
+
+Allow PostgreSQL traffic through the firewall (if necessary):
+
+```bash
+sudo ufw allow 5432/tcp
+```
+
+## 6. Restart PostgreSQL
+
+After each step, restart the PostgreSQL service:
+
+```bash
+sudo service postgresql restart
+```
+
+## Additional Notes
+
+- If you encounter issues related to self-signed certificates, refer to the instructions below.
+- A self-signed CA is not needed for our case, but the steps can be followed if required.
+
+
+### Creating a Private Certificate Authority (CA)
+
+For details on creating a self-signed CA and self-signed certificates, visit [this guide](https://deliciousbrains.com/ssl-certificate-authority-for-local-https-development/).
+
+### OpenSSL Installation
+
+Make sure OpenSSL is installed:
+
+```bash
+openSSL version
+```
+
+If not, install it:
+
+```bash
+sudo apt update
+sudo apt install openssl
+```
+
+### Certificate Storage Location
+
+Create a directory to store local certificate files:
+
+```bash
+mkdir ~/certs
+cd ~/certs
+```
+
+### Generate CA Key and Root Certificate
+
+1. Generate the CA key:
+
+```bash
+openssl genrsa -des3 -out winCA.key 2048
+```
+
+# Creating and Using Root Certificates for PostgreSQL and SSL
+
+## 1. Create the Root Certificate
+
+### Generate the Root Key and Certificate
+
+1. Create the root key (replace `winCA.key` with a recognizable name):
+
+    ```bash
+    openssl genrsa -des3 -out winCA.key 2048
+    ```
+
+2. Generate the root certificate (replace `winCA.pem` with a descriptive name):
+
+    ```bash
+    openssl req -x509 -new -nodes -key winCA.key -sha256 -days 1825 -out winCA.pem
+    ```
+
+   Make sure to set a common name (CN) that you can recognize later.
+
+## 2. Adding the Root Certificate to Linux
+
+1. If not already installed, install the `ca-certificates` package:
+
+    ```bash
+    sudo apt-get install -y ca-certificates
+    ```
+
+2. Copy the `winCA.pem` file to the `/usr/local/share/ca-certificates` directory as `winCA.crt`:
+
+    ```bash
+    sudo cp ~/certs/winCA.pem /usr/local/share/ca-certificates/winCA.crt
+    ```
+
+3. Update the certificate store:
+
+    ```bash
+    sudo update-ca-certificates
+    ```
+
+## 3. Adding the Root Certificate to Windows
+
+Refer to [this guide](https://deliciousbrains.com/ssl-certificate-authority-for-local-https-development/) for detailed instructions on adding the root certificate to Windows.
+
+## 4. Creating CA-Signed Certificates for Your Sites
+
+### Generate Private Key and Certificate Signing Request (CSR)
+
+1. Create a private key for your site (e.g., `winna.home.key`):
+
+    ```bash
+    openssl genrsa -out winna.home.key 2048
+    ```
+
+2. Generate a certificate signing request (CSR) for your site (e.g., `winna.home.csr`):
+
+    ```bash
+    openssl req -new -key winna.home.key -out winna.home.csr
+    ```
+
+### Define Subject Alternative Name (SAN)
+
+1. Create an X509 V3 certificate extension config file (e.g., `winna.home.ext`) to define the Subject Alternative Name (SAN):
+
+    ```ini
+    authorityKeyIdentifier=keyid,issuer
+    basicConstraints=CA:FALSE
+    keyUsage=digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
+    subjectAltName=@alt_names
+
+    [alt_names]
+    DNS.1=winna.home
+    ```
+
+2. Create an empty file:
+
+    ```bash
+    touch winna.home.ext
+    ```
+
+3. Open the `winna.home.ext` file for editing:
+
+    ```bash
+    sudoedit winna.home.ext
+    ```
+
+4. Copy the configuration text into the `winna.home.ext` file.
+
+### Create the CA-Signed Certificate
+
+Run the following command to create the certificate using your CSR, the CA private key (`winCA.key`), the CA certificate (`winCA.pem`), and the config file (`winna.home.ext`):
+
+```bash
+openssl x509 -req -in winna.home.csr -CA winCA.pem -CAkey winCA.key \
+-CAcreateserial -out winna.home.crt -days 825 -sha256 -extfile winna.home.ext
+```
+Certainly! Let's continue with the additional steps to configure SSL for your Snap Cloud server. Below are the instructions you provided:
+
+---
+
+1. **Copy the Site Key and Certificate to the Cert Location of Snap Cloud**:
+
+   Execute the following commands to copy the key and certificate files to the appropriate location:
+
+   ```bash
+   sudo cp ~/certs/winna.home.key /home/cloud/snapCloud/certs/winna.home.key
+   sudo cp ~/certs/winna.home.crt /home/cloud/snapCloud/certs/winna.home.crt
+   ```
+
+2. **Create a New SSL Configuration for Nginx**:
+
+   Duplicate the existing SSL configuration file (`ssl-staging.conf`) to create a new one (`ssl-dev.conf`):
+
+   ```bash
+   sudo cp /home/cloud/snapCloud/nginx.conf.d/ssl-staging.conf /home/cloud/snapCloud/nginx.conf.d/ssl-dev.conf
+   ```
+
+   Edit the newly created `ssl-dev.conf` file:
+
+   ```bash
+   sudoedit /home/cloud/snapCloud/nginx.conf.d/ssl-dev.conf
+   ```
+
+   Make the necessary adjustments in this file to add the key and certificate to the server configuration.
+
+3. **Update the `config.lua` File**:
+
+   Modify the `config.lua` file to point to the new server configuration:
+
+   ```bash
+   sudoedit /home/cloud/snapCloud/config.lua
+   ```
+
+   Locate the following lines in the `config.lua` file:
+
+   ```lua
+   primary_nginx_config = 'http-only.conf',
+   secondary_nginx_config = 'include nginx.conf.d/ssl-dev.conf;',
+   ```
+
+   Update the `secondary_nginx_config` value to `'include nginx.conf.d/ssl-dev.conf;'`.
