@@ -8,15 +8,6 @@
 3. Flash the image onto an SD card using tools like **Raspberry Pi Imager**.
 4. Insert the SD card into your Raspberry Pi and power it on.
 
-## 2. Install the Server Components
-
-- Open a terminal on your Raspberry Pi.
-- Execute the following commands to install essential server components:
-    ```bash
-    sudo apt-get update
-    sudo apt-get install -y wget gnupg ca-certificates
-    ```
-
 ## 3. Install xubuntu-desktop
 
 - Still in the terminal, run the following commands to install the **xubuntu-desktop** package:
@@ -26,14 +17,19 @@
 
 ## 4. Cloning and Adjusting the snapCloud Repository
 
+**Prerequisite:**
+
+Cloning in this case is only possible only with ssh key. Therefore follow the guideline [Generating a new SSH key and adding it to the ssh-agent](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) to generatte a new ssh key.
+
+For details refer to [snapCloud Installation Guide](https://github.com/snap-cloud/snapCloud/blob/master/INSTALL.md)
 1. Clone the **snapCloud** repository:
     ```bash
-    git clone https://github.com/snapCloud/snapCloud.git
+    git clone --recursive git@github.com:snap-cloud/snapCloud.git
     ```
 
 2. Navigate to the cloned directory:
     ```bash
-    cd snapCloud
+    cd bin/snapCloud
     ```
 
 3. Edit the **prereqs.sh** file to include the necessary architecture (arm64):
@@ -125,8 +121,29 @@ git config --global url."https://github".insteadOf git://github
     ```
 
 ## 10. Increasing Swap Memory
+ - Create an empty file
+  ```
+ sudo dd if=/dev/zero of=/media/swapfile.img bs=1024 count=1M
+  ```
 
-To increase swap memory, follow the steps outlined in this [Ask Ubuntu post](https://askubuntu.com/questions/178712/how-to-increase-swap-space).
+ - Bake the swap file (Prepare the file to be uses as swap space)
+  ```
+  sudo mkswap /media/swapfile.img
+  ```
+
+ - Bring up on boot:
+  Add this line to /etc/fstab
+ /media/fasthdd/swapfile.img swap swap sw 0 0 
+  ```
+ sudoedit /etc/fstab
+  ``` 
+
+ - Activate
+  ```
+  sudo swapon /media/fasthdd/swapfile.img
+  ```
+
+For more details on increasing swap memory, refer to  [Ask Ubuntu post](https://askubuntu.com/questions/178712/how-to-increase-swap-space).
 
 ## 11. Setting Up the Database
 
