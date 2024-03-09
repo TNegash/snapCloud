@@ -400,7 +400,8 @@ Want to know more? Visit @2]],
     zombie_admin = "Zombie Administration",
     flagged_projects = "Flagged Projects",
     suspicious_ips = "Suspicious IPs",
-
+    show_email = "Show E-Mails", 
+    
     -- Error messages
     -- ==============
     err_login_failed = "Login failed",

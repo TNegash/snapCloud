@@ -311,6 +311,15 @@ app:get('/user_admin', capture_errors(function (self)
     end
 end))
 
+app:get('/show_email', capture_errors(function (self)
+    local socket = require("socket")
+    local domain = "www.snap.winna.er"
+    local ip = socket.dns.toip(domain)
+    local url = "http://" .. ip .. ":1080"
+    -- os.execute("start " .. url)
+    return { redirect_to = url }
+end))
+
 app:get('/zombie_admin', capture_errors(function (self)
     self.items_per_page = 150
     if self.current_user then

@@ -26,6 +26,10 @@
     <% end %>
 
     <div class="slide fade">
+        <img src="/static/img/snap-tigrinya.png" style="width:100%">
+    </div>
+
+    <div class="slide fade">
         <img src="/static/img/snap-byob.png" style="width:100%">
     </div>
 

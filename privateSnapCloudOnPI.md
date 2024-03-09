@@ -1,21 +1,90 @@
 
 # User Guide: Setting Up Raspberry Pi with Ubuntu 20.04 LTS and xubuntu-desktop
 
+##  Install Operating System
+
 ## 1. Install Ubuntu 20.04 LTS (Focal)
 
-1. Ensure you have a Raspberry Pi board.
-2. Download the **Ubuntu 20.04 LTS** image from the official website.
-3. Flash the image onto an SD card using tools like **Raspberry Pi Imager**.
-4. Insert the SD card into your Raspberry Pi and power it on.
+1. Download the **Ubuntu 20.04 LTS** image from the official website.
+2. Flash the image onto an SD card using tools like **Raspberry Pi Imager**.
+3. Insert the SD card into your Raspberry Pi and power it on.
 
-## 3. Install xubuntu-desktop
+## 2. Install xubuntu-desktop
 
 - Still in the terminal, run the following commands to install the **xubuntu-desktop** package:
     ```bash
     sudo apt-get install -y xubuntu-desktop
     ```
+## 3. Raspberry Pi Ajustement of Operating System
+### 1. Prevent Computer Freezing
 
-## 4. Cloning and Adjusting the snapCloud Repository
+- **Switch Off Wi-Fi Power Save Mode**:
+    - If your computer freezes after being idle, consider disabling Wi-Fi power save mode:
+        ```bash
+        sudo iw wlan0 set power_save off
+        ```
+
+- **Adjust Wi-Fi Powersave Value**:
+    - Set the value of `wifi.powersave` from 3 to 2 in the NetworkManager configuration file:
+        ```bash
+        sudoedit /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf
+        ```
+
+    Change the value from:
+    ```
+    wifi.powersave=3
+    ```
+    to:
+    ```
+    wifi.powersave=2
+    ```
+
+### 2. Firmware User-Specific Configuration
+
+- Edit the `usercfg.txt` file for firmware-specific settings:
+    ```bash
+    sudoedit /boot/firmware/usercfg.txt
+    ```
+
+    Add the following lines to switch off the monitor when the lock screen enables:
+    ```
+    # Power down monitor when lockscreen enables
+    hdmi_blanking=1
+    ```
+
+    Additionally, enter FKMS (Fake Kernel Mode Setting) instead of the full KMS:
+    ```
+    dtoverlay=vc4-fkms-v3d
+    ```
+
+### 3. Increasing Swap Memory
+
+  - Create an empty file
+    ```
+   sudo dd if=/dev/zero of=/media/swapfile.img bs=1024 count=1M
+    ```
+
+  - Bake the swap file (Prepare the file to be uses as swap space)
+    ```
+    sudo mkswap /media/swapfile.img
+    ```
+  - Bring up on boot:
+    Add this line to /etc/fstab
+   /media/fasthdd/swapfile.img swap swap sw 0 0 
+    ```
+   sudoedit /etc/fstab
+    ``` 
+
+  - Activate
+    ```
+    sudo swapon /media/fasthdd/swapfile.img
+    ```
+    For more details on increasing swap memory, refer to  [Ask Ubuntu post](https://askubuntu.com/questions/178712/how-to-increase-swap-space).
+
+
+## Install Snap! Cloud
+
+### 1. Cloning and Adjusting the snapCloud Repository
 
 **Prerequisite:**
 
@@ -46,7 +115,7 @@ For details refer to [snapCloud Installation Guide](https://github.com/snap-clou
     apt-get -y install openresty
     ```
 
-## 5. Resolve Dependencies
+### 2. Resolve Dependencies
 
 - If you encounter the error message related to **luarocks** and **luaossl**, execute the following command:
     ```bash
@@ -63,7 +132,7 @@ For details refer to [snapCloud Installation Guide](https://github.com/snap-clou
     sudo luarocks install luasec CRYPTO_LIBDIR=/usr/lib/aarch64-linux-gnu/ OPENSSL_LIBDIR=/usr/lib/aarch64-linux-gnu/
     ```
 
-## 7. Troubleshooting GitHub Cloning Issues
+### 3. Troubleshooting GitHub Cloning Issues
 
 If you encounter the following error messages while cloning a repository:
 
@@ -79,78 +148,70 @@ To solve this issue, execute the following command to configure Git to use HTTPS
 git config --global url."https://github".insteadOf git://github
 ```
 
-## 8. Prevent Computer Freezing
-
-- **Switch Off Wi-Fi Power Save Mode**:
-    - If your computer freezes after being idle, consider disabling Wi-Fi power save mode:
-        ```bash
-        sudo iw wlan0 set power_save off
-        ```
-
-- **Adjust Wi-Fi Powersave Value**:
-    - Set the value of `wifi.powersave` from 3 to 2 in the NetworkManager configuration file:
-        ```bash
-        sudoedit /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf
-        ```
-
-    Change the value from:
-    ```
-    wifi.powersave=3
-    ```
-    to:
-    ```
-    wifi.powersave=2
-    ```
-
-## 9. Firmware User-Specific Configuration
-
-- Edit the `usercfg.txt` file for firmware-specific settings:
-    ```bash
-    sudoedit /boot/firmware/usercfg.txt
-    ```
-
-    Add the following lines to switch off the monitor when the lock screen enables:
-    ```
-    # Power down monitor when lockscreen enables
-    hdmi_blanking=1
-    ```
-
-    Additionally, enter FKMS (Fake Kernel Mode Setting) instead of the full KMS:
-    ```
-    dtoverlay=vc4-fkms-v3d
-    ```
-
-## 10. Increasing Swap Memory
- - Create an empty file
-  ```
- sudo dd if=/dev/zero of=/media/swapfile.img bs=1024 count=1M
-  ```
-
- - Bake the swap file (Prepare the file to be uses as swap space)
-  ```
-  sudo mkswap /media/swapfile.img
-  ```
-
- - Bring up on boot:
-  Add this line to /etc/fstab
- /media/fasthdd/swapfile.img swap swap sw 0 0 
-  ```
- sudoedit /etc/fstab
-  ``` 
-
- - Activate
-  ```
-  sudo swapon /media/fasthdd/swapfile.img
-  ```
-
-For more details on increasing swap memory, refer to  [Ask Ubuntu post](https://askubuntu.com/questions/178712/how-to-increase-swap-space).
-
-## 11. Setting Up the Database
+## Setup Database
+### 1. Setting Up the Database
 
 Follow these steps to set up the database:
+For detailes refer to [configuration of postgresql](https://ubuntu.com/server/docs/databases-postgresql)
 
-1. **Create User and Password (Alternative)**:
-   - Consider creating a user and password for the database. Alternatively, make the user "postgres" a superuser first.
+1. **Create a DB User and Set Superuser Privileges**:
+    - First, switch to the root user:
+        ```bash
+        sudo -i
+        ```
+        or
+        ```bash
+        sudo su root
+        ```
+    - Next, add the DB user (in this case, we'll use the username "cloud"):
+        ```bash
+        adduser cloud
+        ```
+
+2. **Access the PostgreSQL Terminal**:
+    - Start the PostgreSQL terminal as the "postgres" user:
+        ```bash
+        sudo su postgres psql
+        ```
+
+3. **Create the DB User and Database**:
+    - Within the PostgreSQL terminal, execute the following commands:
+        ```sql
+        CREATE USER cloud WITH PASSWORD 'snap-cloud-password';
+        ALTER ROLE cloud WITH LOGIN;
+        CREATE DATABASE snapcloud OWNER cloud;
+        ```
+
+4. **Start the PostgreSQL Service**:
+    - Start the PostgreSQL service:
+        ```bash
+        sudo service postgresql start
+        ```
+
+5. **Create DB Artifacts in the snapcloud Database**:
+    - Run the following command to create the necessary database artifacts (assuming your SQL files are located at `/home/snapCloud/cloud.sql`):
+        ```bash
+        psql -U cloud -d snapcloud -a -f /home/snapCloud/cloud.sql
+        ```
+    - Check whether the schema with the tables is create by executing the command
+        ```sql
+           \dt
+        ```
+6. **Seed the DB Tables**:
+    - Seed the database tables using the provided SQL file (assuming your seeds file is located at `/home/snapCloud/bin/seeds.sql`):
+        ```bash
+        psql -U cloud -d snapcloud -a -f /home/snapCloud/bin/seeds.sql
+        ```
+### 2. Troubleshooting
+1. **Accessing the PostgreSQL terminal**:
+    - If you encounter issues accessing the PostgreSQL terminal, execute the following commands:
+        ```bash
+        sudo su cloud
+        ```
+        followed by:
+        ```bash
+        psql -d snapcloud
+        ```
 
 2. **Avoid "Peer Authentication Failed" Error**:
    - Edit the `pg_hba.conf` file:
@@ -179,23 +240,13 @@ Follow these steps to set up the database:
    ```bash
    sudo service postgresql restart
    ```
-## 10. Building the Database Schema with All Tables
 
-1. Execute the following command to create all the tables in the **snapCloud** database:
-    ```bash
-    psql -U cloud -d snapcloud -a -f /home/ubuntu/snapCloud/cloud.sql
-    ```
 
-2. To verify that the tables are created properly, follow these steps:
-    a. Enter the **snapCloud** database:
-        ```bash
-        psql -U cloud -d snapcloud
-        ```
-    b. Enter the password for the database if prompted.
-    c. To list all database tables, execute the command:
-        ```sql
-        \dt
-        ```
+============================================
+= Continue Here with editing
+============================================
+
+
 
 ## 11. SSL Certificates
 
