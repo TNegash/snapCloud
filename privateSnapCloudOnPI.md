@@ -13,6 +13,7 @@
 
 - Still in the terminal, run the following commands to install the **xubuntu-desktop** package:
     ```bash
+    sudo apt-get update
     sudo apt-get install -y xubuntu-desktop
     ```
 ## 3. Raspberry Pi Ajustement of Operating System
@@ -98,7 +99,7 @@ For details refer to [snapCloud Installation Guide](https://github.com/snap-clou
 
 2. Navigate to the cloned directory:
     ```bash
-    cd bin/snapCloud
+    cd /snapCloud/bin
     ```
 
 3. Edit the **prereqs.sh** file to include the necessary architecture (arm64):
@@ -171,7 +172,8 @@ For detailes refer to [configuration of postgresql](https://ubuntu.com/server/do
 2. **Access the PostgreSQL Terminal**:
     - Start the PostgreSQL terminal as the "postgres" user:
         ```bash
-        sudo su postgres psql
+        sudo su postgres
+        psql
         ```
 
 3. **Create the DB User and Database**:
@@ -241,57 +243,7 @@ For detailes refer to [configuration of postgresql](https://ubuntu.com/server/do
    sudo service postgresql restart
    ```
 
-
-============================================
-= Continue Here with editing
-============================================
-
-
-
-## 11. SSL Certificates
-
-When setting up SSL certificates, you might encounter the following prompt:
-
-```
-Saving debug log to /lets-encrypt/letsencrypt.log
-Plugins selected: Authenticator webroot, Installer None
-Enter email address (used for urgent renewal and security notices) (Enter 'c' to cancel): Invalid email address: .
-Enter email address (used for urgent renewal and security notices)
-
-If you really want to skip this, you can run the client with
---register-unsafely-without-email but make sure you then backup your account key
-from /etc/letsencrypt/accounts
-```
-
-Make sure to provide a valid email address for urgent renewal and security notices during the SSL certificate setup process.
-
-## 12. Creating an Admin User
-
-1. Create a user by clicking on "Join."
-2. Afterward, use the following commands to assign the user the **admin** role:
-    - Log in to the PostgreSQL command line with the following command:
-        ```bash
-        psql -U cloud -d snapcloud
-        ```
-    - Display the newly created user using the following SQL statement in the PostgreSQL command line:
-        ```sql
-        SELECT * FROM users;
-        ```
-    - Execute the following SQL statement to add the **admin** role:
-        ```sql
-        UPDATE users SET role = 'admin' WHERE id = '1';
-        ```
-
-Once the admin role is assigned, the administration button will be available under the menu of the user.
-
-## 13. Creating a User with Teacher Role
-
-1. Create a user as described above.
-2. Log in as an admin.
-3. Go to **Administration** -> **User Administration**.
-4. Find the user who should have the **teacher** role and set the checkmark for **Teacher**.
-
-## 14. Configuring Private Network DNS Server
+## Configuring Private Network DNS Server
 
 Setting up a private DNS server for your network is essential for managing internal hostnames and private IP addresses. We'll use **BIND9** (the BIND name server software) to achieve this. Follow the steps below:
 
@@ -343,6 +295,34 @@ To avoid issues related to HTTPS requests from the private server, make the foll
      ```bash
      sudo service snapcloud_daemon start
      ```
+
+## 12. Creating an Admin User
+
+1. Create a user by clicking on "Join."
+2. Afterward, use the following commands to assign the user the **admin** role:
+    - Log in to the PostgreSQL command line with the following command:
+        ```bash
+        psql -U cloud -d snapcloud
+        ```
+    - Display the newly created user using the following SQL statement in the PostgreSQL command line:
+        ```sql
+        SELECT * FROM users;
+        ```
+    - Execute the following SQL statement to add the **admin** role:
+        ```sql
+        UPDATE users SET role = 'admin' WHERE id = '1';
+        ```
+
+Once the admin role is assigned, the administration button will be available under the menu of the user.
+
+## 13. Creating a User with Teacher Role
+
+1. Create a user as described above.
+2. Log in as an admin.
+3. Go to **Administration** -> **User Administration**.
+4. Find the user who should have the **teacher** role and set the checkmark for **Teacher**.
+
+
 ## 16. Creating a Self-Signed SSL Certificate with OpenSSL and Configuring Nginx
 
 To secure your web server with SSL, you can create a self-signed certificate using OpenSSL and configure it in Nginx. Follow these steps:
