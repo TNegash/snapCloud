@@ -243,6 +243,69 @@ For detailes refer to [configuration of postgresql](https://ubuntu.com/server/do
    sudo service postgresql restart
    ```
 
+## Setting up the Snap!Cloud as a System Daemon
+
+1. If **snapCloud** is not installed under the `cloud` directory, adjust the path that leads to `start.sh` in the file `snapcloud_daemon`. Execute the following command:
+
+    ```
+    sudoedit /home/snapCloud/bin/snapcloud_daemon
+    ```
+
+    Change the line:
+
+    ```
+    runuser -l cloud -c "(cd /home/cloud/snapCloud; ./start.sh &)"
+    ```
+
+    to:
+
+    ```
+    runuser -l cloud -c "(cd /home/snapCloud; ./start.sh &)"
+    ```
+
+2. Add the user `cloud` to the `sudoers` with full access. You can use the following command:
+
+    ```
+    adduser username sudo
+    ```
+
+    Alternatively, you can directly add the user `cloud` to the file `/etc/sudoers` by executing the following command and adding an entry similar to `root`:
+
+    ```
+    sudoedit /etc/sudoers
+    ```
+
+3. Copy the file `snapcloud_daemon` to `/etc/init.d/`:
+
+    ```
+    cp /home/snapCloud/bin/snapcloud_daemon /etc/init.d/
+    ```
+
+    Then run:
+
+    ```
+    update-rc.d snapcloud_daemon defaults
+    ```
+
+4. Check if the following symlink is created:
+
+    ```
+    /etc/rc2.d/S01snapcloud_daemon
+    ```
+
+    Note: Instead of `S01`, there could be `SXX`, where `XX` are any two digits.
+
+5. Give write access to the user `cloud`:
+
+    ```
+    sudo chmod -R 777 /etc/init.d/snapcloud_daemon
+    setfacl -R -m u:cloud:rwx /home/snapCloud/
+    ```
+
+6. Start the daemon after executing step 3 once again.
+
+**Note**: Rebooting might be necessary in this case.
+
 ## Configuring Private Network DNS Server
 
 Setting up a private DNS server for your network is essential for managing internal hostnames and private IP addresses. We'll use **BIND9** (the BIND name server software) to achieve this. Follow the steps below:
