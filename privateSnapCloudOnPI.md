@@ -308,32 +308,279 @@ For detailes refer to [configuration of postgresql](https://ubuntu.com/server/do
 
 ## Configuring Private Network DNS Server
 
-Setting up a private DNS server for your network is essential for managing internal hostnames and private IP addresses. We'll use **BIND9** (the BIND name server software) to achieve this. Follow the steps below:
+Usually, the router should have the capability to set up a DNS for the private network. However, if this is not possible, you can configure a DNS server as follows:
 
-1. **Install BIND9**:
-   - Install the BIND9 package on your Ubuntu 22.04 server:
-     ```bash
-     sudo apt-get update
-     sudo apt-get install -y bind9
-     ```
+1. **Install Bind**:
+    ```bash
+    sudo apt update
+    sudo apt install bind9 bind9utils
+    ```
 
-2. **Configure BIND DNS Server**:
-   - The main configuration directory for BIND is `/etc/bind`.
-   - Edit the configuration files as needed to define your private DNS zones.
+2. **Set IPv4 (Internet Protocol Version 4)**:
+    Edit the `/etc/default/named` file:
+    ```bash
+    sudoedit /etc/default/named
+    ```
+    Add `-4` to the end of the `OPTIONS` parameter:
+    ```
+    OPTIONS="-u bind -4"
+    ```
 
-3. **Validate Syntax of BIND Configuration and Zone Files**:
-   - Before restarting BIND, ensure that your configuration files have no syntax errors:
-     ```bash
-     sudo named-checkconf
-     sudo named-checkzone example.com /etc/bind/db.example.com
-     ```
+3. **Configure the Options File**:
+    Edit the `/etc/bind/named.conf.options` file:
+    ```bash
+    sudoedit /etc/bind/named.conf.options
+    ```
+    Adjust the configuration as follows:
+    ```bind
+    options {
+        directory "/var/cache/bind";
+        version "not currently available";
+        recursion yes;
+        allow-recursion { 127.0.0.1; 192.168.0.0/24; };
 
-4. **Test DNS Server with `dig` and `nslookup`**:
-   - Use these tools to verify that your DNS server is resolving queries correctly:
-     ```bash
-     dig @localhost example.com
-     nslookup example.com localhost
-     ```
+        // If there is a firewall between you and nameservers you want
+        // to talk to, you may need to fix the firewall to allow multiple
+        // ports to talk. See http://www.kb.cert.org/vuls/id/800113
+
+        // If your ISP provided one or more IP addresses for stable
+        // nameservers, you probably want to use them as forwarders.
+        // Uncomment the following block, and insert the addresses replacing
+        // the all-0's placeholder.
+
+        forwarders {
+            8.8.8.8;
+            8.8.4.4;
+        };
+
+        //========================================================================
+        // If BIND logs error messages about the root key being expired,
+        // you will need to update your keys. See https://www.isc.org/bind-keys
+        //========================================================================
+        dnssec-validation auto;
+
+        listen-on-v6 { any; };
+    }
+    ```
+
+4. **Configure the local file** 
+    ```bash
+   sudoedit /etc/bind/named.conf.local
+    ```
+    adjust as follows:
+
+    ```plaintext
+    // Do any local configuration here
+
+    // Consider adding the 1918 zones here, if they are not used in your
+    // organization
+    //include "/etc/bind/zones.rfc1918";
+
+    zone "snap.winna.er" {
+        type master;
+        file "/etc/bind/zones/db.snap.winna.er";
+    };
+
+    zone "168.192.in-addr.arpa" {
+        type master;
+        file "/etc/bind/zones/db.192.168";
+    };
+    ```
+
+5. **Maintain forward zone file**.
+   This is where you define DNS records for forward DNS lookups:
+    - Create the directory:
+        ```bash
+        sudo mkdir /etc/bind/zones
+        ```
+    - Copy the local database file to the new location:
+        ```bash
+        sudo cp /etc/bind/db.local /etc/bind/zones/db.snap.winna.er
+        ```
+    - Edit the file `/etc/bind/zones/db.snap.winna.er` as follows:
+        ```bash
+        sudoedit /etc/bind/zones/db.snap.winna.er
+        ```
+        adjust as follows:
+        ```plaintext
+        ;
+        ; BIND data file for local loopback interface
+        ;
+        $TTL    604800
+        @       IN      SOA     ns.snap.winna.er. root.snap.winna.er. (
+                                  2       ; Serial
+                             604800       ; Refresh
+                              86400       ; Retry
+                            2419200       ; Expire
+                             604800 )     ; Negative Cache TTL
+        ;
+        @       IN      NS      ns.snap.winna.er.
+        @       IN      A       192.168.0.230
+        ns      IN      A       192.168.0.230
+        www     IN      A       192.168.0.230
+        ```
+
+6. **Maintain Reverse zone files**
+    where you define DNS PTR (Pointer) records for reverse DNS lookups:
+    - Copy the local database file to the new location:
+        ```bash
+        sudo cp /etc/bind/db.127 /etc/bind/zones/db.192.168
+        ```
+    - Edit the file `/etc/bind/zones/db.192.168` as follows:
+        ```bash
+        sudoedit /etc/bind/zones/db.192.168
+        ```
+        
+        Adjust as follows:
+
+        ```plaintext
+        ;
+        ; BIND reverse data file for local loopback interface
+        ;
+        $TTL    604800
+        @       IN      SOA     snap.winna.er. root.snap.winna.er. (
+                                  3       ; Serial
+                             604800       ; Refresh
+                              86400       ; Retry
+                            2419200       ; Expire
+                             604800 )     ; Negative Cache TTL
+        ;
+        @       IN      NS      ns.snap.winna.er.
+        230.0   IN      PTR     ns.snap.winna.er.
+        230.0   IN      PTR     www.snap.winna.er.
+        ```
+
+7. **Restart BIND to implement the changes:**
+    ```bash
+    sudo systemctl restart bind9
+    ```
+
+
+
+8. **Run the following command to check the syntax of the `named.conf*` files:**
+
+```bash
+sudo named-checkconf
+```
+
+9. **The `named-checkzone` command can be used to check the correctness of your zone files:**
+
+```bash
+sudo named-checkzone snap.winna.er /etc/bind/zones/db.snap.winna.er
+```
+
+10. **Allow BIND access through the firewall:**
+
+```bash
+sudo ufw allow Bind9
+```
+
+11. **For details on setting up a DNS server for the private network, refer to the following link:**
+
+[Set Up Local DNS Resolver on Ubuntu 22.04/20.04 with BIND9](https://www.linuxbabe.com/ubuntu/set-up-local-dns-resolver-ubuntu-20-04-bind9)
+
+12. **Configure the `snapCloud` server to use the DNS server.**
+
+If the file `/etc/netplan/50-cloud-init.yaml` is not available, create it and add the following configuration:
+
+```yaml
+# This file is generated from information provided by the datasource. Changes
+# to it will not persist across an instance reboot. To disable cloud-init's
+# network configuration capabilities, write a file
+# /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg with the following:
+# network: {config: disabled}
+network:
+    ethernets:
+        eth0:
+            dhcp4: true
+            optional: true
+    version: 2
+    wifis:
+        wlan0:
+            optional: true
+            nameservers:
+                addresses:
+                    - 192.168.0.230
+            access-points:
+                "wifi name":
+                    password: "<wifi password>"
+            dhcp4: true
+```
+
+13. **Then, apply and test the changes by executing the following commands:**
+
+```bash
+sudo netplan apply
+systemd-resolve --status
+sudo resolvectl status | grep -i "DNS Serve"
+```
+
+### To resolve DNS resolution issues in Ubuntu, consider the following alternatives
+
+**Alternative 1: Disabling the 127.0.0.53 DNS**
+
+If there are issues with your own DNS server, disable the 127.0.0.53 DNS as follows:
+
+1. Edit the file `/etc/systemd/resolved.conf` using `sudoedit` or `nano`.
+2. Change the line:
+
+   ```
+   #DNSStubListener=yes
+   ```
+
+   to:
+
+   ```
+   DNSStubListener=no
+   ```
+
+3. Check whether the changes worked with the following commands:
+
+   ```bash
+   sudo systemctl restart resolvconf.service
+   sudo systemctl restart systemd-resolved.service
+   systemd-resolve --status
+   sudo resolvectl status | grep -i "DNS Serve"
+   ```
+
+**Alternative 2: Resolving DNS Issues with Netplan and systemd-resolvd**
+
+The Netplan configuration uses systemd-resolvd. However, the file `/etc/resolve.conf` is symlinked to `/run/systemd/resolve/stub-resolv.conf`, which uses the address `127.0.0.53`. The nameservers defined in the `/etc/netplan/00-cloud-init.yaml` file are written in `/run/systemd/resolve/resolv.conf`. To symlink the file `/etc/resolve.conf` to `/run/systemd/resolve/resolv.conf`, execute the following commands:
+
+```bash
+sudo unlink /etc/resolv.conf
+sudo ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
+```
+
+Then, check whether the changes worked with the following commands:
+
+```bash
+sudo systemctl restart resolvconf.service
+sudo systemctl restart systemd-resolved.service
+systemd-resolve --status
+sudo resolvectl status | grep -i "DNS Serve"
+```
+
+### Setting Up DNS on the Client Side
+
+1. **Ubuntu:**
+   - This is the same configuration as described in "Configure the snapCloud server to use the DNS server."
+
+2. **Windows:**
+   - Go to **Settings > Network & Internet > Change Adapter Settings**.
+   - Right-click a connection and select **Properties > IPv4 > Properties**.
+   - Finally, select **Use the following DNS server address**.
+
+3. **Mac:**
+   - **Open System Settings**: Click on the Apple menu at the top left corner of your screen and select **System Settings**.
+   - **Access Network Settings**: In the sidebar, click on **Network**.
+   - **Select Network Service**: On the right, click on the network service you wish to configure (like Wi-Fi or Ethernet).
+   - **Enter DNS Details**: Click on **Details**, then select **DNS**. You may need to scroll down to find it.
+   - **Modify DNS Servers**:
+       - To **add** a DNS server: Click the **Add button** at the bottom of the DNS servers list, and enter an IPv4 or IPv6 address.
+       - To **remove** a DNS server: Select a server from the list, then click the **Remove button** at the bottom of the list.
+   - **Search Domains** (if needed): Enter search domains to use when resolving hostnames.
+
 
 ## 15. Handling HTTPS Requests from Private Server
 
@@ -724,9 +971,6 @@ Run the following command to create the certificate using your CSR, the CA priva
 openssl x509 -req -in winna.home.csr -CA winCA.pem -CAkey winCA.key \
 -CAcreateserial -out winna.home.crt -days 825 -sha256 -extfile winna.home.ext
 ```
-Certainly! Let's continue with the additional steps to configure SSL for your Snap Cloud server. Below are the instructions you provided:
-
----
 
 1. **Copy the Site Key and Certificate to the Cert Location of Snap Cloud**:
 
