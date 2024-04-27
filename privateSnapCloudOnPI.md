@@ -581,6 +581,132 @@ sudo resolvectl status | grep -i "DNS Serve"
        - To **remove** a DNS server: Select a server from the list, then click the **Remove button** at the bottom of the list.
    - **Search Domains** (if needed): Enter search domains to use when resolving hostnames.
 
+## Creating a Self-Signed SSL Certificate with OpenSSL and Configuring Nginx
+
+To secure your web server with SSL, you can create a self-signed certificate using OpenSSL and configure it in Nginx. Follow these steps:
+
+1. **Create a Self-Signed SSL Certificate**:
+   - Generate a self-signed certificate with OpenSSL:
+     ```bash
+     sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/winna.key -out /etc/ssl/certs/winna.crt -config winna_openSSL.conf
+     ```
+   - This command will create a self-signed certificate valid for 365 days and store the private key and certificate in the specified locations.
+
+2. **Create a Strong Diffie-Hellman (DH) Group**:
+   - DH groups are used in negotiating Perfect Forward Secrecy with clients:
+     ```bash
+     sudo openssl dhparam -out /etc/nginx/dhparam.pem 1024
+     ```
+
+3. **Add the Self-Signed Certificate to the Trusted List in Ubuntu**:
+   - Copy the certificate to the trusted certificates directory:
+     ```bash
+     sudo cp /home/cloud/snapCloud/certs/winna.crt /usr/local/share/ca-certificates/
+     ```
+   - Update the trusted certificates list:
+     ```bash
+     sudo update-ca-certificates
+     ```
+
+4. **Configure Nginx to Use SSL**:
+   - Refer to the snapCloud fork in Tnegash for the changes that need to be done to the following files:
+       - `/home/cloud/snapCloud/nginx.conf.d/extensions.conf`
+       - `/home/cloud/snapCloud/nginx.conf.d/http-only.conf`
+       - `/home/cloud/snapCloud/nginx.conf.d/ssl-production.conf`
+
+5. **Create a Configuration Snippet with Strong Encryption Settings**:
+   - Check the snapCloud fork in Tnegash for the changes needed in the file `ssl-shared.conf`:
+     ```bash
+     sudoedit /home/cloud/snapCloud/nginx.conf.d/ssl-shared.conf
+     ```
+6. **Adjusting the Firewall**:
+   - Check available applications:
+     ```bash
+     sudo ufw app list
+     ```
+   - Check the current firewall settings:
+     ```bash
+     sudo ufw status
+     ```
+   - To allow HTTPS traffic:
+     ```bash
+     sudo ufw allow 'Nginx Full'
+     ```
+### Configuring Nginx and Adding Self-Signed Certificates to Browsers
+
+ 1. **Delete the Redundant "Nginx HTTP" Profile Allowance (if it exists)**
+
+- Remove the redundant "Nginx HTTP" profile allowance:
+  ```bash
+  sudo ufw delete allow 'Nginx HTTP'
+  ```
+
+ 2. **Restart the Server**
+
+- Restart the server using one of the following commands:
+  ```bash
+  sudo service snapcloud_daemon restart
+  # OR
+  sudo service snapcloud_daemon stop
+  sudo service snapcloud_daemon start
+  ```
+
+3. **Check Nginx Status**
+
+- Verify that Nginx has started successfully:
+  ```bash
+  ps aux | grep nginx
+  ```
+
+4. **Verify Nginx Ports**
+
+- Confirm that Nginx is listening on ports 443 (HTTPS) and 80 (HTTP):
+  ```bash
+  netstat -tulpn | grep :443
+  netstat -tulpn | grep :80
+  ```
+
+5. **Troubleshooting Nginx Issues**
+
+- If you encounter issues or the websites are not accessible, check the error log in the folder `/home/cloud/snapCloud/logs/`.
+
+### Adding Self-Signed Certificates to Browsers
+
+**Chrome:**
+
+1. Visit the site in Chrome.
+2. Open Developer Tools (F12).
+3. Navigate to the Security tab.
+4. Click "View certificate."
+5. Click Details > Copy to file.
+6. Choose a save location on your local machine.
+7. Open Chrome settings.
+8. Toggle "Show Advanced Settings" (bottom of the screen).
+9. Navigate to HTTPS/SSL > Manage certificates.
+10. Click "Trusted Root Certification Authorities."
+11. Click Import.
+12. Navigate to the certificate file you just stored.
+13. Quit Chrome (Ctrl+Shift+Q) and re-visit your site.
+
+**Firefox:**
+
+1. Go to Preferences -> Privacy & Security -> View Certificates.
+2. Choose the Servers tab and click "Add Exception."
+3. Fill in the HTTPS URL (e.g., `https://www.snap.winna.er` and `https://snap.winna.er`).
+4. Click "Get Certificate."
+5. Ensure that "Permanently store this exception" is checked.
+6. Click "Confirm Security Exception."
+
+**Microsoft Edge:**
+
+1. Open Microsoft Edge.
+2. Click on Settings > select Privacy, search, and services.
+3. Scroll down to Security and click "Manage certificates."
+4. Click Personal > click Import.
+5. The Certificate Import Wizard starts; click Next.
+6. Browse to the location on your computer where your certificate file is stored.
+7. Keep the second option "Place all certificates in the following store" ticked and click Next.
+8. Click Finish.
 
 ## 15. Handling HTTPS Requests from Private Server
 
@@ -631,135 +757,6 @@ Once the admin role is assigned, the administration button will be available und
 2. Log in as an admin.
 3. Go to **Administration** -> **User Administration**.
 4. Find the user who should have the **teacher** role and set the checkmark for **Teacher**.
-
-
-## 16. Creating a Self-Signed SSL Certificate with OpenSSL and Configuring Nginx
-
-To secure your web server with SSL, you can create a self-signed certificate using OpenSSL and configure it in Nginx. Follow these steps:
-
-1. **Create a Self-Signed SSL Certificate**:
-   - Generate a self-signed certificate with OpenSSL:
-     ```bash
-     sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/winna.key -out /etc/ssl/certs/winna.crt -config winna_openSSL.conf
-     ```
-   - This command will create a self-signed certificate valid for 365 days and store the private key and certificate in the specified locations.
-
-2. **Create a Strong Diffie-Hellman (DH) Group**:
-   - DH groups are used in negotiating Perfect Forward Secrecy with clients:
-     ```bash
-     sudo openssl dhparam -out /etc/nginx/dhparam.pem 1024
-     ```
-
-3. **Add the Self-Signed Certificate to the Trusted List in Ubuntu**:
-   - Copy the certificate to the trusted certificates directory:
-     ```bash
-     sudo cp /home/cloud/snapCloud/certs/winna.crt /usr/local/share/ca-certificates/
-     ```
-   - Update the trusted certificates list:
-     ```bash
-     sudo update-ca-certificates
-     ```
-
-4. **Configure Nginx to Use SSL**:
-   - Refer to the snapCloud fork in Tnegash for the changes that need to be done to the following files:
-       - `/home/cloud/snapCloud/nginx.conf.d/extensions.conf`
-       - `/home/cloud/snapCloud/nginx.conf.d/http-only.conf`
-       - `/home/cloud/snapCloud/nginx.conf.d/ssl-production.conf`
-
-5. **Create a Configuration Snippet with Strong Encryption Settings**:
-   - Check the snapCloud fork in Tnegash for the changes needed in the file `ssl-shared.conf`:
-     ```bash
-     sudoedit /home/cloud/snapCloud/nginx.conf.d/ssl-shared.conf
-     ```
-
-6. **Adjusting the Firewall**:
-   - Check available applications:
-     ```bash
-     sudo ufw app list
-     ```
-   - Check the current firewall settings:
-     ```bash
-     sudo ufw status
-     ```
-   - To allow HTTPS traffic:
-     ```bash
-     sudo ufw allow 'Nginx Full'
-     ```
-## 17. Configuring Nginx and Adding Self-Signed Certificates to Browsers
-
-### 1. Delete the Redundant "Nginx HTTP" Profile Allowance (if it exists)
-
-- Remove the redundant "Nginx HTTP" profile allowance:
-  ```bash
-  sudo ufw delete allow 'Nginx HTTP'
-  ```
-
-### 2. Restart the Server
-
-- Restart the server using one of the following commands:
-  ```bash
-  sudo service snapcloud_daemon restart
-  # OR
-  sudo service snapcloud_daemon stop
-  sudo service snapcloud_daemon start
-  ```
-
-### 3. Check Nginx Status
-
-- Verify that Nginx has started successfully:
-  ```bash
-  ps aux | grep nginx
-  ```
-
-### 4. Verify Nginx Ports
-
-- Confirm that Nginx is listening on ports 443 (HTTPS) and 80 (HTTP):
-  ```bash
-  netstat -tulpn | grep :443
-  netstat -tulpn | grep :80
-  ```
-
-### 5. Troubleshooting Nginx Issues
-
-- If you encounter issues or the websites are not accessible, check the error log in the folder `/home/cloud/snapCloud/logs/`.
-
-### 6. Adding Self-Signed Certificates to Browsers
-
-#### Chrome:
-
-1. Visit the site in Chrome.
-2. Open Developer Tools (F12).
-3. Navigate to the Security tab.
-4. Click "View certificate."
-5. Click Details > Copy to file.
-6. Choose a save location on your local machine.
-7. Open Chrome settings.
-8. Toggle "Show Advanced Settings" (bottom of the screen).
-9. Navigate to HTTPS/SSL > Manage certificates.
-10. Click "Trusted Root Certification Authorities."
-11. Click Import.
-12. Navigate to the certificate file you just stored.
-13. Quit Chrome (Ctrl+Shift+Q) and re-visit your site.
-
-#### Firefox:
-
-1. Go to Preferences -> Privacy & Security -> View Certificates.
-2. Choose the Servers tab and click "Add Exception."
-3. Fill in the HTTPS URL (e.g., `https://www.winna.home` and `https://winna.home`).
-4. Click "Get Certificate."
-5. Ensure that "Permanently store this exception" is checked.
-6. Click "Confirm Security Exception."
-
-#### Microsoft Edge:
-
-1. Open Microsoft Edge.
-2. Click on Settings > select Privacy, search, and services.
-3. Scroll down to Security and click "Manage certificates."
-4. Click Personal > click Import.
-5. The Certificate Import Wizard starts; click Next.
-6. Browse to the location on your computer where your certificate file is stored.
-7. Keep the second option "Place all certificates in the following store" ticked and click Next.
-8. Click Finish.
 
 
 # PostgreSQL Connection Issues Troubleshooting Guide
