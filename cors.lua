@@ -26,6 +26,10 @@ local domain_allowed = {}
 domain_allowed['snap.berkeley.edu'] = true
 -- This domain serves an HTTP only Snap! IDE
 domain_allowed['extensions.snap.berkeley.edu'] = true
+-- Winna specific confiuration
+domain_allowed['snap.winna.er'] = true
+domain_allowed['extensions.snap.winna.er'] = true
+domain_allowed['cloud.snap.winna.er'] = true
 
 -- Aliases for App Server Domains
 -- By Default CORS is not needed on the same domain.

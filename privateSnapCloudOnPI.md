@@ -242,7 +242,8 @@ For detailes refer to [configuration of postgresql](https://ubuntu.com/server/do
    ```bash
    sudo service postgresql restart
    ```
-
+4. **Troubeshooting postgresgql**
+   The log under /var/log/postgresql/ provides detailed information on errors related to postgres instance
 ## Setting up the Snap!Cloud as a System Daemon
 
 1. If **snapCloud** is not installed under the `cloud` directory, adjust the path that leads to `start.sh` in the file `snapcloud_daemon`. Execute the following command:
@@ -455,8 +456,6 @@ Usually, the router should have the capability to set up a DNS for the private n
     sudo systemctl restart bind9
     ```
 
-
-
 8. **Run the following command to check the syntax of the `named.conf*` files:**
 
 ```bash
@@ -515,7 +514,8 @@ systemd-resolve --status
 sudo resolvectl status | grep -i "DNS Serve"
 ```
 
-### To resolve DNS resolution issues in Ubuntu, consider the following alternatives
+### DNS resolution troubleshooting
+1. **DNS resolution issues in Ubuntu**
 
 **Alternative 1: Disabling the 127.0.0.53 DNS**
 
@@ -560,6 +560,15 @@ sudo systemctl restart systemd-resolved.service
 systemd-resolve --status
 sudo resolvectl status | grep -i "DNS Serve"
 ```
+2. **Connection Refused Issuue**
+If you encounter the error **NS_CONNECTION_REFUSED** or **ERR_CONNECTION_REFUSED**, this could be due to new IP address of the device in which the DNS server is installed. To check this proceed as follows:
+- Check the IP address of the device by executing the following command:
+```bash
+ifconfig
+or
+ip a
+```
+- Compare the IP address of the device (the value beside inet) with one entered in the DNS configuration files (see above) and change the IP address in these files if they are not the same
 
 ### Setting Up DNS on the Client Side
 
@@ -585,41 +594,79 @@ sudo resolvectl status | grep -i "DNS Serve"
 
 To secure your web server with SSL, you can create a self-signed certificate using OpenSSL and configure it in Nginx. Follow these steps:
 
-1. **Create a Self-Signed SSL Certificate**:
+1. **Create configuration file**
+    - Create configuration file
+     ```bash
+        touch winna_openSSL.conf
+     ```
+    - Edit configuration file
+     ```bash
+        sudoedit winna_openSSL.conf
+     ```
+    - Enter the content below in the configuration file
+     ```conf
+    [req]
+    distinguished_name = req_distinguished_name
+    x509_extensions = v3_req
+    prompt = no
+
+    [req_distinguished_name]
+    C = ER
+    ST = Maekel
+    L = Asmara
+    O = Winna Tech
+    OU = Winna Tech
+    CN = winna.er
+    emailAddress = admin@snap.winna.er
+
+    [v3_req]
+    subjectAltName = @alt_names
+    basicConstraints = critical,CA:FALSE
+
+    [alt_names]
+    DNS.1 = snap.winna.er
+    DNS.2 = www.snap.winna.er
+     ```
+2. **Create a Self-Signed SSL Certificate**:
    - Generate a self-signed certificate with OpenSSL:
      ```bash
      sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/winna.key -out /etc/ssl/certs/winna.crt -config winna_openSSL.conf
      ```
    - This command will create a self-signed certificate valid for 365 days and store the private key and certificate in the specified locations.
 
-2. **Create a Strong Diffie-Hellman (DH) Group**:
+3. **Create a Strong Diffie-Hellman (DH) Group**:
+   - If the folder nginx does not exist under the folder etc, create it as follows:
+     ```bash
+     mkdir nginx
+     ```    
    - DH groups are used in negotiating Perfect Forward Secrecy with clients:
      ```bash
      sudo openssl dhparam -out /etc/nginx/dhparam.pem 1024
      ```
 
-3. **Add the Self-Signed Certificate to the Trusted List in Ubuntu**:
+4. **Add the Self-Signed Certificate to the Trusted List in Ubuntu**:
    - Copy the certificate to the trusted certificates directory:
      ```bash
-     sudo cp /home/cloud/snapCloud/certs/winna.crt /usr/local/share/ca-certificates/
+     sudo cp /etc/ssl/certs/winna.crt /usr/local/share/ca-certificates/
      ```
    - Update the trusted certificates list:
      ```bash
      sudo update-ca-certificates
      ```
 
-4. **Configure Nginx to Use SSL**:
+5. **Configure Nginx to Use SSL**:
    - Refer to the snapCloud fork in Tnegash for the changes that need to be done to the following files:
        - `/home/cloud/snapCloud/nginx.conf.d/extensions.conf`
        - `/home/cloud/snapCloud/nginx.conf.d/http-only.conf`
        - `/home/cloud/snapCloud/nginx.conf.d/ssl-production.conf`
 
-5. **Create a Configuration Snippet with Strong Encryption Settings**:
+6. **Create a Configuration Snippet with Strong Encryption Settings**:
    - Check the snapCloud fork in Tnegash for the changes needed in the file `ssl-shared.conf`:
      ```bash
      sudoedit /home/cloud/snapCloud/nginx.conf.d/ssl-shared.conf
      ```
-6. **Adjusting the Firewall**:
+7. **Adjusting the Firewall**:
+  
    - Check available applications:
      ```bash
      sudo ufw app list
@@ -632,7 +679,28 @@ To secure your web server with SSL, you can create a self-signed certificate usi
      ```bash
      sudo ufw allow 'Nginx Full'
      ```
-### Configuring Nginx and Adding Self-Signed Certificates to Browsers
+   **Possible Issue**: If you encounter 'Nginx Full' profile not found follow the steps below:
+   - Create an application ini file 
+     ```bash
+      touch /etc/ufw/applications.d/nginx.ini
+     ```
+   - Add the following content to the file 
+     ```conf
+     [Nginx Full]
+     title=Web Server (HTTP,HTTPS)
+     description=Enable NGINX HTTP and HTTPS traffic
+     ports=80,443/tcp
+     ```
+   - The execute the following commands to allow the profile
+     ```bash
+     sudo ufw app update nginx
+     sudo ufw allow 'Nginx Full'
+     ```
+ **Note** For the 2 pilot project servers the **firewall will remain deactivated**. To deactive the firewall execute the following command
+     ```bash
+        sudo ufw disable
+     ```
+### Configuring Nginx 
 
  1. **Delete the Redundant "Nginx HTTP" Profile Allowance (if it exists)**
 
@@ -708,7 +776,10 @@ To secure your web server with SSL, you can create a self-signed certificate usi
 7. Keep the second option "Place all certificates in the following store" ticked and click Next.
 8. Click Finish.
 
-## 15. Handling HTTPS Requests from Private Server
+## Adjusting server runtime configuration
+This is mainly done to enable the usage of the domain name snap.winna.er with https in the productive runtime environment: To achieve this adjust the code of the file config.lua as in https://github.com/TNegash/snapCloud/blob/master/config.lua.
+
+## Handling HTTPS Requests from Private Server
 
 To avoid issues related to HTTPS requests from the private server, make the following changes in both **snapCloud** and **snap**:
 
