@@ -696,7 +696,7 @@ To secure your web server with SSL, you can create a self-signed certificate usi
      sudo ufw app update nginx
      sudo ufw allow 'Nginx Full'
      ```
- **Note** For the 2 pilot project servers the **firewall will remain deactivated**. To deactive the firewall execute the following command
+ **Note** For the pilot project servers the **firewall will remain deactivated**. To deactive the firewall execute the following command
      ```bash
         sudo ufw disable
      ```
@@ -802,8 +802,63 @@ To avoid issues related to HTTPS requests from the private server, make the foll
      ```bash
      sudo service snapcloud_daemon start
      ```
+## E-Mail handling
+- Add the following coding in lines 314 ff of the file site.lua
+     ```lua
+     app:get('/show_email', capture_errors(function (self)
+        local socket = require("socket")
+        local domain = "www.snap.winna.er"
+        local ip = socket.dns.toip(domain)
+        local url = "http://" .. ip .. ":1080"
+        -- os.execute("start " .. url)
+        return { redirect_to = url }
+     end))
+     ```   
+- Add the following lines to the file views/admin.etlua in line 9 ff
+     ```html
+      <a class="show-email pure-button"
+       href="/show_email"><%- locale.get('show_email') %></a>
+     ```   
+- Add the folling line in 403 of the following locales/en.lua
+     ```lua
+     show_email = "Show E-Mails", 
+     ```   
+- Add the following configuration to the script file start.sh to start the mail server automatically. The following line should be added at the end.
+     ```sh
+     type maildev &>/dev/null && maildev --incoming-user cloud --incoming-pass cloudemail
+     ``` 
+  
+## Adding diagrams to the slide show 
+- Copy the diagram to the folder /static/img/
+  
+- Add the following coding to the file views/partials/slideshow.etlua in line 28 ff
+     ```lua  
+        <div class="slide fade">
+          <img src="/static/img/snap-tigrinya.png" style="width:100%">
+        </div>
+     ```      
 
-## 12. Creating an Admin User
+## Add environment variables for server runtime configuration
+- Add snapCloud specific environment variables execute the following commands:
+    ```bash
+        touch /home/snapCloud/.env
+        sudoedit /home/snapCloud/.env
+    ```
+- Copy the follwing entries to the file:
+- 
+    ```conf
+        LAPIS_ENVIRONMENT=production
+        DATABASE_HOST=127.0.0.1
+        DATABASE_PORT=5432
+        DATABASE_USERNAME=cloud
+        DATABASE_PASSWORD=snap-cloud-password
+        DATABASE_NAME=snapcloud
+        HOSTNAME=snap.winna.er
+        PORT=443
+   ```
+   For details on on server runtime configuraion refer to [Lapis Configuration and Environment](https://leafo.net/lapis/reference/configuration.html#creating-configurations)
+
+## Creating an Admin User
 
 1. Create a user by clicking on "Join."
 2. Afterward, use the following commands to assign the user the **admin** role:
@@ -822,19 +877,34 @@ To avoid issues related to HTTPS requests from the private server, make the foll
 
 Once the admin role is assigned, the administration button will be available under the menu of the user.
 
-## 13. Creating a User with Teacher Role
+## Creating a User with Teacher Role
 
 1. Create a user as described above.
 2. Log in as an admin.
 3. Go to **Administration** -> **User Administration**.
 4. Find the user who should have the **teacher** role and set the checkmark for **Teacher**.
 
+## Adding sample projects to Snap! Cloud 
+- Download examples from main snap cloud page
+- Enable adding to standard collections by executing the following sql query
+   ```sql
+    UPDATE collections SET free_for_all = 't';
+   ```
+- Add the project to one of the standard collections or a collection that you have created. To do so execute the following steps.
+  1. Click on the project
+  2. Click in the add collection button below the project
+  3. Select category and press OK
+- If the project is to be added to the example added to one of the carousels,
+then click on *add carousel* and select the collection and press OK
 
-# PostgreSQL Connection Issues Troubleshooting Guide
+
+## Additional Troubleshooting Guide
+
+### PostgreSQL Connection Issues Troubleshooting Guide
 
 If you're encountering problems with your PostgreSQL database connection, follow these steps to diagnose and resolve the issue.
 
-## 1. Add PostgreSQL User to the `ssl-cert` Group
+1. Add PostgreSQL User to the `ssl-cert` Group
 
 Sometimes, mistakenly removing the `postgres` user from the `ssl-cert` group can cause connection issues. To rectify this:
 
@@ -843,7 +913,7 @@ Sometimes, mistakenly removing the `postgres` user from the `ssl-cert` group can
 sudo gpasswd -a postgres ssl-cert
 ```
 
-## 2. Fix Ownership and Permissions
+2. Fix Ownership and Permissions
 
 Ensure that the ownership and permissions of the SSL certificate key file are correct:
 
@@ -855,7 +925,7 @@ sudo chown root:ssl-cert /etc/ssl/private/ssl-cert-snakeoil.key
 sudo chmod 740 /etc/ssl/private/ssl-cert-snakeoil.key
 ```
 
-## 3. Start PostgreSQL Service
+3. Start PostgreSQL Service
 
 Restart the PostgreSQL service to apply the changes:
 
@@ -863,9 +933,9 @@ Restart the PostgreSQL service to apply the changes:
 sudo /etc/init.d/postgresql start
 ```
 
-## 4. Adjust PostgreSQL Configuration
+4. Adjust PostgreSQL Configuration
 
-### a. Update `listen_addresses`
+- Update `listen_addresses`
 
 Edit the `postgresql.conf` file (usually located at `/etc/postgresql/12/main/postgresql.conf`). Uncomment the line containing `listen_addresses` and set it to `*`:
 
@@ -873,7 +943,7 @@ Edit the `postgresql.conf` file (usually located at `/etc/postgresql/12/main/pos
 listen_addresses = '*'
 ```
 
-### b. Modify `pg_hba.conf`
+- Modify `pg_hba.conf`
 
 Edit the `pg_hba.conf` file (usually located at `/etc/postgresql/12/main/pg_hba.conf`). Change the following line:
 
@@ -885,7 +955,7 @@ host    all             all             172.0.0.1/32                md5
 host    all             all             0.0.0.0/0                md5
 ```
 
-## 5. Firewall Configuration
+5. Firewall Configuration
 
 Allow PostgreSQL traffic through the firewall (if necessary):
 
@@ -893,7 +963,7 @@ Allow PostgreSQL traffic through the firewall (if necessary):
 sudo ufw allow 5432/tcp
 ```
 
-## 6. Restart PostgreSQL
+6. Restart PostgreSQL
 
 After each step, restart the PostgreSQL service:
 
@@ -901,183 +971,21 @@ After each step, restart the PostgreSQL service:
 sudo service postgresql restart
 ```
 
-## Additional Notes
+### Issue with nodejs
+
+In case if issues with nodejs install the latest as follows:
+
+- First delete npm and node
+    
+     ```bash
+     sudo apt purge nodejs npm
+     ```
+- Then install nvm
+     ```bash
+     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+     ```
+- Install the stable node version
+     ```bash 
+     nvm install stable
+     ```
 
-- If you encounter issues related to self-signed certificates, refer to the instructions below.
-- A self-signed CA is not needed for our case, but the steps can be followed if required.
-
-
-### Creating a Private Certificate Authority (CA)
-
-For details on creating a self-signed CA and self-signed certificates, visit [this guide](https://deliciousbrains.com/ssl-certificate-authority-for-local-https-development/).
-
-### OpenSSL Installation
-
-Make sure OpenSSL is installed:
-
-```bash
-openSSL version
-```
-
-If not, install it:
-
-```bash
-sudo apt update
-sudo apt install openssl
-```
-
-### Certificate Storage Location
-
-Create a directory to store local certificate files:
-
-```bash
-mkdir ~/certs
-cd ~/certs
-```
-
-### Generate CA Key and Root Certificate
-
-1. Generate the CA key:
-
-```bash
-openssl genrsa -des3 -out winCA.key 2048
-```
-
-# Creating and Using Root Certificates for PostgreSQL and SSL
-
-## 1. Create the Root Certificate
-
-### Generate the Root Key and Certificate
-
-1. Create the root key (replace `winCA.key` with a recognizable name):
-
-    ```bash
-    openssl genrsa -des3 -out winCA.key 2048
-    ```
-
-2. Generate the root certificate (replace `winCA.pem` with a descriptive name):
-
-    ```bash
-    openssl req -x509 -new -nodes -key winCA.key -sha256 -days 1825 -out winCA.pem
-    ```
-
-   Make sure to set a common name (CN) that you can recognize later.
-
-## 2. Adding the Root Certificate to Linux
-
-1. If not already installed, install the `ca-certificates` package:
-
-    ```bash
-    sudo apt-get install -y ca-certificates
-    ```
-
-2. Copy the `winCA.pem` file to the `/usr/local/share/ca-certificates` directory as `winCA.crt`:
-
-    ```bash
-    sudo cp ~/certs/winCA.pem /usr/local/share/ca-certificates/winCA.crt
-    ```
-
-3. Update the certificate store:
-
-    ```bash
-    sudo update-ca-certificates
-    ```
-
-## 3. Adding the Root Certificate to Windows
-
-Refer to [this guide](https://deliciousbrains.com/ssl-certificate-authority-for-local-https-development/) for detailed instructions on adding the root certificate to Windows.
-
-## 4. Creating CA-Signed Certificates for Your Sites
-
-### Generate Private Key and Certificate Signing Request (CSR)
-
-1. Create a private key for your site (e.g., `winna.home.key`):
-
-    ```bash
-    openssl genrsa -out winna.home.key 2048
-    ```
-
-2. Generate a certificate signing request (CSR) for your site (e.g., `winna.home.csr`):
-
-    ```bash
-    openssl req -new -key winna.home.key -out winna.home.csr
-    ```
-
-### Define Subject Alternative Name (SAN)
-
-1. Create an X509 V3 certificate extension config file (e.g., `winna.home.ext`) to define the Subject Alternative Name (SAN):
-
-    ```ini
-    authorityKeyIdentifier=keyid,issuer
-    basicConstraints=CA:FALSE
-    keyUsage=digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
-    subjectAltName=@alt_names
-
-    [alt_names]
-    DNS.1=winna.home
-    ```
-
-2. Create an empty file:
-
-    ```bash
-    touch winna.home.ext
-    ```
-
-3. Open the `winna.home.ext` file for editing:
-
-    ```bash
-    sudoedit winna.home.ext
-    ```
-
-4. Copy the configuration text into the `winna.home.ext` file.
-
-### Create the CA-Signed Certificate
-
-Run the following command to create the certificate using your CSR, the CA private key (`winCA.key`), the CA certificate (`winCA.pem`), and the config file (`winna.home.ext`):
-
-```bash
-openssl x509 -req -in winna.home.csr -CA winCA.pem -CAkey winCA.key \
--CAcreateserial -out winna.home.crt -days 825 -sha256 -extfile winna.home.ext
-```
-
-1. **Copy the Site Key and Certificate to the Cert Location of Snap Cloud**:
-
-   Execute the following commands to copy the key and certificate files to the appropriate location:
-
-   ```bash
-   sudo cp ~/certs/winna.home.key /home/cloud/snapCloud/certs/winna.home.key
-   sudo cp ~/certs/winna.home.crt /home/cloud/snapCloud/certs/winna.home.crt
-   ```
-
-2. **Create a New SSL Configuration for Nginx**:
-
-   Duplicate the existing SSL configuration file (`ssl-staging.conf`) to create a new one (`ssl-dev.conf`):
-
-   ```bash
-   sudo cp /home/cloud/snapCloud/nginx.conf.d/ssl-staging.conf /home/cloud/snapCloud/nginx.conf.d/ssl-dev.conf
-   ```
-
-   Edit the newly created `ssl-dev.conf` file:
-
-   ```bash
-   sudoedit /home/cloud/snapCloud/nginx.conf.d/ssl-dev.conf
-   ```
-
-   Make the necessary adjustments in this file to add the key and certificate to the server configuration.
-
-3. **Update the `config.lua` File**:
-
-   Modify the `config.lua` file to point to the new server configuration:
-
-   ```bash
-   sudoedit /home/cloud/snapCloud/config.lua
-   ```
-
-   Locate the following lines in the `config.lua` file:
-
-   ```lua
-   primary_nginx_config = 'http-only.conf',
-   secondary_nginx_config = 'include nginx.conf.d/ssl-dev.conf;',
-   ```
-
-   Update the `secondary_nginx_config` value to `'include nginx.conf.d/ssl-dev.conf;'`.
