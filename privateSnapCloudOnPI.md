@@ -300,7 +300,7 @@ For detailes refer to [configuration of postgresql](https://ubuntu.com/server/do
 
     ```
     sudo chmod -R 777 /etc/init.d/snapcloud_daemon
-    setfacl -R -m u:cloud:rwx /home/snapCloud/
+    setfacl -R -m u:cloud:rwx /home/cloud/snapCloud/
     ```
 
 6. Start the daemon after executing step 3 once again.
