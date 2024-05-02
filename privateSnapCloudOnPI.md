@@ -279,7 +279,7 @@ For detailes refer to [configuration of postgresql](https://ubuntu.com/server/do
 3. Copy the file `snapcloud_daemon` to `/etc/init.d/`:
 
     ```
-    cp /home/snapCloud/bin/snapcloud_daemon /etc/init.d/
+    cp /home/cloud/snapCloud/bin/snapcloud_daemon /etc/init.d/
     ```
 
     Then run:
