@@ -99,12 +99,12 @@ For details refer to [snapCloud Installation Guide](https://github.com/snap-clou
 
 2. Navigate to the cloned directory:
     ```bash
-    cd /snapCloud/bin
+    cd /home/cloud/snapCloud/bin
     ```
 
 3. Edit the **prereqs.sh** file to include the necessary architecture (arm64):
     ```bash
-    sudo nano prereqs.sh
+    sudoedit prereqs.sh
     ```
 
     Add the following lines to the file:
@@ -191,18 +191,18 @@ For detailes refer to [configuration of postgresql](https://ubuntu.com/server/do
         ```
 
 5. **Create DB Artifacts in the snapcloud Database**:
-    - Run the following command to create the necessary database artifacts (assuming your SQL files are located at `/home/snapCloud/cloud.sql`):
+    - Run the following command to create the necessary database artifacts (assuming your SQL files are located at `/home/cloud/snapCloud/cloud.sql`):
         ```bash
-        psql -U cloud -d snapcloud -a -f /home/snapCloud/cloud.sql
+        psql -U cloud -d snapcloud -a -f /home/cloud/snapCloud/cloud.sql
         ```
     - Check whether the schema with the tables is create by executing the command
         ```sql
            \dt
         ```
 6. **Seed the DB Tables**:
-    - Seed the database tables using the provided SQL file (assuming your seeds file is located at `/home/snapCloud/bin/seeds.sql`):
+    - Seed the database tables using the provided SQL file (assuming your seeds file is located at `/home/cloud/snapCloud/bin/seeds.sql`):
         ```bash
-        psql -U cloud -d snapcloud -a -f /home/snapCloud/bin/seeds.sql
+        psql -U cloud -d snapcloud -a -f /home/cloud/snapCloud/bin/seeds.sql
         ```
 ### 2. Troubleshooting
 1. **Accessing the PostgreSQL terminal**:
@@ -249,7 +249,7 @@ For detailes refer to [configuration of postgresql](https://ubuntu.com/server/do
 1. If **snapCloud** is not installed under the `cloud` directory, adjust the path that leads to `start.sh` in the file `snapcloud_daemon`. Execute the following command:
 
     ```
-    sudoedit /home/snapCloud/bin/snapcloud_daemon
+    sudoedit /home/cloud/snapCloud/bin/snapcloud_daemon
     ```
 
     Change the line:
@@ -261,7 +261,7 @@ For detailes refer to [configuration of postgresql](https://ubuntu.com/server/do
     to:
 
     ```
-    runuser -l cloud -c "(cd /home/snapCloud; ./start.sh &)"
+    runuser -l cloud -c "(cd /home/cloud/snapCloud; ./start.sh &)"
     ```
 
 2. Add the user `cloud` to the `sudoers` with full access. You can use the following command:
@@ -279,7 +279,7 @@ For detailes refer to [configuration of postgresql](https://ubuntu.com/server/do
 3. Copy the file `snapcloud_daemon` to `/etc/init.d/`:
 
     ```
-    cp /home/snapCloud/bin/snapcloud_daemon /etc/init.d/
+    cp /home/cloud/snapCloud/bin/snapcloud_daemon /etc/init.d/
     ```
 
     Then run:
@@ -300,7 +300,7 @@ For detailes refer to [configuration of postgresql](https://ubuntu.com/server/do
 
     ```
     sudo chmod -R 777 /etc/init.d/snapcloud_daemon
-    setfacl -R -m u:cloud:rwx /home/snapCloud/
+    setfacl -R -m u:cloud:rwx /home/cloud/snapCloud/
     ```
 
 6. Start the daemon after executing step 3 once again.
@@ -841,8 +841,8 @@ To avoid issues related to HTTPS requests from the private server, make the foll
 ## Add environment variables for server runtime configuration
 - Add snapCloud specific environment variables execute the following commands:
     ```bash
-        touch /home/snapCloud/.env
-        sudoedit /home/snapCloud/.env
+        touch /home/cloud/snapCloud/.env
+        sudoedit /home/cloud/snapCloud/.env
     ```
 - Copy the follwing entries to the file:
 - 
@@ -858,6 +858,19 @@ To avoid issues related to HTTPS requests from the private server, make the foll
    ```
    For details on on server runtime configuraion refer to [Lapis Configuration and Environment](https://leafo.net/lapis/reference/configuration.html#creating-configurations)
 
+## Giving permissions to use HTTP(S) ports
+(This section applies only to Linux machines.) Authbind allows a user to bind to ports 0-1023. In development, you will likely not need to use authbind as the server defaults to using port 8080 and doesn't need https. However, on the production server, authbind is necessary.
+
+We now need to configure authbind so that user cloud can start a service over the HTTP and HTTPS ports. To do so, we simply need to create a file and assign its ownership to cloud:
+
+ ```bash
+    touch /etc/authbind/byport/443
+    chown cloud:cloud /etc/authbind/byport/443
+    chmod +x /etc/authbind/byport/443
+    touch /etc/authbind/byport/80
+    chown cloud:cloud /etc/authbind/byport/80
+    chmod +x /etc/authbind/byport/80
+ ```
 ## Creating an Admin User
 
 1. Create a user by clicking on "Join."
@@ -988,4 +1001,19 @@ In case if issues with nodejs install the latest as follows:
      ```bash 
      nvm install stable
      ```
+### Show logs of services
 
+1. journalctl command. Example:
+ ```bash
+    journalctl -u openresty or even better
+    journalctl -xefu openresty
+ ```
+To get detailed information about the command execute
+ ```bash
+    journalctl --help
+ ```
+
+1.  systemctl command example:
+ ```bash
+    systemctl -l status snapcloud_daemon
+ ```
