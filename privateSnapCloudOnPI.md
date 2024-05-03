@@ -61,25 +61,37 @@
 ### 3. Increasing Swap Memory
 
   - Create an empty file
-    ```
-   sudo dd if=/dev/zero of=/media/swapfile.img bs=1024 count=1M
+    ```bash
+    sudo dd if=/dev/zero of=/media/swapfile.img bs=1024 count=1M
     ```
 
   - Bake the swap file (Prepare the file to be uses as swap space)
-    ```
+    ```bash
     sudo mkswap /media/swapfile.img
     ```
   - Bring up on boot:
-    Add this line to /etc/fstab
-   /media/fasthdd/swapfile.img swap swap sw 0 0 
-    ```
-   sudoedit /etc/fstab
-    ``` 
-
+    - open the file /etc/fstab 
+        ```bash
+        sudoedit /etc/fstab
+        ```
+    - Add the following line the end
+        ```
+        /media/swapfile.img swap swap sw 0 0
+        ```
   - Activate
-    ```
-    sudo swapon /media/fasthdd/swapfile.img
-    ```
+     ```bash
+      sudo swapon /media/swapfile.img
+     ```
+  - Check swap memory with the following command
+     ```bash
+      cat /proc/swaps
+      grep 'Swap' /proc/meminfo
+     ```
+  - Trun swap off
+     ```bash
+      sudo swapoff -a
+     ```
+    
     For more details on increasing swap memory, refer to  [Ask Ubuntu post](https://askubuntu.com/questions/178712/how-to-increase-swap-space).
 
 
@@ -115,7 +127,8 @@ For details refer to [snapCloud Installation Guide](https://github.com/snap-clou
     apt-get update
     apt-get -y install openresty
     ```
-
+4. Install Snap! Cloud
+   Refer to install.md for installation details
 ### 2. Resolve Dependencies
 
 - If you encounter the error message related to **luarocks** and **luaossl**, execute the following command:
@@ -191,18 +204,18 @@ For detailes refer to [configuration of postgresql](https://ubuntu.com/server/do
         ```
 
 5. **Create DB Artifacts in the snapcloud Database**:
-    - Run the following command to create the necessary database artifacts (assuming your SQL files are located at `/home/cloud/snapCloud/cloud.sql`):
+    - Run the following command to create the necessary database artifacts (assuming your SQL files are located at `/home/cloud/snapCloud/db/schema.sql`):
         ```bash
-        psql -U cloud -d snapcloud -a -f /home/cloud/snapCloud/cloud.sql
+        psql -U cloud -d snapcloud -a -f /home/cloud/snapCloud/db/schema.sql
         ```
     - Check whether the schema with the tables is create by executing the command
         ```sql
            \dt
         ```
 6. **Seed the DB Tables**:
-    - Seed the database tables using the provided SQL file (assuming your seeds file is located at `/home/cloud/snapCloud/bin/seeds.sql`):
+    - Seed the database tables using the provided SQL file (assuming your seeds file is located at `/home/cloud/snapCloud/db/seeds.sql`):
         ```bash
-        psql -U cloud -d snapcloud -a -f /home/cloud/snapCloud/bin/seeds.sql
+        psql -U cloud -d snapcloud -a -f /home/cloud/snapCloud/db/seeds.sql
         ```
 ### 2. Troubleshooting
 1. **Accessing the PostgreSQL terminal**:
@@ -248,49 +261,49 @@ For detailes refer to [configuration of postgresql](https://ubuntu.com/server/do
 
 1. If **snapCloud** is not installed under the `cloud` directory, adjust the path that leads to `start.sh` in the file `snapcloud_daemon`. Execute the following command:
 
-    ```
+    ```bash
     sudoedit /home/cloud/snapCloud/bin/snapcloud_daemon
     ```
 
     Change the line:
 
-    ```
+    ```bash
     runuser -l cloud -c "(cd /home/cloud/snapCloud; ./start.sh &)"
     ```
 
     to:
 
-    ```
+    ```bash
     runuser -l cloud -c "(cd /home/cloud/snapCloud; ./start.sh &)"
     ```
 
 2. Add the user `cloud` to the `sudoers` with full access. You can use the following command:
 
-    ```
+    ```bash
     adduser username sudo
     ```
 
     Alternatively, you can directly add the user `cloud` to the file `/etc/sudoers` by executing the following command and adding an entry similar to `root`:
 
-    ```
+    ```bash
     sudoedit /etc/sudoers
     ```
 
 3. Copy the file `snapcloud_daemon` to `/etc/init.d/`:
 
-    ```
+    ```bash
     cp /home/cloud/snapCloud/bin/snapcloud_daemon /etc/init.d/
     ```
 
     Then run:
 
-    ```
+    ```bash
     update-rc.d snapcloud_daemon defaults
     ```
 
 4. Check if the following symlink is created:
 
-    ```
+    ```bash
     /etc/rc2.d/S01snapcloud_daemon
     ```
 
@@ -298,12 +311,16 @@ For detailes refer to [configuration of postgresql](https://ubuntu.com/server/do
 
 5. Give write access to the user `cloud`:
 
-    ```
+    ```bash
     sudo chmod -R 777 /etc/init.d/snapcloud_daemon
     setfacl -R -m u:cloud:rwx /home/cloud/snapCloud/
     ```
 
-6. Start the daemon after executing step 3 once again.
+6. Start the snapcloud daemon
+    ```bash
+    sudo service snapcloud_daemon stop
+    sudo service snapcloud_daemon start
+    ```
 
 **Note**: Rebooting might be necessary in this case.
 
@@ -630,14 +647,14 @@ To secure your web server with SSL, you can create a self-signed certificate usi
 2. **Create a Self-Signed SSL Certificate**:
    - Generate a self-signed certificate with OpenSSL:
      ```bash
-     sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/winna.key -out /etc/ssl/certs/winna.crt -config winna_openSSL.conf
+     sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/winna.key -out /etc/ssl/certs/winna.crt -config /home/cloud/snapCloud/winna_openSSL.conf
      ```
    - This command will create a self-signed certificate valid for 365 days and store the private key and certificate in the specified locations.
 
 3. **Create a Strong Diffie-Hellman (DH) Group**:
    - If the folder nginx does not exist under the folder etc, create it as follows:
      ```bash
-     mkdir nginx
+     mkdir /etc/nginx
      ```    
    - DH groups are used in negotiating Perfect Forward Secrecy with clients:
      ```bash
@@ -847,21 +864,21 @@ To avoid issues related to HTTPS requests from the private server, make the foll
 - Copy the follwing entries to the file:
 - 
     ```conf
-        LAPIS_ENVIRONMENT=production
-        DATABASE_HOST=127.0.0.1
-        DATABASE_PORT=5432
-        DATABASE_USERNAME=cloud
-        DATABASE_PASSWORD=snap-cloud-password
-        DATABASE_NAME=snapcloud
-        HOSTNAME=snap.winna.er
-        PORT=443
+    LAPIS_ENVIRONMENT=production
+    DATABASE_HOST=127.0.0.1
+    DATABASE_PORT=5432
+    DATABASE_USERNAME=cloud
+    DATABASE_PASSWORD=snap-cloud-password
+    DATABASE_NAME=snapcloud
+    HOSTNAME=snap.winna.er
+    PORT=443
    ```
    For details on on server runtime configuraion refer to [Lapis Configuration and Environment](https://leafo.net/lapis/reference/configuration.html#creating-configurations)
 
 ## Giving permissions to use HTTP(S) ports
 (This section applies only to Linux machines.) Authbind allows a user to bind to ports 0-1023. In development, you will likely not need to use authbind as the server defaults to using port 8080 and doesn't need https. However, on the production server, authbind is necessary.
 
-We now need to configure authbind so that user cloud can start a service over the HTTP and HTTPS ports. To do so, we simply need to create a file and assign its ownership to cloud:
+- We now need to configure authbind so that user cloud can start a service over the HTTP and HTTPS ports. To do so, we simply need to create a file and assign its ownership to cloud:
 
  ```bash
     touch /etc/authbind/byport/443
@@ -870,6 +887,23 @@ We now need to configure authbind so that user cloud can start a service over th
     touch /etc/authbind/byport/80
     chown cloud:cloud /etc/authbind/byport/80
     chmod +x /etc/authbind/byport/80
+ ```
+- Start snap! cloud daemon by executing the following command
+  ```bash
+   sudo service snapcloud_daemon stop
+   sudo service snapcloud_daemon start
+  ```
+- Check whether nginx has started 
+ ```bash
+  ps aux | grep nginx
+ ```
+- Check error log if nginx could not start properly
+ ```bash
+  sudoedit /home/cloud/snapCloud/log/error.log
+ ```
+- In case of issues with access permission to /etc/ssl/private/winna.key, grant access as follows:
+ ```bash
+  sudo chmod -R 777 /etc/ssl/
  ```
 ## Creating an Admin User
 
