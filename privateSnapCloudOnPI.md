@@ -644,14 +644,20 @@ To secure your web server with SSL, you can create a self-signed certificate usi
     DNS.1 = snap.winna.er
     DNS.2 = www.snap.winna.er
      ```
-2. **Create a Self-Signed SSL Certificate**:
+2. If you are regenerating expired files;  firrst delete old certificates as follows:
+     ```bash
+     sudo rm /usr/local/share/ca-certificates/winna.crt
+     sudo rm /etc/ssl/certs/winna.crt
+     sudo rm /etc/ssl/private/winna.key
+     ```  
+3. **Create a Self-Signed SSL Certificate**:
    - Generate a self-signed certificate with OpenSSL:
      ```bash
-     sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/winna.key -out /etc/ssl/certs/winna.crt -config /home/cloud/snapCloud/winna_openSSL.conf
+     sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/winna.key -out /etc/ssl/certs/winna.crt -config /home/cloud/snapCloud/winna_openSSL.conf -extensions v3_req
      ```
    - This command will create a self-signed certificate valid for 365 days and store the private key and certificate in the specified locations.
 
-3. **Create a Strong Diffie-Hellman (DH) Group**:
+4. **Create a Strong Diffie-Hellman (DH) Group**:
    - If the folder nginx does not exist under the folder etc, create it as follows:
      ```bash
      mkdir /etc/nginx
@@ -661,7 +667,13 @@ To secure your web server with SSL, you can create a self-signed certificate usi
      sudo openssl dhparam -out /etc/nginx/dhparam.pem 1024
      ```
 
-4. **Add the Self-Signed Certificate to the Trusted List in Ubuntu**:
+5. Adjust the access rights to files and folders related to ssl certificates as follows:
+     ```bash
+     sudo chmod -R 777 /etc/ssl/
+     sudo chmod -R 640 /etc/ssl/private/ssl-cert-snakeoil.key
+     sudo chmod -R 777 /etc/ssl/private/winna.key
+     ```
+6. **Add the Self-Signed Certificate to the Trusted List in Ubuntu**:
    - Copy the certificate to the trusted certificates directory:
      ```bash
      sudo cp /etc/ssl/certs/winna.crt /usr/local/share/ca-certificates/
@@ -671,18 +683,18 @@ To secure your web server with SSL, you can create a self-signed certificate usi
      sudo update-ca-certificates
      ```
 
-5. **Configure Nginx to Use SSL**:
+7. **Configure Nginx to Use SSL**:
    - Refer to the snapCloud fork in Tnegash for the changes that need to be done to the following files:
        - `/home/cloud/snapCloud/nginx.conf.d/extensions.conf`
        - `/home/cloud/snapCloud/nginx.conf.d/http-only.conf`
        - `/home/cloud/snapCloud/nginx.conf.d/ssl-production.conf`
 
-6. **Create a Configuration Snippet with Strong Encryption Settings**:
+8. **Create a Configuration Snippet with Strong Encryption Settings**:
    - Check the snapCloud fork in Tnegash for the changes needed in the file `ssl-shared.conf`:
      ```bash
      sudoedit /home/cloud/snapCloud/nginx.conf.d/ssl-shared.conf
      ```
-7. **Adjusting the Firewall**:
+9.  **Adjusting the Firewall**:
   
    - Check available applications:
      ```bash
@@ -903,7 +915,31 @@ To avoid issues related to HTTPS requests from the private server, make the foll
  ```
 - In case of issues with access permission to /etc/ssl/private/winna.key, grant access as follows:
  ```bash
+  sudo chmod -R 640 /etc/ssl/
+ ```
+ If this does not help grant full access to the folder /etc/ssl/; however, restrict the access to the file /etc/ssl/private/ssl-cert-snakeoil.key as follows:
+
+ ```bash
   sudo chmod -R 777 /etc/ssl/
+  sudo chmod -R 640 /etc/ssl/private/ssl-cert-snakeoil.key
+ ```
+## Install the latest Snap!
+- Go to the github repo https://github.com/jmoenig/Snap
+- On the right hand of the screen, under releases click on the latest release
+- On the following screen click on the release number with the tag symbol
+- On the following screen copy the https link (e.g. https://github.com/jmoenig/Snap.git)
+- Then go to folder /home/cloud/snapCloud/ and clone the repository as follows:
+ ```bash
+  git clone https://github.com/jmoenig/Snap.git
+ ```
+- After that remove the old snap folder and rename the folder Snap to snap (note: new folder has capital S)
+ ```bash
+  sudo rm -rvf /home/cloud/snapCloud/snap
+  sudo mv /home/cloud/snapCloud/Snap sudo rm -rvf /home/cloud/snapCloud/snap
+ ```
+- Restart snap! Cloud 
+ ```bash
+ sudo service snapcloud_daemon restart
  ```
 ## Creating an Admin User
 
