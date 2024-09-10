@@ -79,7 +79,7 @@ local locale = {
     welcome_logged_in = "Welcome, @1!", -- @1 becomes the current user username
     snap_description = "Snap@1 is a broadly inviting programming language for kids and adults that's also a platform for serious study of computer science.",
     -- Buttons
-    run_now = "Run Snap@1 Now",
+    run_now = "Run @1 Now",
     -- examples and manual already translated in Footer
     -- Curated Collections
     featured = "Featured Projects",
@@ -188,7 +188,7 @@ local locale = {
     -- Buttons
     new_collection = "New Collection",
     -- New collection dialog
-    collection_name = "Collection name?",
+    collection_name = "Collection name",
     collection_by_thumb = "by @1", -- @1 is the author's username
 
     -- Collection page
@@ -248,8 +248,8 @@ local locale = {
     -- User profile
     -- ============
     profile_title = "@1's profile", -- @1 becomes the user's username
-    join_date = "Joined in", -- date of user creation follows
-    delete_date = "Deleted in", -- date of user deletion follows
+    join_date = "Joined", -- date of user creation follows
+    delete_date = "Deleted", -- date of user deletion follows
     email = "Email",
     role = "Role",
     teacher = "Teacher",
