@@ -119,7 +119,7 @@ For details refer to [snapCloud Installation Guide](https://github.com/snap-clou
     sudoedit prereqs.sh
     ```
 
-    Add the following lines to the file:
+    - To enable installation in Raspberry PI (arm64 architecture) change the url http://openresty.org/package/ubuntu as shown below:
     ```bash
     apt-get -y install --no-install-recommends wget gnupg ca-certificates
     wget -O - https://openresty.org/package/pubkey.gpg | apt-key add -
@@ -127,7 +127,15 @@ For details refer to [snapCloud Installation Guide](https://github.com/snap-clou
     apt-get update
     apt-get -y install openresty
     ```
+    - Replace snapcloud-dev-0.rockspec with its absolute path as shown below. Otherwise, the file will not be found
+    ```bash
+     /home/snapCloud/snapcloud-dev-0.rockspec
+     ```
 4. Install Snap! Cloud
+   Execute the shell script to install the Snap! Cloud
+   ```
+   /home/snapCloud/bin/prereqs.sh
+   ```
    Refer to install.md for installation details
 ### 2. Resolve Dependencies
 
