@@ -14,4 +14,5 @@
     <a class="btn btn-outline-danger" href="ip_admin"><%- locale.get('suspicious_ips') %></a>
     <% end %>
     <a class="btn btn-outline-danger" href="flags"><%- locale.get('flagged_projects') %></a>
+    <a class="btn btn-outline-primary" href="/show_email"><%- locale.get('show_email') %></a>
 </div>

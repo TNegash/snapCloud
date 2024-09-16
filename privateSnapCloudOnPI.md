@@ -214,6 +214,7 @@ For detailes refer to [configuration of postgresql](https://ubuntu.com/server/do
 5. **Create DB Artifacts in the snapcloud Database**:
     - Run the following command to create the necessary database artifacts (assuming your SQL files are located at `/home/cloud/snapCloud/db/schema.sql`):
         ```bash
+        sudo su cloud
         psql -U cloud -d snapcloud -a -f /home/cloud/snapCloud/db/schema.sql
         ```
     - Check whether the schema with the tables is create by executing the command
@@ -733,7 +734,8 @@ To secure your web server with SSL, you can create a self-signed certificate usi
      sudo ufw app update nginx
      sudo ufw allow 'Nginx Full'
      ```
- **Note** For the pilot project servers the **firewall will remain deactivated**. To deactive the firewall execute the following command
+ **Note** For the pilot project servers the **firewall will remain deactivated**. 
+   - To deactive the firewall execute the following command
      ```bash
         sudo ufw disable
      ```
@@ -853,8 +855,7 @@ To avoid issues related to HTTPS requests from the private server, make the foll
      ```   
 - Add the following lines to the file views/admin.etlua in line 9 ff
      ```html
-      <a class="show-email pure-button"
-       href="/show_email"><%- locale.get('show_email') %></a>
+      <a class="btn btn-outline-primary" href="/show_email"><%- locale.get('show_email') %></a>
      ```   
 - Add the folling line in 403 of the following locales/en.lua
      ```lua
