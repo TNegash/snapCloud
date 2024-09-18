@@ -97,7 +97,7 @@ config({'test'}, {
 config({'production', 'staging'}, {
     use_daemon = 'on',
     port = os.getenv('PORT') or 80,
-    mail_smtp_port = 587,
+    mail_smtp_port = 1025,
     dns_resolver = '192.168.0.230 ipv6=off',
    
    secret = os.getenv('SESSION_SECRET_BASE'),

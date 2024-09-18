@@ -842,6 +842,17 @@ To avoid issues related to HTTPS requests from the private server, make the foll
      sudo service snapcloud_daemon start
      ```
 ## E-Mail handling
+- Install maildev
+     ```bash
+     sudo apt-get install npm
+     sudo npm install -g maildev
+     ```
+- Check that maildev is installed properly by running the following command from the terminal
+     ```bash
+     maildev
+     # Check encoding and decoding resolution issue at the buttom of this chapter
+    ```
+
 - Add the following coding in lines 314 ff of the file site.lua
      ```lua
      app:get('/show_email', capture_errors(function (self)
@@ -865,7 +876,27 @@ To avoid issues related to HTTPS requests from the private server, make the foll
      ```sh
      type maildev &>/dev/null && maildev --incoming-user cloud --incoming-pass cloudemail
      ``` 
-  
+- Change the config name in email.lua from development to production in line 29
+     ```lua
+    starttls = config._name ~= 'production',
+     ```
+- Change the SMTP port from 587 to 1025 in config.lua as follows in line 100:
+     ```lua
+     mail_smtp_port = 1025,
+    ```      
+- Resolve issue with encoder and decoder by making the following changes to javascript files with the issues
+     ```js
+    //  write this code
+    "use strict";
+    var util= require('util');
+    const utf8Encoder = new util.TextEncoder();
+    const utf8Decoder = new util.TextDecoder("utf-8", { ignoreBOM: true });
+    // in place of
+    "use strict";
+    const utf8Encoder = new TextEncoder();
+    const utf8Decoder = new TextDecoder("utf-8", { ignoreBOM: true });
+     ```
+
 ## Adding diagrams to the slide show 
 - Copy the diagram to the folder /static/img/
   
@@ -875,7 +906,12 @@ To avoid issues related to HTTPS requests from the private server, make the foll
           <img src="/static/img/snap-tigrinya.png" style="width:100%">
         </div>
      ```      
-
+- Add the following  coding to the file views/partials/slideshow_bs.etlua in line 31 ff
+     ```lua  
+      <div class="carousel-item active">
+        <img src="/static/img/snap-tigrinya.png" alt="Snap! - Tigrinya">
+      </div>
+     ```   
 ## Add environment variables for server runtime configuration
 - Add snapCloud specific environment variables execute the following commands:
     ```bash
