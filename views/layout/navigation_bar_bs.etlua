@@ -19,6 +19,7 @@
             <%- locale.get('explore') %>
           </a>
         </li>
+        <!--
         <li class="nav-item">
           <a class="nav-link forum" href="https://forum.snap.berkeley.edu/">
             <%- locale.get('forum') %>
@@ -29,6 +30,7 @@
             Snap<em>!</em>Con
           </a>
         </li>
+        -->
       </ul>
       <span class="navbar-nav me-auto navbar-nav-scroll">
           <form role="search" action="search">
