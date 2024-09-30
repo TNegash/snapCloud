@@ -1,0 +1,133 @@
+<h1 localizable>Snap<em>!</em> Courses</h1>
+<div class="Courses"></div>
+<h2>Get Coding with Snap</h2>
+<div class="GetCodingwithSnap">
+<h3>Overview</h3>
+<div>
+  <p>We all use software practically every day, often without even realizing it! As our lives are transformed by the digital age, programming is becoming an important life skill. In this course, you’ll see how anyone can start building their own programs using Snap!, a block-based, open-source programming language. Its colorful, intuitive interface makes learning fast and fun, even for the most technically challenged! If you’ve already done some programming in Scratch, you’ll feel instantly at home. If not, don’t worry! Using animations, games, and artwork, this course will bring out the artist – and computer scientist – in you.<br>Learners young and old, experienced and novice alike, will soon discover why Snap! is becoming the programming language of choice for researchers and teachers of computer science around the world.
+     </p>
+</div>
+</div>
+<div class="GetCodingwithSnap_LearningObjectives"><h3>Learning objectives</h3><p><p>After completing this course, business users, consultants, and developers will be able to:&nbsp;&nbsp;</p>
+<ul>
+<li>Navigate the interface of the Snap! programming language.&nbsp;</li>
+<li>Create sprites, costumes, and artwork using Snap!.&nbsp;</li>
+<li>Learn the basic concepts of computer science like loops, conditionals, variables, and custom functions.&nbsp;</li>
+<li>Utilize cloning and recursion in Snap!.</li>
+</ul></p></div>
+<ul>
+    <li>
+   <h4>Week 1:</h4>
+            <table style="border: 1px solid;">
+                <tr>
+                    <th>Unit Number</th> 
+                    <th>Description</th> 
+                    <th>Transcript</th> 
+                    <th>Video</th> 
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Create Your Own Virtual Flower Garden</td>
+                    <td>  <a href="static/doc/AutomatenGrammatiken.pdf"
+                             >Unit 1 Transcript</a> </td>
+                    <td>  <a href="static/doc/AutomatenGrammatiken.pdf"
+                             >Unit 1 Video</a> </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Getting Edgy with Polygons</td>
+                    <td>  <a href="static/doc/AutomatenGrammatiken.pdf"
+                             >Unit 2 Transcript</a> </td>
+                    <td>  <a href="static/doc/AutomatenGrammatiken.pdf"
+                             >Unit 2 Video</a> </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Spiraling Around the For Loop</td>
+                    <td>  <a href="static/doc/AutomatenGrammatiken.pdf"
+                             >Unit 3 Transcript</a> </td>
+                    <td>  <a href="static/doc/AutomatenGrammatiken.pdf"
+                             >Unit 3 Video</a> </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Be Reflective Mirror Images</td>
+                    <td>  <a href="static/doc/AutomatenGrammatiken.pdf"
+                             >Unit 4 Transcript</a> </td>
+                    <td>  <a href="static/doc/AutomatenGrammatiken.pdf"
+                             >Unit 4 Video</a> </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Visit the Star fish My First Interactive Game</td>
+                    <td>  <a href="static/doc/AutomatenGrammatiken.pdf"
+                             >Unit 5 Transcript</a> </td>
+                    <td>  <a href="static/doc/AutomatenGrammatiken.pdf"
+                             >Unit 5 Video</a> </td>
+                </tr>
+            </table>
+    </li>
+ <li>
+   <h4>Week 2 :</h4>
+            <table style="border: 1px solid;">
+                <tr>
+                    <th>Unit Number</th> 
+                    <th>Description</th> 
+                    <th>Transcript</th> 
+                    <th>Video</th> 
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Building with Blocks Eliminating Chaos</td>
+                    <td>  <a href="static/doc/AutomatenGrammatiken.pdf"
+                             >Unit 1 Transcript</a> </td>
+                    <td>  <a href="static/doc/AutomatenGrammatiken.pdf"
+                             >Unit 1 Video</a> </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Rumour Has It Building a Function</td>
+                    <td>  <a href="static/doc/AutomatenGrammatiken.pdf"
+                             >Unit 2 Transcript</a> </td>
+                    <td>  <a href="static/doc/AutomatenGrammatiken.pdf"
+                             >Unit 2 Video</a> </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Cloning</td>
+                    <td>  <a href="static/doc/AutomatenGrammatiken.pdf"
+                             >Unit 3 Transcript</a> </td>
+                    <td>  <a href="static/doc/AutomatenGrammatiken.pdf"
+                             >Unit 3 Video</a> </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Recursion How to Grow a Tree</td>
+                    <td>  <a href="static/doc/AutomatenGrammatiken.pdf"
+                             >Unit 4 Transcript</a> </td>
+                    <td>  <a href="static/doc/AutomatenGrammatiken.pdf"
+                             >Unit 4 Video</a> </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Fireworks Cloning Your Recursion</td>
+                    <td>  <a href="static/doc/AutomatenGrammatiken.pdf"
+                             >Unit 5 Transcript</a> </td>
+                    <td>  <a href="static/doc/AutomatenGrammatiken.pdf"
+                             >Unit 5 Video</a> </td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Putting It All Together Making It Pop</td>
+                    <td>  <a href="static/doc/AutomatenGrammatiken.pdf"
+                             >Unit 6 Transcript</a> </td>
+                    <td>  <a href="static/doc/AutomatenGrammatiken.pdf"
+                             >Unit 6 Video</a> </td>
+                </tr>
+            </table>
+    </li>
+      <h4>Additional Information</h4>
+        <li><a href="static/doc/AutomatenGrammatiken.pdf"
+                             >Whats New In Snap</a>
+                             </li>
+</ul>
