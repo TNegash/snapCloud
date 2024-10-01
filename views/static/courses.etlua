@@ -1,29 +1,39 @@
+                                                      
+<link rel="stylesheet" href="/static/style/courses.css">
 <h1 localizable>Snap<em>!</em> Courses</h1>
 <div class="Courses"></div>
 <h2>Get Coding with Snap</h2>
 <div class="GetCodingwithSnap">
 <h3>Overview</h3>
 <div>
-  <p>We all use software practically every day, often without even realizing it! As our lives are transformed by the digital age, programming is becoming an important life skill. In this course, you’ll see how anyone can start building their own programs using Snap!, a block-based, open-source programming language. Its colorful, intuitive interface makes learning fast and fun, even for the most technically challenged! If you’ve already done some programming in Scratch, you’ll feel instantly at home. If not, don’t worry! Using animations, games, and artwork, this course will bring out the artist – and computer scientist – in you.<br>Learners young and old, experienced and novice alike, will soon discover why Snap! is becoming the programming language of choice for researchers and teachers of computer science around the world.
+  <p>We all use software practically every day, often without even realizing it! As our lives are transformed by the digital age, programming is becoming an important life skill. >
      </p>
 </div>
 </div>
-<div class="GetCodingwithSnap_LearningObjectives"><h3>Learning objectives</h3><p><p>After completing this course, business users, consultants, and developers will be able to:&nbsp;&nbsp;</p>
+<div class="GetCodingwithSnap_LearningObjectives"><h3>Learning objectives</h3>
+<p>
+<p>After completing this course, business users, consultants, and developers will be able to:&nbsp;&nbsp;</p>
 <ul>
 <li>Navigate the interface of the Snap! programming language.&nbsp;</li>
 <li>Create sprites, costumes, and artwork using Snap!.&nbsp;</li>
 <li>Learn the basic concepts of computer science like loops, conditionals, variables, and custom functions.&nbsp;</li>
 <li>Utilize cloning and recursion in Snap!.</li>
-</ul></p></div>
+</ul>
+</p>
+</div>
+<div class="GetCodingwithSnap_LearningObjectives">
+<h3>Get Coding with Snap Courses</h3>
+<p>
+
 <ul>
     <li>
    <h4>Week 1:</h4>
-            <table style="border: 1px solid;">
+           <table style="border: 1px solid;">
                 <tr>
-                    <th>Unit Number</th> 
-                    <th>Description</th> 
-                    <th>Transcript</th> 
-                    <th>Video</th> 
+                    <th>Unit Number</th>
+                    <th>Description</th>
+                    <th>Transcript</th>
+                    <th>Video</th>
                 </tr>
                 <tr>
                     <td>1</td>
@@ -71,10 +81,10 @@
    <h4>Week 2 :</h4>
             <table style="border: 1px solid;">
                 <tr>
-                    <th>Unit Number</th> 
-                    <th>Description</th> 
-                    <th>Transcript</th> 
-                    <th>Video</th> 
+                    <th>Unit Number</th>
+                    <th>Description</th>
+                    <th>Transcript</th>
+                    <th>Video</th>
                 </tr>
                 <tr>
                     <td>1</td>
@@ -126,8 +136,14 @@
                 </tr>
             </table>
     </li>
-      <h4>Additional Information</h4>
-        <li><a href="static/doc/AutomatenGrammatiken.pdf"
-                             >Whats New In Snap</a>
-                             </li>
 </ul>
+</p>
+</div>
+<div class="GetCodingwithSnap_Addendum"><h3>Additional Information to Get Coding with Snap</h3>
+<p>
+
+<a href="static/doc/AutomatenGrammatiken.pdf"
+                             >Whats New In Snap</a>
+
+</p>
+</div>
