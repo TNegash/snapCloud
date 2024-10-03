@@ -1,30 +1,110 @@
 html {
-    height: 100%;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    margin: var(--navbar-height) 0 0 0;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  table {
+  font-family: Arial, sans-serif;
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: var(--navbar-height) 0 0 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.table-of-content {
+  margin-bottom: 40px;
+}
+
+.table-of-content .toc-heading {
+  font-size: 24px;
+  font-weight: bold;
+  color: #003049;
+}
+
+.table-of-content a {
+  text-decoration: none;
+  color: #18445f;
+}
+
+.table-of-content ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.table-of-content .heading {
+  font-size: 14px;
+  font-weight: bold;
+  color: #003049;
+  text-transform: uppercase;
+}
+
+.table-of-content .sub-heading1 {
+  font-size: 16px;
+  padding-left: 4px;
+}
+
+.table-of-content .sub-heading1 {
+  font-size: 16px;
+  padding-left: 8px;
+}
+
+.table-of-content ul li {
+  margin: 16px 0;
+}
+
+.table-of-content .heading::before{
+  content: "";
+  position: absolute;
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  background: #219ebc;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.table-of-content .sub-heading1::before{
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 8px;
+  background: #219ebc;
+  left: -17px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.table-of-content .sub-heading2::before{
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 4px;
+  background: #219ebc;
+  left: -17px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom : 20px;
-  }
-  
-  table, th, td {
+  margin-bottom: 20px;
+}
+
+table,
+th,
+td {
   border: 1px solid #ddd;
-   }
-  
-  th, td {
+}
+
+th,
+td {
   padding: 8px;
   text-align: left;
-   }
-  
-  th { background-color: #f2f2f2; }
-  
-  
+}
+
+th {
+  background-color: #f2f2f2;
+}
