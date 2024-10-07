@@ -12,6 +12,7 @@
       </section>
       <section class="col-md col-6 col-sm-4 ">
         <h2><%- locale.get('t_learning') %></h2>
+        <p><a href="/courses"><%- locale.get('courses') %></a></p>
         <p><a href="/examples"><%- locale.get('examples') %></a></p>
        <% --[[ <p><a href="/events"><%- locale.get('events') %></a></p> ]]-- %>
         <p><a href="/all_totms"><%- locale.get('totms_title') %></a></p>

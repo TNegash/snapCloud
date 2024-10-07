@@ -46,7 +46,7 @@ app.layout = require 'views.layout'
 
 local static_pages = {
     'about', 'bjc', 'blog', 'coc', 'contact', 'credits', 'dmca', 'extensions',
-    'materials', 'mirrors', 'offline', 'partners', 'privacy', 'research',
+    'materials', 'courses', 'mirrors', 'offline', 'partners', 'privacy', 'research',
     'snapinator', 'snapp', 'source', 'tos'
 }
 

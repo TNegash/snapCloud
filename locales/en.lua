@@ -66,6 +66,7 @@ local locale = {
     offline = "Offline Version",
     extensions = "Extensions",
     old_snap = "(old Snap@1)",
+    courses = "Courses",
     -- forum already translated in top navigation bar
     contact = "Contact Us",
     mirrors = "Mirrors",
