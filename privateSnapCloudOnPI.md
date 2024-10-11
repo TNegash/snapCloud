@@ -94,6 +94,26 @@
     
     For more details on increasing swap memory, refer to  [Ask Ubuntu post](https://askubuntu.com/questions/178712/how-to-increase-swap-space).
 
+### Avoid xubuntu-desktop induced screen Freezing
+This is not relevant for raspberry Pi installation
+  - Uninstall gnome-screensaver
+     ```bash
+      sudo apt-get remove gnome-screensaver
+     ```
+  - Install screensaver
+     ```bash
+      sudo apt-get update && sudo apt-get install xscreensaver && sudo apt-get remove light-locker
+     ```
+  - Configure screensaver
+    To configure the screensaver follow the menu path below:
+     settings -> screensaver
+  - Add to startup
+    The screensaver has to startup in the background each time the user login in to the system.
+    To achieve this execute the following command:
+     ```bash
+     xscreensaver -nosplash
+    ```
+    Alternatively go to Settings -> Session and startup
 
 ## Install Snap! Cloud
 
@@ -283,13 +303,13 @@ For detailes refer to [configuration of postgresql](https://ubuntu.com/server/do
     to:
 
     ```bash
-    runuser -l cloud -c "(cd /home/cloud/snapCloud; ./start.sh &)"
+    runuser -l cloud -c "(cd /home/snapCloud; ./start.sh &)"
     ```
 
 2. Add the user `cloud` to the `sudoers` with full access. You can use the following command:
 
     ```bash
-    adduser username sudo
+    adduser cloud sudo
     ```
 
     Alternatively, you can directly add the user `cloud` to the file `/etc/sudoers` by executing the following command and adding an entry similar to `root`:
@@ -993,7 +1013,7 @@ To avoid issues related to HTTPS requests from the private server, make the foll
 - After that remove the old snap folder and rename the folder Snap to snap (note: new folder has capital S)
  ```bash
   sudo rm -rvf /home/cloud/snapCloud/snap
-  sudo mv /home/cloud/snapCloud/Snap sudo rm -rvf /home/cloud/snapCloud/snap
+  sudo mv /home/cloud/snapCloud/Snap /home/cloud/snapCloud/snap
  ```
 - Restart snap! Cloud 
  ```bash
@@ -1145,3 +1165,15 @@ To get detailed information about the command execute
  ```bash
     systemctl -l status snapcloud_daemon
  ```
+ 
+### Issues with Firefox (unknown hot or host not found)
+
+  - In Firefox, type ***about:config*** in the address bar
+  - Search for ***network.cors_preflight.allow_client_cert***
+  - Change the value from ***false*** to ***true***
+  
+  Alternatively
+
+go to the firefox page: ***about:config***
+then search for enable ***security.enterprise_roots.enabled***
+click on it a set it to ***true***

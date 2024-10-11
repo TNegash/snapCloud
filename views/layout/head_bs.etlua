@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="/static/style/classes.css">
 <link rel="stylesheet" href="/static/style/layout.css">
 <link rel="stylesheet" href="/static/style/project.css">
+<link rel="stylesheet" href="/static/style/courses.css">
 
 <!-- JS: Required to load the page -->
 <script type="text/javascript" src="/static/js/locale.js"></script>
@@ -25,5 +26,5 @@
 <script type="text/javascript" src="/snap/src/cloud.js"></script>
 <script type="text/javascript" src="/static/js/base.js"></script>
 <script>cloud = new Cloud(); cloud.url = location.origin;</script>
-
+<script type="text/javascript" src="/static/js/courses.js"></script>
 <!-- JS that can be delayed is loaded in the layout.delayed_scripts -->
