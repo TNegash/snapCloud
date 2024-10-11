@@ -506,7 +506,7 @@ sudo ufw allow Bind9
 
 12. **Configure the `snapCloud` server to use the DNS server.**
 
-If the file `/etc/netplan/50-cloud-init.yaml` is not available, create it and add the following configuration:
+- If the file `/etc/netplan/50-cloud-init.yaml` is not available, create it and add the following configuration:
 
 ```yaml
 # This file is generated from information provided by the datasource. Changes
@@ -531,8 +531,21 @@ network:
                     password: "<wifi password>"
             dhcp4: true
 ```
-
-13. **Then, apply and test the changes by executing the following commands:**
+***Note*** Wlan configuration is available in the directory /home/winna/wlanConfig
+ - ***Wifi Issues:*** If you can't find wifi interface device names (e.g. wlan0 or wlp3s0) when you execute the command **ip a**. Follow the steps below:
+     - First find out your kernel version with the command 
+          ```bash   
+          uname -r 
+          ```
+     - Note down the kernel version. (example: 6.5.0-44-generic), then run the following below (and   replace the numbers with your kernel version).
+          ```bash   
+            sudo apt update 
+            sudo apt install --reinstall linux-generic
+            sudo apt install linux-modules-extra-6.5.0-44-generic
+          ```
+     - Reboot the the server   
+      
+1.  **Then, apply and test the changes by executing the following commands:**
 
 ```bash
 sudo netplan apply
