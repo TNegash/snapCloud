@@ -1165,7 +1165,15 @@ To get detailed information about the command execute
  ```bash
     systemctl -l status snapcloud_daemon
  ```
- 
+### System Program Problem Detected
+   - The system crash log can be found under the following folder:
+   ```
+    /var/crash
+   ```
+   - Stop ***system programm problem detected*** popup 
+    ```bash
+    sudo rm /var/crash/*
+   ```
 ### Issues with Firefox (unknown hot or host not found)
 
   - In Firefox, type ***about:config*** in the address bar
@@ -1177,3 +1185,38 @@ To get detailed information about the command execute
 go to the firefox page: ***about:config***
 then search for enable ***security.enterprise_roots.enabled***
 click on it a set it to ***true***
+
+## Access Server from Windows
+
+  1. Install the xrdp package on Ubuntu
+      ```bash
+         sudo apt update
+         sudo apt install xrdp
+      ```
+  2. In order to make sure that the xrdp service starts up automatically upon future system reboots, we can enable it in systemd.
+      ```bash
+        sudo systemctl enable --now xrdp
+      ```
+  3. The default port for Remote Desktop Protocol is 3389. Therefore it will be necessary to allow this port through the firewall on the Ubuntu system. ***Note*** Firewall is disabled in the server; therefore this step is optional.
+      ```bash
+       sudo ufw allow from any to any port 3389 proto tcp
+      ```
+  4. The IP of the server is needed for connection from windows:
+     - For local connection 
+         ```bash
+         ip a
+         ```
+     - For connection over the internet
+         ```bash
+         ip a
+         ```         
+  5. To avoid immediate disconnection to the server from windows execute the following steps:
+     - Install the x-session-manager xfce4
+         ```bash
+         sudo apt install xfce4
+         ```  
+     - Changing the session manager to xfce4 in this way
+         ```bash
+         sudo update-alternatives --config x-session-manager
+         ```  
+         Press <enter> to keep the current choice[*], or type selection number:
