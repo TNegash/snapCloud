@@ -131,6 +131,11 @@
               <% end %>
           </ul>
         </li>
+        <li class="nav-item eritrea">
+            <a class="eritrea">
+              <img src="/static/img/Flag_of_Eritrea.png"  height="30">
+            </a>
+        </li>
       </ul>
     </div>
   </div>

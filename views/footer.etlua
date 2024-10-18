@@ -4,25 +4,26 @@
         <section class="pure-u-1-5">
             <h2 class="footer-heading"><%- locale.get('t_about') %></h2>
             <p><a href="/about"><%- locale.get('about', '<em>!</em>') %></a></p>
-            <p><a href="/blog"><%- locale.get('blog') %></a></p>
+                  <% --[[ <p><a href="/blog"><%- locale.get('blog') %></a></p> ]]-- %>
             <p><a href="/credits"><%- locale.get('credits') %></a></p>
             <p><a href="/partners"><%- locale.get('partners') %></a></p>
-            <p><a href="/source" ><%- locale.get('source') %></a></p>
+              <% --[[ <p><a href="/source" ><%- locale.get('source') %></a></p> ]]-- %>
         </section>
         <section class="pure-u-1-5">
             <h2 class="footer-heading"><%- locale.get('t_learning') %></h2>
+             <p><a href="/courses"><%- locale.get('courses') %></a></p>
             <p><a href="/examples"><%- locale.get('examples') %></a></p>
-            <p><a href="/events"><%- locale.get('events') %></a></p>
+          <% --[[  <p><a href="/events"><%- locale.get('events') %></a></p> ]]-- %>
             <p><a href="/all_totms"><%- locale.get('totms_title') %></a></p>
             <p><a href="/snap/help/SnapManual.pdf" target="_blank"
                 ><%- locale.get('manual') %></a></p>
-            <p><a href="/materials"><%- locale.get('materials') %></a></p>
+            <% --[[   <p><a href="/materials"><%- locale.get('materials') %></a></p>
             <p><a href="/bjc"><%- locale.get('bjc') %></a></p>
             <p><a href="/research"><%- locale.get('research') %></a></p>
             <p><a href="https://snapwiki.miraheze.org"
-                ><%- locale.get('wiki') %></a></p>
+                ><%- locale.get('wiki') %></a></p> ]]-- %>
         </section>
-        <section class="pure-u-1-5">
+       <% --[[      <section class="pure-u-1-5">
             <h2 class="footer-heading"><%- locale.get('t_tools') %></h2>
             <p><a href="/offline"><%- locale.get('offline') %></a></p>
             <p><a href="/extensions"><%- locale.get('extensions') %></a></p>
@@ -38,7 +39,7 @@
                 href="https://forum.snap.berkeley.edu/"><%- locale.get('forum') %></a></p>
             <p><a href="/contact"><%- locale.get('contact') %></a></p>
             <p><a href="/mirrors"><%- locale.get('mirrors') %></a></p>
-        </section>
+        </section> ]]-- %>
         <section class="pure-u-1-5">
             <h2 class="footer-heading"><%- locale.get('t_legal') %></h2>
             <p><a href="/dmca"><%- locale.get('dmca') %></a></p>

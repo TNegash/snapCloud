@@ -781,7 +781,7 @@ app:match(
                     '<p>Your account <strong>' .. user.username ..
                     '</strong> has been verified.</p>' ..
                     '<p>Thank you!</p>' ..
-                    '<p><a href="https://snap.berkeley.edu/">' ..
+                    '<p><a href="https://snap.winna.er/">' ..
                     'Take me to Snap<i>!</i></a></p>'
                 )
             end

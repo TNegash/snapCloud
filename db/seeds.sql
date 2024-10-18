@@ -14,7 +14,8 @@ VALUES
   (7, 'Fractals', 519956, NOW(), NOW(), 'A collection of fractals curated by the Snap! team.', 't', NOW(),'t', NOW(), NULL, '{}'),
   (8, 'Art Projects', 519956, NOW(), NOW(), 'A collection of art projects curated by the Snap! team.','t', NOW(), 't', NOW(), NULL, '{}'),
   (9, 'Science Projects', 519956, NOW(), NOW(), 'A collection of science-related projects curated by the Snap! team.', 't', NOW(), 't', NOW(), NULL, '{}'),
-  (37, 'Animations', 519956, NOW(), NOW(), '', 't', NOW(), 't', NOW(), NULL, '{}'),
-  (67, 'Simulations', 519956, NOW(), NOW(), 'Simulating real-world behavior in Snap!.', 'f', NULL, 'f', NULL, NULL, '{}'),
-  (390, 'Snap!Con 2019', 519956, NOW(), NOW(), 'Projects that we all demoed, shared or developed during Snap!Con 2019 in Heidelberg.', 't', NOW(), 't', NOW(), NULL, '{}')
+  (37, 'Animations', 519956, NOW(), NOW(), 'A collection of science-related projects', 't', NOW(), 't', NOW(), NULL, '{}'),
+  (67, 'Simulations', 519956, NOW(), NOW(), 'Simulating real-world behavior in Snap!.', 't', NULL, 'f', NULL, NULL, '{}'),
+  (77, 'Computer Science', 519956, NOW(), NOW(), 'A collection of computer science projects', 't', NOW(), 't', NOW(), NULL, '{}'),
+  (87, 'Maths', 519956, NOW(), NOW(), 'A collection of maths projects', 't', NOW(), 't', NOW(), NULL, '{}')
  ON CONFLICT DO NOTHING;
