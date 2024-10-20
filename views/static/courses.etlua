@@ -70,7 +70,7 @@
                                                 >EN</a>            
                                                 ) &nbsp;</p>  
                                            <P> &nbsp; Video( <a href="/static/eriresources/workshops/Workshop-Time-Lens/FromMediaComputationToDataScience-Week1Unit1-LookBack-APhotographicTimeMachine.mp4"
-                                                >Time Lens(EN)</a> ) &nbsp;</p>
+                                                >EN</a> ) &nbsp;</p>
                                             <P> <a href="https://snap.winna.er/snap/snap.html#present:Username=admin&ProjectName=TimeLensStarter&editMode&noRun"
                                                 >Time Lens Template Simple</a>   
                                                 </p>
@@ -92,16 +92,16 @@
                                     <td style="word-wrap: break-word;">
                                     “Schotter” (German for gravel) is an iconic piece of early computer art that was created by German computer scientist Georg Nees. It’s made from a grid of squares that’s getting increasingly disorganised. In this activity, you'll recode your own version of Schotter</td>
                                     <td> <P> &nbsp; PDF( <a href="/static/eriresources/workshops/Workshop-Snap-Art/Snap Art Primer.pdf"
-                                                >Snap! Art Primer(EN)</a>            
+                                                >Snap! Art Primer</a>            
                                                 ) &nbsp;</p>  
-                                        <P> &nbsp; PDF( <a href="/static/eriresources/workshops/Workshop-Snap-Art/schotter/Art and Code Schotter-BasicProject.pdf"
-                                                >Art and Code Schotter-BasicProject(EN)</a>            
+                                        <P> &nbsp; PDF( <a href="/static/eriresources/workshops/Workshop-Snap-Art/Schotter/ArtandCodeSchotterBasicProject.pdf"
+                                                >Art and Code Schotter-BasicProject</a>            
                                                 ) &nbsp;</p>  
-                                        <P> &nbsp; PDF( <a href="/static/eriresources/workshops/Workshop-Snap-Art/schotter/Art and Code Schotter-Extensions.pdf"
-                                                >Art and Code Schotter-Extensions(EN)</a>            
+                                        <P> &nbsp; PDF( <a href="/static/eriresources/workshops/Workshop-Snap-Art/Schotter/ArtandCodeSchotterExtensions.pdf"
+                                                >Art and Code Schotter-Extensions</a>            
                                                 ) &nbsp;</p>  
-                                           <P> &nbsp; Video( <a href="/static/eriresources/workshops/Workshop-Snap-Art/schotter/Art and Code - An interactive exploration of Schotter.mp4"
-                                                >An interactive exploration of Schotter(EN)</a> ) &nbsp;</p>                       
+                                           <P> &nbsp; Video( <a href="/static/eriresources/workshops/Workshop-Snap-Art/Schotter/ArtandCodeAninteractiveexplorationofSchotter.mp4"
+                                                >An interactive exploration of Schotter</a> ) &nbsp;</p>                       
                                     </td>   
                                     <td>
                                     <P> &nbsp; <a href="https://snap.winna.er/snap/snap.html#present:Username=admin&ProjectName=Schotter&editMode&noRun"
@@ -120,10 +120,10 @@
                                     <td style="word-wrap: break-word;">
                                     The Snap!GPT project consists of three parts: Example data (in this case, fairy tales) is loaded and dissected to create a language model, a kind of database. Subsequently, a function is developed that searches for an entry (here: a word) from the data model that plausibly continues an existing sequence (here: previous words). Finally, the entire process can be made interactive for users.</td>
                                     <td> <P> &nbsp; PDF( <a href="/static/eriresources/workshops/Snap!GPT/Snapgpt.pdf"
-                                                >Snap!GPT(EN)</a>            
+                                                >Snap!GPT</a>            
                                                 ) &nbsp;</p>                          
                                            <P> &nbsp; Video( <a href="/static/eriresources/workshops/Snap!GPT/Robolot 2024 Building Blocks for Generative AI with Snap!.mov"
-                                                >Building Blocks for Generative AI with Snap!(EN)</a> ) &nbsp;</p>    
+                                                >Building Blocks for Generative AI with Snap!</a> ) &nbsp;</p>    
                                              <P> <a href="https://snap.winna.er/snap/snap.html#present:Username=admin&ProjectName=SnapGPT%20%2d%20Template&editMode&noRun"
                                                 >Snap!GPT Template </a>   
                                                 </p>
@@ -727,7 +727,7 @@
                                                     >Unit 4 Exercise</a> </td>  
                                     <td>  <a href="/static/eriresources//ExploringtheWorldofAI/Week2/Week2-Slides.pdf"
                                                     >Unit 4 Transcript</a> </td>
-                                    <td>  <a href="https://snap.winna.er/snap/snap.html#present:Username=admin&ProjectName=SnAIp%2dB%2dTask%2den&editMode&noRun" download
+                                    <td>  <a href="https://snap.winna.er/snap/snap.html#present:Username=admin&ProjectName=SnAIpTask&editMode&noRun"
                                                 >To follow along with the video, open the following template that creates random clusters of gold sources:</a> 
                                     </td>
                                 </tr>
