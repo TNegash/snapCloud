@@ -3,6 +3,12 @@
 <div class="content-container">
 <h1 id="learning_materials" localizable>Snap<em>!</em> Learning Materials</h1>
 <div class="learning-contents">
+    <h2 class="toc-h2"id="snap_crash_Course">Snap! Crash Course</h2>
+    <div>
+    <p>
+    <a href="bjc/crash_course.html">The Beauty and Joy of Computing: Snap! Crash Course</a> is an engaging and accessible introduction to computer science. Using the visual programming language Snap!, it highlights the creative and aesthetic aspects of computing, making it perfect for beginners to quickly grasp key concepts while enjoying the process. It's an excellent starting point for anyone interested in exploring the world of technology.
+    </p>
+    </div>
     <h2 class="toc-h2"id="snap_beginners_get_excited">Snap! Beginners: Get Excited</h2>
      <div>
         <p>

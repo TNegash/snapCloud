@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-WK0EW5GQRZ&amp;l=dataLayer&amp;cx=c&amp;gtm=45je4bk0za200"></script>
+    <script src="https://browser.sentry-cdn.com/7.120.0/bundle.tracing.replay.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./crash_course_files/loader.js"></script>
+    <link href="./crash_course_files/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="./crash_course_files/default.css" type="text/css" rel="stylesheet">
+    <link href="./crash_course_files/bjc.css" type="text/css" rel="stylesheet">
+    <link href="./crash_course_files/edcdevtech-headerfooter.css" type="text/css" rel="stylesheet">
+    <script src="./crash_course_files/jquery-3.7.0.slim.min.js" type="text/javascript"></script>
+    <script src="./crash_course_files/library.js" type="text/javascript"></script>
+    <script src="./crash_course_files/multiplechoice.js" type="text/javascript"></script>
+    <script src="./crash_course_files/f55a4cd65a8b48fd99e8247c6a5e6c2d.min.js" type="text/javascript"></script>
+    <title>Beauty and Joy of Computing: Snap! Crash Course</title>
+    <script src="https://www.googletagmanager.com/gtag/js?id=G-WK0EW5GQRZ?2024-07-11" type="text/javascript"></script>
+    <script src="./crash_course_files/curriculum.js" type="text/javascript"></script>
+    <script src="./crash_course_files/course.js" type="text/javascript"></script>
+    <script src="./crash_course_files/topic.js" type="text/javascript"></script>
+    <script src="./crash_course_files/bootstrap.min.js" type="text/javascript"></script>
+    <script src="./crash_course_files/quiz.js" type="text/javascript"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body style="padding-top: 60px;">
+    <nav class="llab-nav navbar navbar-fixed-top" role="navigation">
+        <div class="nav navbar-left">
+            <a class="navbar-brand" rel="author" href="https://snap.winna.er/bjc/" aria-label="Go to Index">
+                <img src="./crash_course_files/bjc-logo-sm2.png" alt="BJC logo">
+            </a>
+            <h1 class="navbar-title">Beauty and Joy of Computing: Snap<em>!</em> Crash Course</h1>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown js-langDropdown nav-lang-dropdown hidden">
+                <a class="btn btn-nav btn-nav-lang dropdown-toggle" type="button" aria-label="Switch" language=""
+                    role="button" tabindex="0" id="dropdown-langs" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <i class="far fa-globe" aria-hidden="true"></i>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown-langs">
+                    <li><a class="js-switch-lang-en">English</a></li>
+                    <li><a class="js-switch-lang-es">Español</a></li>
+                </ul>
+            </li>
+            <li class="nav-btn-group nav-btn-group-first">
+                <a class="btn btn-nav hidden js-backPageLink js-navButton" aria-label="previous page">
+                    <i class="fas fa-arrow-left" aria-hidden="true"></i>
+                </a>
+            </li>
+            <li class="nav-btn-group dropdown js-navDropdown js-navButton hidden">
+                <a class="btn btn-nav dropdown-toggle" type="button" role="button" tabindex="0"
+                    aria-label="Navigation Menu" id="Topic-Navigation-Menu" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                </a>
+                <ul class="js-llabPageNavMenu dropdown-menu" role="menu" aria-labelledby="Topic-Navigation-Menu">
+                </ul>
+            </li>
+            <li class="nav-btn-group nav-btn-group-last">
+                <a class="btn btn-nav hidden js-nextPageLink js-navButton" aria-label="next page">
+                    <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+        <div class="trapezoid"></div>
+    </nav>
+    <h1 class="title-small-screen">Beauty and Joy of Computing: Snap<em>!</em> Crash Course</h1>
+    <main class="full">
+        <h2>Snap<em>!</em> Crash Course</h2>
+        <p>
+            <img class="imageRight" src="./crash_course_files/repeat-example.png" alt="repeat (4) times
+{
+    move (100) steps
+    turn ↻ (90) degrees
+}" title="repeat (4) times
+{
+    move (100) steps
+    turn ↻ (90) degrees
+}">
+            Once you've learned how to program in one language (at least any language that your AP Computer Science
+            Principles class would have used), it's <em>much</em> easier to learn another language. And Snap<em>!</em>
+            will be especially easy to pick up quickly because it's all visual; you just snap blocks together, and you
+            don't have to worry about any syntax (parentheses, commas, semicolons, quotation marks, etc.).
+        </p>
+        <p>This page is designed to get you up and running in Snap<em>!</em> as quickly as possible. It will help you
+            pick up Snap<em>!</em> quickly if you take the time to read (or at least skim) this whole page. Click the
+            links below to learn about each topic.</p>
+
+
+        <h3>Getting Started in Snap<em>!</em></h3>
+
+
+        <h4><strong><a href="https://snap.winna.er/bjc/crash_course.html#hint-links" data-toggle="collapse"
+                    class="expansion-menu" title="Important Links" aria-expanded="true">Important Links</a></strong>
+        </h4>
+        <div id="hint-links" class="collapse in" aria-expanded="true" style="">
+            <p>
+                <img class="imageRight" style="height:100px;" src="./crash_course_files/snap-logo-large.png"
+                    alt="Snap! logo" title="Snap! logo">
+            </p>
+            <ul>
+                <li><strong><a href="https://snap.winna.er/run" title="snap.winna.er/run"
+                            target="_blank">snap.winna.er/run</a></strong> – Snap<em>!</em> programming environment
+                    (<strong>the most important link</strong>)</li>
+                <li><a href="https://snap.winna.er/bjc/cheat_sheet.html" title="Snap! Cheat Sheet">Snap<em>!</em>
+                        Cheat Sheet</a> – shows how each procedure on the AP CSP Exam Reference Sheet looks and is used
+                    in Snap<em>!</em></li>
+                <li>
+                    <a href="https://snap.winna.er/snap/help/SnapManual.pdf" title="Snap! Reference Manual"
+                        target="_blank">Snap<em>!</em> Reference Manual</a> – many more details about Snap<em>!</em>
+                    than this brief crash course; you can also access this by clicking the Snap<em>!</em> logo in the
+                    upper left corner of any Snap<em>!</em> window:<br>
+                    <img class="indent" src="./crash_course_files/manual-menu.png"
+                        alt="The menu that is normally hidden under the Snap! logo is now showing and the option &#39;Reference manual&#39; is highlighted."
+                        title="The menu that is normally hidden under the Snap! logo is now showing and the option &#39;Reference manual&#39; is highlighted.">
+                </li>
+                <li><a href="https://snap.winna.er/" title="snap.winna.er" target="_blank">snap.berkeley.edu</a> –
+                    Snap<em>!</em> community website with example projects, shared projects, and an online forum where
+                    Snap<em>!</em> programmers connect</li>
+            </ul>
+            <p></p>
+        </div>
+
+        <h4><strong><a href="https://snap.winna.er/bjc/crash_course.html#hint-account" data-toggle="collapse"
+                    class="expansion-menu" title="Creating a Snap! Account" aria-expanded="true">Creating a
+                    Snap<em>!</em> Account</a></strong></h4>
+        <div id="hint-account" class="collapse in" aria-expanded="true" style="">
+            <p>You may want to create a Snap<em>!</em> account so you can save and access all your Snap<em>!</em>
+                projects in the cloud. (You don't <em>need</em> an account; you could save all your Snap<em>!</em>
+                projects on your own computer and drag them onto a Snap<em>!</em> window to load them.) Instructions for
+                creating an account and logging in to and out of your Snap<em>!</em> account are in the first lab of the
+                Beauty and Joy of Computing CSP curriculum:
+            </p>
+            <ul>
+                <li><a href="https://snap.winna.er/bjc/saving_snap_projects.html" title="Saving Snap! Projects">Saving
+                        Snap<em>!</em> Projects</a></li>
+            </ul>
+            <p></p>
+        </div>
+
+        <h4><strong><a href="https://snap.winna.er/bjc/crash_course.html#hint-save-load" data-toggle="collapse"
+                    class="expansion-menu" title="Saving and Loading Snap! Projects" aria-expanded="true">Saving and
+                    Loading Snap<em>!</em> Projects</a></strong></h4>
+        <div id="hint-save-load" class="collapse in" aria-expanded="true" style="">
+            <p>To save a project, choose "Save" from the Snap<em>!</em> File menu, <img
+                    src="./crash_course_files/file_button.png" alt="File menu button" title="File menu button"> (or
+                press control-s).</p>
+            <p>To load a project, choose "Open..." from the Snap<em>!</em> File menu (or press control-o), select the
+                project you wish to open, and click "Open." Always remember to save the project you were working on
+                before opening a new one.</p>
+        </div>
+
+        <h4><strong><a href="https://snap.winna.er/bjc/crash_course.html#hint-interface" data-toggle="collapse"
+                    class="expansion-menu" title="The Snap! Interface" aria-expanded="true">The Snap<em>!</em>
+                    Interface</a></strong></h4>
+        <div id="hint-interface" class="collapse in" aria-expanded="true" style="">
+            <img class="imageRight" src="./crash_course_files/interface.jpg"
+                alt="image of the snap interface with the toolbar at the top labeled &#39;Tool Bar&#39;; the palette running down the left side labeled &#39;Palette&#39; and several of the blocks inside the palette labeled &#39;Blocks&#39;; the central column (with a pair of blocks snapped together) labeled &#39;Scripting Area&#39;; the white rectangle in the upper right but below the toolbar labeled &#39;Stage&#39; and the arrowhead in the center of the stage saying &#39;Hello World!&#39; labeled &#39;Sprite&#39;; the gray rectangle in the lower right below the stage (which contains small copies of both the sprite and the stage) labeled &#39;Sprite Corral&#39;"
+                title="image of the snap interface with the toolbar at the top labeled &#39;Tool Bar&#39;; the palette running down the left side labelled &#39;Palette&#39; and several of the blocks inside the palette labelled &#39;Blocks&#39;; the central column (with a pair of blocks snapped together) labelled &#39;Scripting Area&#39;; the white rectangle in the upper right but below the toolbar labelled &#39;Stage&#39; and the arrowhead in the center of the stage saying &#39;Hello World!&#39; labelled &#39;Sprite&#39;; the gray rectangle in the lower right below the stage (which contains small copies of both the sprite and the stage) labelled &#39;Sprite Corral&#39;">
+            <p>
+            </p>
+            <ul>
+                <li>
+                    The <strong>Toolbar</strong> includes several menus, stage control buttons, and project control
+                    buttons.
+                    <a href="https://snap.winna.er/bjc/crash_course.html#hint-toolbar" data-toggle="collapse"
+                        title="Click here to learn more about the buttons in the toolbar.">Click here to learn more
+                        about the buttons in the toolbar.</a>
+                    <div id="hint-toolbar" class="collapse">
+                        <ul>
+                            <li>The Snap<em>!</em> menu, <img class="inline" style="height:30px; background-color:#333;"
+                                    src="./crash_course_files/snap-logo-large.png" alt="Snap! logo" title="Snap! logo">,
+                                where you can find the detailed <a
+                                    href="https://snap.berkeley.edu/snap/help/SnapManual.pdf"
+                                    title="Snap Reference Manual" target="_blank">Snap<em>!</em> Reference Manual</a>
+                            </li>
+                            <li>The File Menu, <img class="inline" src="./crash_course_files/file_button.png"
+                                    alt="File menu button" title="File menu button">, for loading and saving projects
+                                and loading libraries and sprite costumes and sounds</li>
+                            <li>The Cloud menu, <img class="inline" src="./crash_course_files/cloud_button.png"
+                                    alt="Cloud menu button" title="Cloud menu button">, for logging in/out and changing
+                                your Snap<em>!</em> password</li>
+                            <li>The Settings menu, <img class="" src="./crash_course_files/settings_button.png"
+                                    alt="Settings menu button" title="Settings menu button">, for controlling the
+                                Snap<em>!</em> interface</li>
+                            <li>The Visible Stepping button, <img class="inline"
+                                    src="./crash_course_files/visible_stepping_button.png" alt="Visible Stepping button"
+                                    title="Visible Stepping button">, for debugging your code by running it slowly or
+                                even one block at time</li>
+                            <li>The Resize Stage button, <img class="inline"
+                                    src="./crash_course_files/screen-size_button.png" alt="Resize Stage button"
+                                    title="Resize Stage button">, for controlling the size of the stage</li>
+                            <li>The Presentation Mode button, <img class="nopadtb"
+                                    src="./crash_course_files/presentation-mode.png" alt="presentation mode button"
+                                    title="presentation mode button">, for switching between seeing a project code
+                                beside the stage (as shown at right) and seeing only the stage (presentation mode)</li>
+                            <li>The Green Flag button, <img class="inline"
+                                    src="./crash_course_files/green-flag_button.png" alt="Green Flag button"
+                                    title="Green Flag button">, which starts any blocks that begin with a <img
+                                    class="inline" src="./crash_course_files/when-green-flag-clicked-full-size.png"
+                                    alt="when green flag clicked" title="when green flag clicked"> block</li>
+                            <li>The Pause button, <img class="inline" src="./crash_course_files/pause_button.png"
+                                    alt="Pause button" title="Pause button">, which pauses the running of your code</li>
+                            <li>The Stop button, <img class="inline" src="./crash_course_files/stop_button.png"
+                                    alt="Stop button" title="Stop button">, which stops all scripts in your project</li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <img class="imageRight" src="./crash_course_files/motion-palette-categories.jpg"
+                        alt="Palette categories: Motion, Looks, Sound, Pen, Control, Sensing, Operators, and Variables"
+                        title="Palette categories: Motion, Looks, Sound, Pen, Control, Sensing, Operators, and Variables">
+                    The <strong>Palette</strong> area includes eight menus (the palette category selector buttons are
+                    shown at right), where you will find all the blocks (procedures) in your project (built-in blocks,
+                    imported blocks, and custom blocks). Blocks appear in the palettes matching their color (except red
+                    and gray blocks which are in the orange "Variables" palette).
+                </li>
+                <li>The <strong>Stage</strong> is what users of your project see. One or more <em>sprites</em>
+                    (characters) live on and can talk and move around on the stage. Sprites begin with an arrowhead
+                    costume (as shown in the picture of the Snap<em>!</em> interface), but you can change a sprite's
+                    costume (the picture that it wears) by choosing "Costumes..." the Snap<em>!</em> File menu (<img
+                        class="inline" src="./crash_course_files/file_button.png" alt="File menu button"
+                        title="File menu button">).</li>
+                <li>The <strong>Scripting Area</strong> is where you drag blocks from the palette and snap them together
+                    to build your code. Above the scripting area are three tabs that allow you to view and edit the
+                    Scripts, Costumes (or Backgrounds), and Sounds for the sprite (or the stage) that you have selected
+                    in the "Sprite Corral."</li>
+                <li>The <strong>Sprite Corral</strong> lets you select the sprite (or the stage) you want to work with
+                    (either to write or to view code; to control the costumes or background; or to select, import, and
+                    record sounds).</li>
+            </ul>
+            <p></p>
+        </div>
+
+        <h4><strong><a href="https://snap.winna.er/bjc/crash_course.html#hint-sharing" data-toggle="collapse"
+                    class="expansion-menu" title="Sharing Projects" aria-expanded="true">Sharing Projects</a></strong>
+        </h4>
+        <div id="hint-sharing" class="collapse in" aria-expanded="true" style="">
+            <p>
+                There are two primary ways to share your Snap<em>!</em> projects: sending an XML file containing a copy
+                of your project; and creating a link to your active project file.
+            </p>
+            <ul>
+                <li>
+                    <strong>Exporting an XML file:</strong> If you send someone an XML copy of your project, they will
+                    have a snapshot of your work at that day and time; if you make changes to your project, their copy
+                    will not change. (If they make changes to their copy, your project won't change.) To create an XML
+                    file, choose "Export project..." from the Snap<em>!</em> File menu (<img class="inline"
+                        src="./crash_course_files/file_button.png" alt="File menu button" title="File menu button">),
+                    and an XML file will download to your computer that you can share with others. They can then import
+                    that file in Snap<em>!</em> to see your project.
+                </li>
+                <li><strong>Importing an XML file:</strong> The recipient must either drag the XML file into the
+                    Snap<em>!</em> window or choose "Import..." from the Snap<em>!</em> File menu and locate the file on
+                    their computer. Importing a project will close any project that is open in that Snap<em>!</em>
+                    window.</li>
+                <li>
+                    <strong>Creating a link:</strong> If your project is saved in the Snap<em>!</em> cloud, you can
+                    "Share" it, which will make a URL (link) to your project. If you email someone that link, then they
+                    will be able to see your project and any changes that you make to it in the future (unless you
+                    "Unshare" it). They can't edit your project, but they can save a copy to their Snap<em>!</em>
+                    account and edit that. To create a link:
+                    <ol>
+                        <li>Make sure your current project is saved, and then open the project you want to share.</li>
+                        <li>Then choose "Open..." from the File menu again, and select the project you want to share
+                            from the project list.</li>
+                        <li>Click "Share," and then click "Yes" to share. Then click "Cancel" to close the menu.</li>
+                        <li>
+                            The URL (the link) at the top of the browser window will have changed. Copy this new URL,
+                            and send it to someone else to share the project. <a
+                                href="https://snap.winna.er/bjc/crash_course.html#hint-URL" data-toggle="collapse"
+                                title="Click for images that show where the URL is and how it changes.">Click for images
+                                that show where the URL is and how it changes.</a>
+                            <div id="hint-URL" class="collapse">
+                                <img class="inline" src="./crash_course_files/url-before.png" width="800"
+                                    alt="Snap! window in browser with URL &#39;snap.winna.er/snapsource/snap.html&#39; circled in the location bar. The circle is labeled &#39;URL before sharing&#39;"
+                                    title="Snap! window in browser with URL &#39;snap.winna.er/snapsource/snap.html&#39; circled in the location bar. The circle is labeled &#39;URL before sharing&#39;"><br>
+                                <img class="inline" src="./crash_course_files/url-after.png" width="800"
+                                    alt="Snap! window in browser with URL &#39;snap.winna.er/snapsource/snap.html#present:Username=bh&amp;Proje...&#39; circled in the location bar. The circle is labeled &#39;URL after sharing&#39;"
+                                    title="Snap! window in browser with URL &#39;snap.winna.er/snapsource/snap.html#present:Username=bh&amp;Proje...&#39; circled in the location bar. The circle is labeled &#39;URL after sharing&#39;">
+                            </div>
+                        </li>
+                    </ol>
+                </li>
+                <li>
+                    <strong>"Unsharing" a link:</strong> If you want an existing link to your project to stop working
+                    for other people, you can "unshare" it. To "unshare" a link:
+                    <ol>
+                        <li>Choose "Open..." from the File menu , and select the project you want to unshare from the
+                            project list.</li>
+                        <li>Click "Unshare," and then click "Yes" to unshare. Then click "Cancel" to close the menu.
+                        </li>
+                    </ol>
+                </li>
+            </ul>
+            <p></p>
+        </div>
+
+
+        <h3>Code-Building Basics</h3>
+
+
+        <h4><strong><a href="https://snap.winna.er/bjc/crash_course.html#hint-creating" data-toggle="collapse"
+                    class="expansion-menu" title="Creating Scripts" aria-expanded="true">Creating Scripts</a></strong>
+        </h4>
+        <div id="hint-creating" class="collapse in" aria-expanded="true" style="">
+            <p></p>
+
+            <p>In Snap<em>!</em>, you drag and attach blocks together to create your scripts. You can learn more about a
+                particular block by right-clicking it (or control-clicking it on a Mac) and selecting "help..." which
+                will bring up a little window with information about how the block works. You can also just click a
+                block to see what it does. <a href="https://snap.winna.er/bjc/crash_course.html#hint-help"
+                    data-toggle="collapse"
+                    title="Click for an example of accessing the Help menu for a pen block.">Click for an example of
+                    accessing the Help menu for a pen block.</a></p>
+            <div id="hint-help" class="collapse">
+                <img class="indent" src="./crash_course_files/context-menu.png"
+                    alt="right-click menu with entries &#39;help&#39; and &#39;hide&#39;"
+                    title="right-click menu with entries &#39;help&#39; and &#39;hide&#39;">
+                <img class="indent" src="./crash_course_files/pen-help.png" alt="help screen for the SET PEN block"
+                    title="help screen for the SET PEN block">
+            </div>
+            <p>
+                Every script you build in Snap<em>!</em> belongs either to a sprite or to the stage. Identifying words
+                in block names such as "I" or "my" refer to that sprite or to the stage (depending on which one is
+                selected in the sprite corral):<br>
+                <img class="indent" src="./crash_course_files/my-costume-reporting-bear.png"
+                    alt="my (costume) reporting a small picture of a white bear waving"
+                    title="my (costume) reporting a small picture of a white bear waving">
+                <img class="indent" src="./crash_course_files/when-i-am-clicked.png" alt="when i am (clicked)"
+                    title="when i am (clicked)">
+            </p>
+            <p>
+                Some blocks have little arrows that allow to you to control the inputs:
+            </p>
+            <ul>
+                <li>
+                    Downward pointing arrows (<span style="font-family: Arial; font-size:.6em;">▼</span>) indicate
+                    drop-down menus with additional options:<br>
+                    <img class="indent" src="./crash_course_files/set-a-to-expression.png" alt="set (a) to (expression)"
+                        title="set (a) to (expression)">
+                    <img class="indent" src="./crash_course_files/item.png" alt="item (1) of &#39;list input slot&#39;"
+                        title="item (1) of &#39;list input slot&#39;">
+                    <img class="indent" src="./crash_course_files/is-a-number.png" alt="is ( ) a (number) ?"
+                        title="is ( ) a (number) ?">
+                    <img class="indent" src="./crash_course_files/key-space-pressed.png" alt="key (space) pressed?"
+                        title="key (space) pressed?"><br>
+                    If the downarrow is in a <em>white</em> box, as in the <code>item</code> block above, you can either
+                    choose from the menu or type your own value into the box. If the box is block-colored, you can only
+                    use the choices in the menu.
+                </li>
+                <li>
+                    Left/right arrows (<span style="font-family: Arial; font-size:.6em;">◀ ▶</span>) indicate that you
+                    can control the number of input slots:<br>
+                    <img class="indent" src="./crash_course_files/join-hello-world-reporting.png"
+                        alt="join (hello ) (world) reporting &#39;hello world&#39;"
+                        title="join (hello ) (world) reporting &#39;hello world&#39;">
+                    <img class="indent" src="./crash_course_files/script-variables(a).png" alt="script variables (a)"
+                        title="script variables (a)">
+                    <img class="indent" src="./crash_course_files/empty-list-block.png" alt="list" title="list">
+                    <img class="indent" src="./crash_course_files/list-bananas-oranges-beans-rice.png"
+                        alt="list (bananas) (oranges) (beans) (rice)" title="list (bananas) (oranges) (beans) (rice)">
+                </li>
+            </ul>
+            <p></p>
+        </div>
+
+
+        <h4><strong><a href="https://snap.winna.er/bjc/crash_course.html#hint-shapes" data-toggle="collapse"
+                    class="expansion-menu" title="Block Shapes" aria-expanded="true">Block Shapes: Procedures and
+                    Events</a></strong></h4>
+        <div id="hint-shapes" class="collapse in" aria-expanded="true" style="">
+            <p>
+                There are several different block shapes in Snap<em>!</em>, and they each have their own meaning and
+                places they can be used:
+            </p>
+            <ul>
+                <li>
+                    <em>Commands</em> have a rectangular, jigsaw-puzzle-piece shape. These are instructions that tell
+                    the computer to do something. They are designed to be snapped together one below another. Here are a
+                    few command procedures:<br>
+                    <img class="indent" src="./crash_course_files/go-to-x-y.png" alt="go to x: ( ) y: ( )"
+                        title="go to x: ( ) y: ( )">
+                    <img class="indent" src="./crash_course_files/clear-full-size.png" alt="clear" title="clear">
+                    <img class="indent" src="./crash_course_files/set-empty.png" alt="set ( ) to ( )"
+                        title="set ( ) to ( )">
+                </li>
+                <li>
+                    <em>Reporters</em> have a rounded shape. These blocks report (return) a value. They can either be
+                    clicked to report a value to the programmer or be dropped into an input slot of another block, in
+                    which case they report a value to that other block. Here are a few reporter procedures and their
+                    current output values:<br>
+                    <img class="indent" src="./crash_course_files/x-position-reporting-103.png"
+                        alt="x position reporting 103" title="x position reporting 103">
+                    <img class="indent" src="./crash_course_files/my-costume-reporting-bear.png"
+                        alt="my (costume) reporting a small picture of a white bear waving"
+                        title="my (costume) reporting a small picture of a white bear waving">
+                    <img class="indent" src="./crash_course_files/3-times-7-reporting-21.png"
+                        alt="(3) × (7) reporting 21" title="(3) × (7) reporting 21">
+                    <img class="indent" src="./crash_course_files/list-bananas-oranges-beans-rice-reporting.png"
+                        alt="list (bananas) (oranges) (beans) (rice) reporting the list [bananas, oranges, beans, rice]"
+                        title="list (bananas) (oranges) (beans) (rice) reporting the list [bananas, oranges, beans, rice]">
+                    <img class="indent" src="./crash_course_files/join-hello-world-reporting.png"
+                        alt="join (hello ) (world) reporting &#39;hello world&#39;"
+                        title="join (hello ) (world) reporting &#39;hello world&#39;">
+                    <ul>
+                        <li>
+                            <em>Predicates</em> have a hexagonal shape. They are are a special kind of reporter that
+                            only reports <code>true</code> or <code>false</code>. They are used inside other blocks to
+                            help a program decide when to do something or what to report. Here are a few predicate
+                            procedures:<br>
+                            <img class="indent" src="./crash_course_files/greater-than.png" alt="( ) &gt; ( )"
+                                title="( ) &gt; ( )">
+                            <img class="indent" src="./crash_course_files/pen-down-predicate.png" alt="pen down?"
+                                title="pen down?">
+                            <img class="indent" src="./crash_course_files/mouse-down-full-size.png" alt="mouse down?"
+                                title="mouse down?">
+                            <img class="indent" src="./crash_course_files/is-a-number.png" alt="is ( ) a (number) ?"
+                                title="is ( ) a (number) ?">
+                            <img class="indent" src="./crash_course_files/not.png"
+                                alt="not &#39;predicate input slot&#39;" title="not &#39;predicate input slot&#39;">
+                            <img class="indent" src="./crash_course_files/key-space-pressed.png"
+                                alt="key (space) pressed?" title="key (space) pressed?">
+                            <img class="indent" src="./crash_course_files/empty.png"
+                                alt="is &#39;list input slot&#39; empty?"
+                                title="is &#39;list input slot&#39; empty?"><br>
+                            And here are a few blocks that take Booleans (<code>true</code> or <code>false</code>) as
+                            input:<br>
+                            <img class="indent" src="./crash_course_files/if-full-size.png"
+                                alt="if &#39;predicate input slot&#39; &#39;c-shaped input slot for instructions&#39;"
+                                title="if &#39;predicate input slot&#39; &#39;c-shaped input slot for instructions&#39;">
+                            <img class="indent" src="./crash_course_files/keep.png"
+                                alt="keep items &#39;predicate input slot&#39; from &#39;list input slot&#39;"
+                                title="keep items &#39;predicate input slot&#39; from &#39;list input slot&#39;">
+                            <img class="indent" src="./crash_course_files/wait-until.png"
+                                alt="wait until &#39;predicate input slot&#39;"
+                                title="wait until &#39;predicate input slot&#39;">
+                            <img class="indent" src="./crash_course_files/when-predicate-input.png"
+                                alt="when &#39;predicate input slot&#39; hat block"
+                                title="when &#39;predicate input slot&#39; hat block">
+                            <img class="indent" src="./crash_course_files/not.png"
+                                alt="not &#39;predicate input slot&#39;" title="not &#39;predicate input slot&#39;">
+                            <img class="indent" src="./crash_course_files/repeat-until.png"
+                                alt="repeat until &#39;predicate input slot&#39; &#39;c-shaped input slot for instructions&#39;"
+                                title="repeat until &#39;predicate input slot&#39; &#39;c-shaped input slot for instructions&#39;">
+                            <img class="indent" src="./crash_course_files/and-full-size.png"
+                                alt="&#39;predicate input slot&#39; and &#39;predicate input slot&#39;"
+                                title="&#39;predicate input slot&#39; and &#39;predicate input slot&#39;">
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <em>Hat blocks</em> have a hat shape on top and a puzzle-piece shape at the bottom. They detect an
+                    event such as clicking on the sprite, pressing a key, or clicking the green flag button (<img
+                        class="inline" src="./crash_course_files/green-flag_button.png" alt="Green Flag button"
+                        title="Green Flag button">). They can only go at the beginning of a script, and they tell rest
+                    of that script to run when that event occurs. (Not every script needs a hat block; you can also run
+                    a script by clicking on it.) Here are a few hat blocks:<br>
+                    <img class="indent" src="./crash_course_files/when-i-am-clicked.png" alt="when i am (clicked)"
+                        title="when i am (clicked)">
+                    <img class="indent" src="./crash_course_files/when-space-key-pressed.png"
+                        alt="when (space) key pressed" title="when (space) key pressed">
+                    <img class="indent" src="./crash_course_files/when-green-flag-clicked-full-size.png"
+                        alt="when &#39;green flag&#39; clicked" title="when &#39;green flag&#39; clicked">
+                    <img class="indent" src="./crash_course_files/when-predicate-input.png"
+                        alt="when &#39;predicate input slot&#39; hat block"
+                        title="when &#39;predicate input slot&#39; hat block">
+                </li>
+            </ul>
+            <p></p>
+        </div>
+
+
+        <h4><strong><a href="https://snap.winna.er/bjc/crash_course.html#hint-communicating" data-toggle="collapse"
+                    class="expansion-menu" title="Communicating Between Sprites" aria-expanded="true">Communicating
+                    Between Sprites</a></strong></h4>
+        <div id="hint-communicating" class="collapse in" aria-expanded="true" style="">
+            <p>Of course, you can use global variables (more about them below) to share information between sprites, but
+                you can also send messages between your sprites or have one sprite tell another sprite what to do:
+            </p>
+            <ul>
+                <li>
+                    <strong>Sending messages:</strong> The <code>broadcast</code> block sends a message to <em>all</em>
+                    the sprites. To set the message, click the down arrow and select "new..."<br>
+                    <img class="indent" src="./crash_course_files/broadcast-open.png"
+                        alt="broadcast block with menu open showing one option: new..."
+                        title="broadcast block with menu open showing one option: new...">
+                    <img class="indent" src="./crash_course_files/broadcast-game-ready-to-start.png"
+                        alt="broadcast (game ready to start)" title="broadcast (game ready to start)">
+                    <br>
+                    Once that message has been sent out, any scripts in your project that begin with the
+                    <code>when I receive</code> hat block with that same message will run: <br>
+                    <img class="indent" src="./crash_course_files/when-i-receive-showing-game-ready.png"
+                        alt="when I receive (game ready to start)" title="when I receive (game ready to start)">
+                </li>
+                <li>
+                    <strong><code>Tell</code>ing sprites what to do:</strong> You can tell a specific sprite (or the
+                    stage) what to do by using the <code>tell</code> block to send instructions (not just messages):
+                    <img class="indent" src="./crash_course_files/tell-sprite-2.png"
+                        alt="tell (Sprite2) to (go to x:(0) y:(0), stamp, say (I moved and stamped a copy of myself onto the stage!))"
+                        title="tell (Sprite2) to (go to x:(0) y:(0), stamp, say (I moved and stamped a copy of myself onto the stage!))">
+                </li>
+                <li>
+                    <strong><code>Ask</code>ing sprites questions:</strong> You can ask a specific sprite (or the stage)
+                    a question using the <code>ask</code> block to send an expression:<br>
+                    <img class="indent" src="./crash_course_files/ask-sprite2-xposition.png"
+                        alt="ask (&#39;sprite(2)&#39;) for (x position)"
+                        title="ask (&#39;sprite(2)&#39;) for (x position)">
+                </li>
+            </ul>
+            <p></p>
+        </div>
+
+        <h4><strong><a href="https://snap.winnna.er/bjc/crash_course.html#hint-variables" data-toggle="collapse"
+                    class="expansion-menu" title="Creating Variables" aria-expanded="true">Creating
+                    Variables</a></strong></h4>
+        <div id="hint-variables" class="collapse in" aria-expanded="true" style="">
+            <p>There are several kinds of variables in Snap<em>!</em>. Here are the most important:
+            </p>
+            <ul>
+                <img class="imageRight" src="./crash_course_files/draw-square-def.png" alt="draw square, size: (size) {
+    pen down
+    repeat (4) {
+        move (size) steps
+        turn ↻ (90) degrees
+    }
+}" title="draw square, size: (size) {
+    pen down
+    repeat (4) {
+        move (size) steps
+        turn ↻ (90) degrees
+    }
+}">
+                <li><strong>Input variables (parameters)</strong> store the input values (arguments) passed to a custom
+                    block. For example, <var>size</var> is an input variable to the <code>draw square</code> block shown
+                    at right. There is more information about creating blocks with input parameters below.</li>
+                <li><strong>Script (local) variables</strong> only exist within the script that creates them. You can
+                    create script variables using the <img class="inline"
+                        src="./crash_course_files/script-variables(a).png" alt="script variables (a)"
+                        title="script variables (a)"> block. Place that block at the point in your code where you want
+                    to create a variable. You can click a variable name in the <code>script variables</code> block to
+                    change the name; you can click the right arrow (<span
+                        style="font-family: Arial; font-size:.6em;">▶</span>) to create additional variables at the same
+                    point in your program. To use a script variable, drag it from the <code>script variables</code>
+                    block to wherever you want to use it (in the same script).</li>
+                <li>
+                    <strong>Iteration variables</strong> change in value as a block repeats a set of commands. You can
+                    change the name of an iteration variable by clicking on it. In Snap<em>!</em>, there are two
+                    iteration blocks that have built in variables: <code>for</code> uses <var>i</var> (unless you change
+                    the name) to hold the index number of the iteration, and <code>for each</code> uses <var>item</var>
+                    (unless you change the name) to hold each list item as it traverses (travels through) the list:<br>
+                    <img class="indent" src="./crash_course_files/for-full-size.png"
+                        alt="for (i) = (1) to (10) &#39;c-shaped input slot for instructions&#39;"
+                        title="for (i) = (1) to (10) &#39;c-shaped input slot for instructions&#39;">
+                    <img class="indent" src="./crash_course_files/for-each-(item)-of().png"
+                        alt="for each (item) of &#39;list input slot&#39; &#39;c-shaped input slot for instructions&#39;"
+                        title="for each (item) of &#39;list input slot&#39; &#39;c-shaped input slot for instructions&#39;">
+                </li>
+                <li><strong>Global variables</strong> can be accessed from anywhere in your program. You can create them
+                    by clicking the <img class="inlines" src="./crash_course_files/make-a-variable.png"
+                        alt="Make a Variable" title="">button in the Variables palette.</li>
+            </ul>
+            <p></p>
+            <p>
+                Because Snap<em>!</em> is a visual language (not a text-based language), you can use multi-word variable
+                names. It will be clear to you and others when reading the code that those separate words are all part
+                of the same variable name:<br>
+                <img class="indent" src="./crash_course_files/multi-word-variable-names-example.png"
+                    alt="set (player 1 score) to ((player 1 score) + (points from this round))"
+                    title="set (player 1 score) to ((player 1 score) + (points from this round))">
+            </p>
+        </div>
+
+
+        <h4><strong><a href="https://snap.winna.er/bjc/crash_course.html#hint-procedures" data-toggle="collapse"
+                    class="expansion-menu" title="Creating Custom Blocks (Procedures)" aria-expanded="true">Creating
+                    Custom Blocks (Procedures)</a></strong></h4>
+        <div id="hint-procedures" class="collapse in" aria-expanded="true" style="">
+            <p>
+                To program your own block:
+            </p>
+            <ol>
+                <li>
+                    <strong>Create a new block.</strong> There are several ways to start: click <img class="inline"
+                        src="./crash_course_files/make-a-block.png" alt="make a block button"
+                        title="make a block button"> near the end of the palette, click the <b>+</b> sign in the top
+                    right corner of the palette (shown below), or right-click (or control-click on a Mac) on any empty
+                    spot in the scripting area and choose "make a block..." (shown below).<br>
+                    <img class="indent" src="./crash_course_files/plus-sign.png" alt="plus sign atop palette"
+                        title="plus sign atop palette">
+                    <img class="indent" src="./crash_course_files/make-a-block.jpg" alt="make a block option"
+                        title="make a block option">
+                </li>
+                <li>
+                    <strong>Choose the color</strong> (palette), <strong>type the title</strong>, <strong>select the
+                        shape</strong> (block type), and <strong>click OK</strong>.<br>
+                    <img class="imageRight noshadow" src="./crash_course_files/make-a-block-labeled.png"
+                        alt="image of &#39;Make a block&#39; dialog box with palette with 10 menus (Motion, Looks, Sound, Pen, Lists, Control, Sensing, Operators, Variables, Other) labeled &#39;Choose a color (a palette)&#39;; a text box labeled &#39;Type a title for your block.&#39;; three block shape options (puzzle-shaped/&#39;Command&#39;, oval/&#39;Reporter&#39;, and hexagonal/&#39;Predicate&#39;) labeled &#39;Select a shape.&#39;; two radio boxes (&#39;for all sprites&#39;, which is checked, and &#39;for this sprite only&#39;, which is not checked) with no label; and two buttons (OK and Cancel) labeled &#39;Click OK.&#39;"
+                        title="image of &#39;Make a block&#39; dialog box with palette with 10 menus (Motion, Looks, Sound, Pen, Lists, Control, Sensing, Operators, Variables, Other) labeled &#39;Choose a color (a palette)&#39;; a text box labeled &#39;Type a title for your block.&#39;; three block shape options (puzzle-shaped/&#39;Command&#39;, oval/&#39;Reporter&#39;, and hexagonal/&#39;Predicate&#39;) labeled &#39;Select a shape.&#39;; two radio boxes (&#39;for all sprites&#39;, which is checked, and &#39;for this sprite only&#39;, which is not checked) with no label; and two buttons (OK and Cancel) labeled &#39;Click OK.&#39;">
+                    <ul>
+                        <li>Just as you can use multi-word variable names in Snap<em>!</em>, you can also use multi-word
+                            names for your custom blocks (procedures).</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Program your block.</strong> Drag in blocks from the palette, snap them in after the hat
+                    block, and click OK.
+                    <ul>
+                        <li>Note that if you create a reporter or predicate block, the block editor will open with a
+                            <img class="inline nopadtb" src="./crash_course_files/report.png" alt="report"
+                                title="report"> block already attached to the hat block. All of your block code will go
+                            between these two blocks or inside the <code>report</code> block; whatever input you give to
+                            <code>report</code> will be the value reported (returned) by your new block.</li>
+                    </ul>
+                </li>
+            </ol>
+            <p></p>
+        </div>
+
+        <h4><strong><a href="https://snap.winna.er/bjc/crash_course.html#hint-inputs" data-toggle="collapse"
+                    class="expansion-menu" title="Creating Custom Procedures with Input Parameters"
+                    aria-expanded="true">Creating Custom Blocks with Input Variables (Parameters)</a></strong></h4>
+        <div id="hint-inputs" class="collapse in" aria-expanded="true" style="">
+            <p>
+            </p>
+            <ol>
+                <li>
+                    <strong>Create a new block, choose the color and shape, type the block name <em>and a label for your
+                            input</em>, and click OK</strong>.<br>
+                    <img class="indent" src="./crash_course_files/make-a-block-input.png"
+                        alt="image of the &#39;Make a Block&#39; window with the Motion palette selected and &#39;draw square, size:&#39; typed into the title input space"
+                        title="image of the &#39;Make a Block&#39; window with the Motion palette selected and &#39;draw square, size:&#39; typed into the title input space">
+                </li>
+                <li>
+                    <strong>Click a plus sign (+)</strong> between (or before or after) the words in your hat block
+                    where you want the input slot to appear. Then, <strong>type the name of the input</strong>, and
+                    click OK.<br>
+                    <img class="indent" src="./crash_course_files/draw-square-size+.png"
+                        alt="hat block labeled &#39;draw square, size:&#39; with a dark circle with a plus sign in it just after &#39;size:&#39;"
+                        title="hat block labeled &#39;draw square, size:&#39; with a dark circle with a plus sign in it just after &#39;size:&#39;">
+                    <img class="indent" src="./crash_course_files/create-input-name-size.png"
+                        alt="Create Input Name dialog box with &#39;size&#39; typed into the text space and &#39;Input name&#39; selected"
+                        title="Create Input Name dialog box with &#39;size&#39; typed into the text space and &#39;Input name&#39; selected">
+                    <ul>
+                        <li>You can also add text to the name of the block by clicking a plus sign: Just change the
+                            option in the "Create input name" menu from "Input name" to "Title text."</li>
+                        <li>
+                            If you can't see the plus signs, hover your mouse pointer over where they would be and they
+                            will appear one at a time, or just turn off "Plain prototype labels" in the Snap<em>!</em>
+                            Settings menu:<br>
+                            <img class="indent" src="./crash_course_files/plain-protoype-labels.jpg"
+                                alt="image of the Snap! Settings menu showing the &#39;Plain prototype labels&#39; option highlighted and checked; there is a hover-over bubble that says &#39;uncheck to always show (+) symbols in block prototype labels&#39;"
+                                title="image of the Snap! Settings menu showing the &#39;Plain prototype labels&#39; option highlighted and checked; there is a hover-over bubble that says &#39;uncheck to always show (+) symbols in block prototype labels&#39;">
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>Program your block</strong>, dragging in the input variable(s) wherever you need it (them).
+                </li>
+            </ol>
+            <p></p>
+        </div>
+
+
+        <h4><strong><a href="https://snap.winna.er/bjc/crash_course.html#hint-input-types" data-toggle="collapse"
+                    class="expansion-menu" title="Input Types" aria-expanded="true">Input Types</a></strong></h4>
+        <div id="hint-input-types" class="collapse in" aria-expanded="true" style="">
+            <p>There are several kinds of input slots that tell the programmer what kind of data is expected:
+            </p>
+            <div style="display: grid; grid-template-columns: auto auto;">
+                <div>
+                    <ul>
+                        <li>Number: <img class="inline" src="./crash_course_files/move-empty-full-size.png"
+                                alt="move &#39;rounded number input slot&#39; steps"
+                                title="move &#39;rounded number input slot&#39; steps"><img class="inline"
+                                src="./crash_course_files/a-times-b.png"
+                                alt="( ) &#39;rounded number input slot&#39; ( )"
+                                title="( ) &#39;rounded number input slot&#39; ( )"></li>
+                        <li>List: <img class="inline" src="./crash_course_files/length-list.png"
+                                alt="length of &#39;list input slot&#39;"
+                                title="length of &#39;list input slot&#39;"><img class="inline"
+                                src="./crash_course_files/empty.png" alt="is &#39;list input slot&#39; empty?"
+                                title="is &#39;list input slot&#39; empty?"></li>
+                        <li>Boolean: <img class="inline" src="./crash_course_files/not.png"
+                                alt="not &#39;predicate input slot&#39;" title="not &#39;predicate input slot&#39;"><img
+                                class="inline" src="./crash_course_files/wait-until.png"
+                                alt="wait until &#39;predicate input slot&#39;"
+                                title="wait until &#39;predicate input slot&#39;"></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li>Group of commands: <img class="inline" src="./crash_course_files/forever-full-size.png"
+                                alt="forever &#39;c-shaped input slot&#39;"
+                                title="forever &#39;c-shaped input slot&#39;"><img class="inline"
+                                src="./crash_course_files/if-full-size.png"
+                                alt="if &#39;predicate input slot&#39; &#39;c-shaped input slot&#39;"
+                                title="forever &#39;predicate input slot&#39; &#39;c-shaped input slot&#39;"></li>
+                        <li>Any type: <img class="inline" src="./crash_course_files/say-empty-full-size.png"
+                                alt="say &#39;rectangular text input slot&#39;"
+                                title="say &#39;rectangular text input slot&#39;"><img class="inline"
+                                src="./crash_course_files/join()().png"
+                                alt="join &#39;rectangular text input slot&#39; &#39;rectangular text input slot&#39;"
+                                title="join &#39;rectangular text input slot&#39; &#39;rectangular text input slot&#39;">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <p></p>
+            <p>
+                You can chose the input type for the input variables in your custom blocks by clicking the right arrow
+                (▸) to the right of the "Input name" option in the "Create input name" window (as shown below). It's not
+                necessary to set an input type in Snap<em>!</em>. If you don't select one, your input slot will accept
+                any type of input.<br>
+                <img class="indent" src="./crash_course_files/create-input-name-type-arrow.png"
+                    alt="Create Input Name dialog box with a read circle around the right-facing arrow just to the right of the &#39;Input name&#39; option"
+                    title="Create Input Name dialog box with a read circle around the right-facing arrow just to the right of the &#39;Input name&#39; option">
+            </p>
+        </div>
+
+
+        <h4><strong><a href="https://snap.winna.er/bjc/crash_course.html#hint-grouping" data-toggle="collapse"
+                    class="expansion-menu" title="Grouping Data: Lists/Arrays/Etc." aria-expanded="true">Grouping Data:
+                    Lists/Arrays/Etc.</a></strong></h4>
+        <div id="hint-grouping" class="collapse in" aria-expanded="true" style="">
+            <div class="pseudop">Snap<em>!</em> uses <em>lists</em> to group a bunch of values. If you learned to
+                program in another language, you may have used <em>arrays</em>. In Snap<em>!</em>, lists are ordered,
+                and <strong>the first item in a list is item number 1.</strong> (Some other languages count items from 0
+                instead of from 1, so
+                <pre class="inline">myList[3]</pre> is <img class="inline" src="./crash_course_files/my-list-3.png"
+                    alt="item (4) of (my list)" title="item (4) of (my list)">.)
+            </div>
+            <div class="pseudop">
+                To create a list, use the <img class="inline" src="./crash_course_files/list-full-size.png"
+                    alt="list ( )" title="list ( )"> block. Snap<em>!</em> provides the standard list processing
+                functions:<br>
+                <img class="indent" src="./crash_course_files/map.png"
+                    alt="map &#39;reporter input slot&#39; over &#39;list input slot&#39;"
+                    title="map &#39;reporter input slot&#39; over &#39;list input slot&#39;"><br>
+                <img class="indent" src="./crash_course_files/keep.png"
+                    alt="keep items &#39;predicate input slot&#39; from &#39;list input slot&#39;"
+                    title="keep items &#39;predicate input slot&#39; from &#39;list input slot&#39;"> (called
+                <pre class="inline">filter</pre> in some other languages)<br>
+                <img class="indent" src="./crash_course_files/combine.png"
+                    alt="combine &#39;list input slot&#39; using &#39;reporter input slot&#39;"
+                    title="combine &#39;list input slot&#39; using &#39;reporter input slot&#39;"> (called
+                <pre class="inline">reduce</pre> in some other languages)
+            </div>
+            <div class="pseudop">
+                The gray rings are the equivalent of
+                <pre class="inline">function</pre> or
+                <pre class="inline">lambda</pre> in other languages. Instead of requiring a parameter name (the
+                <pre class="inline">(x)</pre> in many function definitions), Snap<em>!</em> just uses an empty input
+                slot to indicate where the argument should be plugged in:<br>
+                <img class="indent" src="./crash_course_files/map-example-2.png"
+                    alt="map (join( )(s)) over (list {cat, dog, bird}) reporting {cats, dogs, birds}"
+                    title="map (join( )(s)) over (list {cat, dog, bird}) reporting {cats, dogs, birds}">
+            </div>
+            <p>You can read about several other commonly used Snap<em>!</em> list blocks on the <a
+                    href="https://snap.winna.er/bjc/cheat_sheet.html" title="Snap! Cheat Sheet">Snap<em>!</em>
+                    Cheat Sheet</a> page:<br>
+                <img class="indent" src="./crash_course_files/item.png" alt="item () of &#39;list input slot&#39;"
+                    title="item () of &#39;list input slot&#39;">
+                <img class="indent" src="./crash_course_files/insert.png"
+                    alt="insert ( ) at (1) of &#39;list input slot&#39;"
+                    title="insert ( ) at (1) of &#39;list input slot&#39;">
+                <img class="indent" src="./crash_course_files/add.png" alt="add ( ) to &#39;list input slot&#39;"
+                    title="add ( ) to &#39;list input slot&#39;">
+                <img class="indent" src="./crash_course_files/delete.png" alt="delete (1) of &#39;list input slot&#39;"
+                    title="delete (1) of &#39;list input slot&#39;">
+                <img class="indent" src="./crash_course_files/replace.png"
+                    alt="replace item (1) of &#39;list input slot&#39; with ( )"
+                    title="replace item (1) of &#39;list input slot&#39; with ( )">
+                <img class="inline" src="./crash_course_files/for-each-item-in-list.png" alt="for each (item) in (list)"
+                    title="for each (item) in (list)">
+            </p>
+            <p>
+                Some other common list functions aren't built into Snap<em>!</em>, but are available in a library:
+                Select "Libraries..." from the Snap<em>!</em> File menu, and choose "List utilities" near the top of the
+                list.
+            </p>
+            <p>
+                Python users can use Snap<em>!</em> lists to recreate the behavior of other data aggregates:
+            </p>
+            <ul>
+                <li>A
+                    <pre class="inline">tuple</pre> is just a list that you don't modify.
+                </li>
+                <li>A
+                    <pre class="inline">set</pre> is unordered; so just use a list and don't make any assumptions about
+                    order. Also, Python sets aren't supposed to include the same value more than once. So when you
+                    extend a set, use <code>remove duplicates</code> from the Snap<em>!</em> "List Utilities" library.
+                </li>
+                <li>
+                    A
+                    <pre class="inline">dictionary</pre> is just a list of two-item lists. In each small list, the first
+                    item is the <em>key</em> and the second item is the <em>value</em>. In Snap<em>!</em>, this might
+                    look like:<br>
+                    <img class="indent" src="./crash_course_files/dictionary-example.png"
+                        alt="list (list (first name) (Betsy)) (list (last name) (Anderson)) (list (phone number) (212-555-1234))"
+                        title="list (list (first name) (Betsy)) (list (last name) (Anderson)) (list (phone number) (212-555-1234))"><br>
+                    In Snap<em>!</em>, you can use <code>assoc</code> from the "List Utilities" library to search for a
+                    key-value pair and then use <code>item (2) of</code> to select the value.
+                </li>
+            </ul>
+            <p></p>
+        </div>
+
+        <h4><strong><a href="https://snap.winna.er/bjc/crash_course.html#hint-libraries" data-toggle="collapse"
+                    class="expansion-menu" title="Snap! Libraries" aria-expanded="true">Snap<em>!</em>
+                    Libraries</a></strong></h4>
+        <div id="hint-libraries" class="collapse in" aria-expanded="true" style="">
+            <p>
+                Snap<em>!</em> has libraries (collections of additional procedures) for many things, including lists,
+                accessing data on the Internet, external devices, pen colors, audio, and maps. <a
+                    href="https://snap.winna.er/bjc/crash_course.html#hint-library" data-toggle="collapse"
+                    title="Click for an example of opening the &#39;Words, sentences&#39; library in Snap!">Click for an
+                    example of opening the "Words, sentences" library in Snap<em>!</em></a>
+            </p>
+            <div id="hint-library" class="collapse">
+                <img class="indent" src="./crash_course_files/libraries-1.png"
+                    alt="Snap! File menu opened with cursor over &#39;Libraries&#39;"
+                    title="Snap! File menu opened with cursor over &#39;Libraries&#39;">
+                <img class="indent" src="./crash_course_files/libraries-words.png"
+                    alt="Snap! &#39;Import library&#39; dialog box highlighting &#39;Words, sentences&#39; library"
+                    title="Snap! &#39;Import library&#39; dialog box highlighting &#39;Words, sentences&#39; library">
+            </div>
+            <p></p>
+        </div>
+
+
+        <h4><strong><a href="https://snap.winna.er/bjc/crash_course.html#hint-import-export" data-toggle="collapse"
+                    class="collapsed expansion-menu" title="Exporting and Importing Procedures">Exporting and Importing
+                    Procedures</a></strong></h4>
+        <div id="hint-import-export" class="collapse">
+            <p>You can export one or more blocks into an XML file on your computer, which you can then import into
+                another project or share with another programmer for them to use.</p>
+            <p>
+                To export:
+            </p>
+            <ol>
+                <li>Open the Snap<em>!</em> project with the blocks you want to export, and choose "Export blocks..."
+                    from the Snap<em>!</em> File menu.</li>
+                <li>Select only the block(s) you wish to export. You can either <em>deselect</em> the blocks you don't
+                    need exported, or you can right-click (control-click on a Mac) the background in the window, choose
+                    "none," and then select only the ones you want.</li>
+                <li>
+                    Click "OK." An XML file will download. </li>
+            </ol>
+            <p></p>
+            <p>
+                To import:
+            </p>
+            <ol>
+                <li>Open the Snap<em>!</em> project where you want to use the blocks from the XML file.</li>
+                <li>To import, either drag the XML file into the Snap<em>!</em> window or choose "Import..." from the
+                    Snap<em>!</em> File menu and locate the file on your hard drive.</li>
+                <li>
+                    Test the blocks that you imported:
+                    <ol>
+                        <li>Find the imported block(s) at the <em>end</em> of the palettes that contain them.</li>
+                        <li>Try each one to make sure it runs properly.</li>
+                    </ol>
+                </li>
+            </ol>
+            <p></p>
+            <p>
+                <img class="imageRight" src="./crash_course_files/even-obsolete.png"
+                    alt="even? (number#){report(Obsolete!)}" title="even? (number#){report(Obsolete!)}">
+                If you ever see this <code>Obsolete!</code> block (shown right) in code you have imported, it means that
+                a block used by the block you imported was not included in the export. You'll have to go back to the
+                original project and export again being sure to select all of the blocks needed by the blocks you want.
+            </p>
+        </div>
+
+        <h4><strong><a href="https://snap.winna.er/bjc/crash_course.html#hint-recursion" data-toggle="collapse"
+                    class="collapsed expansion-menu" title="Recursion">Recursion</a></strong></h4>
+        <div id="hint-recursion" class="collapse">
+            <p>
+                Here's how to call a procedure from inside itself in Snap<em>!</em>:
+            </p>
+            <ol>
+                <li>Create a new procedure, and click "Apply" in the Block Editor.</li>
+                <li>Drag your new procedure out of the palette and use it in your block.</li>
+            </ol>
+            <p></p>
+            <p>
+                <a href="https://snap.winna.er/bjc/crash_course.html#hint-draw-triangle" data-toggle="collapse"
+                    title="Click for an example of a recursive command that draws one triangle, and at each corner  draws a smaller triangle, and at each corner of that draws another smaller triangle and so on until it reaches the last requested level.">Click
+                    for an example of a <strong>recursive command</strong> that draws one triangle, and at each corner
+                    draws a smaller triangle, and at each corner of those draws another smaller triangle and so on until
+                    it reaches the last requested level.</a>
+            </p>
+            <div id="hint-draw-triangle" class="collapse">
+                <div class="indent" style="display: inline-block;">
+                    <img src="./crash_course_files/draw-triangle-fractal-definition.png" alt="draw triangle fractal with (levels #) levels and starting size (size #) {
+        repeat (3) {
+            move (size) steps
+            if (levels &gt; 1) {
+                draw triangle fractal with (levels - 1) levels and starting size (size / 2)
+            }
+            turn right (120) degrees
+        }
+    }" title="draw triangle fractal with (levels #) levels and starting size (size #) {
+        repeat (3) {
+            move (size) steps
+            if (levels &gt; 1) {
+                draw triangle fractal with (levels - 1) levels and starting size (size / 2)
+            }
+            turn right (120) degrees
+        }
+    }">
+                </div>
+                <div class="indent" style="display: inline-block; vertical-align: top;">
+                    This instruction:<br>
+                    <img src="./crash_course_files/draw-triangle-fractal-block.png"
+                        alt="draw triangle fractal with (4) levels and starting size (100)"
+                        title="draw triangle fractal with (4) levels and starting size (100)"><br>
+                    Makes this image:<br>
+                    <img class="indent noshadow" src="./crash_course_files/triangle-fractal.jpg"
+                        alt="An image of a triangle fractal with 4 levels. That is, one triangle, and at each corner a smaller triangle, and at each corner of those another smaller triangle, and at each of those corners another smaller triangle. There are 40 triangles total."
+                        title="An image of a triangle fractal with 4 levels. That is, one triangle, and at each corner a smaller triangle, and at each corner of those another smaller triangle, and at each of those corners another smaller triangle. There are 40 triangles total.">
+                </div>
+            </div>
+            <p></p>
+            <p>
+                <a href="https://snap.winna.er/bjc/crash_course.html#hint-number-triangles" data-toggle="collapse"
+                    title="Click for an example of ecursive reporter that reports the number of triangles drawn by the recursive command above (if you click the link).">Click
+                    for an example of <strong>recursive reporter</strong> that reports the number of triangles drawn by
+                    the recursive command shown above (if you clicked the link).</a>
+            </p>
+            <div id="hint-number-triangles" class="collapse">
+                <div class="indent" style="display: inline-block;">
+                    <img src="./crash_course_files/number-of-triangles-definition.png" alt="number of triangles in level (levels #) fractal {
+        if (levels &gt; 1) {
+            report ((3 × number of triangles in level (levels  - 1) fractal) + 1)
+        }
+        report 1
+    }" title="number of triangles in level (levels #) fractal {
+        if (levels &gt; 1) {
+            report ((3 × number of triangles in level (levels  - 1) fractal) + 1)
+        }
+        report 1
+    }">
+                </div>
+                <div class="indent" style="display: inline-block; vertical-align: top;">
+                    This expression reports the number of triangles in the image for the
+                    <code>draw triangle fractal with (4) levels</code> block shown above:<br>
+                    <img src="./crash_course_files/number-of-triangles-reporting.png"
+                        alt="number of triangles in level (4) fractal reporting 40"
+                        title="number of triangles in level (4) fractal reporting 40">
+                </div>
+            </div>
+            <p></p>
+            <p>
+                Recursion also lets you traverse a list, just as <code>for each</code> does, but without the use of
+                index variables. Instead, you split the list into its first item and everything else:<br>
+                <img class="indent" src="./crash_course_files/item-1-of-fruits-reporting.png"
+                    alt="item (1) of (list (apple) (banana) (orange) (grape)) reporting &#39;apple&#39;"
+                    title="item (1) of (list (apple) (banana) (orange) (grape)) reporting &#39;apple&#39;">
+                <img class="indent" src="./crash_course_files/all-but-first-of-fruits-reporting.png"
+                    alt="all but first of (list (apple) (banana) (orange) (grape)) reporting [banana, orange, grape]"
+                    title="all but first of (list (apple) (banana) (orange) (grape)) reporting [banana, orange, grape]">
+            </p>
+            <p>
+                You compute some function of the first item, and combine that with a call to the same procedure you're
+                writing, but on the smaller list that remains:
+                <img class="indent" src="./crash_course_files/plurals-definition.png" alt="plurals (words ‘list input symbol’) {
+        if (is (words) empty?) {
+            report (list)
+        } else {
+            report ((join (item (1) of (words)) (s)) in front of (plurals (all but first of (words))))
+        }
+    }" title="plurals (words ‘list input symbol’) {
+        if (is (words) empty?) {
+            report (list)
+        } else {
+            report ((join (item (1) of (words)) (s)) in front of (plurals (all but first of (words))))
+        }
+    }">
+                <img class="indent" src="./crash_course_files/plurals-fruits-reporting.png"
+                    alt="plurals (list (apple) (banana) (orange) (grape)) reporting [apples, bananas, oranges, grapes]"
+                    title="plurals (list (apple) (banana) (orange) (grape)) reporting [apples, bananas, oranges, grapes]">
+            </p>
+        </div>
+
+
+        <h3>Debugging and Organizing Snap<em>!</em> Code</h3>
+
+
+        <h4><strong><a href="https://snap.winna.er/bjc/crash_course.html#hint-pausing" data-toggle="collapse"
+                    class="expansion-menu" title="Slowing or Pausing Your Program" aria-expanded="true">Slowing or
+                    Pausing Your Program</a></strong></h4>
+        <div id="hint-pausing" class="collapse in" aria-expanded="true" style="">
+            <p>
+                "Visible Stepping" allows you to control how quickly Snap<em>!</em> steps through the blocks of your
+                code.
+            </p>
+            <ul>
+                <li>
+                    <strong>Running slowly:</strong> Click the Visible Stepping button (<img class="inline nopadtb"
+                        src="./crash_course_files/visible-stepping.png"
+                        alt="Visible Stepping button with two footprints"
+                        title="Visible Stepping button with two footprints">), and adjust the slider to control the
+                    stepping speed. When you run your code, the sprite will slowly execute each block and highlight it
+                    in <span style="color: black; background-color:cyan">cyan</span>. <a
+                        href="https://snap.winna.er/bjc/crash_course.html#hint-slider" data-toggle="collapse"
+                        title="Click for an example of adjusting the Visible Stepping slider.">Click for an example of
+                        adjusting the Visible Stepping slider.</a>
+                    <div id="hint-slider" class="collapse">
+                        <img class="indent" src="./crash_course_files/VisualSteppinginFractal.gif"
+                            alt="Animation that shows how to use Visible stepping in Snap!"
+                            title="Animation that shows how to use Visible stepping in Snap!">
+                    </div>
+                </li>
+                <li>
+                    <strong>Stepping inside a custom block:</strong> To use visible stepping to see the code
+                    <em>inside</em> one or more of your custom blocks, follow these steps in order:
+                    <ol style="list-style-type:decimal;">
+                        <li>Turn on visible stepping</li>
+                        <li>Open a Block Editor window for each block you want to watch</li>
+                        <li>Start your program</li>
+                    </ol>
+                    (The order of steps here is important because these will be special Block Editors only for watching,
+                    not editing.)
+                </li>
+                <li>
+                    <strong>Running one step at a time:</strong> You can slow the stepping to only one step at a time,
+                    and Snap<em>!</em> will wait for you to tell it to go on to the next step. Move the slider all the
+                    way to the left, and then you can press the Run/Pause button (<img class="inline"
+                        src="./crash_course_files/play-pause-button.png" alt="pause button with play/pause icon"
+                        title="pause button with play/pause icon">) to advance through each step of your code. <a
+                        href="https://snap.winna.er/bjc/crash_course.html#hint-slider-left" data-toggle="collapse"
+                        title="Click for an example of single-stepping through code.">Click for an example of
+                        single-stepping through code.</a>
+                    <div id="hint-slider-left" class="collapse">
+                        <img class="indent" src="./crash_course_files/VisualPauseSteppinginFractal.gif"
+                            alt="Animation that shows how to use single-step Visible stepping in Snap!"
+                            title="Animation that shows how to use single-step Visible stepping in Snap!">
+                    </div>
+                </li>
+            </ul>
+            <p></p>
+            <p>Visible stepping can be useful as you read someone else's code because you can watch it run at human
+                speed instead of computer speed. It's also useful in debugging your own code when something goes wrong.
+            </p>
+            <p>
+                You can also use <img class="inline" src="./crash_course_files/pause-all.png" alt="pause all"
+                    title="pause all"> to place breaks in your code. When your program reaches this block,
+                <em>every</em> script that is running will pause until you click the yellow Run button (<img
+                    src="./crash_course_files/play-button.png" alt="play button" title="play button">).
+                <a href="https://snap.winna.er/bjc/crash_course.html#hint-pauseall" data-toggle="collapse"
+                    title="Click for an example of using pause all.">Click for an example of using
+                    <code>pause all</code>.</a>
+            </p>
+            <div id="hint-pauseall" class="collapse">
+                <img class="indent" src="./crash_course_files/PauseAll.gif" width="800" height="358"
+                    alt="Animation on how to use pause all block" title="Animation on how to use pause all block">
+            </div>
+            <p></p>
+        </div>
+
+
+        <h4><strong><a href="https://snap.winna.er/bjc/crash_course.html#hint-viewing" data-toggle="collapse"
+                    class="expansion-menu" title="Viewing Values While Your Code Runs" aria-expanded="true">Viewing
+                    Values While Your Code Runs</a></strong></h4>
+        <div id="hint-viewing" class="collapse in" aria-expanded="true" style="">
+            <p>
+                There are several ways to see the value of variables and sprite attributes while your code is running:
+            </p>
+            <ul>
+                <li>
+                    <strong>Clicking on a reporter</strong> will make it report its value.
+                </li>
+                <li>
+                    <strong>Checking the checkbox next to a variable or reporter in the palette</strong> (<img
+                        class="inline" src="./crash_course_files/var-check.png" width="82"
+                        alt="Variable with check-box checked">) will display a <em>watcher</em> on the stage that allows
+                    you to monitor how the value changes.
+                </li>
+                <li>
+                    <strong>The <img class="inline" src="./crash_course_files/show-variable-full-size.png"
+                            alt="show variable" title="show variable">block </strong> displays a watcher on the stage,
+                    which is useful for script variables since they aren't shown in the palette.
+                </li>
+                <li>
+                    <strong>Right-clicking on a script that's running</strong> shows a menu with extra options to
+                    display watchers for each currently existing script variable. <a
+                        href="https://snap.winna.er/bjc/crash_course.html#hint-temp-vars" data-toggle="collapse"
+                        title="Click for an example of showing temporary variable watchers.">Click for an example of
+                        showing temporary variable watchers.</a>
+                    <div id="hint-temp-vars" class="collapse">
+                        <img class="indent" src="./crash_course_files/locals.png"
+                            alt="A script that is running that includes &#39;column&#39; and &#39;row&#39; script variables. There is a right-click menu open overlaying the script, including &#39;column...&#39; and &#39;row...&#39; options. The &#39;column...&#39; option is selected and there is a &#39;column (temporary)&#39; watcher on the stage."
+                            title="A script that is running that includes &#39;column&#39; and &#39;row&#39; script variables. There is a right-click menu open overlaying the script, including &#39;column...&#39; and &#39;row...&#39; options. The &#39;column...&#39; option is selected and there is a &#39;column (temporary)&#39; watcher on the stage.">
+                    </div>
+                </li>
+            </ul>
+            <p></p>
+            <p>
+                You can also use the <img class="inline" src="./crash_course_files/say-for.png" alt="say for"
+                    title="say for"> block to get information about the state of your program while it's running. <a
+                    href="https://snap.winna.er/bjc/crash_course.html#hint-say-for" data-toggle="collapse"
+                    title="Click for an example of using say for to debug a rectangle drawing script.">Click for an
+                    example of using <code>say for</code> to debug a rectangle drawing script.</a>
+            </p>
+            <div id="hint-say-for" class="collapse">
+                <img class="indent" src="./crash_course_files/say-for-in-rectangle.gif"
+                    alt="Animation on how to use say for blocks for debugging an erroneous rectangle construction."
+                    title="Animation on how to use say for blocks for debugging an erroneous rectangle construction.">
+            </div>
+            <p></p>
+        </div>
+
+        <h4><strong><a href="https://snap.winna.er/bjc/crash_course.html#hint-tidying" data-toggle="collapse"
+                    class="expansion-menu" title="Tidying Up Your Code" aria-expanded="true">Tidying Up Your
+                    Code</a></strong></h4>
+        <div id="hint-tidying" class="collapse in" aria-expanded="true" style="">
+            <p>
+                One way to avoid having bugs in your program in the first place is to keep your code organized:
+            </p>
+            <ul>
+                <li>
+                    You can <strong>clean up your scripting area</strong> by right-clicking (or control-clicking on a
+                    Mac) the scripting area and selecting "clean up." This will reposition the scripts so they don't
+                    overlap.
+                </li>
+                <li>
+                    You can <strong>remove a script</strong> from your project by dragging it out of the scripting area
+                    and into the palette. (If you drag a block out of the middle of a script, that block and all the
+                    ones below it will be removed; the part of the script above that block will remain.)
+                </li>
+                <li>
+                    You can <strong>delete a single block</strong> from a script by right-clicking (or control-clicking
+                    on a Mac) that block and choosing the "delete" option. (Note that removing a block or script from
+                    your scripting area is different from the "delete block definition" option which will permanently
+                    delete a custom block and all its instances from your entire project.)
+                </li>
+                <li>
+                    You can <strong>delete all the unused blocks</strong> from your project by selecting "Unused
+                    blocks..." from the Snap<em>!</em> File menu. This allows you to permanently delete custom or
+                    imported blocks that aren't being used by your project. This is often helpful when you've loaded a
+                    library but you only need one or two blocks from that library. (More about libraries below.)
+                </li>
+            </ul>
+            <p></p>
+        </div>
+
+        <h4><strong><a href="https://snap.winna.er/bjc/crash_course.html#hint-commenting" data-toggle="collapse"
+                    class="collapsed expansion-menu" title="Commenting Your Code">Commenting Your Code</a></strong></h4>
+        <div id="hint-commenting" class="collapse">
+            <p>
+                You can add comments to your Snap<em>!</em> code by right-clicking (or control-clicking) in the Scripts
+                area and choosing "add comment." <a
+                    href="https://snap.winna.er/bjc/crash_course.html#hint-comments" data-toggle="collapse"
+                    title="Click for an animation that shows how to add comments.">Click for an animation that shows
+                    how.</a>
+            </p>
+            <div id="hint-comments" class="collapse">
+                <img class="indent" src="./crash_course_files/commenting.gif"
+                    alt="Animation on how to  add a comment to a block and how a comment added to a hat block becomes that custom block&#39;s help message."
+                    title="Animation on how to add a comment to a block and how a comment added to a hat block becomes that custom block&#39;s help message.">
+            </div>
+            <p></p>
+            <p>
+                You can create a help message for your block by attaching a comment to the hat block in the Block
+                Editor. Then people using your block can find out what your block does without having to look inside.
+                These work just like the help messages for built-in blocks.
+            </p>
+            <div>
+                <div style="display: inline; vertical-align: top;">
+                    <img class="indent" src="./crash_course_files/good-comments.png"
+                        alt="block definition for a square-drawing block called &#39;square&#39; with a comment attached to the hat block that says, &#39;This block draws a square. The input says how big to make the sides of the square.&#39;"
+                        title="block definition for a square-drawing block called &#39;square&#39; with a comment attached to the hat block that says, &#39;This block draws a square. The input says how big to make the sides of the square.&#39;">
+                </div>
+                <div class="indent" style="display: inline-block;">
+                    <img src="./crash_course_files/askhelp.png"
+                        alt="the &#39;square&#39; block with the right-click menu open and the &#39;help...&#39; option selected"
+                        title="the &#39;square&#39; block with the right-click menu open and the &#39;help...&#39; option selected"><br>
+                    <img src="./crash_course_files/squarehelp.png"
+                        alt="a Help window with a picture of the &#39;square&#39; block followed by the text &#39;This block draws a square. The input says how big to make the sides of the square.&#39; and then an &#39;OK&#39; button"
+                        title="a Help window with a picture of the &#39;square&#39; block followed by the text &#39;This block draws a square. The input says how big to make the sides of the square.&#39; and then an &#39;OK&#39; button">
+                </div>
+            </div>
+            <p></p>
+        </div>
+
+
+        <h3>Learning More</h3>
+
+
+        <p>You can <strong>learn more about programming with Snap<em>!</em></strong> on the <a
+                href="https://snap.winna.er/bjc/cheat_sheet.html" title="Snap! Cheat Sheet">Snap<em>!</em> Cheat
+                Sheet</a>, by reading some of the very thorough <a
+                href="https://snap.berkeley.edu/snap/help/SnapManual.pdf" title="Snap! Reference Manual"
+                target="_blank">Snap<em>!</em> Reference Manual</a>, or by connecting with other Snap<em>!</em>
+            programmers on the <a href="https://snap.berkeley.edu/" title="Snap! community website"
+                target="_blank">Snap<em>!</em> community website</a>.</p>
+        <p>
+            There is also a <strong>"find blocks button"</strong> in the palette in case you are thinking of a block you
+            can't find:<br>
+            <img class="indent" src="./crash_course_files/find-blocks-button.png"
+                alt="image of the magnifying glass icon at the top right of the palette just under the eight palette menus; there is a hover-over bubble that says &#39;find blocks...&#39;"
+                title="image of the magnifying glass icon at the top right of the palette just under the eight palette menus; there is a hover-over bubble that says &#39;find blocks...&#39;">
+        </p>
+
+
+
+
+
+        <iframe frameborder="0" scrolling="no" style="background-color: transparent; border: 0px; display: none;"
+            src="./crash_course_files/saved_resource.html"></iframe>
+        <div id="GOOGLE_INPUT_CHEXT_FLAG" input=""
+            input_stat="{&quot;tlang&quot;:true,&quot;tsbc&quot;:true,&quot;pun&quot;:true,&quot;mk&quot;:false,&quot;ss&quot;:true}"
+            style="display: none;"></div>
+    </main>
+    <footer>
+        <div class="footer wrapper margins">
+            <div class="footer-col col-md-1 col-xs-4">
+                <img src="./crash_course_files/NSF_logo.png" alt="NSF">
+            </div>
+            <div class="footer-col col-md-1 col-xs-4">
+                <img src="./crash_course_files/EDC_logo.png" alt="EDC">
+            </div>
+            <div class="footer-col col-md-1 col-xs-4">
+                <img src="./crash_course_files/UCB_logo.png" alt="UCB">
+            </div>
+            <div class="footer-col col-md-8 col-xs-12">
+                <p>The Beauty and Joy of Computing by University of California, Berkeley and Education
+                    Development Center, Inc. is licensed under a Creative Commons
+                    Attribution-NonCommercial-ShareAlike 4.0 International License. The development of this
+                    site has been funded by the National Science Foundation under grant nos. 1138596, 1441075,
+                    and 1837280; the U.S. Department of Education under grant number S411C200074; and the
+                    Hopper-Dean Foundation.
+                    Any opinions, findings, and conclusions or recommendations expressed in this material are
+                    those of the author(s) and do not necessarily reflect the views of the National Science
+                    Foundation or our other funders.
+                </p>
+            </div>
+            <div class="footer-col col-md-1 col-xs-4">
+                <img src="./crash_course_files/cc_88x31.png" alt="Creative Commons Attribution">
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
