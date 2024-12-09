@@ -10,8 +10,8 @@ llab = llab || {};
 llab.loaded = llab.loaded || {};
 llab.DEVELOPER_CLASSES = '.todo, .comment, .commentBig, .ap-standard, .csta-standard'
 
-llab.PRODUCTION_SERVERS = [ 'bjc.berkeley.edu', 'bjc.edc.org', 'cs10.org' ]
-
+// llab.PRODUCTION_SERVERS = [ 'bjc.berkeley.edu', 'bjc.edc.org', 'cs10.org' ]
+llab.PRODUCTION_SERVERS = [ 'snap.winna.er', 'bjc.edc.org', 'cs10.org' ]
 ////// TRANSLATIONS -- Shared Across All Files.
 llab.TRANSLATIONS = {
     'ifTime': {
@@ -227,14 +227,14 @@ llab.setUpDevComments = () => {
         $(document).ready(llab.toggleDevComments);
     }
 
-    if (llab.isStagingEnvironment()) {
-        let open_link = $(`
-            <a class="${rightSideButton} btn-primary js-openProdLink"
-              target="_blank"
-              href=${location.href.replace(location.host, 'bjc.edc.org')}
-            >Open on edc.org</a>`)
-            $(FULL).prepend(open_link);
-    }
+    // if (llab.isStagingEnvironment()) {
+    //     let open_link = $(`
+    //         <a class="${rightSideButton} btn-primary js-openProdLink"
+    //           target="_blank"
+    //           href=${location.href.replace(location.host, 'snap.edc.org')}
+    //         >Open on edc.org</a>`)
+    //         $(FULL).prepend(open_link);
+    // }
 }
 
 /** Returns the value of the URL parameter associated with NAME. */

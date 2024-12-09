@@ -10,8 +10,8 @@ llab = llab || {};
 llab.loaded = llab.loaded || {};
 llab.DEVELOPER_CLASSES = '.todo, .comment, .commentBig, .ap-standard, .csta-standard'
 
-llab.PRODUCTION_SERVERS = [ 'bjc.berkeley.edu', 'bjc.edc.org', 'cs10.org' ]
-
+// llab.PRODUCTION_SERVERS = [ 'bjc.berkeley.edu', 'bjc.edc.org', 'cs10.org' ]
+llab.PRODUCTION_SERVERS = [ 'snap.winna.er', 'bjc.edc.org', 'cs10.org' ]
 ////// TRANSLATIONS -- Shared Across All Files.
 llab.TRANSLATIONS = {
     'ifTime': {
@@ -58,8 +58,8 @@ llab.TRANSLATIONS = {
 };
 
 /////////////////
-llab.snapRunURLBase = "https://snap.berkeley.edu/snap/snap.html#open:";
-llab.snapRunURLBaseVersion = "https://snap.berkeley.edu/versions/VERSION/snap.html#open:";
+llab.snapRunURLBase = "https://snap.winna.er/snap/snap.html#open:";
+llab.snapRunURLBaseVersion = "https://snap.winna.er/versions/VERSION/snap.html#open:";
 
 // It is expected that you host llab content in an environment where CORS is allowed.
 llab.getSnapRunURL = function(targeturl, options) {
@@ -227,14 +227,14 @@ llab.setUpDevComments = () => {
         $(document).ready(llab.toggleDevComments);
     }
 
-    if (llab.isStagingEnvironment()) {
-        let open_link = $(`
-            <a class="${rightSideButton} btn-primary js-openProdLink"
-              target="_blank"
-              href=${location.href.replace(location.host, 'bjc.edc.org')}
-            >Open on edc.org</a>`)
-            $(FULL).prepend(open_link);
-    }
+    // if (llab.isStagingEnvironment()) {
+    //     let open_link = $(`
+    //         <a class="${rightSideButton} btn-primary js-openProdLink"
+    //           target="_blank"
+    //           href=${location.href.replace(location.host, 'bjc.edc.org')}
+    //         >Open on edc.org</a>`)
+    //         $(FULL).prepend(open_link);
+    // }
 }
 
 /** Returns the value of the URL parameter associated with NAME. */

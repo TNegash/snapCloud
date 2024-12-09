@@ -373,11 +373,11 @@ llab.createTitleNav = function() {
 
   // The BJC Logo takes you to the course ToC, or the BJC index when there is no course defined.
   let t = llab.t,
-      navURL = '/bjc-r/',
-      logoURL = '/bjc-r/img/header-footer/bjc-logo-sm2.png';
+      navURL = '/bjc/',
+      logoURL = '/bjc/saving_snap_projects_files/bjc-logo-sm2.png';
   if (llab.getQueryParameter('course')) {
-    navURL = `/bjc-r/course/${llab.getQueryParameter('course')}`;
-  } else if (location.pathname.indexOf('/bjc-r/course/') == 0) {
+    navURL = `/bjc/course/${llab.getQueryParameter('course')}`;
+  } else if (location.pathname.indexOf('/bjc/') == 0) {
     navURL = location.pathname;
   }
 
