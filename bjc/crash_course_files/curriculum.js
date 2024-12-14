@@ -371,15 +371,15 @@ llab.setupTitle = function() {
 llab.createTitleNav = function() {
   llab.setUpDevComments();
 
-  // The BJC Logo takes you to the course ToC, or the BJC index when there is no course defined.
-  let t = llab.t,
-      navURL = '/bjc/',
-      logoURL = '/bjc/crash_course_files/bjc-logo-sm2.png';
-  if (llab.getQueryParameter('course')) {
-    navURL = `/bjc/course/${llab.getQueryParameter('course')}`;
-  } else if (location.pathname.indexOf('/bjc/') == 0) {
-    navURL = location.pathname;
-  }
+   The BJC Logo takes you to the course ToC, or the BJC index when there is no course defined.
+   let t = llab.t,
+       navURL = '/bjc/',
+       logoURL = '/bjc/crash_course_files/bjc-logo-sm2.png';
+   if (llab.getQueryParameter('course')) {
+     navURL = `/bjc/course/${llab.getQueryParameter('course')}`;
+   } else if (location.pathname.indexOf('/bjc/') == 0) {
+     navURL = location.pathname;
+   }
 
   let previousButtonLabel = `aria-label="${t('backText')}"`,
     nextButtonLabel = `aria-label="${t('nextText')}"`,

@@ -1,192 +1,26 @@
 <div class="grid">
-<div class="toc-container"></div>
-<div class="content-container">
-<h1 id="learning_materials" localizable>Snap<em>!</em> Learning Materials</h1>
-<div class="learning-contents">
-    <h2 class="toc-h2"id="snap_crash_Course">Snap! Crash Course</h2>
+    <div class="toc-container"></div>
+    <div class="content-container">
+        <h1 id="learning_materials" localizable>Snap<em>!</em> Learning Materials</h1>
+        <div class="learning-contents">
+   <h2 class="toc-h2"id="snap_crash_Course">Snap! Crash Course</h2>
+
     <div>
+
     <p>
+
     <a href="bjc/crash_course.html">The Beauty and Joy of Computing: Snap! Crash Course</a> is an engaging and accessible introduction to computer science. Using the visual programming language Snap!, it highlights the creative and aesthetic aspects of computing, making it perfect for beginners to quickly grasp key concepts while enjoying the process. It's an excellent starting point for anyone interested in exploring the world of technology.
+
     </p>
+
     </div>
-    <h2 class="toc-h2"id="snap_beginners_get_excited">Snap! Beginners: Get Excited</h2>
-     <div>
-        <p>
-        Coding is probably one of the most useful skills of the future. Using Snap!, a block-based
-        programming language that extends Scratch, the basics of programming and the logic behind
-        it can be understood without taking care of all the tedious things such as compiling or correct
-        syntax. 
-        </p>
-        <p>
-        Like puzzle pieces, the programming commands, the so-called blocks, are put together to form
-        scripts and programs. Snap! programming is reduced to the essentials, helping beginners to
-        achieve interesting results very quickly. However, Snap! also provides functions, which
-        enables its usage in education and research.
-        To access Snap!, visit snap.winna.er or if you have internet access snap.berkeley.edu and click run Snap! now. Snap! runs in any browser (however, Chrome and Firefox are recommended). 
-        </p>
-        <p>
-            <ul>
-                <li><a href="static/doc/AutomatenGrammatiken.pdf">Snap! for Beginners - Part 1</a></li>
-                <li><a href="static/doc/AutomatenGrammatiken.pdf">Snap! for Beginners - Part 2</a></li>
-            </ul>
-        </p>
-    </div>
-    <h2 class="toc-h2"id="get_coding_with_snap">Get Coding with Snap</h2>
-    <div class="overview">
-        <h3 class="toc-h3" id="overview" >Overview</h3>
-        <div>
-            <p>
-            We all use software practically every day, often without even realizing it! As our lives are transformed by the digital age, programming is becoming an important life skill. In this course, you’ll see how anyone can start building their own programs using Snap!, a block-based, open-source programming language. Its colorful, intuitive interface makes learning fast and fun, even for the most technically challenged! If you’ve already done some programming in Scratch, you’ll feel instantly at home. If not, don’t worry! Using animations, games, and artwork, this course will bring out the artist – and computer scientist – in you.
-          </p>
-          <p>
-            Learners young and old, experienced and novice alike, will soon discover why Snap! is becoming the programming language of choice for researchers and teachers of computer science around the world.
-           </p>
-        </div>
-    </div>
-    <div class="learning-objectives">
-    <h3 class="toc-h3" id="learning-objectives">Learning objectives</h3>
-        <p>
-        <p>After completing this course, business users, consultants, and developers will be able to:&nbsp;&nbsp;</p>
-        <ul>
-            <li>Navigate the interface of the Snap! programming language.&nbsp;</li>
-            <li>Create sprites, costumes, and artwork using Snap!.&nbsp;</li>
-            <li>Learn the basic concepts of computer science like loops, conditionals, variables, and custom functions.&nbsp;</li>
-            <li>Utilize cloning and recursion in Snap!.</li>
-        </ul>
-        </p>
-    </div>
-        <div class="prerequisites">
-            <h3 class="toc-h3" id="prerequisites">Prerequisites</h3>
-            <p>
-                none
-            </p>
-    </div>
-    <div class="course-contents">
-        <h3 class="toc-h3" id="get_conding_with_snap_course_content">Get Coding with Snap Course Content</h3>
-            <p>
-                <ul>
-                    <li>
-                        <h4 class="toc-h4" id="get_conding_with_snap_week_1">Week 1: First Steps with Snap!</h4>
-                        <table style="border: 1px solid;">
-                            <tr>
-                                <th>Description</th>
-                                <th>Video</th>
-                                <th>Exercise</th>
-                                <th>Transcript</th>
-                            </tr>
-                            <tr>                             
-                                <td>Create Your Own Virtual Flower Garden</td>
-                                 <td>  <a href="/static/eriresources/GetCodingWithSnap/Week1/Week1Unit1-CreateYourOwnVirtualFlowerGarden.mp4"
-                                        ><img src="/static/img/video.svg" alt=" Unit 1 Video" width="40"></a> </td>
-                                <td>  <a href="/static/eriresources/GetCodingWithSnap/Week1/Week1Unit1-AdditionalMaterial -Exercise.pdf"
-                                        >Unit 1 Exercise</a> </td>  
-                                 <td>  <a href="/static/eriresources/GetCodingWithSnap/Week1/Week1Unit1-AdditionalMaterial.pdf"
-                                        >Unit 1 Transcript</a> </td>
-                            </tr>
-                            <tr>
-                                <td>Getting Edgy with Polygons</td>
-                                <td>  <a href="/static/eriresources/GetCodingWithSnap/Week1/Week1Unit2-GettingEdgyWithPolygons.mp4"
-                                        ><img src="/static/img/video.svg" alt=" Unit 2 Video" width="40"></a> </td>
-                                <td>  <a href="/static/eriresources/GetCodingWithSnap/Week1/Week1Unit2-AdditionalMaterial - Exercise.pdf"
-                                        >Unit 2 Exercise</a> </td>  
-                                <td>  <a href="/static/eriresources/GetCodingWithSnap/Week1/Week1Unit2-AdditionalMaterial.pdf"
-                                        >Unit 2 Transcript</a> </td>
-                            </tr>
-                            <tr>
-                                <td>Spiraling Around the For Loop</td>
-                                 <td>  <a href="/static/eriresources/GetCodingWithSnap/Week1/Week1Unit3-SpiralingAroundTheForLoop.mp4"
-                                        ><img src="/static/img/video.svg" alt=" Unit 3 Video" width="40"></a> </td>
-                                <td>  <a href="/static/eriresources/GetCodingWithSnap/Week1/Week1Unit3-AdditionalMaterial -Exercise.pdf"
-                                        >Unit 3 Exercise</a> </td>  
-                                 <td>  <a href="/static/eriresources/GetCodingWithSnap/Week1/Week1Unit3-AdditionalMaterial.pdf"
-                                        >Unit 3 Transcript</a> </td>
-                            </tr>
-                            <tr>
-                                <td>Be Reflective Mirror Images</td>
-                                <td>  <a href="/static/eriresources/GetCodingWithSnap/Week1/Week1Unit4-BeReflectiveMirrorImages.mp4"
-                                        ><img src="/static/img/video.svg" alt=" Unit 4 Video" width="40"></a> </td>
-                                <td>  <a href="/static/eriresources/GetCodingWithSnap/Week1/Week1Unit4-AdditionalMaterial - Exercise.pdf"
-                                        >Unit 4 Exercise</a> </td>  
-                                 <td>  <a href="/static/eriresources/GetCodingWithSnap/Week1/Week1Unit4-AdditionalMaterial.pdf"
-                                        >Unit 4 Transcript</a> </td>
-                            </tr>
-                            <tr>
-                                <td>Visit the Star fish My First Interactive Game</td>
-                                <td>  <a href="/home/snapCloud/static/eriresources/GetCodingWithSnap/Week1/Week1Unit5-VisitTheStarfishMyFirstInteractiveGame.mp4"
-                                        ><img src="/static/img/video.svg" alt=" Unit 5 Video" width="40"></a> </td>
-                                <td>  <a href="/static/eriresources/GetCodingWithSnap/Week1/Week1Unit5-AdditionalMaterial - Exercise.pdf"
-                                        >Unit 5 Exercise</a> </td>  
-                                <td>  <a href="/static/eriresources/GetCodingWithSnap/Week1/Week1Unit5-AdditionalMaterial.pdf"
-                                        >Unit 5 Transcript</a> </td>          
-                            </tr>
-                        </table>
-                    </li>
-                    <li>
-                        <h4 class="toc-h4" id="get_conding_with_snap_week_2">Week 2: Tough Stuff with Blocks</h4>
-                        <table style="border: 1px solid;">
-                            <tr>
-                                <th>Description</th>
-                                <th>Video</th>
-                                <th>Exercise</th>
-                                <th>Transcript</th>
-                            </tr>
-                            <tr>
-                                <td>Building with Blocks Eliminating Chaos</td>
-                                 <td>  <a href="/static/eriresources/GetCodingWithSnap/Week2/Week2Unit1-BuildingWithBlocksEliminatingChaos.mp4"
-                                        ><img src="/static/img/video.svg" alt=" Unit 1 Video" width="40"></a> </td>
-                                <td>  <a href="/static/eriresources/GetCodingWithSnap/Week2/Week2Unit1-AdditionalMaterial - Exercise.pdf"
-                                        >Unit 1 Exercise</a> </td>  
-                                 <td>  <a href="/static/eriresources/GetCodingWithSnap/Week2/Week2Unit1-AdditionalMaterial.pdf"
-                                        >Unit 1 Transcript</a> </td>       
-                            </tr>
-                            <tr>
-                                <td>Rumour Has It Building a Function</td>
-                                <td>  <a href="/static/eriresources/GetCodingWithSnap/Week2/Week2Unit2-RumourHasItBuildingAFunction.mp4"
-                                        ><img src="/static/img/video.svg" alt=" Unit 2 Video" width="40"></a> </td>
-                                 <td>  <a href="/static/eriresources/GetCodingWithSnap/Week2/Week2Unit2-AdditionalMaterial - Exercise.pdf"
-                                        >Unit 2 Exercise</a> </td>  
-                                 <td>  <a href="/static/eriresources/GetCodingWithSnap/Week2/Week2Unit2-AdditionalMaterial.pdf"
-                                        >Unit 2 Transcript</a> </td>           
-                            </tr>
-                            <tr>
-                                <td>Cloning</td>
-                                <td>  <a href="/static/eriresources/GetCodingWithSnap/Week2/Week2Unit3-Cloning.mp4"
-                                        ><img src="/static/img/video.svg" alt=" Unit 3 Video" width="40"></a> </td>
-                                <td>  <a href="/static/eriresources/GetCodingWithSnap/Week2/Week2Unit3-AdditionalMaterial - Exercise.pdf"
-                                        >Unit 3 Exercise</a> </td>  
-                                <td>  <a href="/static/eriresources/GetCodingWithSnap/Week2/Week2Unit3-AdditionalMaterial.pdf"
-                                        >Unit 3 Transcript</a> </td>        
-                            </tr>
-                            <tr>
-                                <td>Recursion How to Grow a Tree</td>
-                                <td>  <a href="/static/eriresources/GetCodingWithSnap/Week2/Week2Unit4-RecursionHowToGrowATree.mp4"
-                                        ><img src="/static/img/video.svg" alt=" Unit 4 Video" width="40"></a> </td>
-                                <td>  <a href="/static/eriresources/GetCodingWithSnap/Week2/Week2Unit4-AdditionalMaterial - Exercise.pdf"
-                                        >Unit 4 Exercise</a> </td>  
-                                <td>  <a href="/static/eriresources/GetCodingWithSnap/Week2/Week2Unit4-AdditionalMaterial.pdf"
-                                        >Unit 4 Transcript</a> </td>        
-                            </tr>
-                            <tr>
-                                <td>Fireworks Cloning Your Recursion</td>
-                                <td>  <a href="/static/eriresources/GetCodingWithSnap/Week2/Week2Unit5-FireworksCloningYourRecursion.mp4"
-                                        ><img src="/static/img/video.svg" alt=" Unit 5 Video" width="40"></a> </td>
-                                <td>  <a href="/static/eriresources/GetCodingWithSnap/Week2/Week2Unit5-AdditionalMaterial - Exercise.pdf"
-                                        >Unit 5 Exercise</a> </td>  
-                                <td>  <a href="/static/eriresources/GetCodingWithSnap/Week2/Week2Unit5-AdditionalMaterial .pdf"
-                                        >Unit 5 Transcript</a> </td>       
-                            </tr>
-                            <tr>
-                                <td>Putting It All Together Making It Pop</td>
-                                 <td>  <a href="/static/eriresources/GetCodingWithSnap/Week2/Week2Unit6-PuttingItAllTogetherMakingItPop.mp4"
-                                        ><img src="/static/img/video.svg" alt=" Unit 6 Video" width="40"></a> </td>
-                                <td>  <a href="/static/eriresources/GetCodingWithSnap/Week2/Week2Unit6-AdditionalMaterial - Exercise.pdf"
-                                        >Unit 6 Exercise</a> </td>  
-                                <td>  <a href="/static/eriresources/GetCodingWithSnap/Week2/Week2Unit6-AdditionalMaterial.pdf"
-                                        >Unit 6 Transcript</a> </td>       
-                            </tr>
-                        </table>
-                    </li>
-                    </ul>
+            <h2 class="toc-h2"id="snap_beginners_get_excited">Snap! Beginners: Get Excited</h2>
+            <div>
+                <p>
+                Coding is probably one of the most useful skills of the future. Using Snap!, a block-based
+                programming language that extends Scratch, the basics of programming and the logic behind
+                it can be understood without taking care of all the tedious things such as compiling or correct
+                syntax. 
                 </p>
                 <p>
                 Like puzzle pieces, the programming commands, the so-called blocks, are put together to form
@@ -221,7 +55,7 @@
                                     <td> <P> &nbsp; PDF( <a href="/static/eriresources/workshops/Workshop-Pointillism/pointillism activity card.pdf"
                                                 >EN</a> 
                                                 /
-                                                <a href="/static/eriresources/workshops/Workshop-Pointillism/pointillism activity card.pdf" >ትግ</a> ) &nbsp;</p>
+                                                <a href="/static/eriresources/workshops/Workshop-Pointillism/PointillismTigrinya.pdf" >ትግ</a> ) &nbsp;</p>
                                          <P> &nbsp; Video( <a href="/static/eriresources/workshops/Workshop-Pointillism/FromMediaComputationToDataScience-Pointillism.mp4"
                                                 >EN</a> ) &nbsp;</p>
                                     </td>
@@ -234,7 +68,7 @@
                                     <td> <P> &nbsp; PDF( <a href="/static/eriresources/workshops/Workshop-Magic-Mirror/MagicMirror-EN.pdf"
                                                 >EN</a> 
                                                 /
-                                                <a href="/static/eriresources/workshops/Workshop-Magic-Mirror/MagicMirror-EN.pdf" >ትግ</a>            
+                                                <a href="/static/eriresources/workshops/Workshop-Magic-Mirror/MagicMirrorTigrinya.pdf" >ትግ</a>            
                                                 ) &nbsp;</p>  
                                     </td>   
                                     <td><a href="https://snap.winna.er/snap/snap.html#present:Username=admin&ProjectName=MagicMirror&editMode&noRun"
