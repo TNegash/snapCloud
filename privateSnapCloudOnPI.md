@@ -1167,13 +1167,14 @@ To get detailed information about the command execute
  ```
 ### System Program Problem Detected
    - The system crash log can be found under the following folder:
-   ```
-    /var/crash
-   ```
+    ```
+      /var/crash
+    ```
    - Stop ***system programm problem detected*** popup 
     ```bash
-    sudo rm /var/crash/*
-   ```
+      sudo rm /var/crash/*
+    ```
+    
 ### Issues with Firefox (unknown hot or host not found)
 
   - In Firefox, type ***about:config*** in the address bar
