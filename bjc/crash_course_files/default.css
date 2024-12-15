@@ -11,7 +11,7 @@
   font-style: normal;
 } */
 
-@font-face {
+/* @font-face {
   font-family: 'work_sansregular';
   src: url('fon ts/Work_Sans/WorkSans-Regular.eot');
   src: url('fonts/Work_Sans/WorkSans-Regular.eot?#iefix') format('embedded-opentype'),
@@ -32,7 +32,7 @@
       url("fonts/fontawesome/fa-solid-900.woff") format("woff"),
       url("fonts/fontawesome/fa-solid-900.ttf") format("truetype"),
       url("fonts/fontawesome/fa-solid-900.svg#fontawesome") format("svg");
-}
+} */
 
 /* * * * END FONTS * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 

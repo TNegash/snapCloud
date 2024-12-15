@@ -29,7 +29,7 @@ llab.isLocalEnvironment = () => ['localhost', '127.0.0.1'].includes(window.locat
  ***********************
  See ../llab.js for more explanations.
  */
-llab.rootURL = "/bjc-r/";
+llab.rootURL = "/bjc/";
 llab.install_directory = "llab/";
 llab.llab_path = llab.rootURL + llab.install_directory;
 llab.courses_path = llab.rootURL + "course/";
@@ -47,20 +47,20 @@ llab.SENTRY_URL = 'https://js.sentry-cdn.com/f55a4cd65a8b48fd99e8247c6a5e6c2d.mi
 
 // CSS
 llab.paths.css_files = [
-    'css/3.3.7/bootstrap.min.css',
-    'css/default.css',
-    '../css/bjc.css',
+    'bootstrap.min.css',
+    'default.css',
+    'bjc.css',
     // TODO: Merge this into bjc.css.
-    '../css/edcdevtech-headerfooter.css',
+    'edcdevtech-headerfooter.css',
 ];
 
 /////////////////////////
 ///////////////////////// stage 0
 // Stage 0 items can be executed with no dependences.
 llab.paths.scripts[0] = [];
-llab.paths.scripts[0].push("lib/jquery-3.7.0.slim.min.js");
-llab.paths.scripts[0].push("script/library.js");
-llab.paths.scripts[0].push("script/quiz/multiplechoice.js");
+llab.paths.scripts[0].push("jquery-3.7.0.slim.min.js");
+llab.paths.scripts[0].push("library.js");
+llab.paths.scripts[0].push("multiplechoice.js");
 
 llab.loaded['config'] = true;
 llab.loaded['library'] = false;
@@ -72,10 +72,10 @@ llab.paths.stage_complete_functions[0] = () => {
 /////////////////
 ///////////////// stage 1
 llab.paths.scripts[1] = [];
-llab.paths.scripts[1].push("script/curriculum.js");
-llab.paths.scripts[1].push("script/course.js");
-llab.paths.scripts[1].push("script/topic.js");
-llab.paths.scripts[1].push("lib/bootstrap.min.js");
+llab.paths.scripts[1].push("curriculum.js");
+llab.paths.scripts[1].push("course.js");
+llab.paths.scripts[1].push("topic.js");
+llab.paths.scripts[1].push("bootstrap.min.js");
 // llab.paths.scripts[1].push("script/lib/sha1.js");     // for brainstorm
 
 // Doing a very weird thing delaying this until stage 1
@@ -89,7 +89,7 @@ llab.paths.stage_complete_functions[1] = function() {
 // all these scripts depend on jquery, loaded in stage 1
 // all quiz item types should get loaded here
 llab.paths.scripts[2] = [];
-llab.paths.scripts[2].push("script/quiz.js");
+llab.paths.scripts[2].push("quiz.js");
 // llab.paths.scripts[2].push("script/brainstorm.js");
 // llab.paths.scripts[2].push("script/user.js");
 
@@ -100,8 +100,8 @@ llab.paths.stage_complete_functions[2] = function() {
 ///////// OPTIONAL LIBRARIES:
 llab.optionalLibs = {
     katex: {
-        css: 'css/katex.min.css',
-        js: 'lib/katex.min.js'
+        css: 'katex.min.css',
+        js: 'katex.min.js'
     },
     highlights: {
         css: 'css/tomorrow-night-blue.css',

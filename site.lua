@@ -67,7 +67,7 @@ app:before_filter(function (self)
 end)
 
 app:get('index', '/', capture_errors(cached(function (self)
-    self.snapcloud_id = Users:find({ username = 'snapcloud' }).id
+    self.snapcloud_id = Users:find({ username = 'admin' }).id
     -- return { render = 'index' }
     return { render = 'index_bs', layout = 'layout_bs' }
 end)))
@@ -279,12 +279,12 @@ end))
 
 -- TODO: Should be able to consolidate these pages.
 app:get('/examples', capture_errors(cached(function (self)
-    self.snapcloud_id = Users:find({ username = 'snapcloud' }).id
+    self.snapcloud_id = Users:find({ username = 'admin' }).id
     return { render = 'examples', layout = 'layout_bs' }
 end)))
 
 app:get('/events', capture_errors(cached(function (self)
-    self.snapcloud_id = Users:find({ username = 'snapcloud' }).id
+    self.snapcloud_id = Users:find({ username = 'admin' }).id
     return { render = 'events', layout = 'layout_bs' }
 end)))
 
