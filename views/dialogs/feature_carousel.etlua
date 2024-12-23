@@ -1,4 +1,4 @@
-<% local snap_cloud = package.loaded.Users:find({ username = 'snapcloud' })%>
+<% local snap_cloud = package.loaded.Users:find({ username = 'admin' })%>
 <form class="carousel-form">
     <p>Select a carousel to feature:</p>
     <select>

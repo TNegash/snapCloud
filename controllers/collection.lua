@@ -76,7 +76,7 @@ CollectionController = {
             [[JOIN active_users ON
                 (active_users.id = collections.creator_id)
                 WHERE (collections.creator_id =
-                    (SELECT id FROM users WHERE username = 'snapcloud')
+                    (SELECT id FROM users WHERE username = 'admin')
                 AND collections.description LIKE 'TOTM%')]]
         )
     end),

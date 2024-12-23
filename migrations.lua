@@ -200,7 +200,7 @@ return {
         local ids = db.query([[
             SELECT id FROM collections
                 WHERE creator_id =
-                    (SELECT id FROM users WHERE username = 'snapcloud' LIMIT 1)
+                    (SELECT id FROM users WHERE username = 'admin' LIMIT 1)
                 AND name IN
                     ('Fractals', 'Animations', 'Art Projects',
                     'Science Projects', 'Music', 'Simulations', 'Games',
@@ -227,7 +227,7 @@ return {
         ids = db.query([[
             SELECT id FROM collections
                 WHERE creator_id =
-                    (SELECT id FROM users WHERE username = 'snapcloud' LIMIT 1)
+                    (SELECT id FROM users WHERE username = 'admin' LIMIT 1)
                 AND name LIKE 'Snap%20%'
             ]])
         for _, entry in pairs(ids) do
@@ -247,7 +247,7 @@ return {
                     WHERE name = 'Featured'
                     AND creator_id = (
                         SELECT id FROM users
-                        WHERE username = 'snapcloud' LIMIT 1
+                        WHERE username = 'admin' LIMIT 1
                     )
                 ),
                 'index',
