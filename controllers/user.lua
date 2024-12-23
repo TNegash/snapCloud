@@ -190,14 +190,16 @@ UserController = {
         self.session.username = ''
         self.session.user_id = nil
         self.cookies.persist_session = 'false'
-        return { redirect_to = self:build_url('/') }
+        -- return { redirect_to = self:build_url('/') }
+        return { redirect_to = 'https://snap.winna.er/' }
     end),
     logout = capture_errors(function (self)
         self.session.username = ''
         self.session.user_id = nil
         self.cookies.persist_session = 'false'
         return jsonResponse({
-            redirect = (self.params.redirect or self:build_url('/'))
+            -- redirect = (self.params.redirect or self:build_url('/'))
+            redirect = 'https://snap.winna.er/'
         })
     end),
     change_email = capture_errors(function (self)
