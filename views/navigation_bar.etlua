@@ -14,11 +14,15 @@
                     <a class="pure-menu-link explore" href="/explore"
                         ><%- locale.get('explore') %></a>
                 </li>
-                <li class="pure-menu-item">
+                <%
+--[[%>
+ <li class="pure-menu-item">
                     <a class="pure-menu-link forum"
                         href="https://forum.snap.berkeley.edu/"
                         ><%- locale.get('forum') %></a>
-                </li>
+                </li> 
+<%
+]]%>
                 <!--   =======   Snap!Con   =======
                 <li class="pure-menu-item">
                     <a class="pure-menu-link" target="_blank"
