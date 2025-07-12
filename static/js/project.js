@@ -146,31 +146,18 @@ function setupCollectionEditorControls (collection, editorsElement) {
 };
 
 function toggleFullScreen () {
-    var embed = document.querySelector('.embed'),
+    var container = document.querySelector('.js-embed-container'),
         iframe = document.querySelector('.embed iframe'),
-        world = iframe.contentWindow.world,
-        buttons = document.querySelector('.buttons');
-    if (embed.fullScreen) {
-        embed.fullScreen = false;
-        embed.style = embed.oldStyle;
-        iframe.style = iframe.oldStyle;
-        buttons.style = buttons.oldStyle;
-        document.body.style.overflow = 'auto';
-        buttons.style = buttons.oldStyle;
-    } else {
-        embed.fullScreen = true;
-        embed.oldStyle = embed.style;
-        iframe.oldStyle = iframe.style;
-        buttons.oldStyle = buttons.style
-        embed.style.position = 'fixed';
-        embed.style.left = 0;
-        embed.style.top = 0;
-        embed.style.width = '100vw';
-        embed.style.height = '100vh';
-        iframe.style.height = '100%';
-        document.body.style.overflow = 'hidden';
-        buttons.style.display = 'none';
+        world = iframe.contentWindow.world;
 
+    if (container.classList.contains('full-screen')) {
+        container.classList.remove('full-screen');
+        document.body.parentElement.style = null;
+        document.body.style = null;
+    } else {
+        container.classList.add('full-screen');
+        document.body.parentElement.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden';
     }
     world.worldCanvas.focus();
 };

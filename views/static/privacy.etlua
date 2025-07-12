@@ -1,3 +1,4 @@
+<% content_for('title', 'Privacy Policy') %>
 <h1 localizable><img src="/static/img/Logo5.png" alt="Snap!" height="30px"> Privacy Policy</h1>
 
 <p>Your privacy and safety online are very important to us. To protect your privacy, we limit what we collect and what we publish on the website. Although, as a nonprofit educational institution, we are technically exempt from the United States Children's Online Privacy Protection Act (COPPA), we are voluntarily following its rules about data collection from children under 13.  This policy also conforms to the European Union General Data Protection Regulation (GDPR), which restricts data collection from children under 16.  We apply these protection policies to all users, wherever located, so 16 is our cutoff age for parental notification.</p>
@@ -14,13 +15,14 @@
 
 <p>If you wish to save the projects you create on our cloud server, then you must create an account on this site so that your storage is separate from other people's storage. When you create an account, we collect your email address or, if you are under 13, your parent's or guardian's email address. We use your address for five purposes:
 
-<ul class="indent bullets">
- <li>When you sign up for an account, we immediately send you a confirming email with a verification link.</li>
- <li>If you ask for a new verification link, we will also send it to your email account.</li>
- <li>If you forget your password, we use your address to send you a password-reset email.</li>
- <li>If your account is suspended for violation of our <a href="tos">Terms of Service</a>, we will notify you by email.</li>
- <li>If you ask for instant deletion of your account under the GDPR, we will send you an email asking for confirmation.</li>
-</ul>
+<p><ul class="indent bullets">
+    <li>When you sign up for an account, we immediately send you a confirming email with a verification link.</li>
+    <li>If you ask for a new verification link, we will also send it to your email account.</li>
+    <li>If you forget your password, we use your address to send you a password-reset email.</li>
+    <li>If your account is suspended for violation of our <a href="tos">Terms of Service</a>, we will notify you by email.</li>
+    <li>If you ask for instant deletion of your account under the GDPR, we will send you an email asking for confirmation.</li>
+    </ul>
+</p>
 
 <p>We do not use your address for any other purpose. You will never receive marketing emails of any kind through this site, neither from us nor from third parties.</p>
 <p>We do not share your address with anyone else, except for companies contracted with us to provide services to us. Any such companies agree to obey this privacy policy. The only exception is that we might be compelled by legal subpoena to provide information to police agencies or courts.</p>
@@ -60,8 +62,6 @@
 <p>Under the GDPR, you (or your parent if you are under 16) have the right to ask us to delete your account <em>instantly,</em> and we will honor such requests as soon as you click the link in an email we'll send to your registered email address to verify that it's really you making the request.</p>
 
 <p>If you are the parent of a child with an account on this site and would like us to remove the account, please <a href="contact">contact us</a>, and include in your message your child's account name, the email address associated with the account, and a way to contact you offline (to prevent forgeries).</p>
-
-<h2>For further questions</h2>
 
 <% render('views.static.contact') %>
 

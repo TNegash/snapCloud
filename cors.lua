@@ -35,7 +35,6 @@ domain_allowed['cloud.snap.winna.er'] = true
 -- By Default CORS is not needed on the same domain.
 -- However, we want to allow access on http hosted versions of Snap!.
 domain_allowed['snap-cloud.cs10.org'] = true
-domain_allowed['cloud.snap.berkeley.edu'] = true
 -- App Server Staging Domains
 domain_allowed['snap-staging.cs10.org'] = true
 domain_allowed['staging.snap.berkeley.edu'] = true

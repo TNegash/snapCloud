@@ -1,24 +1,79 @@
+@use './custom-alert-additions';
+
 /* This sets CSS Variables which override Bootstrap's config. */
 :root {
-  // Berkeley Colors are not currently used, but probably in the future.
-  --berkeley-blue-2023: #003262;
-  --berkeley-blue-2024: #002676;
-  --california-gold: #fdb515;
-  // Current nav+footer color.
-  --snap-dark-blue: #2d3142;
-  --snap-icon-blue: #496AD5;
-  --snap-logo-gold: #E6AD1B;
   // Links must have a 3:1 ratio against the text color AND 4.5:1 against white.
   // The text color must have a 4.5:1 ratio against the white background.
-  --lighter-link-color: #7070A0;
+  --snap-icon-blue: #496AD5;
+  --snap-logo-gold: #E6AD1B;
+  // 2024 Berkeley Color Palette
+  // https://brand.berkeley.edu/visual-identity/colors/#color-pairing-blue-medium
+  --berkeley-blue: #002676;
+  --california-gold: #FDB515;
+  // secondary palette preferred (dark)
+  --blue-dark: #010133;
+  --gold-dark: #fC9313;
+  --green-dark: #00553A;
+  --rose-dark: #770747;
+  --purple-dark: #431170;
+  // Alternatives (medium)
+  --blue-medium: #004AAE;
+  --gold-medium: #FFC31B;
+  --green-medium: #018943;
+  --rose-medium: #E7115E;
+  --purple-medium: #8236C7;
+  // Alternatives (light)
+  --blue-light: #9FD1FF;
+  --gold-light: #FFE88D;
+  --green-light: #B3E59A;
+  --rose-light: #FFCFE5;
+  --purple-light: #D9CEFF;
+  // Black and-grays
+  --gray-medium: #808080;
+  --gray-light: #F2F2F2;
+  // Special colors
+  --california-heritage-gold: #C09748;
+
+  // Pre-2025 Snap! colors
+  // --snap-dark-blue: #2d3142;
+  // --lighter-link-color: #7070A0;
   // This is a dark blue a hybrid of the current Snap! dark, and berkeley dark blues.
-  --dark-text-color: #102040;
+  // --dark-text-color: #102040;
+
+  // Trying Berkeley colors:
+  --snap-dark-blue: #010133;
+  --lighter-link-color: var(--blue-medium);
+  --dark-text-color: #000;
+  --color-body-text: #000;
   --bs-dark: var(--snap-dark-blue);
   --bs-body-color: var(--dark-text-color);
-  --navbar-height: 64px;
+  // We need this to be darker b/c links are brighter blue.
+  --navbar-height: 4rem;
   /* this is the minimum I think w/ all 5 columns of links */
   --estimated-footer-height: 450px;
-  --white-hamburger: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath strok;e='rgba%28255,255,255,1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  --white-hamburger: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='rgba(255,255,255,1)' stroke-linecap='round' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>");
+  --dark-hamburger: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='rgba(0,38,118,1)' stroke-linecap='round' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>");
+
+  --heading-color: var(--snap-dark-blue);
+}
+
+html {
+  height: 100%;
+  scroll-behavior: smooth;
+  overflow-y: auto;
+}
+
+body {
+  margin: var(--navbar-height) 0 0 0;
+  color: var(--color-body-text);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  margin: 1em auto;
+  flex: 1 0 auto;
 }
 
 // We often use 1/5 width items.
@@ -48,13 +103,23 @@ nav.navbar {
   font-weight: 600;
   padding: 0;
 
-  .trapezoid {
-    color: var(--bs-navbar-dark-color);
+  & + .trapezoid {
+    position: fixed;
+    top: var(--navbar-height);
+    color: var(--bs-dark);
+  }
+
+  & h2 {
+    color: #FFF;
   }
 
   /* Remove extra padding so the li elements are full-height */
   ul {
     padding: 0;
+  }
+
+  .min-width {
+    min-width: 9ch;
   }
 
   .form-control {
@@ -68,7 +133,38 @@ nav.navbar {
   & .navbar-toggler {
     --bs-navbar-toggler-border-color: #FFF;
     --bs-navbar-color: #FFF;
-    margin: 12px;
+    margin: 0.75rem;
+  }
+
+  & .navbar-toggler[aria-expanded="true"] {
+    // Improvements for nested menus on mobile.
+    max-height: calc(100vh - var(--navbar-height));
+    overflow-y: auto;
+
+    --bs-navbar-color: var(--bs-navbar-dark-color);
+    background-color: #FFF;
+
+    &  .navbar-toggler-icon {
+      --bs-navbar-toggler-icon-bg: var(--dark-hamburger);
+    }
+
+    // Inside here target navar contents only when the dropdown
+    // menu is active and open.
+    & + .navbar-collapse {
+      & li {
+        padding: 0.3rem 0.5rem;
+      }
+
+      & .nav-link {
+        --bs-nav-link-padding-y: 0.1rem;
+        --bs-nav-link-padding-x: 0.5rem;
+        padding: 0.1rem 0.5rem;
+      }
+
+      & [role="search"] {
+        margin: 0.3125rem;
+      }
+    }
   }
 
   .nav-link.show {
@@ -76,8 +172,7 @@ nav.navbar {
   }
 
   li {
-    --bs-nav-link-padding-x: 1em;
-    padding: 0.75em 0.5em;
+    padding: 0.75rem 0.5rem;
     height: 100%;
     margin: 0;
 
@@ -85,6 +180,11 @@ nav.navbar {
       color: #FFF;
       font-weight: bold;
       text-align: center;
+
+      &:hover,
+      &:focus {
+        text-decoration: none;
+      }
     }
 
     &:hover,
@@ -106,6 +206,8 @@ nav.navbar {
     .dropdown-menu {
       background-color: var(--bs-navbar-dark-color);
       color: #FFF;
+      overflow-y: auto;
+      max-height: 60vh;
     }
 
     li.no-hover {
@@ -117,29 +219,6 @@ nav.navbar {
       }
     }
   }
-
-  .trapezoid {
-    position: absolute;
-    top: var(--navbar-height);
-  }
-}
-
-
-html {
-  height: 100%;
-}
-
-body {
-  margin: var(--navbar-height) 0 0 0;
-  // color: var(--snap-dark-blue);
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-main {
-  margin: 1em auto;
-  flex: 1 0 auto;
 }
 
 .footer {
@@ -149,17 +228,24 @@ main {
   font-size: 0.75em;
 
   h2 {
+    --heading-color: #FFF;
     font-size: 1.5em;
     font-weight: bold;
   }
 
   .trapezoid-footer {
     top: -14px;
+    color: white;
+    margin-left: calc(60px - 1em);
   }
 
   a {
     color: #ffffff;
     text-decoration: underline;
+
+    &::after {
+      content: "";
+    }
   }
 
   .credits {
@@ -181,13 +267,78 @@ main {
   border-color: var(--bs-primary);
 }
 
+.btn-xs {
+  padding: 0.2rem;
+  font-size: 0.75rem;
+  // line-height: 1.5;
+  // border-radius: 0.2rem;
+}
+
+// For accessibility, we need to ensure that links are visible
+// We will add an icon after a link when it is used in "normal text".
+// We want to exclude navs, headings, footers, etc.
+p a,
+ul.bullets a,
+ol a,
+.list-group a {
+  &::after {
+   font-family: "Font Awesome 5 Free";
+   content: "\f0c1"; // link icon
+   display: inline-block;
+   font-size: 0.65em;
+   padding: 0 3px;
+   vertical-align: middle;
+   font-weight: 900;
+  }
+
+  // &[target="_blank"]::after {
+  //   content: "\f08e"; // external link icon
+  //   font-family: "Font Awesome 5 Free";
+  //   display: inline-block;
+  //   padding-right: 3px;
+  //   vertical-align: middle;
+  //   font-weight: 900;
+  // }
+}
+
+// Improve the accessibility of links
+// We need to show some visual indication that a link is clickable on hover or focus.
 a {
   color: var(--lighter-link-color);
   text-decoration: none;
 
-  // We sometimes have heading text _inside_ the <a> (and not the other way around...)
-  & h1, h2, h3, h4 {
-    color: var(--lighter-link-color);
+  &:not(.btn):hover,
+  &:not(.btn):focus {
+    text-decoration: underline;  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  // We need to include the :not() due to CSS specificity issues.
+  & a:not(.btn):hover,
+  & a:not(.btn):focus{
+    text-decoration: none;
+  }
+}
+
+section.alternating-color {
+  padding: 1rem 2rem 2rem 2rem;
+
+  &:nth-of-type(2n+1) {
+    background-color: var(--gray-light);
+
+    // & + .trapezoid {
+    //   background-color: var(--gray-light);
+    //   color: var(--gray-light);
+    // }
+  }
+
+  &:nth-of-type(2n) {
+    background-color: #FFF;
+    // & + .trapezoid {
+    //   background-color: #FFF;
+    //   color: #FFF;
+    //   margin-top: -14px;
+    // }
   }
 }
 
@@ -200,7 +351,7 @@ p {
 }
 
 p {
-  line-height: 1.2em;
+  line-height: 1.5;
 }
 
 ol {
@@ -253,4 +404,96 @@ hr {
       box-shadow: var(--bs-navbar-toggler-border-color) 0 0 3px 3px;
     }
   }
+}
+
+/* Designed to be the last element in a section / nav
+/ Makes a little "puzzle piece" connector. */
+.trapezoid {
+    position: relative;
+    margin-left: 60px;
+    border-top: 14px solid;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    height: 0;
+    width: 64px;
+}
+
+.trapezoid-footer {
+    top: -14px;
+}
+
+/* Embed dialog */
+
+.embed-options .info {
+  margin-bottom: 0.5em;
+  display: block;
+  text-align: center;
+}
+
+.embed-options fieldset {
+  margin: 0 1.5em;
+}
+
+.embed-options--label-container {
+  width: 18ch; /* "Embed Code" + some space */
+  padding-right: var(--bs-gutter-x);
+  text-align: left;
+  vertical-align: middle;
+  /* Designed to match the height of the copy button. */
+  min-height: 30px;
+}
+
+.embed-options--embed-code-textarea {
+  font-family: monospace;
+  margin: auto 4px;
+  width: 420px;
+  font-size: 0.75em;
+  line-height: 1.2;
+  resize: none;
+}
+
+// Move this to a utils file.
+.ucb-logo {
+    height: 30px;
+    margin-right: 16px 16px 0 0; /* roughly the size of the 'e' in Berkeley */
+}
+
+// Project Page Viewer
+.project.big .viewer.full-screen {
+  position: fixed;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  z-index: 2000;
+
+  // The entire Snap! player container
+  // Must override the Bootstrap col-* CSS attributes.
+  & .embed {
+    position: fixed;
+    left: 0;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    z-index: 2000;
+    width: 100svw;
+    height: 100svh;
+  }
+
+  // Normal project action buttons
+  & .details,
+  & .buttons,
+  & .flag-container{
+    display: none;
+  }
+
+  // The Snap! player iframe
+  & iframe {
+    height: calc(100dvh - 2.6em);
+    max-height: 100%;
+  }
+}
+
+// Admin Tools (to Move)
+.user-profile-actions > * {
+    padding: 0.25rem 0;
 }

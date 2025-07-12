@@ -32,6 +32,9 @@ local assert_error = package.loaded.app_helpers.assert_error
 local yield_error = package.loaded.yield_error
 local capture_errors = package.loaded.capture_errors
 
+local validations = require('validation')
+local assert_current_user_logged_in = validations.assert_current_user_logged_in
+
 CollectionController = {
     run_query = function (self, query)
         if not self.params.page_number then self.params.page_number = 1 end
@@ -82,6 +85,7 @@ CollectionController = {
     end),
     my_collections = capture_errors(function (self)
         self.params.order = 'updated_at DESC'
+        self.params.per_page = self.params.per_page or 18
         return CollectionController.run_query(
             self,
             db.interpolate_query(
@@ -203,9 +207,10 @@ CollectionController = {
         return jsonResponse({ redirect = project:url_for('site') })
     end),
     remove_project = capture_errors(function (self)
+        assert_current_user_logged_in(self)
+
         local collection = Collections:find({ id = self.params.id })
         local project = Projects:find({ id = self.params.project_id })
-
         -- Only creators, mods and owners of a particular project can remove
         -- it from a collection.
         if (collection.creator_id ~= self.current_user.id) and
@@ -229,7 +234,8 @@ CollectionController = {
         local collection =
             Collections:find({ id = self.params.id })
 
-        if collection.creator_id ~= self.current_user.id then
+        if (self.current_user == nil) or
+              (collection.creator_id ~= self.current_user.id) then
             assert_min_role(self, 'moderator')
         end
 
@@ -347,6 +353,7 @@ CollectionController = {
             assert_admin(self)
         end
 
+        -- TODO: Use self.queried_user and assert_user_exists (?)
         local editor = Users:find({ username = tostring(self.params.username) })
         if not editor then yield_error(err.nonexistent_user) end
 
@@ -362,9 +369,10 @@ CollectionController = {
     remove_editor = capture_errors(function (self)
         local collection =
             Collections:find({ id = self.params.id })
+        assert_current_user_logged_in(self)
         if collection.creator_id == self.current_user.id or
                 is_editor(self, collection) or
-                current_user:isadmin() then
+                self.current_user:isadmin() then
             if (collection:update({
                 editor_ids =
                     db.raw(db.interpolate_query(
@@ -381,7 +389,8 @@ CollectionController = {
     end),
     rename = capture_errors(function (self)
         local collection = Collections:find({ id = self.params.id })
-        if collection.creator_id ~= self.current_user.id then
+        if (self.current_user == nil) or
+              (collection.creator_id ~= self.current_user.id) then
             assert_admin(self)
         end
         -- assign the creator so we can redirect to the new collection URL
@@ -394,7 +403,8 @@ CollectionController = {
     end),
     set_description = capture_errors(function (self)
         local collection = Collections:find({ id = self.params.id })
-        if collection.creator_id ~= self.current_user.id then
+        if (self.current_user == nil) or
+              (collection.creator_id ~= self.current_user.id) then
             assert_admin(self)
         end
         if not

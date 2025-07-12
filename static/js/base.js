@@ -26,6 +26,21 @@ function getUrlParameter (param) {
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
 };
 
+function escapeHtml (text) {
+    if (text === null || text === undefined) { return; }
+
+    if (text.toString) { text = text.toString(); }
+    // Based on an answer by Kip @ StackOverflow
+    let map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+    };
+    return text.replace(/[&<>"']/g, (m) => map[m]);
+}
+
 // Error handling
 
 function genericError (errorString, title) {
@@ -61,23 +76,10 @@ function doneLoading (selector) {
     }
 };
 
-// Other goodies
-
-function escapeHtml (text) {
-    // Based on an answer by Kip @ StackOverflow
-    var map = {
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&#039;'
-    };
-    return text ? text.replace(/[&<>"']/g, function (m) { return map[m]; }) : ''
-};
-
 function enableEnterSubmit () {
     // Submits "forms" when enter is pressed on any of their inputs
-    document.querySelectorAll('.pure-form input').forEach(
+    // TODO-BS: Remove pure CSS when transition to Bootstrap 5 is complete
+    document.querySelectorAll('.pure-form input, input.form-control').forEach(
         input => {
             input.onkeypress = function (evt) {
                 if (evt.keyCode == 13) { submit(); }
@@ -130,7 +132,15 @@ Cloud.redirect = function (response) {
     if (!(response && response.redirect)) {
         location.reload();
     } else {
-        location.href = response.redirect;
+        if (response.title || response.message) {
+            alert(
+                localizer.localize(response.message),
+                { title: localizer.localize(response.title) },
+                () => location.href = response.redirect
+            );
+        } else {
+            location.href = response.redirect;
+        }
     }
 };
 
@@ -144,6 +154,7 @@ Cloud.prototype.delete = function (path, onSuccess, body) {
     this.apiRequest('DELETE', path, onSuccess, body);
 };
 
+// TODO: We should extract the onSuccess / onError handlers to a better location.
 Cloud.prototype.apiRequest = function (method, path, onSuccess, body) {
     // By default, redirect. If you don't want to do that,
     // set onSuccess to nop or any other value.
@@ -162,7 +173,7 @@ Cloud.prototype.apiRequest = function (method, path, onSuccess, body) {
             if (response && response.title) {
                 alert(
                     localizer.localize(response.message),
-                    { title: localizer.localize(response.title) },
+                    { title: escapeHtml(localizer.localize(response.title)) },
                     function () { onSuccess.call(this, response) }
                 );
             } else {
@@ -172,7 +183,7 @@ Cloud.prototype.apiRequest = function (method, path, onSuccess, body) {
         errorMessage => {
             alert(
                 localizer.localize(errorMessage),
-                { title: localizer.localize('Error') },
+                { title: escapeHtml(localizer.localize('Error')) },
                 Cloud.redirect
             )
         },

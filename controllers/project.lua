@@ -35,13 +35,29 @@ local Projects = package.loaded.Projects
 local Remixes = package.loaded.Remixes
 local FlaggedProjects = package.loaded.FlaggedProjects
 local DeletedProjects = package.loaded.DeletedProjects
+local Bookmarks = package.loaded.Bookmarks
 local Collections = package.loaded.Collections
 local Users = package.loaded.Users
+local validation = package.loaded.validation
+
+local is_likely_course_work = validation.is_likely_course_work
 
 ProjectController = {
     run_query = function (self, query)
         -- query can hold a paginator or an SQL query
         if not self.params.page_number then self.params.page_number = 1 end
+        local filters = ''
+        if self.current_user and self.current_user:isadmin() then
+          if self.params.filter_bookmarked == 'true' then
+            filters = ' AND id IN (SELECT project_id FROM bookmarks)'
+          elseif (self.params.filter_bookmarked == 'false') then -- could be nil
+            filters = ' AND NOT id IN (SELECT project_id FROM bookmarks)'
+          end
+          if self.params.filter_order_by then
+            self.params.order = self.params.filter_order_by
+          end
+        end
+
         local paginator = Projects:paginated(
                  query ..
                     (self.params.search_term and (db.interpolate_query(
@@ -49,10 +65,11 @@ ProjectController = {
                         '%' .. self.params.search_term .. '%',
                         '%' .. self.params.search_term .. '%')
                     ) or '') ..
+                    (filters or '') ..
                     ' ORDER BY ' ..
                         (self.params.order or 'firstpublished DESC'),
                 {
-                    per_page = self.params.items_per_page or 15,
+                    per_page = self.params.items_per_page or 18,
                     fields = self.params.fields or '*'
                 }
             )
@@ -96,13 +113,16 @@ ProjectController = {
     end,
     fetch = capture_errors(function (self)
         self.cache_category = 'latest'
+        local exclude_class_projects = 'AND NOT likely_class_work'
+        if self.params.exclude_class_projects == 'false' then
+            exclude_class_projects = ''
+        end
+
         return ProjectController.run_query(
             self,
-            [[WHERE ispublished AND NOT EXISTS(
+            [[WHERE ispublished ]] ..exclude_class_projects .. [[ AND NOT EXISTS(
                 SELECT 1 FROM deleted_users WHERE
-                username = active_projects.username LIMIT 1)]] --[[..
-                db.interpolate_query(course_name_filter()) ]]--
-                -- Disable course name filter because of high DB use
+                username = active_projects.username LIMIT 1)]]
         )
     end),
     my_projects = capture_errors(function (self)
@@ -139,6 +159,25 @@ ProjectController = {
             ]], self.current_user.id)
         )
     end),
+    all_recent_bookmarks = capture_errors(function (self)
+        self.params.page_number = 1
+        local projects = Projects:recently_bookmarked()
+        self.num_pages = math.ceil(#projects /
+            (self.items_per_page or 18))
+        return projects
+    end),
+    bookmarked_projects = capture_errors(function (self)
+        self.params.order = 'lastupdated DESC'
+        return ProjectController.run_query(
+            self,
+            db.interpolate_query([[
+                WHERE id IN (
+                    SELECT project_id FROM bookmarks
+                        WHERE bookmarker_id = ?
+                )
+            ]], self.current_user.id)
+        )
+    end),
     flagged_projects = capture_errors(function (self)
         self.params.order = 'flag_count DESC'
         self.params.fields = [[active_projects.id AS id,
@@ -157,7 +196,7 @@ ProjectController = {
                 #(Projects:select(query, {fields = self.params.fields}))
             self.num_pages =
                 math.ceil(total_flag_count /
-                    (self.params.items_per_page or 15))
+                    (self.params.items_per_page or 18))
         end
         return ProjectController.run_query(self, query)
     end),
@@ -346,6 +385,50 @@ ProjectController = {
 
         return okResponse()
     end),
+    bookmark = capture_errors(function (self)
+        local project = Projects:find({ id = self.params.id })
+        assert_project_exists(self, project)
+        if not self.current_user then return okResponse() end
+
+        local bookmark =
+            Bookmarks:select(
+                'WHERE project_id = ? AND bookmarker_id = ?',
+                project.id,
+                self.current_user.id
+            )[1]
+
+        if not bookmark then
+          Bookmarks:create({
+              bookmarker_id = self.current_user.id,
+              project_id = project.id
+          })
+        end
+
+        return okResponse()
+    end),
+    unbookmark = capture_errors(function (self)
+        local project = Projects:find({ id = self.params.id })
+        assert_project_exists(self, project)
+        if not self.current_user then return okResponse() end
+
+        local bookmark =
+            Bookmarks:select(
+                'WHERE project_id = ? AND bookmarker_id = ?',
+                project.id,
+                self.current_user.id
+            )[1]
+
+        if bookmark then
+          db.delete(
+              'bookmarks',
+              'project_id = ? and bookmarker_id = ?',
+              project.id,
+              self.current_user.id
+          );
+        end
+
+        return okResponse()
+    end),
     mark_as_remix = capture_errors(function (self)
         if not users_match(self) then
             assert_min_role(self, 'moderator')
@@ -487,6 +570,8 @@ ProjectController = {
 
             disk:backup_project(project.id)
 
+            local likely_class_work = self.current_user:is_student() or
+                is_likely_course_work(project.projectname)
             project:update({
                 lastupdated = db.format_date(),
                 lastshared =
@@ -497,7 +582,8 @@ ProjectController = {
                     nil,
                 notes = body.notes,
                 ispublic = self.params.ispublic or project.ispublic,
-                ispublished = self.params.ispublished or project.ispublished
+                ispublished = self.params.ispublished or project.ispublished,
+                likely_class_work = likely_class_work,
             })
         else
             -- Users are automatically verified the first time
@@ -527,6 +613,9 @@ ProjectController = {
                     deleted_project.id)
                 deleted_project:delete()
             end
+
+            local likely_class_work = self.current_user:is_student() or
+                is_likely_course_work(self.params.projectname)
             Projects:create({
                 projectname = tostring(self.params.projectname),
                 username = tostring(self.params.username),
@@ -538,7 +627,8 @@ ProjectController = {
                     and db.format_date() or nil,
                 notes = body.notes,
                 ispublic = self.params.ispublic or false,
-                ispublished = self.params.ispublished or false
+                ispublished = self.params.ispublished or false,
+                likely_class_work = likely_class_work,
             })
             project =
                 Projects:find(

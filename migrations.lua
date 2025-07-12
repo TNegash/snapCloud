@@ -307,5 +307,45 @@ return {
         db.query([[
             ALTER TYPE snap_user_role ADD VALUE 'student' BEFORE 'standard';
         ]])
-    end
+    end,
+
+    -- Create a Bookmarks table
+    ['2025-02-06:0'] = function ()
+        schema.create_table('bookmarks', {
+            { 'bookmarker_id', types.foreign_key },
+            { 'project_id', types.foreign_key },
+            { 'created_at', types.time({ timezone = true }) },
+            { 'updated_at', types.time({ timezone = true }) },
+            'PRIMARY KEY (bookmarker_id, project_id)'
+        })
+    end,
+
+    -- Add a likely_class_work column to projects
+    -- Add last_login and session_count column to users
+    ['2025-06-18:0'] = function ()
+        schema.add_column(
+            'users',
+            'last_login_at',
+            types.time({ timezone = true, null = true })
+        )
+
+        schema.add_column(
+            'users',
+            'session_count',
+            types.integer({ default = 0 })
+        )
+
+        -- Add likely_class_work column to projects
+        schema.add_column(
+            'projects',
+            'likely_class_work',
+            types.boolean({ default = false })
+        )
+
+        -- Add an index for likely_class_work
+        schema.create_index('projects', 'likely_class_work')
+
+        update_user_views()
+        update_project_views()
+    end,
 }

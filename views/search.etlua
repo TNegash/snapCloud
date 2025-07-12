@@ -1,8 +1,9 @@
+<% content_for('title', locale.get('search_results', params.query)) %>
 <h1><%= locale.get('search_results', params.query) %></h1>
 
 <%
 render(
-    'views.carousel_bs',
+    'views.carousel',
     {
         class = 'projects',
         title = locale.get('projects'),
@@ -10,16 +11,18 @@ render(
         items = ProjectController.fetch({
             params = {
                 search_term = params.query,
-                items_per_page = 20
+                items_per_page = 24,
+                items_per_row = 6,
+                exclude_class_projects = params.exclude_class_projects
             },
             session = session
         }),
-        href = build_url('/explore?search_term=' .. params.query)
+        href = build_url('/explore?search_term=' .. (params.query or ''))
     }
 )
 
 render(
-    'views.carousel_bs',
+    'views.carousel',
     {
         class = 'collections',
         title = locale.get('collections'),
@@ -27,16 +30,17 @@ render(
         items = CollectionController.fetch({
             params = {
                 search_term = params.query,
-                per_page = 20
+                items_per_page = 24,
+                items_per_row = 6,
             },
             session = session
         }),
-        href = build_url('/collections?search_term=' .. params.query)
+        href = build_url('/collections?search_term=' .. (params.query or ''))
     }
 )
 
 render(
-    'views.carousel_bs',
+    'views.carousel',
     {
         class = 'users',
         title = locale.get('users'),
@@ -51,7 +55,7 @@ render(
             session = session
         }),
         items_per_page = 51, -- for carousel
-        href = build_url('/users?search_term=' .. params.query)
+        href = build_url('/users?search_term=' .. (params.query or ''))
     }
 )
 %>

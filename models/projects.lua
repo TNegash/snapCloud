@@ -44,20 +44,70 @@ local disk = package.loaded.disk
 --    FROM public.projects
 --   WHERE (projects.deleted IS NULL);
 --
-local ActiveProjects =  Model:extend('active_projects', {
+local ActiveProjects = Model:extend('active_projects', {
     type = 'project',
     primary_key = {'username', 'projectname'},
     constraints = {
         projectname = function (_self, name)
+            -- TODO: Use a whitespace stripping + normalization function
             if not name or string.len(name) < 1 then
                 return "Project names must have at least one character."
             end
         end
     },
+    recently_bookmarked = function ()
+        -- This query was gerneted by Claude, insprite by the Hacker News
+        -- algorithm for ranking projects based on recent bookmarks.
+        -- We rank projects based on the number of bookmarks in last 30 days,
+        -- giving more weight to recent bookmarks.
+        -- 86400 is the number of seconds in a day
+        -- * 5 boosts the score of based on the recency of the last update of the project
+        local rows = db.query([[
+            WITH recent_bookmark_activity AS (
+                SELECT
+                    project_id,
+                    COUNT(*) as recent_bookmarks,
+                    SUM(
+                        CASE
+                            WHEN created_at > NOW() - INTERVAL '1 day' THEN 10
+                            WHEN created_at > NOW() - INTERVAL '3 days' THEN 5
+                            WHEN created_at > NOW() - INTERVAL '7 days' THEN 2
+                            ELSE 0
+                        END
+                    ) as weighted_recent_score
+                FROM bookmarks
+                WHERE created_at > NOW() - INTERVAL '30 days'
+                GROUP BY project_id
+            )
+            SELECT p.id,
+                COALESCE(r.recent_bookmarks, 0) as recent_bookmarks,
+                COALESCE(r.weighted_recent_score, 0) as bookmark_score,
+                (COALESCE(r.weighted_recent_score, 0) +
+                GREATEST(0, 1 - EXTRACT(EPOCH FROM (NOW() - p.lastupdated)) / (86400 * 30)) * 5) as final_score
+            FROM recent_bookmark_activity r
+            JOIN active_projects p ON p.id = r.project_id
+            WHERE p.ispublic AND p.ispublished
+            ORDER BY final_score DESC
+            LIMIT 240
+        ]])
+
+        local result = {}
+        for i, item in ipairs(rows) do
+            local project = package.loaded.Projects:find({ id = item.id})
+            if project then
+                project.recent_bookmarks = item.recent_bookmarks
+                project.final_score = item.final_score
+                result[i] = project
+            end
+        end
+        disk:process_thumbnails(result)
+        return result
+    end,
     url_for = function (self, purpose, dev_version)
-        local base = 'https://snap.winna.er/' ..
-            (dev_version and 'snapsource/dev/' or '') ..
-            'snap.html'
+        -- For some small % of requests the host is nil.
+        local domain = ngx.var.http_host or 'snap.winna.er'
+        local base = ngx and ngx.var and ngx.var.scheme .. '://' .. domain .. '/' or ''
+        base = base .. (dev_version and 'snapsource/dev/' or 'snap/') .. 'snap.html'
         local urls = {
             viewer = base ..
                 '#present:Username=' .. escape(self.username) ..
@@ -77,6 +127,12 @@ local ActiveProjects =  Model:extend('active_projects', {
         }
         return urls[purpose]
     end,
+    bookmarked_by = function (self, bookmarker)
+      return package.loaded.Bookmarks:find({
+        bookmarker_id = bookmarker.id,
+        project_id = self.id
+      }) ~= nil
+    end,
     relations = {
         {'flags',
             fetch = function (self)
@@ -87,6 +143,15 @@ local ActiveProjects =  Model:extend('active_projects', {
                     self.id,
                     { fields = 'username, created_at, reason, notes' }
                 )
+            end
+        },
+        {'bookmark_count',
+            fetch = function (self)
+                return package.loaded.Bookmarks:select(
+                    'WHERE project_id = ?',
+                    self.id,
+                    { fields = 'count(*) as count' }
+                )[1].count
             end
         },
         {'public_remixes',
@@ -116,7 +181,7 @@ local ActiveProjects =  Model:extend('active_projects', {
                 disk:process_thumbnails(items, 'thumbnail_id')
                 return items
             end
-        }
+        },
     }
 })
 

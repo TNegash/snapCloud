@@ -34,6 +34,7 @@ local locale = {
     my_collections = "My Collections",
     my_public_page = "My Public Page",
     followed_projects = "Followed Projects",
+    bookmarked_projects = "Bookmarked Projects",
     administration = "Administration",
     my_profile = "My Profile",
     logout = "Log Out",
@@ -56,6 +57,7 @@ local locale = {
     requirements = "Technical Requirements",
     partners = "Partners",
     source = "Source Code",
+    versions = "All Versions",
     events = "Events",
     examples = "Example Projects",
     manual = "Reference Manual",
@@ -121,6 +123,8 @@ local locale = {
     password = "Password",
     password_2 = "Repeat Password",
     birth_month = "Month of Birth",
+    -- this field is visually hidden.
+    birth_year = "Year of birth",
     or_before = "or before", -- is preceded by a year, like "1995 or before"
     email_parent = "Email address of parent or guardian",
     email_user = "Email address",
@@ -129,6 +133,18 @@ local locale = {
     -- tos already translated in footer
     privacy_agreement = "Privacy Agreement",
     signup = "Sign Up",
+
+    -- User signup information.
+    -- One entry follows each form.
+    -- Leave empty to show no help text.
+    signup_username_help = "Please make sure your username does not contain personal data, like a student id.",
+    signup_password_help = "Your password must be at least 6 characters",
+    signup_password_repeat_help = "",
+    signup_birth_month_help = "We do not store your birthday after sign up.",
+    signup_email_help = "Your email is used so you can recover your account if necessary.",
+    signup_email_repeat_help = "",
+    signup_tos_help = "",
+
 
     -- Log in page
     -- ===========
@@ -166,8 +182,13 @@ local locale = {
     published_projects = "Published Projects",
     published_collections = "Published Collections",
 
+    -- Learn Snap! Page
+    -- ==============
+    learn_snap = "Learn @1", -- @1 becomes Snap!
+
     -- Search results page
     -- ===================
+    search = "Search",
     search_results = "Search Results: @1",
     project_search_results = "Projects matching: @1",
     collection_search_results = "Collections matching: @1",
@@ -218,6 +239,7 @@ local locale = {
     confirm_uncollect = "Are you sure you want to remove this project@1from this collection?", -- @1 becomes a new line. You can add as many as you need.
     remove_from_collection_tooltip = "Remove from this collection",
     collection_thumbnail_tooltip = "Set as collection thumbnail",
+    collection_no_description = "This collection has no description",
 
     -- Collection dialogs
     -- ==================
@@ -245,6 +267,12 @@ local locale = {
     following_nobody = "You are not following any users yet. Visit a user's public page and click on @1 to follow them and see their latest public projects in this page.",
     followed_users = "Users Followed by You",
     follower_users = "Users That Follow You",
+
+    -- Bookmarked projects feed
+    -- ========================
+    bookmarked_feed = "Projects I've Bookmarked",
+    no_bookmarks = "You haven't bookmarked any projects yet. Click on the heart icon under a project that you like to bookmark it.",
+    recent_bookmarks = "Recently Bookmarked Projects",
 
     -- User profile
     -- ============
@@ -311,6 +339,10 @@ Want to know more? Visit @2]],
     share_button = "Share",
     unpublish_button = "Unpublish",
     unshare_button = "Unshare",
+    -- Bookmarking tooltips
+    bookmark = "Save this project in your bookmarks",
+    unbookmark = "Remove this project from your bookmarks",
+    project_is_bookmarked = "People like your project!",
     -- Flagging
     you_flagged = "You flagged this project as inappropriate",
     unflag_project = "Unflag this project",

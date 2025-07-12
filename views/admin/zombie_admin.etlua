@@ -1,4 +1,6 @@
 <link rel="stylesheet" href="/static/style/admin.css">
+<% content_for('title', 'Zombie Adminstration') %>
+
 <h1>Zombie Administration</h1>
 <%
 render(
@@ -7,7 +9,7 @@ render(
         class = 'user_admin',
         item_type = 'profile',
         zombie = true,
-        items_per_row = 2,
+        items_per_row = 3,
         with_search = true,
         show_if_empty = true,
     }

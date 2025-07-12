@@ -2,7 +2,8 @@
 .project.small {
     text-align: center;
     margin-bottom: 1.5em;
-    position: relative;
+    /* Flexible reflowing, but left-justify project thumbnails */
+    max-width: max(var(--bs-breakpoint-sm) / 3, 16.68%);
 }
 
 .collection img.thumbnail,
@@ -19,7 +20,7 @@
 .project iframe,
 .project .embed-placeholder {
     background: rgba(0, 0, 0, 0.2);
-    border: 1px solid #2d3142;
+    border: 1px solid var(--snap-dark-blue);
     box-sizing: border-box;
 }
 
@@ -28,9 +29,10 @@
     height: 406px;
 }
 
+/* 40px icon width */
 .project.small .no-image,
 .collection.small .no-image {
-    left: 88px;
+    left: calc(50% - 20px);
     top: 38px;
 }
 
@@ -43,22 +45,24 @@
 }
 
 .thumbnail-container {
-    position: relative;
-    border-radius: 5px;
+    width: auto;
+}
+
+.collection-thumbnail {
+    width: 160px;
     height: 120px;
-    border: 1px solid #2d3142;
-    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid var(--snap-dark-blue);
+}
+
+.project .details {
+    flex-grow: 2;
 }
 
 .collection .info .no-image {
-    left: 59px;
-    top: 34px;
-}
-
-img.collection-thumbnail {
-    width: 100%;
-    height: 100%;
-    border-radius: 5px;
+    position: relative;
+    left: calc(50% - 20px);
+    top: calc(50% - 20px);
 }
 
 .collection.small .author,
@@ -67,6 +71,8 @@ img.collection-thumbnail {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    max-width: 16ch;
+    margin: 0 auto;
 }
 
 .project.small .no-image:hover,
@@ -78,12 +84,12 @@ img.collection-thumbnail {
     background: rgba(255, 255, 255, .5);
     border-radius: 3px;
     padding: 1px 4px;
-    margin: 0 -5px;
+    margin: 0 5px;
     display: flex;
     justify-content: space-evenly;
     position: absolute;
-    top: 2px;
-    right: 19px;
+    top: 3px;
+    right: calc(50% - 168px/2 + 0.2rem);
     flex-direction: row-reverse;
 }
 
@@ -92,12 +98,12 @@ img.collection-thumbnail {
 }
 
 .collection-controls .remove {
-    margin-right: -1px;
+    margin-right: -3px;
 }
 
 .featured .collection-controls {
-    right: 35px;
-    width: 15px;
+    right: calc(50% - 168px/2 + 0.75rem);
+    width: 1rem;
 }
 
 .flagged .collection-controls {
@@ -137,47 +143,101 @@ img.collection-thumbnail {
   font-size: 1em;
 }
 
+.bookmark, .unbookmark {
+  color: red;
+}
+
+.project.big .buttons .btn.bookmark,
+.project.big .buttons .btn.unbookmark {
+    flex-grow: 0;
+}
+
+.bookmark-status-container {
+    position: absolute;
+    left: 1.5em;
+    top: 0.4em;
+    text-align: left;
+}
+
+i.bookmarked {
+  color: #e66;
+  font-size: 0.75em;
+  animation: beat .5s infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    i.bookmarked {
+        animation: none;
+    }
+}
+
+.bookmark-count {
+  color: #fff;
+}
+
+@keyframes beat{
+  to { transform: scale(1.4); }
+}
+
 .collection-controls:hover {
     background: rgba(255, 255, 255, .8);
 }
 
-.new-editor {
-    border: 1px solid #AAAAAA;
-    width: 160px;
-    border-radius: 15px;
-    padding-left: 0.75em;
-    box-sizing: border-box;
+.editors .new-editor {
+    font-size: 0.75rem;
+    line-height: 1.3em;
+    width: 10ch;
+    border: 1px solid var(--bs-success);
+    border-radius: var(--bs-border-radius-sm);
+    padding: 0.1em;
+    margin: 0.1em;
+}
+
+.editors .new-editor:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.12rem #FFF;
 }
 
 .editor-list {
     display: inline;
+    list-style: none;
+    padding: 1rem 0;
+    margin: 1rem 0;
 }
 
 .editor-list .editor {
     display: inline-block;
-    margin: 0.2em;
-    padding: 0.2em 0.5em;
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
+    margin: 0.1em;
 }
 
-.editor-list a strong {
-    font-weight: normal;
+.editors .badge {
+    font-size: 0.75em;
+    line-height: 2em;
+    height: 2rem;
+    padding: 0.25rem 0.3rem;
 }
 
-.editor-list .editor .remove {
-    display: none;
-    margin-left: 0.2em;
-}
-.editor-list .editor:hover .remove {
-    display: inline;
+.editors .badge a,
+.editors .badge a:visited {
+    text-decoration: none;
+    color: #FFF;
 }
 
-.editors .unenroll,
-.editors .ffa,
-.editors .un-ffa {
-    display: block;
-    margin: 0.2em;
+.editors .badge a:hover,
+.editors .badge a:focus {
+    text-decoration: underline;
+}
+
+.editors .badge .clickable {
+    cursor: pointer;
+    padding: 0.1rem;
+    margin: 0.1em;
+}
+
+.editors .badge .clickable:hover,
+.editors .badge .clickable:focus {
+    border: 1px solid white;
+    border-radius: 50%;
 }
 
 .project iframe,
@@ -203,13 +263,13 @@ img.collection-thumbnail {
     line-height: 1.5em;
 }
 
-.collection.small span.collection-name,
-.project.small span.project-name {
-    display: block;
-    white-space: nowrap;
+.collection.small .collection-name,
+.project.small .project-name {
+    margin: 0 auto;
+    /* white-space: nowrap; */
+    max-width: 20ch;
     overflow: hidden;
     text-overflow: ellipsis;
-    padding: 0 2px;
 }
 
 .collection.small span.is-public,
@@ -217,68 +277,28 @@ img.collection-thumbnail {
     margin-right: 0.5em;
 }
 
-.collection .author,
-.project .author {
-    font-size: .8em;
-}
-
-.project.big .title .author {
-    position: absolute;
-    right: 0;
-}
-
-.project.big .title.author {
-    position: absolute;
-    line-height: 4em;
-    margin-left: 1em;
-}
 
 .project.big.embed .title .author {
     position: relative !important;
 }
 
-.collection,
 .project.big {
     margin-top: 1em;
 }
 
-.collection .title,
 .project.big .title {
     position: relative;
     margin-bottom: .5em;
 }
 
-.collection .title h1,
-.project.big .title h1 {
-    display: inline-block;
-    margin: 0;
-}
 
-.project.big .title h1 {
-    max-width: 540px;
-    word-wrap: break-word;
-}
-
-.collection .title {
-    margin-bottom: 1em;
+.collection .title h1 {
+    display: inline;
+    margin-bottom: 2rem;
 }
 
 .remixed-from {
-    position: absolute;
-    right: 0;
-    bottom: .4em;
     font-size: 0.8em;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-.remixed-from .author {
-    font-size: 1em;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    position: relative !important;
 }
 
 .embed {
@@ -286,11 +306,23 @@ img.collection-thumbnail {
     position: relative;
 }
 
+/* TODO: We can make the sizing of the embed a little more dynamic.
+    We need to not set height on the iframe, then later set it via JS.
+*/
 .project.big .embed {
     display: flex;
     flex-direction: column;
     align-items: stretch;
     margin-bottom: 0.5em;
+    /* min-width: 482px;
+    max-width: 564px; */
+    min-width: min(482px, calc(100% - 2em));
+    /* max-width: min(564px, calc(100% - 2em)); */
+}
+
+/* Ensure the project embed matches Snap!'s default aspect ratio */
+.embed iframe {
+    aspect-ratio: 4/3;
 }
 
 .embed .project-loader {
@@ -305,10 +337,14 @@ img.collection-thumbnail {
 .project.big .controlbar {
     box-sizing: border-box;
     z-index: 200;
-    background: #2d3142;
-    padding: 0.4em 0.5em;
+    background: var(--snap-dark-blue);
+    padding: 0.2em 0.5em;
     border-radius: 5px 5px 0 0;
     text-align: right;
+}
+
+.project.big .controlbar .btn {
+    padding: 4px;
 }
 
 .project.big .controlbar i {
@@ -331,7 +367,8 @@ img.collection-thumbnail {
     color: #ee6666;
 }
 
-.project.big .controlbar i:hover {
+.project.big .controlbar i:hover,
+.project.big .controlbar i:focus {
     filter: brightness(1.5);
 }
 
@@ -339,18 +376,20 @@ img.collection-thumbnail {
 .project.big .buttons {
     display: flex;
     flex-wrap: wrap;
-    margin: 0 -0.1em;
+    margin: 0 -0.2em;
 }
 
-.collection .buttons a,
-.project.big .buttons a {
-    margin: 5px 0.1em 0 0.1em; /* Edge margins get cancelled out by ↑ margin: 0 -0.1em; ↑ */
-    padding: 0.5em;
+.collection .buttons .btn,
+.project.big .buttons .btn {
+    margin: 6px 0.2em; /* Edge margins get cancelled out by ↑ margin: 0 -0.1em; ↑ */
     flex-grow: 0.20; /* 20% max growth */
 }
 
-.collection a.flag,
-.project.big span.flag-container {
+.flag-container {
+    text-align: right;
+}
+
+.collection a.flag {
     text-align: right;
     font-size: 0.8em;
     margin-top: 0.5em;
@@ -359,37 +398,40 @@ img.collection-thumbnail {
     padding: 0;
 }
 
-.project.big a.flag {
-    padding: 0;
-}
 
 .collection a.flag:hover,
-.project.big a.flag:hover {
-    filter: brightness(0.5) !important;
-}
-
-.collection .description,
-.project.big .notes {
-    padding: .5em;
-    background: #f3eeeb;
-    border-radius: 5px;
-    overflow: auto;
-    box-sizing: border-box;
-    font-family: FreeSans,Arimo,"Droid Sans",Helvetica,Arial,sans-serif;
-    word-wrap: break-word;
-    white-space: pre-wrap;
-    height: 150px;
-    margin-bottom: .5em;
+.project.big button.flag:hover {
+    filter: brightness(0.8) !important;
 }
 
 .collection .description {
     margin-top: .5em;
 }
 
+.collection .description,
+.project.big .notes {
+    padding: .5em;
+    margin-bottom: .5em;
+    background: #f3eeeb;
+    border-radius: 5px;
+    overflow: auto;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    height: 15rem;
+}
+
+/* We use 'code' beacuse otherwise the <pre> gets flagged for accessibility. */
+.collection .description code,
+.project.big .notes code {
+    padding: 0;
+    margin: 0;
+    font-family: FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif;
+}
+
 .collection .description small,
 .project.big .notes small {
+    font-family: FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif;
     font-style: italic;
-    opacity: 0.5;
 }
 
 .project.big .dates p {
@@ -403,62 +445,10 @@ img.collection-thumbnail {
     margin-right: 0.5em;
 }
 
-.collection .dates p {
-    font-size: 0.7em;
-    padding-left: .5em;
-    box-sizing: border-box;
-    line-height: 1em;
+/* .collection .dates {
     margin-top: 0;
     margin-bottom: 0.7em;
-}
-
-/* Embed dialog */
-
-.embed-options .info {
-    margin-bottom: 0.5em;
-    display: block;
-    text-align: center;
-}
-
-.embed-options fieldset {
-    margin: 0 3em;
-}
-
-.embed-options .pure-control-group,
-.embed-options .pure-control-group label {
-    text-align: left;
-    width: auto
-}
-
-.copy-text-element {
-    margin: 0.5em auto
-}
-
-.copy-button {
-    margin: 0 4px;
-    padding: 4px;
-}
-
-.embed-options .pure-control-group.copy-text-element label {
-    width: 12ch; /* "Embed Code" + some space */
-}
-
-.embed-code {
-    font-family: monospace;
-    margin: auto 4px;
-    width: 420px;
-    font-size: 0.75em;
-    line-height: 1;
-    resize: none;
-}
-
-.embed-url {
-    height: 3rem;
-}
-
-.embed-iframe {
-    height: 6rem;
-}
+} */
 
 /* Reasons dialog */
 
@@ -488,7 +478,7 @@ img.collection-thumbnail {
   resize: none;
   line-height: 1.2em;
   border-radius: 5px;
-  border: 1px solid #2d3142;
+  border: 1px solid var(--snap-dark-blue);
   padding: 0 .5em;
   height: 2.9em;
   background: #f3eeeb;

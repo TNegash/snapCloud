@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 16.3 (Homebrew)
--- Dumped by pg_dump version 16.3 (Homebrew)
+-- Dumped from database version 16.7 (Homebrew)
+-- Dumped by pg_dump version 16.7 (Homebrew)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -84,7 +84,8 @@ CREATE TABLE public.projects (
     lastshared timestamp with time zone,
     username public.dom_username NOT NULL,
     firstpublished timestamp with time zone,
-    deleted timestamp with time zone
+    deleted timestamp with time zone,
+    likely_class_work boolean DEFAULT false NOT NULL
 );
 
 
@@ -103,7 +104,8 @@ CREATE VIEW public.active_projects AS
     lastshared,
     username,
     firstpublished,
-    deleted
+    deleted,
+    likely_class_work
    FROM public.projects
   WHERE (deleted IS NULL);
 
@@ -127,7 +129,9 @@ CREATE TABLE public.users (
     unique_email text,
     bad_flags integer DEFAULT 0 NOT NULL,
     is_teacher boolean DEFAULT false NOT NULL,
-    creator_id integer
+    creator_id integer,
+    last_login_at timestamp with time zone,
+    session_count integer DEFAULT 0 NOT NULL
 );
 
 
@@ -150,7 +154,9 @@ CREATE VIEW public.active_users AS
     unique_email,
     bad_flags,
     is_teacher,
-    creator_id
+    creator_id,
+    last_login_at,
+    session_count
    FROM public.users
   WHERE (deleted IS NULL);
 
@@ -164,6 +170,18 @@ CREATE TABLE public.banned_ips (
     created_at timestamp with time zone NOT NULL,
     updated_at timestamp with time zone NOT NULL,
     offense_count integer DEFAULT 0 NOT NULL
+);
+
+
+--
+-- Name: bookmarks; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.bookmarks (
+    bookmarker_id integer NOT NULL,
+    project_id integer NOT NULL,
+    created_at timestamp with time zone NOT NULL,
+    updated_at timestamp with time zone NOT NULL
 );
 
 
@@ -267,7 +285,8 @@ CREATE VIEW public.deleted_projects AS
     lastshared,
     username,
     firstpublished,
-    deleted
+    deleted,
+    likely_class_work
    FROM public.projects
   WHERE (deleted IS NOT NULL);
 
@@ -291,7 +310,9 @@ CREATE VIEW public.deleted_users AS
     unique_email,
     bad_flags,
     is_teacher,
-    creator_id
+    creator_id,
+    last_login_at,
+    session_count
    FROM public.users
   WHERE (deleted IS NOT NULL);
 
@@ -481,6 +502,14 @@ ALTER TABLE ONLY public.banned_ips
 
 
 --
+-- Name: bookmarks bookmarks_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.bookmarks
+    ADD CONSTRAINT bookmarks_pkey PRIMARY KEY (bookmarker_id, project_id);
+
+
+--
 -- Name: collection_memberships collection_memberships_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -611,6 +640,13 @@ CREATE INDEX original_project_id_index ON public.remixes USING btree (original_p
 
 
 --
+-- Name: projects_likely_class_work_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX projects_likely_class_work_idx ON public.projects USING btree (likely_class_work);
+
+
+--
 -- Name: remixed_project_id_index; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -671,8 +707,8 @@ ALTER TABLE ONLY public.tokens
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 16.3 (Homebrew)
--- Dumped by pg_dump version 16.3 (Homebrew)
+-- Dumped from database version 16.7 (Homebrew)
+-- Dumped by pg_dump version 16.7 (Homebrew)
 
 
 --
@@ -699,6 +735,8 @@ COPY public.lapis_migrations (name) FROM stdin;
 1683536418
 2023-03-14:0
 2023-03-14:1
+2025-02-06:0
+2025-06-18:0
 \.
 
 
