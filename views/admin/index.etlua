@@ -14,6 +14,8 @@
   <a class="m-1 btn btn-outline-primary"
     href="/user_admin"><%- locale.get('user_admin') %></a>
   <br>
+  <a class="m-1 btn btn-outline-success"
+       href="/show_email"><%- locale.get('show_email') %></a>
   <a class="m-1 btn btn-warning"
     href="/zombie_admin"><%- locale.get('zombie_admin') %></a>
   <% end %>

@@ -21,7 +21,7 @@
                 page_path = 'index',
                 type = 'totm'
             })
-            local snapcloud = package.loaded.Users:find({ username = 'snapcloud' })
+            local snapcloud = package.loaded.Users:find({ username = 'winna' })
             for k, v in pairs(snapcloud:get_ffa_collections()) do
         %>
             <option <%= (current_totm and (current_totm.collection_id == v.id))

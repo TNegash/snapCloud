@@ -6,3 +6,4 @@ fi
 
 sass --watch static/scss/:static/style/compiled/ --style compressed &
 authbind --deep lapis server $LAPIS_ENVIRONMENT
+type maildev &>/dev/null && maildev --incoming-user cloud --incoming-pass cloudemail

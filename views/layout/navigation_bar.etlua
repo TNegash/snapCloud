@@ -21,7 +21,9 @@
             <%- locale.get('explore') %>
           </a>
         </li>
-        <li class="nav-item">
+        <%
+--[[%>
+ <li class="nav-item">
           <a class="nav-link forum" href="https://forum.snap.berkeley.edu/">
             <%- locale.get('forum') %>
           </a>
@@ -35,7 +37,9 @@
           <a class="nav-link" target="_blank" href="https://www.snapcon.org">
             Snap<em>!</em>Con
           </a>
-        </li>
+        </li> 
+<%
+]]%>
       </ul>
       <span class="navbar-nav me-auto">
           <form role="search" action="search">
@@ -143,6 +147,11 @@
               </a></li>
               <% end %>
           </ul>
+        </li>
+        <li class="nav-item eritrea">
+            <a class="eritrea">
+              <img src="/static/img/Flag_of_Eritrea.png"  height="30">
+            </a>
         </li>
       </ul>
     </div>

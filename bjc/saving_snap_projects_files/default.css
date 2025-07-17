@@ -1,0 +1,980 @@
+@charset "UTF-8";
+
+/* * * * * FONTS * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+/* @font-face {
+  font-family: 'Open Sans';
+  src: url('../fonts/opensans/OpenSans-Regular-webfont.eot');
+  src: url('../fonts/opensans/OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+	   url('../fonts/opensans/OpenSans-Regular-webfont.woff') format('woff'),
+	   url('../fonts/opensans/OpenSans-Regular-webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+} */
+
+/* @font-face {
+  font-family: 'work_sansregular';
+  src: url('fon ts/Work_Sans/WorkSans-Regular.eot');
+  src: url('fonts/Work_Sans/WorkSans-Regular.eot?#iefix') format('embedded-opentype'),
+       url('fonts/Work_Sans/WorkSans-Regular.woff') format('woff'),
+       url('fonts/Work_Sans/WorkSans-Regular.ttf') format('truetype'),
+       url('fonts/Work_Sans/WorkSans-Regular.svg#open_sansregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Font Awesome 5 Free';
+  font-style: normal;
+  font-weight: 900;
+  src: url("fonts/fontawesome/fa-solid-900.eot");
+  src: url("fonts/fontawesome/fa-solid-900.eot?#iefix") format("embedded-opentype"),
+      url("fonts/fontawesome/fa-solid-900.woff2") format("woff2"),
+      url("fonts/fontawesome/fa-solid-900.woff") format("woff"),
+      url("fonts/fontawesome/fa-solid-900.ttf") format("truetype"),
+      url("fonts/fontawesome/fa-solid-900.svg#fontawesome") format("svg");
+} */
+
+/* * * * END FONTS * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+
+html {
+  font-family: "work_sansregular", "Open Sans", Helvetica, Arial, sans-serif;
+  font-size: 16px; /* Fix for weird bootstrap */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+  color: #000;
+  text-align: left;
+
+}
+
+body {
+  font-size: 16px;
+  padding: 50px 1em 1em; /* padding top is reset by JS on load. */
+}
+
+code, pre, tt, kbd, samp, var {
+  font-size: 1em;
+  font-style: normal;
+  font-weight: bold;
+  font-family: 'Andale Mono', 'Menlo', Courier, monospace;
+}
+
+.full {
+  padding: 1em;
+  width: 95%;
+  margin: 1em auto;
+}
+
+img {
+  /* Better resizing of images for mobile devices */
+  max-width: 100%;
+  padding: 6px;
+  -webkit-filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+  -ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=2, OffY=2, Color='#444')";
+  filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=2, OffY=2, Color='#444')";
+}
+
+.noblur { /* No blur for images */
+  -webkit-filter: none;
+  -ms-filter: none;
+  filter: none;
+}
+
+.right {
+  text-align: right;
+}
+
+.full ul, .full ol {
+  font-size: 1em;
+  font-weight: inherit;
+  display: inline-block;
+  color: #004;
+  margin: 18px;
+}
+
+/* Handle Nested Lists */
+.full ul ul, .full ol ol,
+.full ul ol, .full ol ul {
+  border: none;
+  display: block;
+  margin: none;
+  border-radius: 0;
+}
+
+li {
+  padding: 5px;
+}
+
+th {
+  font-weight: normal;
+  font-size: 16px;
+}
+
+/* Override bootstrap 3. h1 is exclusively used for page titles. */
+h1 {
+  all: unset;
+  display: block;
+  margin: auto 0;
+}
+h1.title-small-screen {
+  margin: 16px 0 0 0;
+}
+
+/* Override Bootstrap 3, exclude h1 */
+h2, h3, h4, h5, h6
+.h2, .h3, .h4, .h5, .h6 {
+  margin-top: 3px;
+  padding: 8px 0;
+  color: #000;
+  font-weight: 800;
+}
+
+blockquote {
+  font-style: italic;
+  padding: 10px;
+}
+
+/* Physically disables clicking on a link which LOOKS disabled. */
+a[disabled], .disabled {
+  pointer-events: none;
+}
+
+.inline {
+  display: inline;
+}
+
+code { /* Override bootstrap. */
+  background: none;
+  border-radius: 0; /* reset to not do calculations */
+}
+
+.footer-col {
+  margin: auto;
+}
+
+.footer-col img {
+  height: auto;
+  max-height: 50px;
+  filter: none;
+  box-shadow: none;
+}
+
+/** PAGE NAV (TOP AND BOTTOM) ************************************************/
+.llab-nav {
+  line-height: 1.38; /* Keep slightly smaller than normal to control centering the nav buttons */
+  margin: 0 0 .5em 0;
+  width: 100%;
+  padding: 6px;
+  height: 62px; /* Gives us 50px + padding. */
+  border: none; /* override bootstrap's very light border. */
+  background-color: #0C3559;
+  color: #FFF;
+}
+
+.navbar-title {
+  padding: 6px 16px;
+  color: #FFF; /* override default h1 */
+  width: auto;
+  font-family: 'work_sansregular', 'Open Sans', Helvetica, Arial, sans-serif;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+/* Show a special div on small screens that isn't in the nav bar */
+.title-small-screen {
+  display: none;
+  font-size: 1.8rem;
+  color: #000;
+}
+
+/* Necessary when on mobile. */
+.navbar-nav .open .dropdown-menu {
+  background-color: #FFF;
+}
+
+@media (min-width: 768px) {
+  .navbar-left {
+    /* With of the right side buttons: lang menu + back/forward buttons */
+    max-width: calc(100% - 36ch);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  /* Bootstrsap 3 selector */
+  .navbar-nav .open .dropdown-menu {
+    position: fixed;
+    top: 75px;
+    left: 0.2em;
+    max-width: calc(100% - 0.8em - 2em - 4px);
+    border: 2px solid #0C3559;
+  }
+
+  ul.navbar-nav li.open ul {
+    margin: 0.5em;
+    width: 100%;
+  }
+
+  /* Close the gap between buttons, only shows on mobile. */
+  .nav-btn-group > .btn-nav {
+    margin: 0 -3px;
+  }
+}
+
+/* Contains the page title text, truncates text with '…' */
+.navbar-default .navbar-title:hover, .navbar-default .navbar-title:focus,
+.navbar-default .navbar-title,
+.navbar-title, a.navbar-title {
+  vertical-align: middle;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+nav.navbar .navbar-brand {
+  height: 50px;
+  padding: 0; /* no extra padding around image, so it fills 50px */
+  margin: 0 0 0 48px;
+}
+
+.navbar-brand img {
+  height: 50px;
+  padding: 0;
+  -webkit-filter: none;
+  -ms-filter: none;
+  filter: none;
+}
+
+.navbar-right {
+  padding: 5px 1rem;
+  margin-right: 5%;
+}
+
+/* No extra space around buttons */
+ul.navbar-right li {
+  padding: 0;
+}
+
+.nav-lang-dropdown {
+  margin-right: 5ch;
+}
+
+/**
+    translation, dropdown-toogle, back/next buttons
+    Keep all nav buttons nice and sqaure
+   The ul container adds +5px top/bottom padding
+   Total navbar height adds more padding to get to 60px
+*/
+.navbar-nav > li > a, /* override bootstrap 3 */
+.btn-nav {
+  color: white;
+  border: 2px solid white;
+  background-color: unset;
+  font-size: 20px;
+  font-weight: 900;
+  padding: 8px;
+  border-radius: 6px;
+  height: 40px;
+  width: 40px;
+}
+
+/* This requires .nav-btn-group as a parent of all button elements. */
+.nav-btn-group a.btn-nav {
+  border-radius: 0;
+}
+
+.nav .open > a,
+.nav> li > a:focus,
+.nav > li > a:hover,
+a.btn-nav:visited:hover,
+a.btn-nav:visited:focus,
+a.btn-nav:active,
+.btn-nav:hover,
+.btn-nav:focus {
+  border-color: #F2E205;
+  color: #F2E205;
+  background-color: unset;
+}
+
+.nav-btn-group.nav-btn-group-first > .btn-nav {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+.nav-btn-group.nav-btn-group-last > .btn-nav {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+a.btn-nav,
+a.btn-nav:visited {
+  color: white;
+}
+
+.full-bottom-bar {
+  background: #0C3559;
+  height: 48px;
+  border-radius: 12px;
+  width: 95%;
+  margin: 1em auto 1em;
+  padding: 4px 1em;
+}
+
+.full-bottom-bar a.btn-nav {
+  margin: 3px;
+  padding: 0;
+  height: 32px;
+  width: 32px;
+}
+
+.progress-indicator {
+  float: left;
+  height: 48px;
+  background-image: url(../img/alonzo.png);
+  background-repeat: no-repeat;
+  background-size: 32px;
+  width: calc(100% - 10ch);
+  padding: 0 0.5em;
+  background-position: 0 0; /* (32px - 26px) / 2 */
+}
+/* END NAV SECTION ***********************************************************/
+
+.dropdown-menu {
+  margin-top: 6px;
+  overflow-y: scroll; /* scroll menu on small screens */
+  width: auto;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  /* max- height + width set using JS on page load. */
+}
+
+/* override bootstrap 3 nested classes */
+ul.dropdown-menu > li.dropdown-header,
+.dropdown-header {
+  color: #000;
+  padding: 3px 10px;
+  font-size: 1.1em;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.course-link-list, .main-topic-link, .current-page-arrow {
+  font-weight: bold;
+  background-size: contain;
+  background-repeat: no-repeat;
+  padding-left: 20px;
+  font-size: 100%;
+}
+
+.course-link-list {
+  background-image: url(../img/globe.png);
+  padding-right: 5px;
+}
+
+.main-topic-link {
+  text-decoration: underline; /* only topic page link is underlined */
+  background-image: url(../img/toolbar_home.png);
+}
+
+.current-page-arrow {
+  background-image: url(../img/forward.png);
+}
+
+/* Syntax highlighting elements, override Bootstrap PRE stuff */
+pre > code {
+  margin: 0;
+  font-size: 125%;
+}
+
+pre {
+  margin: 10px 10px 10px 2%;
+  width: 96%;
+  padding: 0; /* useful for code elements */
+}
+
+pre > code.hljs {
+  padding: 0.5em;
+  border-radius: 4px; /* match bootstrap */
+}
+
+.table-middle {
+  vertical-align: middle;
+}
+
+.resultMessageDiv {
+  font-size: 1.2em;
+}
+
+/* FEEDBACK BUTTON ON BOTTOM RIGHT */
+.page-feedback {
+  padding: 4px;
+  float: right;
+  right: 1%;
+  bottom: 0;
+  z-index: 100;
+  text-align: right;
+  position: fixed;
+}
+
+.feedback-button {
+  margin: .5em 1em;
+}
+
+/* These control the look of the embedded suvery.
+* ALL override the bootstrap .panel class
+* box-shadow: default panel shadow is too light
+* No border-radius because the embed is rectangular,
+* and border-radius doesn't work in an iframe
+* Margin 0 moves the whole thing closer to the bottom of the page
+*/
+#fdbk {
+  border-radius: 0px;
+  margin: 0px;
+  box-shadow: 2px 2px 4px #888;
+}
+
+/* For whatever reason the iframe has some whitespace around it
+* and this fixes the whitespace */
+#feedback-frame {
+  margin-bottom: -5px;
+  margin-right: -1px;
+}
+/*********************************/
+
+.course_link {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 120%;
+  background-image: url(../img/globe.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  padding-left: 30px;
+  float: right;
+  padding-right: 25px;
+}
+
+/* arg. not image please... */
+.center {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.strike {
+  text-decoration: line-through;
+}
+
+table .pre {
+  line-height: 1em;
+}
+
+.imageRight {
+  float: right;
+  margin: 0 20px 15px 15px;
+}
+
+.imageLeft {
+  float: left;
+  margin: 0 15px 15px 20px;
+}
+
+img.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+img.inline {
+  /* this works if the text isn't also vertical-align'ed!  */
+  vertical-align: middle;
+  display: inline;
+}
+
+img.indent, div.indent {
+  margin-left: 10%;
+}
+
+.step {
+  margin-left: 35px;
+  padding: 0 50px 5px 30px;
+  background-image: url(../img/lightning.png);
+  background-repeat: no-repeat;
+  background-position: 0 0;
+}
+
+/** Common Styling to highlighted sections */
+.alert, /* Bootstrap: which we make more like our .quote sections */
+.quoteOrange, .quoteRed, .quoteGreen, .quoteBlue, .quoteYellow {
+  padding: 10px 15px;
+  margin: 10px 2%;
+  width: 96%;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, .2);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .25), 0 1px 2px rgba(0, 0, 0, .05);
+		  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .25), 0 1px 2px rgba(0, 0, 0, .05);
+}
+
+.quoteRed {
+  border-left: 12px solid #C11;
+  background-image: none;
+  background-color: #e7c3c3;
+}
+
+.quoteOrange {
+  border-left: 12px solid #FF9D1E;
+  background-color: #FFCE8E;
+}
+
+.quoteBlue {
+  border-left: 12px solid #164CBA;
+  background-color: #99F;
+}
+
+.quoteGreen {
+  border-left: 12px solid #693;
+  background-color: #9C6;
+}
+
+.quoteYellow {
+  border-left: 12px solid #e4e47d;
+  background-color: #F1F1BC;
+}
+
+/** ICON CLASSES **/
+/*  These are resource icons for each item. */
+.group, .reading, .extresource, .video, .forum,
+.resource, .assignment, .homework, .quiz {
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: 1em;
+  padding-left: 35px;
+  margin: 5px 0;
+}
+
+.quiz {
+  background-image: url(../img/multiplechoice28.png);
+}
+
+.assignment, .homework {
+  background-image: url(../img/note28.png);
+}
+
+.resource {
+  background-image: url(../img/course-resources-32.png);
+}
+
+.forum {
+  background-image: url(../img/pageLink.png);
+}
+
+/* http://findicons.com/icon/58541/movies */
+.video {
+  background-image: url(../img/movies.png);
+}
+
+.extresource {
+  background-image: url(../img/display28.png);
+}
+
+/* http://findicons.com/icon/93370/emblem_library?id=274277 */
+.reading {
+  background-image: url(../img/emblem_library.png);
+}
+
+/* http://findicons.com/icon/66444/user_group?id=66460 */
+.group {
+  background-image: url(../img/user_group.png);
+}
+/* End items controlled by .topic div */
+
+/* Other items, which partially override .topic div */
+
+/* Headings */
+.topic_header {
+  font-size: large;
+  text-decoration: underline;
+  padding-left: 0;
+}
+
+.topic .label {
+  margin-top: 20px;
+  margin-bottom: 12px;
+  padding-left: 0;
+  padding-left: 0;
+}
+
+/* List-related items
+ * bigIdeas and learninggoals are being treated identically at the moment.
+ */
+.bigideas,
+.learninggoals {
+  font-weight: 400;
+}
+
+/* Formatting stuff */
+.indent0 {
+  margin-left: 0
+}
+.indent1 {
+  margin-left: 20px
+}
+.indent2 {
+  margin-left: 40px
+}
+.indent3 {
+  margin-left: 60px
+}
+
+
+/* This is for the curriculum page with links to other topic pages.
+* Do not place inside a topic div. */
+.topic_link {
+  font-weight: bold;
+  font-size: large;
+  text-decoration: underline;
+  padding-left: 0;
+  padding-top: 10px;
+}
+
+/* iframe at the beginning of labs, for embedded content. */
+.content-embed {
+  border: 0;
+  width: 100%;
+  min-height: 500px;
+  height: 100%;
+  display: block;
+}
+
+/* Image added to all clickable program file links
+* Indicates a new window will open */
+.run, .snap-project {
+  background: url(../img/external-link.png) center right no-repeat;
+  padding-right: 13px;
+  font-weight: bold;
+}
+
+/**** SPECIAL CONTENT CLASSES ***/
+/* easily stylize Snap! with proper italics
+* Insert using "<span class="snap">snap</span>"
+*/
+.snap:first-letter {
+  font-variant: normal;
+}
+
+.snap {
+  text-transform: capitalize;
+  font-style: normal;
+}
+
+.snap:after {
+  content: "!";
+  font-style: italic;
+}
+/* END .snap */
+
+.truthtable {
+  display: inline-block;
+  padding: 10px;
+}
+
+.truthtable td {
+  font-size: 14px;
+  padding: 10px 8px;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.truthtable th {
+  font-size: 14px;
+  font-weight: normal;
+  padding: 10px 5px;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.code-vid {
+  max-width: 100%;
+  text-align: center;
+  font-size: .8em;
+  font-style: italic;
+  color: #808080;
+}
+
+/***************************************/
+/** LLAB QUIZ STYLING */
+.feedbackDiv {
+  width: 85%;
+  margin: 10px auto 0px auto;
+  text-align: center;
+  color: #19253D;
+}
+
+.buttonDiv {
+  text-align: center;
+}
+
+.buttonTable {
+  border-collapse: collapse;
+  margin: 8px auto 5px auto;
+  padding: 1em .5em;
+}
+
+.checkAnswerButton,
+.tryAgainButton {
+  vertical-align: middle;
+  margin: 10px;
+}
+
+/* multiple choice question specific styling */
+/* FIXME, these need descendant ( > ) selectors! */
+.MultipleChoice .currentQuestionBox {
+  margin: 0px auto;
+  padding: 10px 0px;
+  text-align: left;
+}
+
+.MultipleChoice .currentQuestionBox .leftColumn {
+  float: left;
+  width: 85%;
+  padding: 10px 0px 10px 15px;
+  min-height: 300px;
+}
+
+.MultipleChoice .currentQuestionBox .rightColumn {
+  float: right;
+  width: 12%;
+  padding: 10px 0px;
+  text-align: center;
+  color: white;
+  min-height: 300px;
+}
+
+.MultipleChoice .itemLabel {
+  font-size: .7em;
+  text-transform: uppercase;
+  margin: 5px 0px 0px 15px;
+}
+
+.MultipleChoice .promptdiv {
+  font-size: .9em;
+  color: #000;
+  margin: 3px 10px 15px 15px;
+  font-weight: bold;
+  line-height: 150%;
+}
+
+.MultipleChoice .radiobuttondiv {
+  margin: 10px;
+}
+
+.MultipleChoice .radiobuttondiv table td {
+  padding: 3px 3px 8px 3px;
+}
+
+.MultipleChoice .radiobuttondiv input {
+  margin-top: 2px;
+}
+
+.MultipleChoice .radiobuttondiv table p {
+  font-size: inherit;
+}
+
+.MultipleChoice .radiobuttondiv .correct {
+  color: green;
+  font-weight: bold;
+}
+
+.MultipleChoice .radiobuttondiv .incorrect {
+  color: red;
+  font-weight: bold;
+}
+
+.MultipleChoice .radiobuttondiv table td:first-child {
+  width: 25px;
+}
+
+.MultipleChoice .radiobuttondiv table td + td + td div[name="feedbacks"] {
+  font-style: italic;
+  font-size: .9em;
+  border-left: 4px solid #999;
+  padding-left: 6px;
+  margin-left: 30px;
+}
+
+.MultipleChoice .statusMessages {
+  text-align: center;
+  margin: 5px auto;
+  padding: 5px;
+}
+
+.MultipleChoice .numberAttemptsDiv, .lastAttemptDiv {
+  display: inline;
+  font-size: .8em;
+  margin: 0px;
+  padding: 0px;
+}
+
+/** QUIZ CLASSES OF QUESTIONABLE USE */
+.MultipleChoice .promptdiv p {
+  font-size: inherit;
+  font-weight: normal;
+}
+
+.MultipleChoice .promptdiv a:link, .promptdiv a:visited {
+  color: #000;
+}
+
+.MultipleChoice .promptdiv a:hover {
+  background-color: #FF0;
+}
+
+.MultipleChoice .promptdiv ol {
+  font-size: .8em;
+  text-transform: uppercase;
+  margin-left: 25px;
+}
+
+.feedbackdiv.correct {
+  color: green;
+}
+
+.feedbackdiv.incorrect {
+  color: red;
+}
+/** END QUESTIONABLE STUFF */
+/*** END QUIZ CSS */
+/********************************/
+
+@media print {
+  /** Hide these items from printing:
+   *  Navbars / dropdown menus
+   *  Navbars / dropdown menus
+   *  bottom back/next buttons
+   *  feedback scripts
+   *
+   * Ensure full width/height and minimal borders.
+   * TODO: Put a BJC Logo / Course name + unit/lab number somewhere.
+   */
+
+  html, body, .full {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .title-small-screen {
+    display: block;
+    font-size: 1.2em;
+    margin: 0;
+    padding: 0 0 0.5em 0;
+  }
+
+  nav.nav,
+  .full-bottom-bar,
+  .page-feedback,
+  .course_link,
+  footer {
+    display: none;
+  }
+
+  /* Hide URLs of links. */
+  a[href]:after { content: ""; }
+}
+/********************************/
+
+
+/******* SMALL DEVICE STUFF *****/
+@media (max-width: 768px) {
+  body, .full {
+    width: 100%;
+  }
+
+  body {
+    padding-top: 75px;
+  }
+
+  nav.navbar .navbar-brand {
+    margin: 0 0.5em;
+  }
+
+  .navbar-left {
+    float: left;
+    margin: 0;
+  }
+
+  .navbar-right {
+    float: right;
+    padding: 0;
+    margin: 0.25em 0.5em;
+  }
+
+  .navbar-right > li {
+    display: inline-block;
+    position: relative;
+  }
+
+  .navbar-title {
+    display: none;
+  }
+
+  /* Override display only, all other properties are set above */
+  .title-small-screen {
+    display: block;
+  }
+
+  .page-feedback {
+    display: none;
+  }
+}
+
+a[data-toggle="collapse"]:not([aria-expanded="true"])::after,
+a[data-toggle="collapse"][aria-expanded="false"]::after {
+  content: " ▸";
+  text-decoration: none;
+}
+
+a[data-toggle="collapse"][aria-expanded="true"]::after {
+  content: " ▾";
+  text-decoration: none;
+}
+
+
+/*!
+ * Font Awesome Free 5.13.0 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+
+ * We don't include all (or much of...) fontawesome.
+ * Add icons to this list as we use them in the repo.
+ * Copy the unicode from the top of the icon view on the relevant fontawesome page.
+ */
+ .fas, .far, .fa {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  font-style: normal;
+}
+
+/* This is used on the /cur/solutions-assessments/ pages to indicate an external link. */
+a.fa-external-link-alt:after {
+  content: " \f35d";
+  font-size: .7em;
+}
+
+.fa-globe::after {
+  content: ' \f0ac ';
+}
+
+.fa-bars::after {
+  content: ' \f0c9 ';
+}
+
+.fa-arrow-left::after {
+  content: ' \f060 ';
+}
+
+.fa-arrow-right::after {
+  content: ' \f061 ';
+}

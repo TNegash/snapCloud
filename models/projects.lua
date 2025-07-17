@@ -105,7 +105,7 @@ local ActiveProjects = Model:extend('active_projects', {
     end,
     url_for = function (self, purpose, dev_version)
         -- For some small % of requests the host is nil.
-        local domain = ngx.var.http_host or 'snap.berkeley.edu'
+        local domain = ngx.var.http_host or 'snap.winna.er'
         local base = ngx and ngx.var and ngx.var.scheme .. '://' .. domain .. '/' or ''
         base = base .. (dev_version and 'snap/dev/' or 'snap/') .. 'snap.html'
         local urls = {
@@ -121,7 +121,7 @@ local ActiveProjects = Model:extend('active_projects', {
             site = '/project?username=' .. escape(self.username) ..
                 '&projectname=' .. escape(self.projectname),
             author = '/user?username=' .. escape(self.username),
-            embed = 'https://snap.berkeley.edu/embed?projectname=' ..
+            embed = 'https://snap.winna.er/embed?projectname=' ..
                 escape(self.projectname) .. '&username=' ..
                 escape(self.username)
         }

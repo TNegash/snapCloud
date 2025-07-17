@@ -17,8 +17,16 @@
     </a>
   </div>
   <% end %>
-    <div class="carousel-item active">
+    <%
+--[[%>
+ <div class="carousel-item active">
       <img src="/static/img/snapcon.png" alt="Snap! - Build Your Own Blocks">
+    </div> 
+<%
+]]%>
+
+    <div class="carousel-item">
+      <img src="/static/img/snap-tigrinya.png" style="width:100%" alt="ስናፕ! - ናትካ ሕጡባት ህነጽ">
     </div>
 
     <div class="carousel-item">

@@ -51,7 +51,7 @@ app:enable('etlua')
 app.layout = require 'views.layout.application'
 
 local static_pages = {
-    'about', 'bjc', 'blog', 'coc', 'contact', 'credits', 'dmca', 'extensions',
+    'about', 'bjc', 'blog', 'coc', 'contact', 'credits', 'dmca', 'extensions', 'materials', 'courses', 
     'mirrors', 'offline', 'partners', 'privacy', 'research',
     'snapinator', 'snapp', 'source', 'tos', 'versions',
     -- Disabled because this is out of date.
@@ -86,7 +86,7 @@ app:before_filter(function (self)
 end)
 
 app:get('index', '/', capture_errors(cached(function (self)
-    self.snapcloud_id = Users:find({ username = 'snapcloud' }).id
+    self.snapcloud_id = Users:find({ username = 'winna' }).id
     return { render = 'index' }
 end)))
 
@@ -325,12 +325,12 @@ end))
 
 -- TODO: Should be able to consolidate these pages.
 app:get('/examples', capture_errors(cached(function (self)
-    self.snapcloud_id = Users:find({ username = 'snapcloud' }).id
+    self.snapcloud_id = Users:find({ username = 'winna' }).id
     return { render = 'examples' }
 end)))
 
 app:get('/events', capture_errors(cached(function (self)
-    self.snapcloud_id = Users:find({ username = 'snapcloud' }).id
+    self.snapcloud_id = Users:find({ username = 'winna' }).id
     return { render = 'events' }
 end)))
 
@@ -393,6 +393,15 @@ app:get('/user_admin', capture_errors(function (self)
     else
         return { redirect_to = self:build_url('/') }
     end
+end))
+
+app:get('/show_email', capture_errors(function (self)
+    local socket = require("socket")
+    local domain = "www.snap.winna.er"
+    local ip = socket.dns.toip(domain)
+    local url = "http://" .. ip .. ":1080"
+    -- os.execute("start " .. url)
+    return { redirect_to = url }
 end))
 
 app:get('/zombie_admin', capture_errors(function (self)

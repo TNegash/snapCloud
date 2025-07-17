@@ -68,6 +68,7 @@ local locale = {
     offline = "Offline Version",
     extensions = "Extensions",
     old_snap = "(old Snap@1)",
+    courses = "Learning Materials for Eritrea",
     -- forum already translated in top navigation bar
     contact = "Contact Us",
     mirrors = "Mirrors",
@@ -409,7 +410,7 @@ Want to know more? Visit @2]],
     compose_email = "Compose a message",
     msg_subject = "Subject",
     msg_body = "Email Body",
-
+    
     -- Delete user dialog
     -- ==================
     confirm_delete_usr = "Are you sure you want to delete user @1?",
@@ -433,7 +434,8 @@ Want to know more? Visit @2]],
     zombie_admin = "Zombie Administration",
     flagged_projects = "Flagged Projects",
     suspicious_ips = "Suspicious IPs",
-
+    show_email = "Show E-Mails",
+    
     -- Error messages
     -- ==============
     err_login_failed = "Login failed",

@@ -1,0 +1,802 @@
+<div class="grid">
+    <div class="toc-container"></div>
+    <div class="content-container">
+        <h1 id="learning_materials" localizable>Snap<em>!</em> Learning Materials</h1>
+        <div class="learning-contents">
+   <h2 class="toc-h2"id="snap_crash_Course">Snap! Crash Course</h2>
+
+    <div>
+
+    <p>
+
+    <a href="bjc/crash_course.html">The Beauty and Joy of Computing: Snap! Crash Course</a> is an engaging and accessible introduction to computer science. Using the visual programming language Snap!, it highlights the creative and aesthetic aspects of computing, making it perfect for beginners to quickly grasp key concepts while enjoying the process. It's an excellent starting point for anyone interested in exploring the world of technology.
+
+    </p>
+
+    </div>
+            <h2 class="toc-h2"id="snap_beginners_get_excited">Snap! Beginners: Get Excited</h2>
+            <div>
+                <p>
+                Coding is probably one of the most useful skills of the future. Using Snap!, a block-based
+                programming language that extends Scratch, the basics of programming and the logic behind
+                it can be understood without taking care of all the tedious things such as compiling or correct
+                syntax. 
+                </p>
+                <p>
+                Like puzzle pieces, the programming commands, the so-called blocks, are put together to form
+                scripts and programs. Snap! programming is reduced to the essentials, helping beginners to
+                achieve interesting results very quickly. However, Snap! also provides functions, which
+                enables its usage in education and research.
+                To access Snap!, visit snap.winna.er or if you have internet access snap.berkeley.edu and click run Snap! now. Snap! runs in any browser (however, Chrome and Firefox are recommended). 
+                </p>
+            </div>
+            <h2 class="toc-h3"id="workshops_for_biginners">Snap! Beginners: Workshops for beginners</h2>
+                <table style="border: 1px solid;">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                    <th>Resources</th>
+                                    <th>Solution</th>
+                                </tr>
+                                <tr>
+                                        <td>Grow a Virtual Flower Field </td>
+                                        <td style="word-wrap: break-word;">Grow a virtual flower field using turtle geometry and Snap!'s "stamp" block.</td>
+                                        <td> <P> &nbsp; PDF( <a href="/static/eriresources/workshops/Workshop-Flower-Field/Stamp your virtual flower field.pdf"
+                                                    >EN</a> ) &nbsp;</p>
+                                        <P> &nbsp; Video( <a href="/static/eriresources/workshops/Workshop-Flower-Field/Grow a virtual flower field.mp4"
+                                                >EN</a> ) &nbsp;</p>
+                                        </td>
+                                        <td><a href="https://snap.winna.er/snap/snap.html#present:Username=admin&ProjectName=StampYourVirtualFlowerField&editMode&noRun"
+                                                    >Grow a Virtual Flower Field Solution</a></td>
+                                </tr>                                
+                                <tr>
+                                    <td>Pointillism</td>
+                                    <td style="word-wrap: break-word;">Pointillism is an art form, where differently colored dots are applied in patterns to generate an image. In this project, you can become an artist by redrawing a photograph with just dots.</td>
+                                    <td> <P> &nbsp; PDF( <a href="/static/eriresources/workshops/Workshop-Pointillism/pointillism activity card.pdf"
+                                                >EN</a> 
+                                                /
+                                                <a href="/static/eriresources/workshops/Workshop-Pointillism/PointillismTigrinya.pdf" >ትግ</a> ) &nbsp;</p>
+                                         <P> &nbsp; Video( <a href="/static/eriresources/workshops/Workshop-Pointillism/FromMediaComputationToDataScience-Pointillism.mp4"
+                                                >EN</a> ) &nbsp;</p>
+                                    </td>
+                                    <td><a href="https://snap.winna.er/snap/snap.html#present:Username=admin&ProjectName=Pointillismus&editMode&noRun"
+                                                >Pointillism Solution</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Magic Mirror</td>
+                                    <td style="word-wrap: break-word;">This simple starter project also works with very young programmers. You use Snap!’s built in graphic effects and camera capabilities to create a digital hall of mirrors.</td>
+                                    <td> <P> &nbsp; PDF( <a href="/static/eriresources/workshops/Workshop-Magic-Mirror/MagicMirror-EN.pdf"
+                                                >EN</a> 
+                                                /
+                                                <a href="/static/eriresources/workshops/Workshop-Magic-Mirror/MagicMirrorTigrinya.pdf" >ትግ</a>            
+                                                ) &nbsp;</p>  
+                                    </td>   
+                                    <td><a href="https://snap.winna.er/snap/snap.html#present:Username=admin&ProjectName=MagicMirror&editMode&noRun"
+                                                >Magic Mirror Solution</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Time Lens</td>
+                                    <td style="word-wrap: break-word;">This starter project literally takes a closer look at climate change. You’ll program a lens that lets you look back in time to compare the ice shield of glaciers today and 100 years back.</td>
+                                    <td> <P> &nbsp; PDF( <a href="/static/eriresources/workshops/Workshop-Time-Lens/CodeWeek_TimeLens_en.pdf"
+                                                >EN</a>            
+                                                ) &nbsp;</p>  
+                                           <P> &nbsp; Video( <a href="/static/eriresources/workshops/Workshop-Time-Lens/FromMediaComputationToDataScience-Week1Unit1-LookBack-APhotographicTimeMachine.mp4"
+                                                >EN</a> ) &nbsp;</p>
+                                            <P> <a href="https://snap.winna.er/snap/snap.html#present:Username=admin&ProjectName=TimeLensStarter&editMode&noRun"
+                                                >Time Lens Template Simple</a>   
+                                                </p>
+                                             <P> <a href="https://snap.winna.er/snap/snap.html#present:Username=admin&ProjectName=TimeLensAdvancedStarter&editMode&noRun"
+                                                >Time Lens Template Advanced</a>   
+                                                </p>
+                                    </td>   
+                                    <td>
+                                    <P> &nbsp; <a href="https://snap.winna.er/snap/snap.html#present:Username=admin&ProjectName=TimeLensSolution&editMode&noRun"
+                                                >Time Lens Solution 1</a> &nbsp;</p>  
+                                    <P> &nbsp; <a href="https://snap.winna.er/snap/snap.html#present:Username=admin&ProjectName=TimLensAdvancedt&editMode&noRun"
+                                                >Time Lens Solution 2</a> &nbsp;</p>             
+                                                
+                                                </td>
+
+                                </tr>
+                                <tr>
+                                    <td>Art and Code - an exploration of "Schotter"</td>
+                                    <td style="word-wrap: break-word;">
+                                    “Schotter” (German for gravel) is an iconic piece of early computer art that was created by German computer scientist Georg Nees. It’s made from a grid of squares that’s getting increasingly disorganised. In this activity, you'll recode your own version of Schotter</td>
+                                    <td> <P> &nbsp; PDF( <a href="/static/eriresources/workshops/Workshop-Snap-Art/Snap Art Primer.pdf"
+                                                >Snap! Art Primer</a>            
+                                                ) &nbsp;</p>  
+                                        <P> &nbsp; PDF( <a href="/static/eriresources/workshops/Workshop-Snap-Art/Schotter/ArtandCodeSchotterBasicProject.pdf"
+                                                >Art and Code Schotter-BasicProject</a>            
+                                                ) &nbsp;</p>  
+                                        <P> &nbsp; PDF( <a href="/static/eriresources/workshops/Workshop-Snap-Art/Schotter/ArtandCodeSchotterExtensions.pdf"
+                                                >Art and Code Schotter-Extensions</a>            
+                                                ) &nbsp;</p>  
+                                           <P> &nbsp; Video( <a href="/static/eriresources/workshops/Workshop-Snap-Art/Schotter/ArtandCodeAninteractiveexplorationofSchotter.mp4"
+                                                >An interactive exploration of Schotter</a> ) &nbsp;</p>                       
+                                    </td>   
+                                    <td>
+                                    <P> &nbsp; <a href="https://snap.winna.er/snap/snap.html#present:Username=admin&ProjectName=Schotter&editMode&noRun"
+                                                >Schotter Basic Solution</a> &nbsp;</p>  
+                                    <P> &nbsp; <a href="https://snap.winna.er/snap/snap.html#present:Username=admin&ProjectName=Schotter%2dAnimation&editMode&noRun"
+                                                >Schotter Animation Solution</a> &nbsp;</p>             
+                                    <P> &nbsp; <a href="https://snap.winna.er/snap/snap.html#present:Username=admin&ProjectName=Schotter%20different%20versions&editMode&noRun"
+                                                >Schotter Different Variants Solution</a> &nbsp;</p>     
+                                    <P> &nbsp; <a href="https://snap.winna.er/snap/snap.html#present:Username=admin&ProjectName=SchotterPhotoExample&editMode&noRun"
+                                                >Schotter Photo Example Solution</a> &nbsp;</p>    
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Snap!GPT</td>
+                                    <td style="word-wrap: break-word;">
+                                    The Snap!GPT project consists of three parts: Example data (in this case, fairy tales) is loaded and dissected to create a language model, a kind of database. Subsequently, a function is developed that searches for an entry (here: a word) from the data model that plausibly continues an existing sequence (here: previous words). Finally, the entire process can be made interactive for users.</td>
+                                    <td> <P> &nbsp; PDF( <a href="/static/eriresources/workshops/Snap!GPT/Snapgpt.pdf"
+                                                >Snap!GPT</a>            
+                                                ) &nbsp;</p>                          
+                                           <P> &nbsp; Video( <a href="/static/eriresources/workshops/Snap!GPT/Robolot 2024 Building Blocks for Generative AI with Snap!.mov"
+                                                >Building Blocks for Generative AI with Snap!</a> ) &nbsp;</p>    
+                                             <P> <a href="https://snap.winna.er/snap/snap.html#present:Username=admin&ProjectName=SnapGPT%20%2d%20Template&editMode&noRun"
+                                                >Snap!GPT Template </a>   
+                                                </p>
+                                                               
+                                    </td>   
+                                    <td>
+                                    <P> &nbsp; <a href="https://snap.winna.er/snap/snap.html#present:Username=admin&ProjectName=SnapGPT_Pen&editMode&noRun"
+                                                >Snap!GPT Pen Solution</a> &nbsp;</p>  
+                                    <P> &nbsp; <a href="https://snap.winna.er/snap/snap.html#present:Username=admin&ProjectName=SnapGPT%20%2d%20FairyTale%2dSolution&editMode&noRun"
+                                                >Snap!GPT Fairy Tales Solution</a> &nbsp;</p>             
+                                    <P> &nbsp; <a href="https://snap.winna.er/snap/snap.html#present:Username=admin&ProjectName=SnapGPT%20%2d%20Tunes&editMode&noRun" 
+                                                >Snap!GPT Childrens Songs Solution</a> &nbsp;</p>    
+                                    </td>
+                                </tr>
+                </table>
+            
+            <h2 class="toc-h2"id="get_coding_with_snap">Get Coding with Snap</h2>
+            <div class="overview">
+                <h3 class="toc-h3" id="overview" >Overview</h3>
+                <div>
+                    <p>
+                    We all use software practically every day, often without even realizing it! As our lives are transformed by the digital age, programming is becoming an important life skill. In this course, you’ll see how anyone can start building their own programs using Snap!, a block-based, open-source programming language. Its colorful, intuitive interface makes learning fast and fun, even for the most technically challenged! If you’ve already done some programming in Scratch, you’ll feel instantly at home. If not, don’t worry! Using animations, games, and artwork, this course will bring out the artist – and computer scientist – in you.
+                </p>
+                <p>
+                    Learners young and old, experienced and novice alike, will soon discover why Snap! is becoming the programming language of choice for researchers and teachers of computer science around the world.
+                </p>
+                </div>
+            </div>
+            <div class="learning-objectives">
+            <h3 class="toc-h3" id="learning-objectives">Learning objectives</h3>
+                <p>
+                <p>After completing this course, business users, consultants, and developers will be able to:&nbsp;&nbsp;</p>
+                <ul>
+                    <li>Navigate the interface of the Snap! programming language.&nbsp;</li>
+                    <li>Create sprites, costumes, and artwork using Snap!.&nbsp;</li>
+                    <li>Learn the basic concepts of computer science like loops, conditionals, variables, and custom functions.&nbsp;</li>
+                    <li>Utilize cloning and recursion in Snap!.</li>
+                </ul>
+                </p>
+            </div>
+                <div class="prerequisites">
+                    <h3 class="toc-h3" id="prerequisites">Prerequisites</h3>
+                    <p>
+                        none
+                    </p>
+            </div>
+            <div class="course-contents">
+                <h3 class="toc-h3" id="get_conding_with_snap_course_content">Get Coding with Snap Course Content</h3>
+                    <p>
+                        <ul>
+                            <li>
+                                <h4 class="toc-h4" id="get_conding_with_snap_week_1">Week 1: First Steps with Snap!</h4>
+                                <table style="border: 1px solid;">
+                                    <tr>
+                                        <th>Description</th>
+                                        <th>Video</th>
+                                        <th>Exercise</th>
+                                        <th>Transcript</th>
+                                    </tr>
+                                    <tr>                             
+                                        <td>Create Your Own Virtual Flower Garden</td>
+                                        <td>  <a href="/static/eriresources/GetCodingWithSnap/Week1/Week1Unit1-CreateYourOwnVirtualFlowerGarden.mp4"
+                                                ><img src="/static/img/video.svg" alt=" Unit 1 Video" width="40"></a> </td>
+                                        <td>  <a href="/static/eriresources/GetCodingWithSnap/Week1/Week1Unit1-AdditionalMaterial -Exercise.pdf"
+                                                >Unit 1 Exercise</a> </td>  
+                                        <td>  <a href="/static/eriresources/GetCodingWithSnap/Week1/Week1Unit1-AdditionalMaterial.pdf"
+                                                >Unit 1 Transcript</a> </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Getting Edgy with Polygons</td>
+                                        <td>  <a href="/static/eriresources/GetCodingWithSnap/Week1/Week1Unit2-GettingEdgyWithPolygons.mp4"
+                                                ><img src="/static/img/video.svg" alt=" Unit 2 Video" width="40"></a> </td>
+                                        <td>  <a href="/static/eriresources/GetCodingWithSnap/Week1/Week1Unit2-AdditionalMaterial - Exercise.pdf"
+                                                >Unit 2 Exercise</a> </td>  
+                                        <td>  <a href="/static/eriresources/GetCodingWithSnap/Week1/Week1Unit2-AdditionalMaterial.pdf"
+                                                >Unit 2 Transcript</a> </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Spiraling Around the For Loop</td>
+                                        <td>  <a href="/static/eriresources/GetCodingWithSnap/Week1/Week1Unit3-SpiralingAroundTheForLoop.mp4"
+                                                ><img src="/static/img/video.svg" alt=" Unit 3 Video" width="40"></a> </td>
+                                        <td>  <a href="/static/eriresources/GetCodingWithSnap/Week1/Week1Unit3-AdditionalMaterial -Exercise.pdf"
+                                                >Unit 3 Exercise</a> </td>  
+                                        <td>  <a href="/static/eriresources/GetCodingWithSnap/Week1/Week1Unit3-AdditionalMaterial.pdf"
+                                                >Unit 3 Transcript</a> </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Be Reflective Mirror Images</td>
+                                        <td>  <a href="/static/eriresources/GetCodingWithSnap/Week1/Week1Unit4-BeReflectiveMirrorImages.mp4"
+                                                ><img src="/static/img/video.svg" alt=" Unit 4 Video" width="40"></a> </td>
+                                        <td>  <a href="/static/eriresources/GetCodingWithSnap/Week1/Week1Unit4-AdditionalMaterial - Exercise.pdf"
+                                                >Unit 4 Exercise</a> </td>  
+                                        <td>  <a href="/static/eriresources/GetCodingWithSnap/Week1/Week1Unit4-AdditionalMaterial.pdf"
+                                                >Unit 4 Transcript</a> </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Visit the Star fish My First Interactive Game</td>
+                                        <td>  <a href="/home/snapCloud/static/eriresources/GetCodingWithSnap/Week1/Week1Unit5-VisitTheStarfishMyFirstInteractiveGame.mp4"
+                                                ><img src="/static/img/video.svg" alt=" Unit 5 Video" width="40"></a> </td>
+                                        <td>  <a href="/static/eriresources/GetCodingWithSnap/Week1/Week1Unit5-AdditionalMaterial - Exercise.pdf"
+                                                >Unit 5 Exercise</a> </td>  
+                                        <td>  <a href="/static/eriresources/GetCodingWithSnap/Week1/Week1Unit5-AdditionalMaterial.pdf"
+                                                >Unit 5 Transcript</a> </td>          
+                                    </tr>
+                                </table>
+                            </li>
+                            <li>
+                                <h4 class="toc-h4" id="get_conding_with_snap_week_2">Week 2: Tough Stuff with Blocks</h4>
+                                <table style="border: 1px solid;">
+                                    <tr>
+                                        <th>Description</th>
+                                        <th>Video</th>
+                                        <th>Exercise</th>
+                                        <th>Transcript</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Building with Blocks Eliminating Chaos</td>
+                                        <td>  <a href="/static/eriresources/GetCodingWithSnap/Week2/Week2Unit1-BuildingWithBlocksEliminatingChaos.mp4"
+                                                ><img src="/static/img/video.svg" alt=" Unit 1 Video" width="40"></a> </td>
+                                        <td>  <a href="/static/eriresources/GetCodingWithSnap/Week2/Week2Unit1-AdditionalMaterial - Exercise.pdf"
+                                                >Unit 1 Exercise</a> </td>  
+                                        <td>  <a href="/static/eriresources/GetCodingWithSnap/Week2/Week2Unit1-AdditionalMaterial.pdf"
+                                                >Unit 1 Transcript</a> </td>       
+                                    </tr>
+                                    <tr>
+                                        <td>Rumour Has It Building a Function</td>
+                                        <td>  <a href="/static/eriresources/GetCodingWithSnap/Week2/Week2Unit2-RumourHasItBuildingAFunction.mp4"
+                                                ><img src="/static/img/video.svg" alt=" Unit 2 Video" width="40"></a> </td>
+                                        <td>  <a href="/static/eriresources/GetCodingWithSnap/Week2/Week2Unit2-AdditionalMaterial - Exercise.pdf"
+                                                >Unit 2 Exercise</a> </td>  
+                                        <td>  <a href="/static/eriresources/GetCodingWithSnap/Week2/Week2Unit2-AdditionalMaterial.pdf"
+                                                >Unit 2 Transcript</a> </td>           
+                                    </tr>
+                                    <tr>
+                                        <td>Cloning</td>
+                                        <td>  <a href="/static/eriresources/GetCodingWithSnap/Week2/Week2Unit3-Cloning.mp4"
+                                                ><img src="/static/img/video.svg" alt=" Unit 3 Video" width="40"></a> </td>
+                                        <td>  <a href="/static/eriresources/GetCodingWithSnap/Week2/Week2Unit3-AdditionalMaterial - Exercise.pdf"
+                                                >Unit 3 Exercise</a> </td>  
+                                        <td>  <a href="/static/eriresources/GetCodingWithSnap/Week2/Week2Unit3-AdditionalMaterial.pdf"
+                                                >Unit 3 Transcript</a> </td>        
+                                    </tr>
+                                    <tr>
+                                        <td>Recursion How to Grow a Tree</td>
+                                        <td>  <a href="/static/eriresources/GetCodingWithSnap/Week2/Week2Unit4-RecursionHowToGrowATree.mp4"
+                                                ><img src="/static/img/video.svg" alt=" Unit 4 Video" width="40"></a> </td>
+                                        <td>  <a href="/static/eriresources/GetCodingWithSnap/Week2/Week2Unit4-AdditionalMaterial - Exercise.pdf"
+                                                >Unit 4 Exercise</a> </td>  
+                                        <td>  <a href="/static/eriresources/GetCodingWithSnap/Week2/Week2Unit4-AdditionalMaterial.pdf"
+                                                >Unit 4 Transcript</a> </td>        
+                                    </tr>
+                                    <tr>
+                                        <td>Fireworks Cloning Your Recursion</td>
+                                        <td>  <a href="/static/eriresources/GetCodingWithSnap/Week2/Week2Unit5-FireworksCloningYourRecursion.mp4"
+                                                ><img src="/static/img/video.svg" alt=" Unit 5 Video" width="40"></a> </td>
+                                        <td>  <a href="/static/eriresources/GetCodingWithSnap/Week2/Week2Unit5-AdditionalMaterial - Exercise.pdf"
+                                                >Unit 5 Exercise</a> </td>  
+                                        <td>  <a href="/static/eriresources/GetCodingWithSnap/Week2/Week2Unit5-AdditionalMaterial .pdf"
+                                                >Unit 5 Transcript</a> </td>       
+                                    </tr>
+                                    <tr>
+                                        <td>Putting It All Together Making It Pop</td>
+                                        <td>  <a href="/static/eriresources/GetCodingWithSnap/Week2/Week2Unit6-PuttingItAllTogetherMakingItPop.mp4"
+                                                ><img src="/static/img/video.svg" alt=" Unit 6 Video" width="40"></a> </td>
+                                        <td>  <a href="/static/eriresources/GetCodingWithSnap/Week2/Week2Unit6-AdditionalMaterial - Exercise.pdf"
+                                                >Unit 6 Exercise</a> </td>  
+                                        <td>  <a href="/static/eriresources/GetCodingWithSnap/Week2/Week2Unit6-AdditionalMaterial.pdf"
+                                                >Unit 6 Transcript</a> </td>       
+                                    </tr>
+                                </table>
+                            </li>
+                            </ul>
+                        </p>
+            </div>
+            <%
+            --[[%>
+            <div class="course-addendum">
+                    <h3 class="toc-h3" id="get_coding_with_snap_additional_information">Get Coding with Snap Additional Information </h3>
+                    <p>
+
+                        <a href="/static/eriresources/GetCodingWithSnap/Week0-WhatsNewInSnap.mp4"
+                                                    >Whats New In Snap</a>
+
+                    </p>
+                </div> 
+            <%
+            ]]%>
+
+            <h2 class="toc-h2"id="from_media_computation_to_data_science">From Media Computation to Data Science</h2>
+            <div class="overview">
+                <h3 class="toc-h3" id="overview" >Overview</h3>
+                <div>
+                    <p>
+                    This course teaches media computation, a pedagogical idea which allows you to explore general purpose programming by playing with the building blocks of digital pictures, music, movies, and texts. You’ll learn how to analyze, manipulate, and create multimedia content using the visual programming language Snap!. The concepts and strategies learned for media can then be applied to other programming tasks and data sets from various sources. The course aims to bridge the gap between introductory programming and advanced computational skills.
+                </p>
+                </div>
+            </div>
+            <div class="learning-objectives">
+                    <h3 class="toc-h3" id="learning-objectives">Learning objectives</h3>
+                    <p>
+                    <p>After completing this course, business users, consultants, and developers will be able to:&nbsp;&nbsp;</p>
+                    <ul>
+                        <li>Analyze multimedia content using a programming language instead of traditional editing tools.&nbsp;</li>
+                        <li>Transform multimedia content using programming concepts and strategies.&nbsp;</li>
+                        <li>Generate multimedia content using a programming language.&nbsp;</li>
+                        <li>Apply the concepts and models learned in media computation to other programming tasks and data sets.</li>
+                    </ul>
+                    </p>
+            </div>
+            <div class="prerequisites">
+                    <h3 class="toc-h3" id="prerequisites">Prerequisites</h3>
+                    <p>
+                    <ul>
+                        <li>An understanding of basic programming concepts&nbsp;</li>
+                        <li>Familiarity with the Snap! development environment&nbsp;</li>
+                    </ul>
+                    </p>
+            </div>
+            <div class="course-contents">
+                    <h3 class="toc-h3" id="from_media_computation_to_data_science_course_content">From Media Computation to Data Science Course Content</h3>
+                    <p>
+                    <ul>
+                        <li>
+                            <h4 class="toc-h4" id="from_media_computation_to_data_science_week_1">Week 1: Examine – Building Blocks of Media</h4>  
+                            <table style="border: 1px solid;">
+                                <tr>
+                                    <th>Description</th>
+                                    <th>Video</th>
+                                    <th>Exercise</th>
+                                    <th>Transcript</th>
+                                </tr>
+                                <tr>
+                                    <td>Look Back - A Photographic Time Machine</td>
+                                <td>  <a href="/static/eriresources/FromMediaComputationToDataScience/Week1/FromMediaComputationToDataScience-Week1Unit1-LookBack-APhotographicTimeMachine.mp4"
+                                                ><img src="/static/img/video.svg" alt=" Unit 1 Video" width="40"></a> </td>
+                                    <td>  <a href="/static/eriresources/FromMediaComputationToDataScience/Week1/FromMediaComputationToDataScience-Week1Unit1-Look_Back_Additional_Material.pdf"
+                                                >Unit 1 Exercise</a> </td>  
+                                    <td>  <a href=""
+                                                ></a> </td>           
+                                </tr>
+                                <tr>
+                                    <td>Raise Your Voice - The One Person Chorus</td>
+                                    <td>  <a href="/static/eriresources/FromMediaComputationToDataScience/Week1/FromMediaComputationToDataScience-Week1Unit2-RaiseYourVoice-TheOnePersonChorus.mp4"
+                                                ><img src="/static/img/video.svg" alt=" Unit 2 Video" width="40"></a> </td>
+                                    <td>  <a href="/static/eriresources/FromMediaComputationToDataScience/Week1/FromMediaComputationToDataScience-Week1Unit2-RaiseYourVoice-Additional_Material.pdf"
+                                                >Unit 2 Exercise</a> </td>  
+                                    <td>  <a href=""
+                                                ></a> </td>            
+                                </tr>
+                                <tr>
+                                    <td>Write Down - An Infinite Run-On Sentence</td>
+                                    <td>  <a href="/static/eriresources/FromMediaComputationToDataScience/Week1/FromMediaComputationToDataScience-Week1Unit3-WriteDown-AnInfiniteRunonSentence.mp4"
+                                                ><img src="/static/img/video.svg" alt=" Unit 3 Video" width="40"></a> </td>
+                                    <td>  <a href="/static/eriresources/FromMediaComputationToDataScience/Week1/FromMediaComputationToDataScience-Week1Unit3-WriteDown-Additional_Material.pdf"
+                                                >Unit 3 Exercise</a> </td>  
+                                    <td>  <a href=""
+                                                ></a> </td>            
+                                </tr>
+                                <tr>
+                                    <td>Take Note - Scoring with Music</td>
+                                    <td>  <a href="/static/eriresources/FromMediaComputationToDataScience/Week1/FromMediaComputationToDataScience-Week1Unit4-TakeNote-ScoringWithMusic.mp4"
+                                                ><img src="/static/img/video.svg" alt=" Unit 4 Video" width="40"></a> </td>
+                                    <td>  <a href="/static/eriresources/FromMediaComputationToDataScience/Week1/FromMediaComputationToDataScience-Week1Unit4-TakeNote-Additional_Material.pdf"
+                                                >Unit 4 Exercise</a> </td> 
+                                    <td>  <a href=""
+                                                ></a> </td>   
+                                </tr>
+                                <tr>
+                                    <td>Show Up - The Enchanted Mirror</td>
+                                    <td>  <a href="/static/eriresources/FromMediaComputationToDataScience/Week1/FromMediaComputationToDataScience-Week1Unit5-ShowUp-TheEnchantedMirror.mp4"
+                                                ><img src="/static/img/video.svg" alt=" Unit 5 Video" width="40"></a> </td>
+                                    <td>  <a href="/static/eriresources/FromMediaComputationToDataScience/Week1/FromMediaComputationToDataScience-Week1Unit5-ShowUp-Additional-Material.pdf"
+                                                >Unit 5 Exercise</a> </td> 
+                                    <td>  <a href=""
+                                                ></a> </td>                
+                                </tr>   
+                            </table>
+                        </li>
+                        <li>
+                            <h4 class="toc-h4" id="from_media_computation_to_data_science_week_2">Week 2: Enumerate – Numbers Are Everywhere</h4>
+                            <table style="border: 1px solid;">
+                                <tr>
+                                    <th>Description</th>
+                                    <th>Video</th>
+                                    <th>Exercise</th>
+                                    <th>Transcript</th>
+                                </tr>
+                                <tr>
+                                    <td>Point Out - Becoming a Painting</td>
+                                    <td>  <a href="/static/eriresources/FromMediaComputationToDataScience/Week2/FromMediaComputationToDataScience-Week2Unit1-PointOut-BecomingAPainting.mp4"
+                                                ><img src="/static/img/video.svg" alt=" Unit 1 Video" width="40"></a> </td>
+                                    <td>  <a href="/static/eriresources/FromMediaComputationToDataScience/Week2/FromMediaComputationToDataScience-Week2Unit1-PointOut-Additional_Material.pdf"
+                                                >Unit 1 Exercise</a> </td>  
+                                    <td>  <a href=""
+                                                ></a></td>            
+                                </tr>
+                                <tr>
+                                    <td>True Colors - Drawing Texts and Sounds</td>
+                                    <td>  <a href="/static/eriresources/FromMediaComputationToDataScience/Week2/FromMediaComputationToDataScience-Week2Unit2-AdditionalMaterialUTF8.mp4"
+                                                ><img src="/static/img/video.svg" alt=" Unit 2 Video" width="40"></a> </td>
+                                    <td>  <a href="/static/eriresources/FromMediaComputationToDataScience/Week2/FromMediaComputationToDataScience-Week2Unit2-TrueColors-Additional_Material.pdf"
+                                                >Unit 2 Exercise</a> </td>  
+                                    <td>  <a href=""
+                                                ></a> </td>            
+                                </tr>
+                                <tr>
+                                    <td>On the Same Wavelength - Analyzing Sounds</td>
+                                    <td>  <a href="/static/eriresources/FromMediaComputationToDataScience/Week2/FromMediaComputationToDataScience-Week2Unit3-OnTheSameWavelength-AnalyzingSounds.mp4"
+                                                ><img src="/static/img/video.svg" alt=" Unit 3 Video" width="40"></a> </td>
+                                    <td>  <a href="/static/eriresources/FromMediaComputationToDataScience/Week2/FromMediaComputationToDataScience-Week2Unit3-OnTheSameWavelength-Additional_Material.pdf"
+                                                >Unit 3 Exercise</a> </td>  
+                                    <td>  <a href=""
+                                                ></a> </td>            
+                                </tr>
+                                <tr>
+                                    <td>The Sound of Numbers - Sound-Synthesis</td>
+
+                                    <td>  <a href="/static/eriresources/FromMediaComputationToDataScience/Week2/FromMediaComputationToDataScience-Week2Unit4-TheSoundOfNumbers-SoundSynthesis.mp4"
+                                                ><img src="/static/img/video.svg" alt=" Unit 4 Video" width="40"></a> </td>
+                                    <td>  <a href="/static/eriresources/FromMediaComputationToDataScience/Week2/FromMediaComputationToDataScience-Week2Unit4-TheSoundOfNumbers-Additional_Material.pdf"
+                                                >Unit 4 Exercise</a> </td>  
+                                    <td>  <a href=""
+                                                ></a> </td>           
+                                </tr>
+                                <tr>
+                                    <td>Grade by Grade - Working with RGB Colors</td>
+                                    <td>  <a href="/static/eriresources/FromMediaComputationToDataScience/Week2/FromMediaComputationToDataScience-Week2Unit5-GradeByGrade-WorkingWithRGBColors.mp4"
+                                                ><img src="/static/img/video.svg" alt=" Unit 5 Video" width="40"></a> </td>
+                                    <td>  <a href="/static/eriresources/FromMediaComputationToDataScience/Week2/FromMediaComputationToDataScience-Week2Unit5-GradeByGrade-Additional_Material.pdf"
+                                                >Unit 5 Exercise</a> </td>  
+                                    <td>  <a href=""
+                                                ></a> </td>            
+                                </tr>   
+                            </table>
+                        </li>
+                        <li>
+                            <h4 class="toc-h4" id="from_media_computation_to_data_science_week_2">Week 3: Transform – Higher-Order Functions</h4>
+                            <table style="border: 1px solid;">
+                                <tr>
+                                    <th>Description</th>
+                                    <th>Video</th>
+                                    <th>Exercise</th>
+                                    <th>Transcript</th>
+                                </tr>
+                                <tr>
+                                    <td>One Ring to Rule Them All</td>
+                                    <td>  <a href="/static/eriresources/FromMediaComputationToDataScience/Week3/FromMediaComputationToDataScience-Week3Unit0-OneRingToRuleThemAll.mp4"
+                                                ><img src="/static/img/video.svg" alt=" Unit 0 Video" width="40"></a> </td>
+                                    <td>  <a href=""
+                                                ></a> </td>  
+                                    <td>  <a href=""
+                                                ></a> </td>           
+                                </tr>
+                                <tr>
+                                    <td>Keep a Secret - Creating a Cipher Language</td>
+                                    <td>  <a href="/static/eriresources/FromMediaComputationToDataScience/Week3/FromMediaComputationToDataScience-Week3Unit1-KeepASecret-CreatingACipherLanguage.mp4"
+                                                ><img src="/static/img/video.svg" alt=" Unit 1 Video" width="40"></a> </td>
+                                    <td>  <a href="/static/eriresources/FromMediaComputationToDataScience/Week3/FromMediaComputationToDataScience-Week3Unit1-KeepASecret-Additional_Material.pdf"
+                                                >Unit 1 Exercise</a> </td>  
+                                    <td>  <a href=""
+                                                ></a> </td>
+                                </tr>
+                                <tr>
+                                    <td>Make It Short - Map, Keep, Combine</td>
+                                    <td>  <a href="/static/eriresources/FromMediaComputationToDataScience/Week3/FromMediaComputationToDataScience-Week3Unit2-MakeItShort-MapKeepCombine.mp4"
+                                                ><img src="/static/img/video.svg" alt=" Unit 2 Video" width="40"></a> </td>                                        
+                                    <td>  <a href=""
+                                                ></a> </td>  
+                                    <td>  <a href=""
+                                                ></a> </td>
+                                </tr>
+                                <tr>
+                                    <td>Sounds Interesting - Experimenting with Audio Effects</td>
+                                    <td>  <a href="/static/eriresources/FromMediaComputationToDataScience/Week3/FromMediaComputationToDataScience-Week3Unit3-SoundsInteresting-ExperimentingWithAudioEffects.mp4"
+                                                ><img src="/static/img/video.svg" alt=" Unit 3 Video" width="40"></a> </td>
+                                    <td>  <a href="/static/eriresources/FromMediaComputationToDataScience/Week3/FromMediaComputationToDataScience-Week3Unit3-SoundsInteresting-Additional_Material.pdf"
+                                                >Unit 3  Exercise</a> </td>  
+                                    <td>  <a href=""
+                                                ></a> </td>
+                                </tr>
+                                <tr>
+                                    <td>Pixel Art - Inventing Graphic Effects for Images</td>
+                                    <td>  <a href="/static/eriresources/FromMediaComputationToDataScience/Week3/FromMediaComputationToDataScience-Week3Unit4-PixelArt-InventingGraphicEffectsForImages.mp4"
+                                                ><img src="/static/img/video.svg" alt=" Unit 4 Video" width="40"></a> </td>
+                                    <td>  <a href="/static/eriresources/FromMediaComputationToDataScience/Week3/FromMediaComputationToDataScience-Week3Unit4-PixelArt-Additional_Material.pdf"
+                                                >Unit 4 Exercise</a> </td>  
+                                    <td>  <a href=""
+                                                ></a> </td>          
+                                </tr>   
+                                <tr>
+                                    <td>CGI - Applying Your Effect on Live Videos</td>
+                                    <td>  <a href="/static/eriresources/FromMediaComputationToDataScience/Week3/FromMediaComputationToDataScience-Week3Unit5-CGI-ApplyingYourEffectsOnLiveVideo.mp4"
+                                                ><img src="/static/img/video.svg" alt=" Unit 5 Video" width="40"></a> </td>
+                                    <td>  <a href="/static/eriresources/FromMediaComputationToDataScience/Week3/FromMediaComputationToDataScience-Week3Unit5-CGI-Additional_Material.pdf"
+                                                >Unit 5 Exercise</a> </td>  
+                                    <td>  <a href=""
+                                                ></a> </td>            
+                                </tr>  
+                            </table>
+                        </li>
+                        <li>
+                            <h4 class="toc-h4" id="from_media_computation_to_data_science_week_2">Week 4: Transfer – It's All Just Data</h4>
+                            <table style="border: 1px solid;">
+                                <tr>
+                                    <th>Description</th>
+                                    <th>Video</th>
+                                    <th>Exercise</th>
+                                    <th>Transcript</th>
+                                </tr>
+                                <tr>
+                                    <td>The Big Picture - Accessing Datasets</td>
+                                    <td>  <a href="/static/eriresources/FromMediaComputationToDataScience/Week4/FromMediaComputationToDataScience-Week4Unit1-TheBigPicture-AccessingDatasets.mp4"
+                                                ><img src="/static/img/video.svg" alt=" Unit 1 Video" width="40"></a> </td>
+                                    <td>  <a href="/static/eriresources/FromMediaComputationToDataScience/Week4/FromMediaComputationToDataScience-Week4Unit1-TheBigPicture-Additional_Material.pdf"
+                                                >Unit 1 Exercise</a> </td>  
+                                    <td>  <a href=""
+                                                ></a> </td>            
+                                </tr>
+                                <tr>
+                                    <td>Needles and Haystacks - Finding, Filtering, and Sorting Data</td>
+                                    <td>  <a href="/static/eriresources/FromMediaComputationToDataScience/Week4/FromMediaComputationToDataScience-Week4Unit2-NeedlesAndHaystacks-FindingFilteringAndSortingData.mp4"
+                                                ><img src="/static/img/video.svg" alt=" Unit 2 Video" width="40"></a> </td>
+                                    <td>  <a href="/static/eriresources/FromMediaComputationToDataScience/Week4/FromMediaComputationToDataScience-Week4Unit2-FromNeedlesAndHaystacks-Additional_Material.pdf"
+                                                >Unit 2 Exercise</a> </td>  
+                                    <td>  <a href=""
+                                                ></a> </td>           
+                                </tr>
+                                <tr>
+                                    <td>Divide and Conquer - Grouping Data</td>
+                                    <td>  <a href="/static/eriresources/FromMediaComputationToDataScience/Week4/FromMediaComputationToDataScience-Week4Unit3-DivideAndConquer-GroupingData.mp4"
+                                                ><img src="/static/img/video.svg" alt=" Unit 3 Video" width="40"></a> </td>
+                                    <td>  <a href="/static/eriresources/FromMediaComputationToDataScience/Week4/FromMediaComputationToDataScience-Week4Unit3-DivideAndConquer-Additional_Material.pdf"
+                                                >Unit 3 Exercise</a> </td>  
+                                    <td>  <a href=""
+                                                ></a> </td>           
+                                </tr>
+                                <tr>
+                                    <td>Thrilling Plot - Visualizing Frequency Distributions</td>
+                                    <td>  <a href="/static/eriresources/FromMediaComputationToDataScience/Week4/FromMediaComputationToDataScience-Week4Unit4-ThrillingPlot-VisualizingFrequencyDistributions.mp4"
+                                                ><img src="/static/img/video.svg" alt=" Unit 4 Video" width="40"></a> </td>
+                                    <td>  <a href="/static/eriresources/FromMediaComputationToDataScience/Week4/FromMediaComputationToDataScience-Week4Unit4-ThrillingPlots-Additional_Material.pdf"
+                                                >Unit 4 Exercise</a> </td>  
+                                    <td>  <a href=""
+                                                ></a> </td>           
+                                </tr>
+                                <tr>
+                                    <td>Informed Guess - Decrypting Secrets</td>
+                                    <td>  <a href="/static/eriresources/FromMediaComputationToDataScience/Week4/FromMediaComputationToDataScience-Week4Unit5-InformedGuess-DecryptingASecret.mp4"
+                                                ><img src="/static/img/video.svg" alt=" Unit 5 Video" width="40"></a> </td>
+                                    <td>  <a href="/static/eriresources/FromMediaComputationToDataScience/Week4/FromMediaComputationToDataScience-Week4Unit5-InformedGuess-.pdf"
+                                                >Unit 5 Exercise</a> </td>  
+                                    <td>  <a href=""
+                                                ></a> </td>
+                                </tr>   
+                            </table>
+                        </li>
+                    </ul>
+                    </p>
+            </div>
+            <h2 class="toc-h2"id="exploring_the_world_of_AI">Exploring the World of AI</h2>
+             <div class="overview">
+                <h3 class="toc-h3" id="overview" >Overview</h3>
+                <div>
+                    <p>
+                    This course explores the principles and concepts of artificial intelligence (AI). It addresses different types of AI, including machine learning and symbolic AI using board and computer games. Moreover, the course takes a closer look at the pitfalls and societal implications of AI. It also offers additional teaching materials for educators. Join this course to delve into the fascinating world of AI.
+                  </p>
+              </div>
+            </div>
+            <div class="learning-objectives">
+                    <h3 class="toc-h3" id="learning-objectives">Learning objectives</h3>
+                    <p>
+                        <p>After completing this course, IT professionals will be able to:&nbsp;&nbsp;</p>
+                        <ul>
+                            <li>Define artificial intelligence and its underlying principles and ideas.&nbsp;</li>
+                            <li>Explain how a computer can learn to play a game.&nbsp;</li>
+                            <li>Differentiate between machine learning and symbolic AI.&nbsp;</li>
+                            <li>Explore different types of machine learning to predict outcomes and find patterns.</li>
+                        </ul>
+                    </p>
+            </div>
+            <div class="prerequisites">
+                    <h3 class="toc-h3" id="prerequisites">Prerequisites</h3>
+                    <p> None </p>
+            </div>
+            <div class="course-contents">
+                <h3 class="toc-h3" id="exploring_the_world_of_AI_course_content">Exploring the World of AI Course Content</h3>
+                <p>
+                    <ul>
+                        <li>
+                            <h4 class="toc-h4" id="exploring_the_world_of_AI_week_1">Week 1: The World of AI</h4>  
+                                <table style="border: 1px solid;">
+                                    <tr>
+                                        <th>Description</th>
+                                        <th>Video</th>
+                                        <th>Exercise</th>
+                                        <th>Transcript</th>
+                                        <th>Learning-Aid</th>
+                                    </tr>
+                                    <tr>
+                                        <td>What Is AI?</td>
+                                        <td>  <a href="/static/eriresources/ExploringtheWorldofAI/Week1/Week1Unit1-WhatIsAI.mp4"
+                                                    ><img src="/static/img/video.svg" alt=" Unit 1 Video" width="40"></a> </td>
+                                        <td>  <a href="/static/eriresources/ExploringtheWorldofAI/Week1/Week1Unit1-AdditionalMaterial.pdf"
+                                                    >Unit 1 Exercise</a> </td>  
+                                        <td>  <a href="/static/eriresources//ExploringtheWorldofAI/Week1/Week1-Slides.pdf"
+                                                    >Unit 1 Transcript</a> </td>
+                                        <td>  <a href=""
+                                                ></a> </td>
+                                    </tr>   
+                                    <tr>
+                                        <td>An Agent That Learns</td>
+                                        <td>  <a href="/static/eriresources/ExploringtheWorldofAI/Week1/Week1Unit2-AnAgentThatLearns.mp4"
+                                                    ><img src="/static/img/video.svg" alt=" Unit 2 Video" width="40"></a> </td>
+                                        <td>  <a href="/static/eriresources/ExploringtheWorldofAI/Week1/Week1Unit2-AdditionalMaterial.pdf"
+                                                    >Unit 2 Exercise</a> </td>  
+                                        <td>  <a href="/static/eriresources//ExploringtheWorldofAI/Week1/Week1-Slides.pdf"
+                                                    >Unit 2 Transcript</a> </td>
+                                        <td>  <a href="/static/eriresources/ExploringtheWorldofAI/Week1/Resources.zip" download
+                                                >Downloadable Learning Resources</a> </td>
+                                    </tr>   
+                                     <tr>
+                                        <td>Behind the Scenes: Reinforcement Learning</td>
+                                        <td>  <a href="/static/eriresources/ExploringtheWorldofAI/Week1/Week1Unit2-AnAgentThatLearns.mp4"
+                                                    ><img src="/static/img/video.svg" alt=" Unit 3 Video" width="40"></a> </td>
+                                        <td>  <a href="/static/eriresources/ExploringtheWorldofAI/Week1/Week1Unit3-AdditionalMaterial.pdf"
+                                                    >Unit 3 Exercise</a> </td>  
+                                        <td>  <a href="/static/eriresources//ExploringtheWorldofAI/Week1/Week1-Slides.pdf"
+                                                    >Unit 3 Transcript</a> </td>
+                                        <td>  <a href="https://snap.winna.er/snap/snap.html#present:Username=admin&ProjectName=MOOC%2dBanana%2dHunt&editMode&noRun"
+                                                >Template for Banana Hunt</a> </td>
+                                    </tr>        
+                                     <tr>
+                                        <td>Traditional AI and Machine Learning</td>
+                                        <td>  <a href="/static/eriresources/ExploringtheWorldofAI/Week1/Week1Unit4-TraditionalAI.mp4"
+                                                    ><img src="/static/img/video.svg" alt=" Unit 4 Video" width="40"></a> </td>
+                                        <td>  <a href="/static/eriresources/ExploringtheWorldofAI/Week1/Week1Unit4-AdditionalMaterial.pdf"
+                                                    >Unit 4 Exercise</a> </td>  
+                                        <td>  <a href="/static/eriresources//ExploringtheWorldofAI/Week1/Week1-Slides.pdf"
+                                                    >Unit 4 Transcript</a> </td>
+                                        <td>  <a href=""
+                                                ></a> </td>
+                                    </tr>                                
+                                 </table>
+                                <div class="additionallearningresources">
+                                    <h4 class="toc-h4" id="additionallearningresources">Additional Learning Resources</h3>
+                                        <p> <a href="/static/eriresources//ExploringtheWorldofAI/Week1/Week1-AdditionalMaterial-Solutions.pdf"
+                                                    >Activities Week 1 - Hints and Solutions</a> </p>
+                                </div>
+                        </li>
+                        <li>
+                            <h4 class="toc-h4" id="exploring_the_world_of_AI_week_2">Week 2: More About How Machines Learn</h4>  
+                            <table style="border: 1px solid;">
+                                <tr>
+                                    <th>Description</th>
+                                    <th>Video</th>
+                                    <th>Exercise</th>
+                                    <th>Transcript</th>
+                                    <th>Learning-Aid</th>
+                                </tr>
+                                <tr>
+                                    <td>Supervised Learning</td>
+                                    <td>  <a href="/static/eriresources/ExploringtheWorldofAI/Week2/Week2Unit1-SupervisedLearning.mp4"
+                                                    ><img src="/static/img/video.svg" alt=" Unit 1 Video" width="40"></a> </td>
+                                    <td>  <a href="/static/eriresources/ExploringtheWorldofAI/Week2/Week2Unit1-AdditionalMaterial.pdf"
+                                                    >Unit 1 Exercise</a> </td>  
+                                    <td>  <a href="/static/eriresources//ExploringtheWorldofAI/Week2/Week2-Slides.pdf"
+                                                    >Unit 1 Transcript</a> </td>
+                                    <td>  <a href="" 
+                                                ></a> </td>
+                                </tr>   
+                                <tr>
+                                    <td>Behind the Scenes: Supervised Learning</td>
+                                    <td>  <a href="/static/eriresources/ExploringtheWorldofAI/Week2/Week2Unit2-BehindTheScenesSupervisedLearning.mp4"
+                                                    ><img src="/static/img/video.svg" alt=" Unit 2 Video" width="40"></a> </td>
+                                    <td>  <a href="/static/eriresources/ExploringtheWorldofAI/Week2/Week2Unit2-AdditionalMaterial.pdf"
+                                                    >Unit 2 Exercise</a> </td>  
+                                    <td>  <a href="/static/eriresources//ExploringtheWorldofAI/Week2/Week2-Slides.pdf"
+                                                    >Unit 2 Transcript</a> </td>
+                                    <td>  <a href="https://snap.winna.er/snap/snap.html#present:Username=admin&ProjectName=MOOC%2dSL%2dDecisionTree_EN&editMode&noRun"
+                                                >Template for Decision Tree</a> 
+                                          <a href="/static/eriresources/ExploringtheWorldofAI/Week1/monkey-csv-en.zip" download
+                                                >The training and test data used in the video can be found here</a> 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Unsupervised Learning</td>
+                                    <td>  <a href="/static/eriresources/ExploringtheWorldofAI/Week2/Week2Unit3-UnsupervisedLearning.mp4"
+                                                    ><img src="/static/img/video.svg" alt=" Unit 3 Video" width="40"></a> </td>
+                                    <td>  <a href="/static/eriresources/ExploringtheWorldofAI/Week2/Week2Unit3-AdditionalMaterial.pdf"
+                                                    >Unit 3 Exercise</a> </td>  
+                                    <td>  <a href="/static/eriresources//ExploringtheWorldofAI/Week2/Week2-Slides.pdf"
+                                                    >Unit 3 Transcript</a> </td>
+                                    <td>  <a href=""
+                                                ></a> </td>
+                                </tr>
+                                <tr>
+                                    <td>Behind the Scenes: Unsupervised Learning</td>
+                                    <td>  <a href="/static/eriresources/ExploringtheWorldofAI/Week2/Week2Unit4-BehindTheScenesUnsupervisedLearning.mp4"
+                                                    ><img src="/static/img/video.svg" alt=" Unit 4 Video" width="40"></a> </td>
+                                    <td>  <a href="/static/eriresources/ExploringtheWorldofAI/Week2/Week2Unit4-AdditionalMaterial.pdf"
+                                                    >Unit 4 Exercise</a> </td>  
+                                    <td>  <a href="/static/eriresources//ExploringtheWorldofAI/Week2/Week2-Slides.pdf"
+                                                    >Unit 4 Transcript</a> </td>
+                                    <td>  <a href="https://snap.winna.er/snap/snap.html#present:Username=admin&ProjectName=SnAIpTask&editMode&noRun"
+                                                >To follow along with the video, open the following template that creates random clusters of gold sources:</a> 
+                                    </td>
+                                </tr>
+                             </table>
+                                <div class="additionallearningresources">
+                                    <h4 class="toc-h4" id="additionallearningresources">Additional Learning Resources</h3>
+                                        <p> <a href="/static/eriresources//ExploringtheWorldofAI/Week2/Week_2_AdditionalMaterialSolutions.pdf"
+                                                    >Activities Week 2 - Hints and Solutions</a> </p>
+                                </div>
+                        </li>
+                         <li>
+                            <h4 class="toc-h4" id="exploring_the_world_of_AI_week_3">Week 3: The (Smaller and the) Bigger Picture</h4>  
+                            <table style="border: 1px solid;">
+                                <tr>
+                                    <th>Description</th>
+                                    <th>Video</th>
+                                    <th>Exercise</th>
+                                    <th>Transcript</th>
+                                    <th>Learning-Aid</th>
+                                </tr>
+                                <tr>
+                                    <td>Can Machines Think?</td>
+                                    <td>  <a href="/static/eriresources/ExploringtheWorldofAI/Week3/Week3Unit1-CanMachinesThink.mp4"
+                                                    ><img src="/static/img/video.svg" alt=" Unit 1 Video" width="40"></a> </td>
+                                    <td>  <a href=""
+                                                    ></a> </td>  
+                                    <td>  <a href="/static/eriresources//ExploringtheWorldofAI/Week3/Week3-Slides.pdf"
+                                                    >Unit 1 Transcript</a> </td>
+                                    <td>  <a href=""
+                                                ></a> </td>
+                                </tr>   
+                                <tr>
+                                    <td>A Closer Look at Neural Networks</td>
+                                    <td>  <a href="/static/eriresources/ExploringtheWorldofAI/Week3/Week3Unit2-ACloserLookAtNeuralNetworks.mp4"
+                                                    ><img src="/static/img/video.svg" alt=" Unit 2 Video" width="40"></a> </td>
+                                    <td>  <a href=""
+                                                    ></a> </td>  
+                                    <td>  <a href="/static/eriresources//ExploringtheWorldofAI/Week3/Week3-Slides.pdf"
+                                                    >Unit 2 Transcript</a> </td>
+                                    <td>  <a href=""
+                                                ></a> </td>
+                                </tr>
+                                <tr>
+                                    <td>AI and Society</td>
+                                    <td>  <a href="/static/eriresources/ExploringtheWorldofAI/Week3/Week3Unit3-AIAndSociety.mp4"
+                                                    ><img src="/static/img/video.svg" alt=" Unit 2 Video" width="40"></a> </td>
+                                    <td>  <a href=""
+                                                    ></a> </td>  
+                                    <td>  <a href="/static/eriresources//ExploringtheWorldofAI/Week3/Week3-Slides.pdf"
+                                                    >Unit 2 Transcript</a> </td>
+                                    <td>  <a href=""
+                                                ></a> </td>
+                                </tr>
+                            </table>                          
+                        </li>
+                    </ul>    
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

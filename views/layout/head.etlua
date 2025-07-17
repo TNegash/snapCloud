@@ -21,6 +21,7 @@
 <link rel="stylesheet" href="/static/style/compiled/snapcloud.css?<%= cache_buster %>">
 <link rel="stylesheet" href="/static/style/classes.css?<%= cache_buster %>">
 <link rel="stylesheet" href="/static/style/project.css?<%= cache_buster %>">
+<link rel="stylesheet" href="/static/style/courses.css">
 
 <!-- JS: Required to load the page -->
 <script type="text/javascript" src="/static/js/locale.js?<%= cache_buster %>"></script>
@@ -32,3 +33,4 @@
 <!-- TODO: This is included commonly enough if should probably be in the base set. -->
 <script src="/static/js/project.js?<%= cache_buster %>"></script>
 <!-- JS that can be delayed is loaded in the layout.delayed_scripts -->
+<script type="text/javascript" src="/static/js/courses.js"></script>
