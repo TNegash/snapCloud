@@ -321,7 +321,7 @@ For detailes refer to [configuration of postgresql](https://ubuntu.com/server/do
 3. Copy the file `snapcloud_daemon` to `/etc/init.d/`:
 
     ```bash
-    cp /home/cloud/snapCloud/bin/snapcloud_daemon /etc/init.d/
+    cp /home/snapCloud/bin/snapcloud_daemon /etc/init.d/
     ```
 
     Then run:
@@ -341,8 +341,8 @@ For detailes refer to [configuration of postgresql](https://ubuntu.com/server/do
 5. Give write access to the user `cloud`:
 
     ```bash
-    sudo chmod -R 777 /etc/init.d/snapcloud_daemon
-    setfacl -R -m u:cloud:rwx /home/cloud/snapCloud/
+    sudo chown -R winna:winna /etc/init.d/snapcloud_daemon 
+    setfacl -R -m u:winna:rwx /home/cloud/snapCloud/
     ```
 
 6. Start the snapcloud daemon
@@ -351,7 +351,26 @@ For detailes refer to [configuration of postgresql](https://ubuntu.com/server/do
     sudo service snapcloud_daemon start
     ```
 
-**Note**: Rebooting might be necessary in this case.
+**Note**:
+If you get the following error message: 
+ *nginx: [emerg] bind() to [::]:80 failed (98: Address already in use)*
+ The issue could be related to insuffcient access rights of the user **winna**.
+ To solve the issue carry out the following steps:
+  - Increase access rights of **winna** as follows:
+    ```bash
+    setfacl -R -m u:winna:rwx /etc/init.d/
+    ```
+  - Enable sudo without password.
+    - Open sudoers file
+      ```bash
+      sudo visudo
+      ```
+    - Add the following line at the end of the sudoer's file:
+      ```bash
+      winna ALL=NOPASSWD: ALL
+      ```
+
+ Rebooting might be necessary in this case.
 
 ## Configuring Private Network DNS Server
 

@@ -10,7 +10,7 @@ fi
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
 # Short-Description: SnapCloud initscript
-# Description:       Starts the SnapCloud service as user "cloud"
+# Description:       Starts the SnapCloud service as user "winna"
 ### END INIT INFO
 
 # Author: Bernat Romagosa <bernat@romagosa.work>
@@ -22,13 +22,13 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/us
 case "$1" in
   start|restart|reload|force-reload)
     log_daemon_msg "Starting $DESC" "$NAME"
-    killall nginx
-    runuser -l cloud -c "(cd /home/cloud/snapCloud; ./start.sh &)"
+    sudo killall nginx
+    runuser -l winna -c "(cd /home/snapCloud; ./start.sh &)"
     ;;
   stop)
     log_daemon_msg "Stopping $DESC" "$NAME"
-    runuser -l cloud -c "lapis term"
-    killall nginx
+    runuser -l winna -c "lapis term"
+    sudo killall nginx
     ;;
 esac
 
