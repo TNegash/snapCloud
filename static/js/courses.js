@@ -1,9 +1,8 @@
 document.addEventListener('DOMContentLoaded', function(){
     //window.onload = function() {
     const allHeadings = document.querySelectorAll(".learning-contents h2, .learning-contents h3, .learning-contents h4");
-    const pageContent = document.querySelector(".learning-contents")
-    
-    
+    const pageContent = document.querySelector(".learning-contents");
+   
     if (allHeadings.length > 0) {
         generateTOC(allHeadings, pageContent );
     }
@@ -57,5 +56,11 @@ document.addEventListener('DOMContentLoaded', function(){
         headingsContainer.appendChild(ul);
         tableOfContents.appendChild(tocHeading);
         tableOfContents.appendChild(headingsContainer);
-        pageContent.prepend(tableOfContents)
+
+        const tocContainer = document.querySelector('.toc-container');
+        if (tocContainer) {
+            tocContainer.appendChild(tableOfContents);
+        } else {
+            pageContent.prepend(tableOfContents); // fallback if container not found
+        }
     };
