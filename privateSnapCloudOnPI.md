@@ -1020,6 +1020,15 @@ To avoid issues related to HTTPS requests from the private server, make the foll
   sudo chmod -R 777 /etc/ssl/
   sudo chmod -R 640 /etc/ssl/private/ssl-cert-snakeoil.key
  ```
+## Solution for nginx Binding Issue
+Solve the binding issue follow the steps below:
+
+1. Check the configuration of openresty
+ ```bash
+    sudo openresty -t
+ ```
+2. follow the paths shown in the result of the previous step to locate the files nginx.conf and nginx.conf.default. Change the ports specified in the files to 8080 or other port number 
+
 ## Install the latest Snap!
 - Go to the github repo https://github.com/jmoenig/Snap
 - On the right hand of the screen, under releases click on the latest release
@@ -1240,3 +1249,52 @@ click on it a set it to ***true***
          sudo update-alternatives --config x-session-manager
          ```  
          Press <enter> to keep the current choice[*], or type selection number:
+## Backup and Restore of Data
+Here are the important data sources that we need to backup. 
+    1. The learning resource data in the directory **/home/snapCloud/static/eriresources**
+    2. Project data in the directory **/home/snapCloud/store**
+    3. The prostgres database
+### Backup
+  1. Learning resource backup
+      Compress and copy the directory to external storage 
+      ```bash
+      cd /home/snapCloud/static/eriresources
+      tar cvzf eriresources.tar.gz /home/winna/backup/
+      ``` 
+  2. Project data backup
+      Compress and copy the directory to external 
+      ```bash
+      cd /home/snapCloud/store
+      tar cvzf store.tar.gz /home/winna/backup/
+      ``` 
+  3. Postgres database backup
+      backup with plain file (for small DB)
+      ```bash   
+        pg_dump -U winna -d snapcloud -f /home/winna/backup/winna-snapcloud.sql
+      ``` 
+      backup as a tarball (for large DB)
+       ```bash   
+        pg_dump -U winna -d snapcloud -F tar -f /home/winna/backup/winna-snapcloud.tar
+      ```
+### Restore
+  1. Learning resource restore
+      Copy the file **eriresources.tar.gz** from external storage into **/home/winna/backup/** and uncompress it to the directory **/home/snapCloud/static/** 
+      ```bash
+      cd /home/snapCloud/static/
+      tar xf /home/winna/backup/eriresources.tar.gz 
+      ```
+  2. Project data restore
+      Copy the file **store.tar.gz** from external storage into **/home/winna/backup/** and uncompress it to the directory **/home/snapCloud/** 
+      ```bash
+      cd /home/snapCloud/
+      tar xf /home/winna/backup/store.tar.gz
+      ```
+  3. Postgres database restore
+      Restore from plain file (for small DB)
+      ```bash   
+        psql -U winna -d snapcloud < /home/winna/backup/winna-snapcloud.sql
+      ``` 
+      Restore from a tarball (for large DB)
+       ```bash   
+        pg_restore -U winna -c -C -d postgres -v /home/winna/backup/winna-snapcloud.tar
+      ```
