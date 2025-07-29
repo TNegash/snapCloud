@@ -1258,22 +1258,24 @@ Here are the important data sources that we need to backup.
   1. Learning resource backup
       Compress and copy the directory to external storage 
       ```bash
-      cd /home/snapCloud/static/eriresources
-      tar cvzf eriresources.tar.gz /home/winna/backup/
+      cd /home/winna/backup/ 
+      tar cvzf eriresources.tar.gz /home/snapCloud/static/eriresources
       ``` 
   2. Project data backup
       Compress and copy the directory to external 
       ```bash
-      cd /home/snapCloud/store
-      tar cvzf store.tar.gz /home/winna/backup/
+      cd /home/winna/backup/
+      tar cvzf store.tar.gz  /home/snapCloud/store
       ``` 
   3. Postgres database backup
       backup with plain file (for small DB)
       ```bash   
+      cd /home/winna/backup/
         pg_dump -U winna -d snapcloud -f /home/winna/backup/winna-snapcloud.sql
       ``` 
       backup as a tarball (for large DB)
        ```bash   
+       cd /home/winna/backup/
         pg_dump -U winna -d snapcloud -F tar -f /home/winna/backup/winna-snapcloud.tar
       ```
 ### Restore
