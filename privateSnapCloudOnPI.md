@@ -1194,7 +1194,7 @@ To get detailed information about the command execute
       sudo rm /var/crash/*
     ```
     
-### Issues with Firefox (unknown hot or host not found)
+### Issues with Firefox (unknown host or host not found)
 
   - In Firefox, type ***about:config*** in the address bar
   - Search for ***network.cors_preflight.allow_client_cert***
@@ -1205,6 +1205,55 @@ To get detailed information about the command execute
 go to the firefox page: ***about:config***
 then search for enable ***security.enterprise_roots.enabled***
 click on it a set it to ***true***
+
+### DNS Resolution Issue on Client Side (DNS_PROBE_FINISHED_NXDOMAIN Issue)
+
+#### Windows
+Try if the DNS works after each of these steps.
+
+1. Flush DNS Cache
+To clear the client computer's DNS cache, open Command Prompt as administrator and execute the following command.
+
+    ```bash
+        ipconfig /flushdns
+    ```
+
+2. Release and Renew IP Address
+To release and renew the IP address on the client computer, open Command Prompt as administrator and execute the following command.
+
+    ```bash
+        ipconfig /release
+        ipconfig /renew
+    ```
+
+3. Change DNS Server
+     - Go to Network and Sharing Center (Windows).
+     - Click on the connection you are using (e.g., Wi-Fi).
+     - Click on Properties.
+     - Select Internet Protocol Version 4 (TCP/IPv4).
+     - Click on Properties.
+     - Choose "Use the following DNS server addresses" and enter the snap specific DNS server
+
+4. Check the local host file 
+      - Open Notepad as administrator (shft + right click).
+      - opel the file C:\Windows\System32\drivers\etc\host
+      - Delete or edit entries without # at the beginning. Enter IP address of the DNS server and the domain name as shown below (Only if the dns resolution issue is not resolved)
+
+      ```bash
+         192.168.0.101	snap.winna.er
+      ```
+       **Note:** put tab before and after the ip address
+
+#### MAC
+
+  1. Flush DNS Cache:
+      Clear the Macbook's DNS cache to remove potentially outdated entries. On a Mac, you can do this using the Terminal with the command sudo killall -HUP mDNSResponder. 
+  2. Renew IP Address:
+      Renew the Macbook's IP address to ensure it's getting the correct network configuration from the router. 
+  3. Check DNS Server Settings:
+      Verify the Macbook's DNS server settings in System Preferences > Network > [Your Network Connection] > Advanced > DNS. Use the Snap! DNS server 
+  4. Check Hosts File:
+      Examine the Macbook's hosts file (usually located at /private/etc/hosts) for any conflicting entries. You probaly need to add the ip of the dns server and the deomain snap.winna.er in the host file similar to windows
 
 ## Access Server from Windows
 
