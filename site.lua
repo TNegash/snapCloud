@@ -118,12 +118,16 @@ for route, view_path in pairs(user_forms) do
     end)))
 end
 
-app:get('/learn', capture_errors(cached(function (self)
-    self.materials_by_type = util.group_by_type(materials)
-    self.resources_order = {"documentation", "course", "book"}
-    self.types = material_types
-    return { render = 'static/learn'}
-end)))
+-- app:get('/learn', capture_errors(cached(function (self)
+--     self.materials_by_type = util.group_by_type(materials)
+--     self.resources_order = {"documentation", "course", "book"}
+--     self.types = material_types
+--     return { render = 'static/learn'}
+-- end)))
+
+app:get('/learn', function ()
+    return { redirect_to = '/courses' }
+end)
 
 app:get('/materials', function ()
     return { redirect_to = '/learn' }
