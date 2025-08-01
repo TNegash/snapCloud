@@ -600,10 +600,10 @@
             </div>
             <div>
                 <p>
-                Physical computing** lets students bring their ideas to life by combining coding with real-world objects. Using small devices like the **micro:bit** or **Arduino**, they can build simple projects—like alarms, games, or weather sensors—that respond to their environment.
+                Physical computing lets students bring their ideas to life by combining coding with real-world objects. Using small devices like the <b>micro:bit</b> or <b>Arduino</b>, they can build simple projects like alarms, games, or weather sensors that respond to their environment.
                </p>
                <p>
-                To make it even more accessible, students can use **graphical programming tools like Snap!**, where they drag and drop blocks instead of writing code. This makes learning fun and intuitive, especially for beginners.
+                To make it even more accessible, students can use <b>graphical programming tools like Snap!</b>, where they drag and drop blocks instead of writing code. This makes learning fun and intuitive, especially for beginners.
                 </p>
             </div>
             <div class="learning-objectives">
@@ -623,15 +623,16 @@
                         <li>An understanding of basic programming concepts&nbsp;</li>
                         <li>Familiarity with the Snap<em>!</em> development environment&nbsp;</li> 
                         <li> <a href="/static/eriresources/Books/microbit-cards.pdf">Basic knowledge of micro:bit&nbsp;</a></li>
+                        <li> <a href="/static/eriresources/IntroductionToPhysicalComputing/microBlocks setup.pdf">Download and Install MicroBlocks Desktop Application&nbsp;</a></li>
                         </ul>
                     </p>
             </div>
             <div class="course-contents">
-                <h3 class="toc-h3" id ="introduction_to_physical_computing_course_content">Introduction to Physical Computing Course Content</h3>
+                <h3 class="toc-h3" id ="physical_computing_course_content">Physical Computing Course Content</h3>
                 <p>
                     <ul>
                         <li>
-                            <h4 class="toc-h4" id="introduction_to_physical_computing">Physical Computing Exercises with Micro:Bit Board, MicroBlocks and Snap<em>!</em></h4>
+                            <h4 class="toc-h4" id="introduction_to_physical_computing">Exercises with Micro:Bit Board, MicroBlocks and Snap<em>!</em></h4>
                                 <table style="border: 1px solid;">
                                     <tr>
                                         <th>Description</th>
