@@ -153,7 +153,7 @@
             
             <h2 class="toc-h2"id="get_coding_with_snap">Get Coding with Snap</h2>
             <div class="overview">
-                <h3 class="toc-h3" id="overview" >Overview</h3>
+                <h3 class="toc-h3" id="get_coding_with_snap_overview" >Overview</h3>
                 <div>
                     <p>
                     We all use software practically every day, often without even realizing it! As our lives are transformed by the digital age, programming is becoming an important life skill. In this course, you’ll see how anyone can start building their own programs using Snap<em>!</em>, a block-based, open-source programming language. Its colorful, intuitive interface makes learning fast and fun, even for the most technically challenged! If you’ve already done some programming in Scratch, you’ll feel instantly at home. If not, don’t worry! Using animations, games, and artwork, this course will bring out the artist – and computer scientist – in you.
@@ -164,7 +164,7 @@
                 </div>
             </div>
             <div class="learning-objectives">
-            <h3 class="toc-h3" id="learning-objectives">Learning objectives</h3>
+            <h3 class="toc-h3" id="get_coding_with_snap_learning_objectives">Learning objectives</h3>
                 <p>
                 <p>After completing this course, business users, consultants, and developers will be able to:&nbsp;&nbsp;</p>
                 <ul>
@@ -176,7 +176,7 @@
                 </p>
             </div>
                 <div class="prerequisites">
-                    <h3 class="toc-h3" id="prerequisites">Prerequisites</h3>
+                    <h3 class="toc-h3" id="get_coding_with_snap_prerequisites">Prerequisites</h3>
                     <p>
                         none
                     </p>
@@ -325,14 +325,14 @@
 
             <h2 class="toc-h2"id="from_media_computation_to_data_science">From Media Computation to Data Science</h2>
             <div class="overview">
-                <h3 class="toc-h3" id="overview" >Overview</h3>
+                <h3 class="toc-h3" id="from_media_computation_to_data_science_overview" >Overview</h3>
                 <div>
                     <p>
                     This course teaches media computation, a pedagogical idea which allows you to explore general purpose programming by playing with the building blocks of digital pictures, music, movies, and texts. You’ll learn how to analyze, manipulate, and create multimedia content using the visual programming language Snap<em>!</em>. The concepts and strategies learned for media can then be applied to other programming tasks and data sets from various sources. The course aims to bridge the gap between introductory programming and advanced computational skills.
                 </p>
                 </div>
             </div>
-            <div class="learning-objectives">
+            <div class="from_media_computation_to_data_science_learning_objectives">
                     <h3 class="toc-h3" id="learning-objectives">Learning objectives</h3>
                     <p>
                     <p>After completing this course, business users, consultants, and developers will be able to:&nbsp;&nbsp;</p>
@@ -344,7 +344,7 @@
                     </ul>
                     </p>
             </div>
-            <div class="prerequisites">
+            <div class="from_media_computation_to_data_science_prerequisites">
                     <h3 class="toc-h3" id="prerequisites">Prerequisites</h3>
                     <p>
                     <ul>
@@ -596,7 +596,7 @@
             </div>
             <h2 class="toc-h2"id="Introduction_to_physical_computing">Introduction to Physical Computing</h2
             ><div class="overview">
-                <h3 class="toc-h3" id="overview" >Overview</h3>
+                <h3 class="toc-h3" id="physical_computing_overview">Overview</h3>
             </div>
             <div>
                 <p>
@@ -607,7 +607,7 @@
                 </p>
             </div>
             <div class="learning-objectives">
-                    <h3 class="toc-h3" id="learning-objectives">Learning objectives</h3>
+                    <h3 class="toc-h3" id="physical_computing_learning_objectives">Learning objectives</h3>
                     <p>
                         <p>After completing this course, learners will be able to:</p>
                         <ul>
@@ -618,11 +618,12 @@
                     </p>
             </div>
             <div class="prerequisites">
-                    <h3 class="toc-h3" id="prerequisites">Prerequisites</h3>
+                    <h3 class="toc-h3" id="physical_computing_prerequisites">Prerequisites</h3>
                     <p> <ul>
                         <li>An understanding of basic programming concepts&nbsp;</li>
                         <li>Familiarity with the Snap<em>!</em> development environment&nbsp;</li> 
-                        <li> <a href="/static/eriresources/Books/microbit-cards.pdf">Basic knowledge of micro:bit&nbsp;</a></li>
+                        <li> <a href="/static/eriresources/Books/IntroductionToMicrobit.pdf">Introduction to micro:bit&nbsp;</a></li>
+                        <li> <a href="/static/eriresources/Books/MicroBlocksQuickStart.pdf">Introduction to MicroBlocks&nbsp;</a></li>
                         <li> <a href="/static/eriresources/IntroductionToPhysicalComputing/microBlocks setup.pdf">Download and Install MicroBlocks Desktop Application&nbsp;</a></li>
                         </ul>
                     </p>
@@ -686,7 +687,7 @@
 
             <h2 class="toc-h2"id="exploring_the_world_of_AI">Exploring the World of AI</h2>
              <div class="overview">
-                <h3 class="toc-h3" id="overview" >Overview</h3>
+                <h3 class="toc-h3" id="exploring_the_world_of_AI_overview" >Overview</h3>
                 <div>
                     <p>
                     This course explores the principles and concepts of artificial intelligence (AI). It addresses different types of AI, including machine learning and symbolic AI using board and computer games. Moreover, the course takes a closer look at the pitfalls and societal implications of AI. It also offers additional teaching materials for educators. Join this course to delve into the fascinating world of AI.
@@ -694,7 +695,7 @@
               </div>
             </div>
             <div class="learning-objectives">
-                    <h3 class="toc-h3" id="learning-objectives">Learning objectives</h3>
+                    <h3 class="toc-h3" id="exploring_the_world_of_AI_learning_objectives">Learning objectives</h3>
                     <p>
                         <p>After completing this course, IT professionals will be able to:&nbsp;&nbsp;</p>
                         <ul>
@@ -706,7 +707,7 @@
                     </p>
             </div>
             <div class="prerequisites">
-                    <h3 class="toc-h3" id="prerequisites">Prerequisites</h3>
+                    <h3 class="toc-h3" id="exploring_the_world_of_AI_prerequisites">Prerequisites</h3>
                     <p> None </p>
             </div>
             <div class="course-contents">
