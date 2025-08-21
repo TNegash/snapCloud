@@ -131,7 +131,7 @@ For details refer to [snapCloud Installation Guide](https://github.com/snap-clou
 
 2. Navigate to the cloned directory:
     ```bash
-    cd /home/cloud/snapCloud/bin
+    cd /home/snapCloud/bin
     ```
 
 3. Edit the **prereqs.sh** file to include the necessary architecture (arm64):
@@ -205,9 +205,9 @@ For detailes refer to [configuration of postgresql](https://ubuntu.com/server/do
         ```bash
         sudo su root
         ```
-    - Next, add the DB user (in this case, we'll use the username "cloud"):
+    - Next, add the DB user (in this case, we'll use the username "winna"):
         ```bash
-        adduser cloud
+        adduser winna
         ```
 
 2. **Access the PostgreSQL Terminal**:
@@ -220,9 +220,9 @@ For detailes refer to [configuration of postgresql](https://ubuntu.com/server/do
 3. **Create the DB User and Database**:
     - Within the PostgreSQL terminal, execute the following commands:
         ```sql
-        CREATE USER cloud WITH PASSWORD 'snap-cloud-password';
-        ALTER ROLE cloud WITH LOGIN;
-        CREATE DATABASE snapcloud OWNER cloud;
+        CREATE USER winna WITH PASSWORD 'Winna1985';
+        ALTER ROLE winna WITH LOGIN;
+        CREATE DATABASE snapcloud OWNER winna;
         ```
 
 4. **Start the PostgreSQL Service**:
@@ -232,25 +232,25 @@ For detailes refer to [configuration of postgresql](https://ubuntu.com/server/do
         ```
 
 5. **Create DB Artifacts in the snapcloud Database**:
-    - Run the following command to create the necessary database artifacts (assuming your SQL files are located at `/home/cloud/snapCloud/db/schema.sql`):
+    - Run the following command to create the necessary database artifacts (assuming your SQL files are located at `/home/snapCloud/db/schema.sql`):
         ```bash
-        sudo su cloud
-        psql -U cloud -d snapcloud -a -f /home/cloud/snapCloud/db/schema.sql
+        sudo su winna
+        psql -U winna -d snapcloud -a -f /home/snapCloud/db/schema.sql
         ```
     - Check whether the schema with the tables is create by executing the command
         ```sql
            \dt
         ```
 6. **Seed the DB Tables**:
-    - Seed the database tables using the provided SQL file (assuming your seeds file is located at `/home/cloud/snapCloud/db/seeds.sql`):
+    - Seed the database tables using the provided SQL file (assuming your seeds file is located at `/home/snapCloud/db/seeds.sql`):
         ```bash
-        psql -U cloud -d snapcloud -a -f /home/cloud/snapCloud/db/seeds.sql
+        psql -U winna -d snapcloud -a -f /home/snapCloud/db/seeds.sql
         ```
 ### 2. Troubleshooting
 1. **Accessing the PostgreSQL terminal**:
     - If you encounter issues accessing the PostgreSQL terminal, execute the following commands:
         ```bash
-        sudo su cloud
+        sudo su winna
         ```
         followed by:
         ```bash
@@ -288,31 +288,31 @@ For detailes refer to [configuration of postgresql](https://ubuntu.com/server/do
    The log under /var/log/postgresql/ provides detailed information on errors related to postgres instance
 ## Setting up the Snap!Cloud as a System Daemon
 
-1. If **snapCloud** is not installed under the `cloud` directory, adjust the path that leads to `start.sh` in the file `snapcloud_daemon`. Execute the following command:
+1. If **snapCloud** is not installed under the `winna` directory, adjust the path that leads to `start.sh` in the file `snapcloud_daemon`. Execute the following command:
 
     ```bash
-    sudoedit /home/cloud/snapCloud/bin/snapcloud_daemon
+    sudoedit /home/winna/snapCloud/bin/snapcloud_daemon
     ```
 
     Change the line:
 
     ```bash
-    runuser -l cloud -c "(cd /home/cloud/snapCloud; ./start.sh &)"
+    runuser -l winna -c "(cd /home/winna/snapCloud; ./start.sh &)"
     ```
 
     to:
 
     ```bash
-    runuser -l cloud -c "(cd /home/snapCloud; ./start.sh &)"
+    runuser -l winna -c "(cd /home/snapCloud; ./start.sh &)"
     ```
 
-2. Add the user `cloud` to the `sudoers` with full access. You can use the following command:
+2. Add the user `winna` to the `sudoers` with full access. You can use the following command:
 
     ```bash
-    adduser cloud sudo
+    adduser winna sudo
     ```
 
-    Alternatively, you can directly add the user `cloud` to the file `/etc/sudoers` by executing the following command and adding an entry similar to `root`:
+    Alternatively, you can directly add the user `winna` to the file `/etc/sudoers` by executing the following command and adding an entry similar to `root`:
 
     ```bash
     sudoedit /etc/sudoers
@@ -338,11 +338,11 @@ For detailes refer to [configuration of postgresql](https://ubuntu.com/server/do
 
     Note: Instead of `S01`, there could be `SXX`, where `XX` are any two digits.
 
-5. Give write access to the user `cloud`:
+5. Give write access to the user `winna`:
 
     ```bash
     sudo chown -R winna:winna /etc/init.d/snapcloud_daemon 
-    setfacl -R -m u:winna:rwx /home/cloud/snapCloud/
+    setfacl -R -m u:winna:rwx /home/snapCloud/
     ```
 
 6. Start the snapcloud daemon
@@ -714,7 +714,7 @@ To secure your web server with SSL, you can create a self-signed certificate usi
 3. **Create a Self-Signed SSL Certificate**:
    - Generate a self-signed certificate with OpenSSL:
      ```bash
-     sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/winna.key -out /etc/ssl/certs/winna.crt -config /home/cloud/snapCloud/winna_openSSL.conf -extensions v3_req
+     sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/winna.key -out /etc/ssl/certs/winna.crt -config /home/snapCloud/winna_openSSL.conf -extensions v3_req
      ```
    - This command will create a self-signed certificate valid for 365 days and store the private key and certificate in the specified locations.
 
@@ -746,14 +746,14 @@ To secure your web server with SSL, you can create a self-signed certificate usi
 
 7. **Configure Nginx to Use SSL**:
    - Refer to the snapCloud fork in Tnegash for the changes that need to be done to the following files:
-       - `/home/cloud/snapCloud/nginx.conf.d/extensions.conf`
-       - `/home/cloud/snapCloud/nginx.conf.d/http-only.conf`
-       - `/home/cloud/snapCloud/nginx.conf.d/ssl-production.conf`
+       - `/home/snapCloud/nginx.conf.d/extensions.conf`
+       - `/home/snapCloud/nginx.conf.d/http-only.conf`
+       - `/home/snapCloud/nginx.conf.d/ssl-production.conf`
 
 8. **Create a Configuration Snippet with Strong Encryption Settings**:
    - Check the snapCloud fork in Tnegash for the changes needed in the file `ssl-shared.conf`:
      ```bash
-     sudoedit /home/cloud/snapCloud/nginx.conf.d/ssl-shared.conf
+     sudoedit /home/snapCloud/nginx.conf.d/ssl-shared.conf
      ```
 9.  **Adjusting the Firewall**:
   
@@ -827,7 +827,7 @@ To secure your web server with SSL, you can create a self-signed certificate usi
 
 5. **Troubleshooting Nginx Issues**
 
-- If you encounter issues or the websites are not accessible, check the error log in the folder `/home/cloud/snapCloud/logs/`.
+- If you encounter issues or the websites are not accessible, check the error log in the folder `/home/snapCloud/logs/`.
 
 ### Adding Self-Signed Certificates to Browsers
 
@@ -875,14 +875,14 @@ This is mainly done to enable the usage of the domain name snap.winna.er with ht
 To avoid issues related to HTTPS requests from the private server, make the following changes in both **snapCloud** and **snap**:
 
 1. Update the following files to replace references to `https://snap.berkeley.edu/` and/or `snap-cloud-domain`:
-   - `/home/cloud/snapCloud/snap/src/cloud.js`
-   - `/home/cloud/snapCloud/models.lua`
-   - `/home/cloud/snapCloud/cors.lua`
-   - `/home/cloud/snapCloud/nginx.conf.d/locations.conf`
-   - `/home/cloud/snapCloud/nginx.conf.d/extension.conf`
-   - `/home/cloud/snapCloud/views/layout.etlua`
-   - `/home/cloud/snapCloud/views/embedded.etlua`
-   - `/home/cloud/snapCloud/static/js/cloud.js`
+   - `/home/snapCloud/snap/src/cloud.js`
+   - `/home/snapCloud/models.lua`
+   - `/home/snapCloud/cors.lua`
+   - `/home/snapCloud/nginx.conf.d/locations.conf`
+   - `/home/snapCloud/nginx.conf.d/extension.conf`
+   - `/home/snapCloud/views/layout.etlua`
+   - `/home/snapCloud/views/embedded.etlua`
+   - `/home/snapCloud/static/js/cloud.js`
 
 2. To determine which change resolves the issue, repeat the following steps:
    - Stop the server:
@@ -926,7 +926,7 @@ To avoid issues related to HTTPS requests from the private server, make the foll
      ```   
 - Add the following configuration to the script file start.sh to start the mail server automatically. The following line should be added at the end.
      ```sh
-     type maildev &>/dev/null && maildev --incoming-user cloud --incoming-pass cloudemail
+     type maildev &>/dev/null && maildev --incoming-user winna --incoming-pass cloudemail
      ``` 
 - Change the config name in email.lua from development to production in line 29
      ```lua
@@ -967,8 +967,8 @@ To avoid issues related to HTTPS requests from the private server, make the foll
 ## Add environment variables for server runtime configuration
 - Add snapCloud specific environment variables execute the following commands:
     ```bash
-        touch /home/cloud/snapCloud/.env
-        sudoedit /home/cloud/snapCloud/.env
+        touch /home/snapCloud/.env
+        sudoedit /home/snapCloud/.env
     ```
 - Copy the follwing entries to the file:
 - 
@@ -976,8 +976,8 @@ To avoid issues related to HTTPS requests from the private server, make the foll
     LAPIS_ENVIRONMENT=production
     DATABASE_HOST=127.0.0.1
     DATABASE_PORT=5432
-    DATABASE_USERNAME=cloud
-    DATABASE_PASSWORD=snap-cloud-password
+    DATABASE_USERNAME=winna
+    DATABASE_PASSWORD=Winna1985
     DATABASE_NAME=snapcloud
     HOSTNAME=snap.winna.er
     PORT=443
@@ -987,14 +987,14 @@ To avoid issues related to HTTPS requests from the private server, make the foll
 ## Giving permissions to use HTTP(S) ports
 (This section applies only to Linux machines.) Authbind allows a user to bind to ports 0-1023. In development, you will likely not need to use authbind as the server defaults to using port 8080 and doesn't need https. However, on the production server, authbind is necessary.
 
-- We now need to configure authbind so that user cloud can start a service over the HTTP and HTTPS ports. To do so, we simply need to create a file and assign its ownership to cloud:
+- We now need to configure authbind so that user winna can start a service over the HTTP and HTTPS ports. To do so, we simply need to create a file and assign its ownership to winna:
 
  ```bash
     touch /etc/authbind/byport/443
-    chown cloud:cloud /etc/authbind/byport/443
+    chown winna:winna /etc/authbind/byport/443
     chmod +x /etc/authbind/byport/443
     touch /etc/authbind/byport/80
-    chown cloud:cloud /etc/authbind/byport/80
+    chown winna:winna /etc/authbind/byport/80
     chmod +x /etc/authbind/byport/80
  ```
 - Start snap! cloud daemon by executing the following command
@@ -1008,7 +1008,7 @@ To avoid issues related to HTTPS requests from the private server, make the foll
  ```
 - Check error log if nginx could not start properly
  ```bash
-  sudoedit /home/cloud/snapCloud/log/error.log
+  sudoedit /home/snapCloud/log/error.log
  ```
 - In case of issues with access permission to /etc/ssl/private/winna.key, grant access as follows:
  ```bash
@@ -1034,14 +1034,14 @@ Solve the binding issue follow the steps below:
 - On the right hand of the screen, under releases click on the latest release
 - On the following screen click on the release number with the tag symbol
 - On the following screen copy the https link (e.g. https://github.com/jmoenig/Snap.git)
-- Then go to folder /home/cloud/snapCloud/ and clone the repository as follows:
+- Then go to folder /home/snapCloud/ and clone the repository as follows:
  ```bash
   git clone https://github.com/jmoenig/Snap.git
  ```
 - After that remove the old snap folder and rename the folder Snap to snap (note: new folder has capital S)
  ```bash
-  sudo rm -rvf /home/cloud/snapCloud/snap
-  sudo mv /home/cloud/snapCloud/Snap /home/cloud/snapCloud/snap
+  sudo rm -rvf /home/snapCloud/snap
+  sudo mv /home/snapCloud/Snap /home/snapCloud/snap
  ```
 - Restart snap! Cloud 
  ```bash
@@ -1053,7 +1053,7 @@ Solve the binding issue follow the steps below:
 2. Afterward, use the following commands to assign the user the **admin** role:
     - Log in to the PostgreSQL command line with the following command:
         ```bash
-        psql -U cloud -d snapcloud
+        psql -U winna -d snapcloud
         ```
     - Display the newly created user using the following SQL statement in the PostgreSQL command line:
         ```sql
