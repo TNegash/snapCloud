@@ -189,6 +189,17 @@ To solve this issue, execute the following command to configure Git to use HTTPS
 ```bash
 git config --global url."https://github".insteadOf git://github
 ```
+### 4. Troubleshooting xml through luarocks fails
+
+```bash
+cd ~
+luarocks unpack xml
+cd ~/xml-1.1.3-1/xml
+# modify error file(src/bind/dub/dub.h, src/bind/dub/dub.cpp),
+# remove the throw part.
+luarocks make xml-1.1.3-1.rockspec
+```
+refer to the [stack overflow entry](https://stackoverflow.com/questions/75751085/cant-install-lua-xml-trough-luarocks) for details.
 
 ## Setup Database
 ### 1. Setting Up the Database
