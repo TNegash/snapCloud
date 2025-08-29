@@ -1352,11 +1352,26 @@ Here are the important data sources that we need to backup.
       tar xf /home/winna/backup/store.tar.gz
       ```
   3. Postgres database restore
-      Restore from plain file (for small DB)
-      ```bash   
-        psql -U winna -d snapcloud < /home/winna/backup/winna-snapcloud.sql
-      ``` 
-      Restore from a tarball (for large DB)
-       ```bash   
-        pg_restore -U winna -c -C -d postgres -v /home/winna/backup/winna-snapcloud.tar
-      ```
+      Before starting with the restore we need to drop and recreate the DB snapcloud as follows:
+      - Start the PostgreSQL terminal as the "postgres" user:
+        ```bash
+        sudo su postgres
+        psql
+        ```
+      - Within the PostgreSQL terminal, execute the following commands:
+        ```sql
+        DROP DATABASE snapcloud with (FORCE);
+        CREATE DATABASE snapcloud OWNER winna;
+        ```
+      - After this start with the restore process by following the steps below:
+        ```bash   
+          psql -U winna -d snapcloud < /home/winna/backup/winna-snapcloud.sql
+        ``` 
+        Restore from plain file (for small DB)
+        ```bash   
+          psql -U winna -d snapcloud < /home/winna/backup/winna-snapcloud.sql
+        ``` 
+        Restore from a tarball (for large DB)
+        ```bash   
+          pg_restore -U winna -c -C -d postgres -v /home/winna/backup/winna-snapcloud.tar
+        ```
