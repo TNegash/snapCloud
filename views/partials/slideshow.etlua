@@ -25,7 +25,7 @@
 <%
 ]]%>
 
-    <div class="carousel-item">
+    <div class="carousel-item active">
       <img src="/static/img/snap-tigrinya.png" style="width:100%" alt="ስናፕ! - ናትካ ሕጡባት ህነጽ">
     </div>
 
