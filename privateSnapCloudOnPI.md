@@ -126,7 +126,7 @@ Cloning in this case is only possible only with ssh key. Therefore follow the gu
 For details refer to [snapCloud Installation Guide](https://github.com/snap-cloud/snapCloud/blob/master/INSTALL.md)
 1. Clone the **snapCloud** repository:
     ```bash
-    git clone --recursive git@github.com:snap-cloud/snapCloud.git
+    git clone --recursive git@github.com:TNegash/snapCloud.git
     ```
 
 2. Navigate to the cloned directory:
@@ -299,16 +299,16 @@ For detailes refer to [configuration of postgresql](https://ubuntu.com/server/do
    The log under /var/log/postgresql/ provides detailed information on errors related to postgres instance
 ## Setting up the Snap!Cloud as a System Daemon
 
-1. If **snapCloud** is not installed under the `winna` directory, adjust the path that leads to `start.sh` in the file `snapcloud_daemon`. Execute the following command:
+1. If **snapCloud** is not installed under the `cloud` directory, adjust the path that leads to `start.sh` in the file `snapcloud_daemon`. Execute the following command:
 
     ```bash
-    sudoedit /home/winna/snapCloud/bin/snapcloud_daemon
+    sudoedit /home/snapCloud/bin/snapcloud_daemon
     ```
 
     Change the line:
 
     ```bash
-    runuser -l winna -c "(cd /home/winna/snapCloud; ./start.sh &)"
+    runuser -l winna -c "(cd /home/cloud/snapCloud; ./start.sh &)"
     ```
 
     to:
