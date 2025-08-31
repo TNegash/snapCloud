@@ -1280,7 +1280,9 @@ To release and renew the IP address on the client computer, open Command Prompt 
   1. Install the xrdp package on Ubuntu
       ```bash
          sudo apt update
-         sudo apt install xrdp
+          apt install xfce4 xfce4-goodies -y
+          apt install xrdp -y
+          adduser xrdp ssl-cert
       ```
   2. In order to make sure that the xrdp service starts up automatically upon future system reboots, we can enable it in systemd.
       ```bash
